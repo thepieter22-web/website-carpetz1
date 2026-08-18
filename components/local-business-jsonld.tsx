@@ -13,9 +13,9 @@ export function LocalBusinessJsonLd() {
     priceRange: '€€',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Industrielaan 12',
-      postalCode: '2800',
-      addressLocality: 'Mechelen',
+      streetAddress: 'Berkenlaan 1D',
+      postalCode: '9840',
+      addressLocality: 'de Pinte',
       addressCountry: 'BE',
     },
     areaServed: [
