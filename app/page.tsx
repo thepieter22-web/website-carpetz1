@@ -85,7 +85,7 @@ export default function HomePage() {
           <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-2 lg:px-8 lg:py-28">
             <div className="relative aspect-[4/3] overflow-hidden rounded-sm">
               <Image
-                src="/images/logo-mat.jpg"
+                src="/images/logomat-winkel-entree.webp"
                 alt="Logomat op maat met ingeweven bedrijfslogo in dichte tapijtvezel"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
