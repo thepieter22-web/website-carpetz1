@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: 'Logomatten op maat laten maken | Carpetz',
     description:
       'Logomatten op maat met scherpe print van je logo. Slijtvast, antislib en wasbaar branding tapijt voor elke ingang.',
-    images: [{ url: '/images/logo-mat.png', width: 1200, height: 630, alt: 'Logomat op maat van Carpetz' }],
+    images: [{ url: '/images/logo-mat.jpg', width: 1200, height: 630, alt: 'Logomat op maat van Carpetz' }],
   },
 }
 
@@ -35,7 +35,7 @@ export default function LogomatPage() {
           eyebrow="Logomatten"
           title="Logomatten op maat"
           intro="Verwelkom bezoekers met een logomat op maat die je merk meteen op de kaart zet. Functioneel als schoonloopmat, representatief als visitekaartje."
-          image="/images/logo-mat.png"
+          image="/images/logo-mat.jpg"
           imageAlt="Logomat op maat met ingeweven bedrijfslogo"
         />
 
@@ -77,7 +77,7 @@ export default function LogomatPage() {
         <section className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-16 lg:grid-cols-2 lg:px-8">
           <div className="relative aspect-[4/3] overflow-hidden rounded-sm">
             <Image
-              src="/images/logo-mat.png"
+              src="/images/logo-mat.jpg"
               alt="Detail van een logomat op maat met scherpe logo-print"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
