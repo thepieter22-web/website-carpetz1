@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 }
 
 const contactDetails = [
-  { icon: Phone, label: 'Telefoon', value: '+32 15 00 00 00', href: 'tel:+3215000000' },
+  { icon: Phone, label: 'Telefoon', value: '+32 0485 464 949', href: 'tel:+3215000000' },
   { icon: Mail, label: 'E-mail', value: 'info@carpetz.be', href: 'mailto:info@carpetz.be' },
   { icon: MapPin, label: 'Adres', value: 'Industrielaan 12, 2800 Mechelen, België' },
   { icon: Clock, label: 'Openingsuren', value: 'Ma \u2013 Vr, 08:30 \u2013 17:30' },
