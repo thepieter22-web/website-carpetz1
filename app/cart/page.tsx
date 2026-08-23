@@ -163,7 +163,7 @@ const [phone, setPhone] = useState("");
   className="rounded-lg border p-3"
   placeholder="E-mailadres *"
   value={email}
-  onCh*nge={(e) => setEmail(e.target.valu*)}
+  onChange={(e) => setEmail(e.target.value)}
 />
 
                   <input
