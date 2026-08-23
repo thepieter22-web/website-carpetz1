@@ -5,8 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { Calculator, Tag, Percent } from "lucide-react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+
 
 interface PriceCalculatorProps {
   config: MatConfig;
@@ -125,11 +124,7 @@ export function PriceCalculator({ config }: PriceCalculatorProps) {
   </div>
 </div>
 
-/cart
-  <Button className="w-full bg-[#C69C4D] hover:bg-[#B88D3C] text-white">
-    Bestelling plaatsen
-  </Button>
-</Link>
+
 
 </CardContent>
 </Card>
