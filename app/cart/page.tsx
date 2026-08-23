@@ -339,6 +339,12 @@ console.log({
   phone,
   company,
   vatNumber,
+  street,
+  postalCode,
+  city,
+  country,
+        
+        
 }),
     });
 
