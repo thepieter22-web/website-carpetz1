@@ -19,6 +19,7 @@ export async function POST(request: Request) {
       phone: body.phone || "",
       company: body.company || "",
       vatNumber: body.vatNumber || "",
+      
     },
   },
 
