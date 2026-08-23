@@ -160,9 +160,28 @@ export default function CartPage({
                 <p>✅ Levering België & Nederland</p>
               </div>
 
-              <button className="mt-8 w-full rounded-lg bg-[#C69C4D] px-6 py-4 text-white font-medium hover:bg-[#B88D3C]">
-                Doorgaan naar afrekenen
-              </button>
+              <button
+  className="mt-8 w-full rounded-lg bg-[#C69C4D] px-6 py-4 text-white font-medium hover:bg-[#B88D3C]"
+  onClick={async () => {
+    const response = await fetch("/api/create-checkout-session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        amount: grandTotal,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (data.url) {
+      window.location.href = data.url;
+    }
+  }}
+>
+  Doorgaan naar afrekenen
+</button>
 
             </div>
 
