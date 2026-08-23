@@ -126,6 +126,7 @@ export function PriceCalculator({ config }: PriceCalculatorProps) {
 </div>
 
 /cart
+``
   <Button className="w-full bg-[#C69C4D] hover:bg-[#B88D3C] text-white">
     Bestelling plaatsen
   </Button>
