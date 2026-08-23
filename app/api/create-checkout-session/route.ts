@@ -8,19 +8,21 @@ export async function POST(request: Request) {
     const body = await request.json();
 
     const session = await stripe.checkout.sessions.create({
-      mode: "payment",
+  mode: "payment",
 
-      metadata: {
-  customerType: body.customerType || "",
-  firstName: body.firstName || "",
-  lastName: body.lastName || "",
-  email: body.email || "",
-  phone: body.phone || "",
-  company: body.company || "",
-  vatNumber: body.vatNumber || "",
-},
+  payment_intent_data: {
+    metadata: {
+      customerType: body.customerType || "",
+      firstName: body.firstName || "",
+      lastName: body.lastName || "",
+      email: body.email || "",
+      phone: body.phone || "",
+      company: body.company || "",
+      vatNumber: body.vatNumber || "",
+    },
+  },
 
-      line_items: [
+  line_items: [
         {
           price_data: {
             currency: "eur",
