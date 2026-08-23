@@ -309,7 +309,12 @@ export function MatConfigurator() {
               <RotateCcw className="w-4 h-4 mr-2" />
               Opnieuw starten
             </Button>      
-<Button size="sm" onClick={handleAddToCart}>
+<Button
+  size="sm"
+  onClick={() => {
+    window.location.href = "/cart"
+  }}
+>
   <ShoppingCart className="w-4 h-4 mr-2" />
   Bestelling plaatsen
 </Button>
