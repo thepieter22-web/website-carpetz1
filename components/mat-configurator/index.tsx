@@ -312,7 +312,17 @@ export function MatConfigurator() {
 <Button
   size="sm"
   onClick={() => {
-    window.location.href = "/cart"
+    const params = new URLSearchParams({
+      type: config.indoorSubtype,
+      width: String(config.size.width),
+      height: String(config.size.height),
+      quantity: String(config.quantity),
+      total: String(
+        document.body.innerText.match(/€[\d,.]+/)?.[0] || ""
+      ),
+    })
+
+    window.location.href = `/cart?${params.toString()}`
   }}
 >
   <ShoppingCart className="w-4 h-4 mr-2" />
