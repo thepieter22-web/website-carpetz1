@@ -1,17 +1,17 @@
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
-export default function CartPage({
-  searchParams,
-}: {
-  searchParams: {
-    type?: string;
-    width?: string;
-    height?: string;
-    quantity?: string;
-    total?: string;
+export default function CartPage() {
+
+  const searchParams = {
+    type: "",
+    width: "",
+    height: "",
+    quantity: "",
+    total: "0",
   };
-}) {
+
+  const subtotal = Number(
   const subtotal = Number(
     (searchParams.total || "0")
       .replace("€", "")
