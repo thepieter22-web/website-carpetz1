@@ -121,18 +121,6 @@ export default function CartPage({
 
                 <div className="mt-6 grid gap-4 md:grid-cols-2">
 
-                 <input
-  required
-  className="rounded-lg border p-3"
-  placeholder="Voornaam *"
-/>
-
-                  <input
-                    required
-                    className="rounded-lg border p-3"
-                    placeholder="Achternaam *"
-                  />
-
                   {customerType === "zakelijk" && (
   <>
     <input
@@ -148,6 +136,20 @@ export default function CartPage({
     />
   </>
 )}
+
+                 <input
+  required
+  className="rounded-lg border p-3"
+  placeholder="Voornaam *"
+/>
+
+                  <input
+                    required
+                    className="rounded-lg border p-3"
+                    placeholder="Achternaam *"
+                  />
+
+                  
 
                   <input
                     required
