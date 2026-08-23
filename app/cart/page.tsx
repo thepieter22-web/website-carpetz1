@@ -210,7 +210,7 @@ const [country, setCountry] = useState("België");
   onChange={(e) => setPostalCode(e.target.value)}
 />
 
-*input
+<input
   required
   className="rounded-lg border p-3"
   placeholder="Gemeente *"
