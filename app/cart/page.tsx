@@ -12,7 +12,6 @@ export default function CartPage() {
   };
 
   const subtotal = Number(
-  const subtotal = Number(
     (searchParams.total || "0")
       .replace("€", "")
       .replace(",", ".")
