@@ -196,6 +196,18 @@ export default function CartPage({
   placeholder="Land"
   defaultValue="België"
 />
+                  
+{customerType === "zakelijk" && (
+  <label className="col-span-2 flex items-center gap-2 text-sm">
+    <input
+      type="checkbox"
+      defaultChecked
+    />
+    Leveradres is hetzelfde als factuuradres
+  </label>
+)}
+                  
+                  
 
                 </div>
               </div>
