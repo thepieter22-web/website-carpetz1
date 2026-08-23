@@ -1,16 +1,19 @@
+"use client";
+
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
-export default function CartPage() {
-
-  const searchParams = {
-    type: "",
-    width: "",
-    height: "",
-    quantity: "",
-    total: "0",
+export default function CartPage({
+  searchParams,
+}: {
+  searchParams: {
+    type?: string;
+    width?: string;
+    height?: string;
+    quantity?: string;
+    total?: string;
   };
-
+}) {
   const subtotal = Number(
     (searchParams.total || "0")
       .replace("€", "")
@@ -45,13 +48,16 @@ export default function CartPage() {
 
           <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
 
+            {/* Linkerkolom */}
             <div>
+
               <div className="rounded-xl border bg-card p-8 shadow-sm">
                 <h2 className="text-2xl font-semibold">
                   Jouw logomat
                 </h2>
 
                 <div className="mt-8 space-y-4">
+
                   <div>
                     <span className="text-muted-foreground">Type</span>
                     <p className="font-medium">
@@ -66,3 +72,126 @@ export default function CartPage() {
                     </span>
                     <p className="font-medium">
                       {searchParams.width} × {searchParams.height} cm
+                    </p>
+                  </div>
+
+                  <div>
+                    <span className="text-muted-foreground">Aantal</span>
+                    <p className="font-medium">
+                      {searchParams.quantity}
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+
+              <div className="mt-8 rounded-xl border bg-card p-8 shadow-sm">
+                <h2 className="text-2xl font-semibold">
+                  Klantgegevens
+                </h2>
+
+                <div className="mt-6 grid gap-4 md:grid-cols-2">
+
+                  <input
+                    className="rounded-lg border p-3"
+                    placeholder="Voornaam"
+                  />
+
+                  <input
+                    className="rounded-lg border p-3"
+                    placeholder="Achternaam"
+                  />
+
+                  <input
+                    className="rounded-lg border p-3"
+                    placeholder="Bedrijf"
+                  />
+
+                  <input
+                    className="rounded-lg border p-3"
+                    placeholder="E-mail"
+                  />
+
+                  <input
+                    className="rounded-lg border p-3"
+                    placeholder="Telefoon"
+                  />
+
+                  <input
+                    className="rounded-lg border p-3"
+                    placeholder="BTW-nummer"
+                  />
+
+                </div>
+              </div>
+
+            </div>
+
+            {/* Rechterkolom */}
+            <div className="rounded-xl border bg-card p-8 shadow-sm h-fit sticky top-24">
+
+              <h2 className="text-xl font-semibold">
+                Bestelsamenvatting
+              </h2>
+
+              <div className="mt-6 space-y-4">
+
+                <div className="flex justify-between">
+                  <span>Subtotaal</span>
+                  <span>€{subtotal.toFixed(2)}</span>
+                </div>
+
+                <div className="flex justify-between">
+                  <span>Levering</span>
+                  <span>€15.00</span>
+                </div>
+
+                <div className="border-t pt-4 flex justify-between">
+                  <span className="font-semibold">Totaal</span>
+
+                  <span className="text-2xl font-bold text-[#C69C4D]">
+                    €{grandTotal.toFixed(2)}
+                  </span>
+                </div>
+
+              </div>
+
+              <div className="mt-6 space-y-2 text-sm text-muted-foreground">
+                <p>✅ Digitale proefdruk inbegrepen</p>
+                <p>✅ Productie na goedkeuring</p>
+                <p>✅ Levering België & Nederland</p>
+              </div>
+
+              <button
+  className="mt-8 w-full rounded-lg bg-[#C69C4D] px-6 py-4 text-white font-medium hover:bg-[#B88D3C]"
+  onClick={async () => {
+    const response = await fetch("/api/create-checkout-session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        amount: grandTotal,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (data.url) {
+      window.location.href = data.url;
+    }
+  }}
+>
+  Doorgaan naar afrekenen
+</button>
+
+            </div>
+
+          </div>
+        </div>
+      </main>
+
+      <SiteFooter />
+    </>
+  );
+}
