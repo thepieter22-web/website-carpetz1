@@ -8,9 +8,7 @@ export default function SuccessPage() {
 
       <main className="min-h-screen bg-secondary/20">
         <div className="mx-auto max-w-4xl px-6 py-20">
-
           <div className="rounded-2xl border bg-card p-10 shadow-sm text-center">
-
             <div className="text-6xl mb-6">✅</div>
 
             <h1 className="text-4xl font-serif font-semibold">
@@ -35,9 +33,7 @@ export default function SuccessPage() {
             /
               Terug naar Home
             </a>
-
           </div>
-
         </div>
       </main>
 
