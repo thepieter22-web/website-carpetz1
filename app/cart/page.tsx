@@ -143,7 +143,7 @@ const [vatNumber, setVatNumber] = useState("");
   className="rounded-lg border p-3"
   placeholder="BTW-nummer *"
   value={vatNumber}
-  onChange=*(e) => setVatNumber(e.target.value*}
+  onChange={(e) => setVatNumber(e.target.value)}
 />
   </>
 )}
