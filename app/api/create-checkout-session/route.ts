@@ -1,5 +1,49 @@
-export async function POST() {
-  return Response.json({
-    ok: true,
-  });
+import Stripe from "stripe";
+import { NextResponse } from "next/server";
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+
+export async function POST(request: Request) {
+  try {
+    const body = await request.json();
+
+    const session = await stripe.checkout.sessions.create({
+      mode: "payment",
+
+      line_items: [
+        {
+          price_data: {
+            currency: "eur",
+
+            product_data: {
+              name: "Logomat op maat",
+            },
+
+            unit_amount: Math.round(body.amount * 100),
+          },
+
+          quantity: 1,
+        },
+      ],
+
+      success_url: `${request.headers.get(
+        "origin"
+      )}/success?session_id={CHECKOUT_SESSION_ID}`,
+
+      cancel_url: `${request.headers.get(
+        "origin"
+      )}/cart`,
+    });
+
+    return NextResponse.json({
+      url: session.url,
+    });
+  } catch (error) {
+    console.error(error);
+
+    return NextResponse.json(
+      { error: "Stripe fout" },
+      { status: 500 }
+    );
+  }
 }
