@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
@@ -29,6 +30,8 @@ export default function CartPage({
     budget: "Professional",
     luxe: "Elite",
   };
+  
+  const [customerType, setCustomerType] = useState("particulier");
 
   return (
     <>
@@ -90,6 +93,32 @@ export default function CartPage({
                   Klantgegevens
                 </h2>
 
+                <div className="mt-6 flex gap-4">
+  <button
+    type="button"
+    onClick={() => setCustomerType("particulier")}
+    className={`rounded-lg border px-4 py-2 ${
+      customerType === "particulier"
+        ? "bg-[#C69C4D] text-white"
+        : ""
+    }`}
+  >
+    Particulier
+  </button>
+
+  <button
+    type="button"
+    onClick={() => setCustomerType("zakelijk")}
+    className={`rounded-lg border px-4 py-2 ${
+      customerType === "zakelijk"
+        ? "bg-[#C69C4D] text-white"
+        : ""
+    }`}
+  >
+    Zakelijk
+  </button>
+</div>
+
                 <div className="mt-6 grid gap-4 md:grid-cols-2">
 
                  <input
@@ -104,10 +133,21 @@ export default function CartPage({
                     placeholder="Achternaam *"
                   />
 
-                  <input
-                    className="rounded-lg border p-3"
-                    placeholder="Bedrijf"
-                  />
+                  {customerType === "zakelijk" && (
+  <>
+    <input
+      required
+      className="rounded-lg border p-3"
+      placeholder="Bedrijfsnaam *"
+    />
+
+    <input
+      required
+      className="rounded-lg border p-3"
+      placeholder="BTW-nummer *"
+    />
+  </>
+)}
 
                   <input
                     required
