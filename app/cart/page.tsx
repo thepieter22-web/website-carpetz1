@@ -330,8 +330,16 @@ console.log({
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        amount: grandTotal,
-      }),
+  amount: grandTotal,
+
+  customerType,
+  firstName,
+  lastName,
+  email,
+  phone,
+  company,
+  vatNumber,
+}),
     });
 
     const data = await response.json();
