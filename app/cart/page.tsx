@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
@@ -31,7 +30,6 @@ export default function CartPage({
     luxe: "Elite",
   };
 
-  const [customerType, setCustomerType] = useState("particulier");
 
   return (
     <>
