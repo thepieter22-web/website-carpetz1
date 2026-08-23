@@ -164,7 +164,9 @@ export default function CartPage({
                   />
 
                   <h3 className="mt-8 text-lg font-semibold">
-  Leveringsadres
+  {customerType === "zakelijk"
+    ? "Factuuradres"
+    : "Leveringsadres"}
 </h3>
 
 
