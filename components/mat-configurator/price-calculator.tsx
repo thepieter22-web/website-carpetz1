@@ -134,5 +134,5 @@ export function PriceCalculator({ config }: PriceCalculatorProps) {
 </CardContent>
 </Card>
 
-  );
+);
 }
