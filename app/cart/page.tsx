@@ -121,6 +121,30 @@ export default function CartPage({
                     className="rounded-lg border p-3"
                     placeholder="BTW-nummer"
                   />
+                  <h3 className="mt-8 text-lg font-semibold">
+  Leveringsadres
+</h3>
+
+<input
+  className="rounded-lg border p-3"
+  placeholder="Straat + huisnummer"
+/>
+
+<input
+  className="rounded-lg border p-3"
+  placeholder="Postcode"
+/>
+
+<input
+  className="rounded-lg border p-3"
+  placeholder="Gemeente"
+/>
+
+<input
+  className="rounded-lg border p-3"
+  placeholder="Land"
+  defaultValue="België"
+/>
 
                 </div>
               </div>
