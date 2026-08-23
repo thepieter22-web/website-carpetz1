@@ -29,10 +29,6 @@ export default function SuccessPage() {
               <p>✅ Productie na jouw goedkeuring</p>
               <p>✅ Levering in België & Nederland</p>
             </div>
-
-            /
-              Terug naar Home
-            </a>
           </div>
         </div>
       </main>
