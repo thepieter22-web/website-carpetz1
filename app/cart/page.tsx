@@ -161,18 +161,21 @@ export default function CartPage({
                     placeholder="Telefoon *"
                   />
 
-                  <input
-                    className="rounded-lg border p-3"
-                    placeholder="BTW-nummer"
-                  />
                   <h3 className="mt-8 text-lg font-semibold">
   Leveringsadres
 </h3>
 
+
+                  <input
+                    className="rounded-lg border p-3"
+                    placeholder="BTW-nummer"
+                  />
+                  
+
 <input
   required
-  className="rounded-lg border p-3"
-  placeholder="Straat + huisnummer *"
+  className="col-span-2 rounded-lg border p-3"
+  placeholder="Straat en huisnummer *"
 />
 
 <input
