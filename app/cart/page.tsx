@@ -166,10 +166,7 @@ export default function CartPage({
 </h3>
 
 
-                  <input
-                    className="rounded-lg border p-3"
-                    placeholder="BTW-nummer"
-                  />
+                 
                   
 
 <input
