@@ -32,6 +32,7 @@ export default function CartPage({
   };
   
   const [customerType, setCustomerType] = useState("particulier");
+  const [firstName, setFirstName] = useState("");
   const [sameAddress, setSameAddress] = useState(true);
 
   return (
@@ -142,6 +143,8 @@ export default function CartPage({
   required
   className="rounded-lg border p-3"
   placeholder="Voornaam *"
+  value={firstName}
+  onChange={(e) => setFirstName(e.target.value)}
 />
 
                   <input
