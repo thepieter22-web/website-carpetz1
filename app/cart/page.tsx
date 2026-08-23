@@ -32,6 +32,7 @@ export default function CartPage({
   };
   
   const [customerType, setCustomerType] = useState("particulier");
+  const [sameAddress, setSameAddress] = useState(true);
 
   return (
     <>
@@ -201,10 +202,40 @@ export default function CartPage({
   <label className="col-span-2 flex items-center gap-2 text-sm">
     <input
       type="checkbox"
-      defaultChecked
+      checked={sameAddress}
+      onChange={(e) => setSameAddress(e.target.checked)}
     />
     Leveradres is hetzelfde als factuuradres
   </label>
+)}
+
+{customerType === "zakelijk" && !sameAddress && (
+  <>
+    <h3 className="col-span-2 mt-4 text-lg font-semibold">
+      Leveringsadres
+    </h3>
+
+    <input
+      className="col-span-2 rounded-lg border p-3"
+      placeholder="Straat en huisnummer *"
+    />
+
+    <input
+      className="rounded-lg border p-3"
+      placeholder="Postcode *"
+    />
+
+    <input
+      className="rounded-lg border p-3"
+      placeholder="Gemeente *"
+    />
+
+    <input
+      className="rounded-lg border p-3"
+      placeholder="Land *"
+      defaultValue="België"
+    />
+  </>
 )}
                   
                   
