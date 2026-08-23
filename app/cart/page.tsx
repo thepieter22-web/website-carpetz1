@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
@@ -29,6 +30,8 @@ export default function CartPage({
     budget: "Professional",
     luxe: "Elite",
   };
+
+  const [customerType, setCustomerType] = useState("particulier");
 
   return (
     <>
@@ -86,46 +89,74 @@ export default function CartPage({
               </div>
 
               <div className="mt-8 rounded-xl border bg-card p-8 shadow-sm">
-                <h2 className="text-2xl font-semibold">
-                  Klantgegevens
-                </h2>
+  <h2 className="text-2xl font-semibold">
+    Klantgegevens
+  </h2>
 
-                <div className="mt-6 grid gap-4 md:grid-cols-2">
+  <div className="mt-6 flex gap-3">
+    <button
+      type="button"
+      onClick={() => setCustomerType("particulier")}
+      className={`rounded-lg border px-4 py-2 ${
+        customerType === "particulier"
+          ? "bg-[#C69C4D] text-white"
+          : "bg-white"
+      }`}
+    >
+      Particulier
+    </button>
 
-                  <input
-                    className="rounded-lg border p-3"
-                    placeholder="Voornaam"
-                  />
+    <button
+      type="button"
+      onClick={() => setCustomerType("zakelijk")}
+      className={`rounded-lg border px-4 py-2 ${
+        customerType === "zakelijk"
+          ? "bg-[#C69C4D] text-white"
+          : "bg-white"
+      }`}
+    >
+      Zakelijk
+    </button>
+  </div>
 
-                  <input
-                    className="rounded-lg border p-3"
-                    placeholder="Achternaam"
-                  />
+  <div className="mt-6 grid gap-4 md:grid-cols-2">
 
-                  <input
-                    className="rounded-lg border p-3"
-                    placeholder="Bedrijf"
-                  />
+    {customerType === "zakelijk" && (
+      <>
+        <input
+          className="rounded-lg border p-3"
+          placeholder="Bedrijfsnaam *"
+        />
 
-                  <input
-                    className="rounded-lg border p-3"
-                    placeholder="E-mail"
-                  />
+        <input
+          className="rounded-lg border p-3"
+          placeholder="BTW-nummer *"
+        />
+      </>
+    )}
 
-                  <input
-                    className="rounded-lg border p-3"
-                    placeholder="Telefoon"
-                  />
+    <input
+      className="rounded-lg border p-3"
+      placeholder="Voornaam *"
+    />
 
-                  <input
-                    className="rounded-lg border p-3"
-                    placeholder="BTW-nummer"
-                  />
+    <input
+      className="rounded-lg border p-3"
+      placeholder="Achternaam *"
+    />
 
-                </div>
-              </div>
+    <input
+      className="rounded-lg border p-3"
+      placeholder="E-mail *"
+    />
 
-            </div>
+    <input
+      className="rounded-lg border p-3"
+      placeholder="Telefoon *"
+    />
+
+  </div>
+</div>
 
             {/* Rechterkolom */}
             <div className="rounded-xl border bg-card p-8 shadow-sm h-fit sticky top-24">
