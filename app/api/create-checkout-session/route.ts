@@ -19,6 +19,10 @@ export async function POST(request: Request) {
       phone: body.phone || "",
       company: body.company || "",
       vatNumber: body.vatNumber || "",
+      street: body.street || "",
+postalCode: body.postalCode || "",
+city: body.city || "",
+country: body.country || "",
       
     },
   },
