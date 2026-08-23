@@ -110,13 +110,15 @@ export default function CartPage({
                   />
 
                   <input
+                    required
                     className="rounded-lg border p-3"
-                    placeholder="E-mail"
+                    placeholder="E-mail *"
                   />
 
                   <input
+                    required
                     className="rounded-lg border p-3"
-                    placeholder="Telefoon"
+                    placeholder="Telefoon *"
                   />
 
                   <input
@@ -128,21 +130,24 @@ export default function CartPage({
 </h3>
 
 <input
+  required
   className="rounded-lg border p-3"
-  placeholder="Straat + huisnummer"
+  placeholder="Straat + huisnummer *"
+/>
+
+<input
+  required
+  className="rounded-lg border p-3"
+  placeholder="Postcode *"
 />
 
 <input
   className="rounded-lg border p-3"
-  placeholder="Postcode"
+  placeholder="Gemeente *"
 />
 
 <input
-  className="rounded-lg border p-3"
-  placeholder="Gemeente"
-/>
-
-<input
+  required
   className="rounded-lg border p-3"
   placeholder="Land"
   defaultValue="België"
