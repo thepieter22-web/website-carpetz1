@@ -47,6 +47,7 @@ export default function CartPage({
           </div>
 
           <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
+
             <div>
               <div className="rounded-xl border bg-card p-8 shadow-sm">
                 <h2 className="text-2xl font-semibold">
@@ -68,8 +69,3 @@ export default function CartPage({
                     </span>
                     <p className="font-medium">
                       {searchParams.width} × {searchParams.height} cm
-                    </p>
-                  </div>
-
-                  <div>
-                    <span 
