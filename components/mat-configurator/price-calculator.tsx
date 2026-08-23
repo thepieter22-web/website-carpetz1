@@ -112,7 +112,7 @@ export function PriceCalculator({ config }: PriceCalculatorProps) {
   <p>✅ Levering in België & Nederland</p>
 </div>
 
-        <div className="rounded-xl border-2 border-[#C69C4D] bg-[#FFF8EB] p-5 shadow-sm">
+       <div className="rounded-xl border-2 border-[#C69C4D] bg-[#FFF8EB] p-5 shadow-sm">
   <div className="flex justify-between items-center">
     <span className="text-lg font-semibold flex items-center gap-2">
       <Tag className="w-4 h-4" />
@@ -124,16 +124,15 @@ export function PriceCalculator({ config }: PriceCalculatorProps) {
     </span>
   </div>
 </div>
-        
+
 /cart
   <Button className="w-full bg-[#C69C4D] hover:bg-[#B88D3C] text-white">
     Bestelling plaatsen
   </Button>
 </Link>
-     
 
-       
-      </CardContent>
-    </Card>
+ </CardContent>
+</Card>     
+
   );
 }
