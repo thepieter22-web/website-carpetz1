@@ -38,6 +38,10 @@ const [email, setEmail] = useState("");
 const [phone, setPhone] = useState("");
   const [company, setCompany] = useState("");
 const [vatNumber, setVatNumber] = useState("");
+  const [street, setStreet] = useState("");
+const [postalCode, setPostalCode] = useState("");
+const [city, setCity] = useState("");
+const [country, setCountry] = useState("België");
   const [sameAddress, setSameAddress] = useState(true);
 
   return (
@@ -194,24 +198,32 @@ const [vatNumber, setVatNumber] = useState("");
   required
   className="col-span-2 rounded-lg border p-3"
   placeholder="Straat en huisnummer *"
+  value={street}
+  onChange={(e) => setStreet(e.target.value)}
 />
 
 <input
   required
   className="rounded-lg border p-3"
   placeholder="Postcode *"
+  value={postalCode}
+  onChange={(e) => setPostalCode(e.target.value)}
 />
 
-<input
+*input
+  required
   className="rounded-lg border p-3"
   placeholder="Gemeente *"
+  value={city}
+  onChange={(e) => setCity(e.target.value)}
 />
 
 <input
   required
   className="rounded-lg border p-3"
   placeholder="Land"
-  defaultValue="België"
+  value={country}
+  onChange={(e) => setCountry(e.target.value)}
 />
                   
 {customerType === "zakelijk" && (
