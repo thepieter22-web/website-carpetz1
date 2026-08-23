@@ -36,6 +36,8 @@ export default function CartPage({
   const [lastName, setLastName] = useState("");
 const [email, setEmail] = useState("");
 const [phone, setPhone] = useState("");
+  const [company, setCompany] = useState("");
+const [vatNumber, setVatNumber] = useState("");
   const [sameAddress, setSameAddress] = useState(true);
 
   return (
@@ -129,16 +131,20 @@ const [phone, setPhone] = useState("");
                   {customerType === "zakelijk" && (
   <>
     <input
-      required
-      className="rounded-lg border p-3"
-      placeholder="Bedrijfsnaam *"
-    />
+  required
+  className="rounded-lg border p-3"
+  placeholder="Bedrijfsnaam *"
+  value={company}
+  onChange={(e) => setCompany(e.target.value)}
+/>
 
     <input
-      required
-      className="rounded-lg border p-3"
-      placeholder="BTW-nummer *"
-    />
+  required
+  className="rounded-lg border p-3"
+  placeholder="BTW-nummer *"
+  value={vatNumber}
+  onChange={*e) => setVatNumber(e.target.value)*
+/>
   </>
 )}
 
