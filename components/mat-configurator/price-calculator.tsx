@@ -131,8 +131,8 @@ export function PriceCalculator({ config }: PriceCalculatorProps) {
   </Button>
 </Link>
 
- </CardContent>
-</Card>     
+</CardContent>
+</Card>
 
   );
 }
