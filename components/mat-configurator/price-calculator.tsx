@@ -130,9 +130,14 @@ export function PriceCalculator({ config }: PriceCalculatorProps) {
 <div className="pt-4">
   <Button
     className="w-full bg-[#C69C4D] hover:bg-[#B88D3C] text-white"
-    onClick={() => {
-      window.location.href = "/cart";
-    }}
+   onClick={() => {
+  window.location.href =
+    `/cart?type=${config.indoorSubtype}` +
+    `&width=${config.size.width}` +
+    `&height=${config.size.height}` +
+    `&quantity=${config.quantity}` +
+    `&total=${pricing.total.toFixed(2)}`;
+}}
   >
     Bestelling plaatsen
   </Button>
