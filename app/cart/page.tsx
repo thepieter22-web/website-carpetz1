@@ -39,13 +39,16 @@ export default function CartPage({
 
               <div className="mt-8 space-y-4">
                 <div>
-                  <span className="text-muted-foreground">Type</span>
-                  <p className="font-medium">{searchParams.type}</p>
-                </div>
-                <div className="mt-8 rounded-xl border bg-card p-8 shadow-sm">
+
+                  <div className="mt-8 rounded-xl border bg-card p-8 shadow-sm">
   <h2 className="text-2xl font-semibold">
     Klantgegevens
   </h2>
+                  
+                  <span className="text-muted-foreground">Type</span>
+                  <p className="font-medium">{searchParams.type}</p>
+                </div>
+                
 
   <div className="mt-6 grid gap-4 md:grid-cols-2">
 
