@@ -33,6 +33,9 @@ export default function CartPage({
   
   const [customerType, setCustomerType] = useState("particulier");
   const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+const [email, setEmail] = useState("");
+const [phone, setPhone] = useState("");
   const [sameAddress, setSameAddress] = useState(true);
 
   return (
@@ -148,24 +151,28 @@ export default function CartPage({
 />
 
                   <input
-                    required
-                    className="rounded-lg border p-3"
-                    placeholder="Achternaam *"
-                  />
-
-                  
+  required
+  className="rounded-lg border p-3"
+  placeholder="Achternaam *"
+  value={lastName}
+  onChange={(e) => setLastName(e.target.value)}
+/>
+ 
+                  <input
+  required
+  className="rounded-lg border p-3"
+  placeholder="E-mailadres *"
+  value={email}
+  onCh*nge={(e) => setEmail(e.target.valu*)}
+/>
 
                   <input
-                    required
-                    className="rounded-lg border p-3"
-                    placeholder="E-mail *"
-                  />
-
-                  <input
-                    required
-                    className="rounded-lg border p-3"
-                    placeholder="Telefoon *"
-                  />
+  required
+  className="rounded-lg border p-3"
+  placeholder="Telefoonnummer *"
+  value={phone}
+  onChange={(e) => setPhone(e.target.value)}
+/>
 
                   <h3 className="mt-8 text-lg font-semibold">
   {customerType === "zakelijk"
