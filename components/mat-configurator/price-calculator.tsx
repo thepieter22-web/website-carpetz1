@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { Calculator, Tag, Percent } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 
 interface PriceCalculatorProps {
@@ -125,6 +126,17 @@ export function PriceCalculator({ config }: PriceCalculatorProps) {
 </div>
 
 
+
+<div className="pt-4">
+  <Button
+    className="w-full bg-[#C69C4D] hover:bg-[#B88D3C] text-white"
+    onClick={() => {
+      window.location.href = "/cart";
+    }}
+  >
+    Bestelling plaatsen
+  </Button>
+</div>
 
 </CardContent>
 </Card>
