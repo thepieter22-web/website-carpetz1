@@ -29,18 +29,14 @@ export default function CartPage({
             </p>
           </div>
 
-          <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
+          <div>
 
-
-
-  {/* Product */}
   <div className="rounded-xl border bg-card p-8 shadow-sm">
     <h2 className="text-2xl font-semibold">
       Jouw logomat
     </h2>
 
     <div className="mt-8 space-y-4">
-
       <div>
         <span className="text-muted-foreground">Type</span>
         <p className="font-medium">{searchParams.type}</p>
@@ -57,64 +53,25 @@ export default function CartPage({
         <span className="text-muted-foreground">Aantal</span>
         <p className="font-medium">{searchParams.quantity}</p>
       </div>
-
     </div>
   </div>
 
-  {/* Klantgegevens */}
   <div className="mt-8 rounded-xl border bg-card p-8 shadow-sm">
     <h2 className="text-2xl font-semibold">
       Klantgegevens
     </h2>
 
     <div className="mt-6 grid gap-4 md:grid-cols-2">
-
-      <input
-        className="rounded-lg border p-3"
-        placeholder="Voornaam"
-      />
-
-      <input
-        className="rounded-lg border p-3"
-        placeholder="Achternaam"
-      />
-
-      <input
-        className="rounded-lg border p-3"
-        placeholder="Bedrijf"
-      />
-
-      <input
-        className="rounded-lg border p-3"
-        placeholder="E-mail"
-      />
-
-      <input
-        className="rounded-lg border p-3"
-        placeholder="Telefoon"
-      />
-
-      <input
-        className="rounded-lg border p-3"
-        placeholder="BTW-nummer"
-      />
-
+      <input className="rounded-lg border p-3" placeholder="Voornaam" />
+      <input className="rounded-lg border p-3" placeholder="Achternaam" />
+      <input className="rounded-lg border p-3" placeholder="Bedrijf" />
+      <input className="rounded-lg border p-3" placeholder="E-mail" />
+      <input className="rounded-lg border p-3" placeholder="Telefoon" />
+      <input className="rounded-lg border p-3" placeholder="BTW-nummer" />
     </div>
   </div>
 
 </div>
-                  <span className="text-muted-foreground">Afmetingen</span>
-                  <p className="font-medium">
-                    {searchParams.width} × {searchParams.height} cm
-                  </p>
-                </div>
-
-                <div>
-                  <span className="text-muted-foreground">Aantal</span>
-                  <p className="font-medium">{searchParams.quantity}</p>
-                </div>
-              </div>
-            </div>
 
             {/* Samenvatting */}
             <div className="rounded-xl border bg-card p-8 shadow-sm h-fit sticky top-24">
