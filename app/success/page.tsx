@@ -19,6 +19,10 @@ export default function SuccessPage() {
               Je betaling werd succesvol ontvangen.
             </p>
 
+            <p className="mt-4 font-medium text-[#C69C4D]">
+  Bestelnummer: CAR-XXXXXXXX
+</p>
+
             <p className="mt-2 text-muted-foreground">
               We bezorgen je binnenkort een digitale proefdruk ter goedkeuring.
             </p>
@@ -37,7 +41,7 @@ export default function SuccessPage() {
   </p>
 
   <p className="mt-1">
-    Contacteer ons via info@jpsinterior.be
+    Contacteer ons via info@carpetz.be
   </p>
 </div>
           </div>
