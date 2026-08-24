@@ -2,7 +2,7 @@ import Stripe from "stripe";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
-export default function SuccessPage({
+export default async function SuccessPage({
   searchParams,
 }: {
   searchParams: {
