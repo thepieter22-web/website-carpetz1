@@ -1,6 +1,7 @@
 import Stripe from "stripe";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export default async function SuccessPage({
   searchParams,
@@ -9,6 +10,25 @@ export default async function SuccessPage({
     session_id?: string;
   };
 }) {
+  const sessionId = searchParams.session_id;
+
+  let orderNumber = "Onbekend";
+
+  if (sessionId) {
+    const session = await stripe.checkout.sessions.retrieve(
+      sessionId,
+      {
+        expand: ["payment_intent"],
+      }
+    );
+
+    const paymentIntent =
+      session.payment_intent as Stripe.PaymentIntent;
+
+    orderNumber =
+      paymentIntent.metadata.orderNumber || "Onbekend";
+  }
+
   return (
     <>
       <SiteHeader />
@@ -27,7 +47,7 @@ export default async function SuccessPage({
             </p>
 
             <p className="mt-4 font-medium text-[#C69C4D]">
-  Bestelnummer: CAR-XXXXXXXX
+  Bestelnummer: {orderNumber}
 </p>
 
             <p className="mt-2 text-muted-foreground">
