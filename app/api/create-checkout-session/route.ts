@@ -6,12 +6,15 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+    const orderNumber = `CAR-${Date.now()}`;
 
     const session = await stripe.checkout.sessions.create({
   mode: "payment",
 
   payment_intent_data: {
     metadata: {
+      orderNumber,
+      
       customerType: body.customerType || "",
       firstName: body.firstName || "",
       lastName: body.lastName || "",
