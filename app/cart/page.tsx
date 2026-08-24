@@ -343,6 +343,12 @@ console.log({
   postalCode,
   city,
   country,
+
+  matType: searchParams.type,
+width: searchParams.width,
+height: searchParams.height,
+quantity: searchParams.quantity,
+total: grandTotal,
         
         
 }),
