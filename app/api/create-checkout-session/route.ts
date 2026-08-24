@@ -24,6 +24,13 @@ postalCode: body.postalCode || "",
 city: body.city || "",
 country: body.country || "",
       
+matType: body.matType || "",
+width: body.width || "",
+height: body.height || "",
+quantity: body.quantity || "",
+total: String(body.total || ""),
+
+      
     },
   },
 
