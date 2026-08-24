@@ -6,7 +6,19 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const orderNumber = `CAR-${Date.now()}`;
+    const today = new Date();
+
+const datePart =
+  today.getFullYear().toString() +
+  String(today.getMonth() + 1).padStart(2, "0") +
+  String(today.getDate()).padStart(2, "0");
+
+const randomPart = Math.floor(
+  Math.random() * 9000 + 1000
+);
+
+const orderNumber =
+  `CAR-${datePart}-${randomPart}`;
 
     const session = await stripe.checkout.sessions.create({
   mode: "payment",
