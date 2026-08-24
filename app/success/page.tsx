@@ -24,11 +24,22 @@ export default function SuccessPage() {
             </p>
 
             <div className="mt-8 rounded-lg bg-muted p-6 text-left">
+              
               <p>✅ Betaling ontvangen</p>
               <p>✅ Digitale proefdruk volgt</p>
               <p>✅ Productie na jouw goedkeuring</p>
               <p>✅ Levering in België & Nederland</p>
             </div>
+
+            <div className="mt-6 text-sm text-muted-foreground">
+  <p>
+    Heb je vragen over je bestelling?
+  </p>
+
+  <p className="mt-1">
+    Contacteer ons via info@jpsinterior.be
+  </p>
+</div>
           </div>
         </div>
       </main>
