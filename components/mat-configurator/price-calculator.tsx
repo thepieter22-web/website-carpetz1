@@ -14,6 +14,9 @@ interface PriceCalculatorProps {
 
 export function PriceCalculator({ config }: PriceCalculatorProps) {
   const pricing = calculatePrice(config);
+  const shipping = 15;
+const finalTotal = pricing.total + shipping;
+
 
   // Find current discount tier
   const tier = PRICING.quantity.tiers.find(
@@ -102,6 +105,13 @@ export function PriceCalculator({ config }: PriceCalculatorProps) {
             <span className="text-muted-foreground">BTW ({PRICING.vat * 100}%)</span>
             <span className="font-medium">€{pricing.vat.toFixed(2)}</span>
           </div>
+
+          <div className="flex justify-between text-sm">
+  <span className="text-muted-foreground">Levering</span>
+  <span className="font-medium">€15.00</span>
+</div>
+
+          
         </div>
 
         <Separator />
@@ -120,7 +130,7 @@ export function PriceCalculator({ config }: PriceCalculatorProps) {
     </span>
 
     <span className="text-3xl font-bold text-primary">
-      €{pricing.total.toFixed(2)}
+      €{finalTotal.toFixed(2)}
     </span>
   </div>
 </div>
