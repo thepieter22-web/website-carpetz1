@@ -30,7 +30,10 @@ const productExclVat = subtotal / (1 + vatRate);
 const vatAmount =
   (productExclVat + shipping) * vatRate;
 
-const grandTotal = subtotal + shipping;
+const grandTotal =
+  productExclVat +
+  shipping +
+  vatAmount;
 
 
   const matNames: Record<string, string> = {
