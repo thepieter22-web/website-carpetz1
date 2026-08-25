@@ -306,7 +306,7 @@ const [country, setCountry] = useState("België");
 </div>
 
                 <div className="border-t pt-4 flex justify-between">
-                  <span className="font-semibold">Totaal</span>
+                  <span className="font-semibold">Totaal incl. btw</span>
 
                   <span className="text-2xl font-bold text-[#C69C4D]">
                     €{grandTotal.toFixed(2)}
