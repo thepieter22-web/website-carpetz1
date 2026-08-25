@@ -22,6 +22,10 @@ export async function POST(request: Request) {
       console.log("BESTELLING:");
       console.log({
         orderNumber: data.orderNumber,
+        subtotal: data.subtotal,
+vat: data.vat,
+shipping: data.shipping,
+grandTotal: data.grandTotal,
         customerType: data.customerType,
         firstName: data.firstName,
         lastName: data.lastName,
