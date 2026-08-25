@@ -28,6 +28,13 @@ export async function POST(request: Request) {
         email: data.email,
         company: data.company,
         vatNumber: data.vatNumber,
+
+        street: data.street,
+postalCode: data.postalCode,
+city: data.city,
+country: data.country,
+
+        
         width: data.width,
         height: data.height,
         quantity: data.quantity,
