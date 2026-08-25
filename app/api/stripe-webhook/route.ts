@@ -19,6 +19,16 @@ export async function POST(request: Request) {
 
       const data = paymentIntent.metadata;
 
+      const today = new Date();
+
+const orderDate = today.toISOString().split("T")[0];
+
+const expiryDate = new Date(
+  today.getTime() + 30 * 24 * 60 * 60 * 1000
+)
+  .toISOString()
+  .split("T")[0];
+
       const billitResponse = await fetch(
   "https://api.sandbox.billit.be/v1/orders",
   {
