@@ -6,20 +6,44 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 export async function POST(request: Request) {
   const body = await request.text();
 
-  const event = JSON.parse(body);
+  try {
+    const event = JSON.parse(body);
 
-  if (event.type === "checkout.session.completed") {
-    const session = event.data.object;
+    if (event.type === "checkout.session.completed") {
+      const session = event.data.object;
 
-    const paymentIntent = await stripe.paymentIntents.retrieve(
-      session.payment_intent
+      const paymentIntent =
+        await stripe.paymentIntents.retrieve(
+          session.payment_intent
+        );
+
+      const data = paymentIntent.metadata;
+
+      console.log("BESTELLING:");
+      console.log({
+        orderNumber: data.orderNumber,
+        customerType: data.customerType,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        company: data.company,
+        vatNumber: data.vatNumber,
+        width: data.width,
+        height: data.height,
+        quantity: data.quantity,
+        total: data.total,
+      });
+    }
+
+    return NextResponse.json({
+      received: true,
+    });
+  } catch (error) {
+    console.error(error);
+
+    return NextResponse.json(
+      { error: "Webhook fout" },
+      { status: 500 }
     );
-
-    console.log("METADATA:");
-    console.log(paymentIntent.metadata);
   }
-
-  return NextResponse.json({
-    received: true,
-  });
 }
