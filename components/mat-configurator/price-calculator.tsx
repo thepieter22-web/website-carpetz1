@@ -15,7 +15,12 @@ interface PriceCalculatorProps {
 export function PriceCalculator({ config }: PriceCalculatorProps) {
   const pricing = calculatePrice(config);
   const shipping = 15;
-const finalTotal = pricing.total + shipping;
+const shippingVat = shipping * 0.21;
+
+const finalTotal =
+  pricing.total +
+  shipping +
+  shippingVat;
 
 
   // Find current discount tier
