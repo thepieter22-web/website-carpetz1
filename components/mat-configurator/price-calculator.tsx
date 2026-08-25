@@ -146,7 +146,7 @@ const finalTotal = pricing.total + shipping;
     `&width=${config.size.width}` +
     `&height=${config.size.height}` +
     `&quantity=${config.quantity}` +
-    `&total=${pricing.total.toFixed(2)}`;
+    `&total=${finalTotal.toFixed(2)}
 }}
   >
     Bestelling plaatsen
