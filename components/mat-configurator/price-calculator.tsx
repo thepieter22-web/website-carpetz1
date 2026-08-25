@@ -142,11 +142,11 @@ const finalTotal = pricing.total + shipping;
     className="w-full bg-[#C69C4D] hover:bg-[#B88D3C] text-white"
    onClick={() => {
   window.location.href =
-    `/cart?type=${config.indoorSubtype}` +
-    `&width=${config.size.width}` +
-    `&height=${config.size.height}` +
-    `&quantity=${config.quantity}` +
-    `&total=${finalTotal.toFixed(2)}
+  `/**rt?type=${config.indoorSubtype** +
+  `&width=${config.size.width}**+
+  `&height=${config.size.height** +
+  `**uantity=${config.quantity}` +
+  `**otal=${finalTotal.toFixed(2)**;
 }}
   >
     Bestelling plaatsen
