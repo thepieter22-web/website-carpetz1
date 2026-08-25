@@ -16,13 +16,16 @@ export default function CartPage({
   };
 }) {
   const subtotal = Number(
-    (searchParams.total || "0")
-      .replace("€", "")
-      .replace(",", ".")
-  );
+  (searchParams.total || "0")
+    .replace("€", "")
+    .replace(",", ".")
+);
 
-  const shipping = 15;
-  const grandTotal = subtotal + shipping;
+const vat = subtotal * 0.21;
+
+const shipping = 15;
+
+const grandTotal = subtotal + vat + shipping;
 
   const matNames: Record<string, string> = {
     normal: "Classic",
