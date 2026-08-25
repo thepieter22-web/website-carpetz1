@@ -344,6 +344,10 @@ console.log({
       },
       body: JSON.stringify({
   amount: grandTotal,
+        subtotal: productExclVat.toFixed(2),
+vat: vatAmount.toFixed(2),
+shipping: shipping.toFixed(2),
+grandTotal: grandTotal.toFixed(2),
 
   customerType,
   firstName,
