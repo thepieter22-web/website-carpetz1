@@ -26,6 +26,11 @@ const orderNumber =
   payment_intent_data: {
     metadata: {
       orderNumber,
+
+      subtotal: String(body.subtotal || ""),
+vat: String(body.vat || ""),
+shipping: String(body.shipping || ""),
+grandTotal: String(body.grandTotal || ""),
       
       customerType: body.customerType || "",
       firstName: body.firstName || "",
