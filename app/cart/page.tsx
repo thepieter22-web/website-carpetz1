@@ -25,7 +25,8 @@ const vatRate = 0.21;
 
 const productExclVat = subtotal / (1 + vatRate);
 
-const vatAmount = subtotal - productExclVat;
+const vatAmount =
+  (productExclVat + shipping) * 0.21;
   
 const shipping = 15;
 
