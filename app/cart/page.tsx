@@ -296,13 +296,13 @@ const [country, setCountry] = useState("België");
 </div>
 
 <div className="flex justify-between">
-  <span>BTW (21%)</span>
-  <span>€{vatAmount.toFixed(2)}</span>
+  <span>Leveringskost excl. btw</span>
+  <span>€{shipping.toFixed(2)}</span>
 </div>
 
 <div className="flex justify-between">
-  <span>Levering</span>
-  <span>€{shipping.toFixed(2)}</span>
+  <span>BTW (21%)</span>
+  <span>€{vatAmount.toFixed(2)}</span>
 </div>
 
                 <div className="border-t pt-4 flex justify-between">
