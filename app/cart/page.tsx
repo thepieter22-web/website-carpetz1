@@ -21,11 +21,11 @@ export default function CartPage({
     .replace(",", ".")
 );
 
-const vat = subtotal * 0.21;
 
 const shipping = 15;
 
-const grandTotal = subtotal + vat + shipping;
+const grandTotal = subtotal + shipping;
+
 
   const matNames: Record<string, string> = {
     normal: "Classic",
