@@ -34,6 +34,10 @@ export async function POST(request: Request) {
 
       OrderNumber: data.orderNumber,
 
+      OrderDate: orderDate,
+DeliveryDate: orderDate,
+ExpiryDate: expiryDate,
+
       Customer: {
         Name:
           `${data.firstName} ${data.lastName}`.trim(),
