@@ -21,7 +21,12 @@ export default function CartPage({
     .replace(",", ".")
 );
 
+const vatRate = 0.21;
 
+const productExclVat = subtotal / (1 + vatRate);
+
+const vatAmount = subtotal - productExclVat;
+  
 const shipping = 15;
 
 const grandTotal = subtotal + shipping;
