@@ -56,6 +56,7 @@ const [postalCode, setPostalCode] = useState("");
 const [city, setCity] = useState("");
 const [country, setCountry] = useState("België");
   const [sameAddress, setSameAddress] = useState(true);
+  const [previewImage, setPreviewImage] = useState("");
 
   useEffect(() => {
   console.log(
