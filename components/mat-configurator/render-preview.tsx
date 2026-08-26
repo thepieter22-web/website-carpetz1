@@ -224,7 +224,13 @@ export function RenderPreview({ config, logoImage: _logoImage }: RenderPreviewPr
     try {
       setIsRendering(true);
       const image = await buildRenderImage();
-      if (!image) return;
+
+console.log("IMAGE:", image);
+
+if (!image) {
+  console.log("GEEN IMAGE");
+  return;
+}
       setRenderedImage(image);
       setShowDialog(true);
     } finally {
