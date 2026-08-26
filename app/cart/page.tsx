@@ -55,18 +55,16 @@ const [vatNumber, setVatNumber] = useState("");
 const [postalCode, setPostalCode] = useState("");
 const [city, setCity] = useState("");
 const [country, setCountry] = useState("België");
-const [sameAddress, setSameAddress] = useState(true);
-const [previewImage, setPreviewImage] = useState("");
+  const [sameAddress, setSameAddress] = useState(true);
 
-useEffect(() => {
-  const image = sessionStorage.getItem("matPreview");
-
-  if (image) {
-    setPreviewImage(image);
-  }
+  useEffect(() => {
+  console.log(
+    "MAT PREVIEW:",
+    sessionStorage.getItem("matPreview")
+  );
 }, []);
 
-return (
+  return (
     <>
       <SiteHeader />
 
@@ -85,19 +83,15 @@ return (
           <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
 
             {/* Linkerkolom */}
-<div>
+            <div>
 
-  {previewImage && (
-  <div className="mb-6 rounded-xl border bg-card p-4 shadow-sm">
-    <img
-      src={previewImage}
-      alt="Logomat preview"
-      className="mx-auto max-h-80 rounded-lg"
+              
+   
 
-   <div className="rounded-xl border bg-card p-8 shadow-sm">
-  <h2 className="text-2xl font-semibold">
-    Jouw logomat
-  </h2>
+              <div className="rounded-xl border bg-card p-8 shadow-sm">
+                <h2 className="text-2xl font-semibold">
+                  Jouw logomat
+                </h2>
 
                 <div className="mt-8 space-y-4">
 
