@@ -1,4 +1,4 @@
-
+import { put } from "@vercel/blob";
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
 
@@ -8,6 +8,17 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+
+    const testBlob = await put(
+  `test-${Date.now()}.txt`,
+  "Blob werkt!",
+  {
+    access: "public",
+  }
+);
+
+console.log("TEST BLOB URL:");
+console.log(testBlob.url);
 
 
 
