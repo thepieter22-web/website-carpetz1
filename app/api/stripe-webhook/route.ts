@@ -178,7 +178,6 @@ await resend.emails.send({
 
 </div>
 `,
-``
 });
 
       
