@@ -9,7 +9,16 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
+const testBlob = await put(
+  `test-${Date.now()}.txt`,
+  "Blob werkt!",
+  {
+    access: "public",
+  }
+);
 
+console.log("TEST BLOB URL:");
+console.log(testBlob.url);
 
     const today = new Date();
 
