@@ -59,7 +59,7 @@ const orderNumber =
   payment_intent_data: {
     metadata: {
       orderNumber,
-      previewUrl,
+      previewUrl: String(previewUrl),
 
 
       subtotal: String(body.subtotal || ""),
