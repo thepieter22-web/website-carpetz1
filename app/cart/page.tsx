@@ -1,7 +1,6 @@
 "use client";
 
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
@@ -56,6 +55,15 @@ const [postalCode, setPostalCode] = useState("");
 const [city, setCity] = useState("");
 const [country, setCountry] = useState("België");
   const [sameAddress, setSameAddress] = useState(true);
+  const [previewImage, setPreviewImage] = useState("");
+
+  useEffect(() => {
+  const image = sessionStorage.getItem("matPreview");
+
+  if (image) {
+    setPreviewImage(image);
+  }
+}, []);
 
 
 
