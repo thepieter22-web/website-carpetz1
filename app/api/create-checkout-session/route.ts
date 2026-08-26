@@ -1,11 +1,37 @@
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
+import { put } from "@vercel/blob";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+
+    const previewImage = body.previewImage || "";
+
+let previewUrl = "";
+
+if (previewImage) {
+  const base64Data = previewImage.split(",")[1];
+
+  const buffer = Buffer.from(
+    base64Data,
+    "base64"
+  );
+
+  const blob = await put(
+    `previews/${Date.now()}.png`,
+    buffer,
+    {
+      access: "public",
+    }
+  );
+
+  previewUrl = blob.url;
+
+  console.log("BLOB URL:", previewUrl);
+}
     
 
 
