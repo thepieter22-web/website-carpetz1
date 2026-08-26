@@ -182,7 +182,6 @@ await resend.emails.send({
 });
 
       
-``
 
       console.log("BESTELLING:");
       console.log({
