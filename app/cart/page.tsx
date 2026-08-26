@@ -358,8 +358,8 @@ let previewImage = "";
 if (canvas) {
   previewImage = canvas.toDataURL("image/png");
 }
-    console.log(
-  "SENDING PREVIEW:",
+    alert(
+  "SENDING PREVIEW: " +
   previewImage.substring(0, 50)
 );
 
