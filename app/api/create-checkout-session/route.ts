@@ -9,16 +9,31 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    const testBlob = await put(
-  `test-${Date.now()}.txt`,
-  "Blob werkt!",
-  {
-    access: "public",
-  }
-);
+    const previewImage = body.previewImage || "";
 
-console.log("TEST BLOB URL:");
-console.log(testBlob.url);
+let previewUrl = "";
+
+if (previewImage) {
+  const base64Data = previewImage.split(",")[1];
+
+  const buffer = Buffer.from(
+    base64Data,
+    "base64"
+  );
+
+  const blob = await put(
+    `previews/${Date.now()}.png`,
+    buffer,
+    {
+      access: "public",
+    }
+  );
+
+  previewUrl = blob.url;
+
+  console.log("PNG URL:");
+  console.log(previewUrl);
+}
 
 
 
