@@ -91,7 +91,8 @@ const [country, setCountry] = useState("België");
     <img
       src={previewImage}
       alt="Logomat preview"
-      className="mb-6 max-w-full rounded-lg border"
+      className="mb-6 max-w-full rounded-lg border"  />
+)}
  
 
    
