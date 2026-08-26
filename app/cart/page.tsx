@@ -328,6 +328,16 @@ const [country, setCountry] = useState("België");
               <button
   className="mt-8 w-full rounded-lg bg-[#C69C4D] px-6 py-4 text-white font-medium hover:bg-[#B88D3C]"
   onClick={async () => { 
+
+    const canvas = document.getElementById(
+  "carpetz-mat-preview-canvas"
+) as HTMLCanvasElement | null;
+
+let previewImage = "";
+
+if (canvas) {
+  previewImage = canvas.toDataURL("image/png");
+}
     
     console.log("TEST BUTTON");
 console.log({
