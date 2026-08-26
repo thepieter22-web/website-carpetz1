@@ -87,7 +87,12 @@ const [country, setCountry] = useState("België");
             {/* Linkerkolom */}
             <div>
 
-              <p>{previewImage ? previewImage.substring(0, 50) : "geen afbeelding"}</p>
+              {previewImage && (
+  <img
+    src={previewImage}
+    alt="Logomat preview"
+    className="mb-6 w-full max-w-md rounded-lg border"
+ 
 
    
 
