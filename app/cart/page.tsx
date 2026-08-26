@@ -352,17 +352,8 @@ const [country, setCountry] = useState("België");
    const previewImage =
   sessionStorage.getItem("matPreview") || "";
     
-    alert(
-  "SENDING PREVIEW: " +
-  previewImage.substring(0, 50)
-);
+   
 
-alert("PREVIEW TEST");
-
-console.log(
-  "SENDING PREVIEW:",
-  previewImage.substring(0, 50)
-);
     
     console.log("TEST BUTTON");
 console.log({
