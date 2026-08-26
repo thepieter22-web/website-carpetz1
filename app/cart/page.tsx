@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
@@ -55,17 +56,13 @@ const [postalCode, setPostalCode] = useState("");
 const [city, setCity] = useState("");
 const [country, setCountry] = useState("België");
   const [sameAddress, setSameAddress] = useState(true);
-  const [previewImage, setPreviewImage] = useState("");
 
   useEffect(() => {
-  const image = sessionStorage.getItem("matPreview");
-
-  if (image) {
-    setPreviewImage(image);
-  }
+  console.log(
+    "MAT PREVIEW:",
+    sessionStorage.getItem("matPreview")
+  );
 }, []);
-
-
 
   return (
     <>
@@ -87,14 +84,6 @@ const [country, setCountry] = useState("België");
 
             {/* Linkerkolom */}
             <div>
-
-              {previewImage && (
-  <div className="mb-6 rounded-xl border bg-card p-4 shadow-sm">
-    <img
-      src={previewImage}
-      alt="Logomat preview"
-      className="mx-auto max-h-80 rounded-lg"
-
 
               
    
