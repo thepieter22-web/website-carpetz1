@@ -88,6 +88,8 @@ const [country, setCountry] = useState("België");
             {/* Linkerkolom */}
             <div>
 
+              <p>{previewImage ? "PNG gevonden" : "Geen PNG"}</p>
+
               
    
 
