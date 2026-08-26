@@ -22,17 +22,19 @@ if (previewImage) {
   );
 
   const blob = await put(
-    `previews/${Date.now()}.png`,
-    buffer,
-    {
-      access: "public",
-    }
-  );
+  `previews/${Date.now()}.png`,
+  buffer,
+  {
+    access: "public",
+  }
+);
 
-  previewUrl = blob.url;
+previewUrl = blob.url;
 
-  console.log("PNG URL:");
-  console.log(previewUrl);
+console.log("PREVIEW URL:");
+console.log(previewUrl);
+``
+
 }
 
 
@@ -57,6 +59,7 @@ const orderNumber =
   payment_intent_data: {
     metadata: {
       orderNumber,
+      previewUrl,
 
 
       subtotal: String(body.subtotal || ""),
