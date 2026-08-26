@@ -88,14 +88,16 @@ return (
 <div>
 
   {previewImage && (
-    <div className="mb-6 rounded-xl border bg-card p-4 shadow-sm">
-      <img
-        src={previewImage}
-        alt="Logomat preview"
-        class p-8 shadow-sm">
-    <h2 className="text-2xl font-semibold">
-      Jouw logomat
-    </h2>
+  <div className="mb-6 rounded-xl border bg-card p-4 shadow-sm">
+    <img
+      src={previewImage}
+      alt="Logomat preview"
+      className="mx-auto max-h-80 rounded-lg"
+
+   <div className="rounded-xl border bg-card p-8 shadow-sm">
+  <h2 className="text-2xl font-semibold">
+    Jouw logomat
+  </h2>
 
                 <div className="mt-8 space-y-4">
 
