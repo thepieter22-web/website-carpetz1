@@ -53,6 +53,9 @@ const randomPart = Math.floor(
 const orderNumber =
   `CAR-${datePart}-${randomPart}`;
 
+  console.log("PREVIEW URL TO STRIPE:");
+console.log(previewUrl);
+
     const session = await stripe.checkout.sessions.create({
   mode: "payment",
 
