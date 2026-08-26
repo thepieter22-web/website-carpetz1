@@ -9,6 +9,12 @@ export async function POST(request: Request) {
     console.log("REQUEST BODY KEYS:");
 console.log(Object.keys(body));
 
+    console.log(
+  "PREVIEW RECEIVED:",
+  body.previewImage?.substring(0, 50)
+);
+
+
     const today = new Date();
 
 const datePart =
