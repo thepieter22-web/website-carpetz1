@@ -312,18 +312,30 @@ export function MatConfigurator() {
 <Button
   size="sm"
   onClick={() => {
-    const params = new URLSearchParams({
-      type: config.indoorSubtype,
-      width: String(config.size.width),
-      height: String(config.size.height),
-      quantity: String(config.quantity),
-      total: String(
-        document.body.innerText.match(/€[\d,.]+/)?.[0] || ""
-      ),
-    })
+  const canvas = document.getElementById(
+    "carpetz-mat-preview-canvas"
+  ) as HTMLCanvasElement | null;
 
-    window.location.href = `/cart?${params.toString()}`
-  }}
+  if (canvas) {
+    sessionStorage.setItem(
+      "matPreview",
+      canvas.toDataURL("image/png")
+    );
+  }
+
+  const params = new URLSearchParams({
+    type: config.indoorSubtype,
+    width: String(config.size.width),
+    height: String(config.size.height),
+    quantity: String(config.quantity),
+    total: String(
+      document.body.innerText.match(/€[\d,.]+/)?.[0] || ""
+    ),
+  });
+
+  window.location.href = `/cart?${params.toString()}`;
+}}
+
 >
   <ShoppingCart className="w-4 h-4 mr-2" />
   Bestelling plaatsen
