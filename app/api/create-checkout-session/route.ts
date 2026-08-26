@@ -6,10 +6,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    console.log(
-  "PREVIEW RECEIVED:",
-  body.previewImage?.substring(0, 50)
-);
+    console.log("REQUEST BODY KEYS:");
+console.log(Object.keys(body));
 
     const today = new Date();
 
