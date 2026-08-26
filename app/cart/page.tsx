@@ -85,12 +85,7 @@ const [country, setCountry] = useState("België");
             {/* Linkerkolom */}
             <div>
 
-              {typeof window !== "undefined" &&
-  sessionStorage.getItem("matPreview") && (
-    <img
-      src={sessionStorage.getItem("matPreview") || ""}
-      alt="Logomat preview"
-      className="mb-6 rounded-lg border"
+              
    
 
               <div className="rounded-xl border bg-card p-8 shadow-sm">
