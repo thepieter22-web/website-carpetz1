@@ -349,15 +349,9 @@ const [country, setCountry] = useState("België");
   className="mt-8 w-full rounded-lg bg-[#C69C4D] px-6 py-4 text-white font-medium hover:bg-[#B88D3C]"
   onClick={async () => { 
 
-   const canvas = document.getElementById(
-  "carpetz-mat-preview-canvas"
-) as HTMLCanvasElement | null;
-
-let previewImage = "";
-
-if (canvas) {
-  previewImage = canvas.toDataURL("image/png");
-}
+   const previewImage =
+  sessionStorage.getItem("matPreview") || "";
+    
     alert(
   "SENDING PREVIEW: " +
   previewImage.substring(0, 50)
