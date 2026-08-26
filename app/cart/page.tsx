@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+
 import { useState } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -57,12 +57,7 @@ const [city, setCity] = useState("");
 const [country, setCountry] = useState("België");
   const [sameAddress, setSameAddress] = useState(true);
 
-  useEffect(() => {
-  console.log(
-    "MAT PREVIEW:",
-    sessionStorage.getItem("matPreview")
-  );
-}, []);
+
 
   return (
     <>
