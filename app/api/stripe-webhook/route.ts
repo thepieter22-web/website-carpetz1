@@ -125,6 +125,58 @@ console.log(
     €${data.grandTotal}</p>
   `,
 });
+
+await resend.emails.send({
+  from: "Carpetz <noreply@carpetz.be>",
+  to: data.email,
+
+  subject: `Bedankt voor je bestelling ${data.orderNumber}`,
+
+  html: `
+    <h2>Bedankt voor je bestelling</h2>
+
+    <p>Beste ${data.firstName},</p>
+
+    <p>
+      Bedankt voor je bestelling bij Carpetz.
+    </p>
+
+    <p>
+      <strong>Bestelnummer:</strong>
+      ${data.orderNumber}
+    </p>
+
+    <p>
+      <strong>Afmetingen:</strong>
+      ${data.width} × ${data.height} cm
+    </p>
+
+    <p>
+      <strong>Aantal:</strong>
+      ${data.quantity}
+    </p>
+
+    <p>
+      <strong>Totaal:</strong>
+      €${data.grandTotal}
+    </p>
+
+    <p>
+      Binnenkort ontvang je een digitale proefdruk ter goedkeuring.
+    </p>
+
+    <p>
+      De productie start pas na jouw akkoord.
+    </p>
+
+    <p>
+      Met vriendelijke groeten,<br>
+      Team Carpetz
+    </p>
+  `,
+});
+
+      
 ``
 
       console.log("BESTELLING:");
