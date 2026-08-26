@@ -21,6 +21,12 @@ export async function POST(request: Request) {
           session.payment_intent
         );
 
+        console.log("SESSION:");
+console.log(session);
+
+console.log("PAYMENT INTENT METADATA:");
+console.log(paymentIntent.metadata);
+
       const data = paymentIntent.metadata;
 
 console.log("FULL METADATA:");
