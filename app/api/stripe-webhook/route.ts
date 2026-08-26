@@ -23,7 +23,10 @@ export async function POST(request: Request) {
 
       const data = paymentIntent.metadata;
 
-      console.log("PREVIEW URL:");
+console.log("FULL METADATA:");
+console.log(data);
+
+console.log("PREVIEW URL:");
 console.log(data.previewUrl);
 
       const today = new Date();
@@ -114,15 +117,17 @@ console.log(
 
     <p>
   <strong>Preview:</strong><br>
-  <adata.previewUrl}
+  <img
+  src="${data.previewUrl}"
+  style="href="${data.previewUrl}">
     Bekijk ontwerp
-  </a>
-</p>
+
 
 <p>
   <img
     src="${data.previewUrl}"
     style="max-width:400px;"
+ 
 
 
     <p><strong>Klant:</strong>
