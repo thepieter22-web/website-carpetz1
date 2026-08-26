@@ -55,16 +55,18 @@ const [vatNumber, setVatNumber] = useState("");
 const [postalCode, setPostalCode] = useState("");
 const [city, setCity] = useState("");
 const [country, setCountry] = useState("België");
-  const [sameAddress, setSameAddress] = useState(true);
+ const [sameAddress, setSameAddress] = useState(true);
+const [previewImage, setPreviewImage] = useState("");
 
-  useEffect(() => {
-  console.log(
-    "MAT PREVIEW:",
-    sessionStorage.getItem("matPreview")
-  );
+useEffect(() => {
+  const image = sessionStorage.getItem("matPreview");
+
+  if (image) {
+    setPreviewImage(image);
+  }
 }, []);
 
-  return (
+return (
     <>
       <SiteHeader />
 
