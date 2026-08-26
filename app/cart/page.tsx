@@ -358,7 +358,12 @@ let previewImage = "";
 if (canvas) {
   previewImage = canvas.toDataURL("image/png");
 }
-    alert("PREVIEW TEST");
+    console.log(
+  "SENDING PREVIEW:",
+  previewImage.substring(0, 50)
+);
+
+alert("PREVIEW TEST");
 
 console.log(
   "SENDING PREVIEW:",
