@@ -91,7 +91,8 @@ return (
     <div className="mb-6 rounded-xl border bg-card p-4 shadow-sm">
       <img
         src={previewImage}
-        alt="Logomatunded-xl border bg-card p-8 shadow-sm">
+        alt="Logomat preview"
+        class p-8 shadow-sm">
     <h2 className="text-2xl font-semibold">
       Jouw logomat
     </h2>
