@@ -1,7 +1,11 @@
+import { Resend } from "resend";
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+const resend = new Resend(
+  process.env.RESEND_API_KEY
+);
 
 export async function POST(request: Request) {
   const body = await request.text();
@@ -95,6 +99,33 @@ console.log(
   "BILLIT RESPONSE:",
   await billitResponse.text()
 );
+
+      await resend.emails.send({
+  from: "Carpetz <noreply@carpetz.be>",
+  to: "info@carpetz.be",
+  subject: `Nieuwe bestelling ${data.orderNumber}`,
+  html: `
+    <h2>Nieuwe bestelling ontvangen</h2>
+
+    <p><strong>Bestelnummer:</strong> ${data.orderNumber}</p>
+
+    <p><strong>Klant:</strong>
+    ${data.firstName} ${data.lastName}</p>
+
+    <p><strong>E-mail:</strong>
+    ${data.email}</p>
+
+    <p><strong>Afmeting:</strong>
+    ${data.width} × ${data.height} cm</p>
+
+    <p><strong>Aantal:</strong>
+    ${data.quantity}</p>
+
+    <p><strong>Totaal:</strong>
+    €${data.grandTotal}</p>
+  `,
+});
+``
 
       console.log("BESTELLING:");
       console.log({
