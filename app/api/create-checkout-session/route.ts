@@ -30,6 +30,8 @@ const orderNumber =
     metadata: {
       orderNumber,
 
+      previewImage: body.previewImage || "",
+
       subtotal: String(body.subtotal || ""),
 vat: String(body.vat || ""),
 shipping: String(body.shipping || ""),
