@@ -378,6 +378,7 @@ console.log({
       },
       body: JSON.stringify({
   amount: grandTotal,
+        previewImage,
         subtotal: productExclVat.toFixed(2),
 vat: vatAmount.toFixed(2),
 shipping: shipping.toFixed(2),
