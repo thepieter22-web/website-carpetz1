@@ -85,7 +85,8 @@ const [country, setCountry] = useState("België");
             {/* Linkerkolom */}
             <div>
 
-              
+              <p>{previewImage ? previewImage.substring(0, 50) : "geen afbeelding"}</p>
+
    
 
               <div className="rounded-xl border bg-card p-8 shadow-sm">
