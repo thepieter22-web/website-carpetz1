@@ -23,6 +23,9 @@ export async function POST(request: Request) {
 
       const data = paymentIntent.metadata;
 
+      console.log("PREVIEW URL:");
+console.log(data.previewUrl);
+
       const today = new Date();
 
 const orderDate = today.toISOString().split("T")[0];
@@ -108,6 +111,19 @@ console.log(
     <h2>Nieuwe bestelling ontvangen</h2>
 
     <p><strong>Bestelnummer:</strong> ${data.orderNumber}</p>
+
+    <p>
+  <strong>Preview:</strong><br>
+  <adata.previewUrl}
+    Bekijk ontwerp
+  </a>
+</p>
+
+<p>
+  <img
+    src="${data.previewUrl}"
+    style="max-width:400px;"
+
 
     <p><strong>Klant:</strong>
     ${data.firstName} ${data.lastName}</p>
