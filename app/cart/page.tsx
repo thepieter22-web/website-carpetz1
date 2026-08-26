@@ -87,12 +87,14 @@ return (
             {/* Linkerkolom */}
             <div>
 
-              {previewImage && (
-  <div className="mb-6 rounded-xl border bg-card p-4 shadow-sm">
-    <img
-      src={previewImage}
-      alt="Logomat preview"
-      className="mx-auto max-h-80 rounded-lg"
+
+
+  {previewImage && (
+    <div className="mb-6 rounded-xl border bg-card p-4 shadow-sm">
+      <img
+        src={previewImage}
+        alt="Logomat preview"
+        class p-8 shadow-sm">
 
 
               
