@@ -132,48 +132,53 @@ await resend.emails.send({
 
   subject: `Bedankt voor je bestelling ${data.orderNumber}`,
 
-  html: `
-    <h2>Bedankt voor je bestelling</h2>
+ html: `
+<div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;padding:20px;">
 
-    <p>Beste ${data.firstName},</p>
+  <h1 style="color:#C69C4D;">
+    Bedankt voor je bestelling!
+  </h1>
 
-    <p>
-      Bedankt voor je bestelling bij Carpetz.
-    </p>
+  <p>
+    Beste ${
+      data.firstName.charAt(0).toUpperCase() +
+      data.firstName.slice(1)
+    },
+  </p>
 
-    <p>
-      <strong>Bestelnummer:</strong>
-      ${data.orderNumber}
-    </p>
+  <p>
+    Bedankt voor je bestelling bij Carpetz.
+  </p>
 
-    <p>
-      <strong>Afmetingen:</strong>
-      ${data.width} × ${data.height} cm
-    </p>
+  <hr>
 
-    <p>
-      <strong>Aantal:</strong>
-      ${data.quantity}
-    </p>
+  <p><strong>Bestelnummer:</strong> ${data.orderNumber}</p>
+  <p><strong>Afmetingen:</strong> ${data.width} × ${data.height} cm</p>
+  <p><strong>Aantal:</strong> ${data.quantity}</p>
+  <p><strong>Totaal:</strong> €${data.grandTotal}</p>
 
-    <p>
-      <strong>Totaal:</strong>
-      €${data.grandTotal}
-    </p>
+  <hr>
 
-    <p>
-      Binnenkort ontvang je een digitale proefdruk ter goedkeuring.
-    </p>
+  <p>✅ Binnen enkele werkdagen ontvang je een digitale proefdruk.</p>
 
-    <p>
-      De productie start pas na jouw akkoord.
-    </p>
+  <p>
+    ✅ De productie start pas na jouw goedkeuring.
+  </p>
 
-    <p>
-      Met vriendelijke groeten,<br>
-      Team Carpetz
-    </p>
-  `,
+  <p>
+    Met vriendelijke groeten,<br>
+    Team Carpetz
+  </p>
+
+  <p>
+    <a href="https://carpetz.be">
+      www.carpetz.be
+    </a>
+  </p>
+
+</div>
+`,
+``
 });
 
       
