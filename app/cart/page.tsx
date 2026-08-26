@@ -84,14 +84,14 @@ const [country, setCountry] = useState("België");
 
           <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
 
-            {/* Linkerkolom */}
-            <div>
+           {/* Linkerkolom */}
+<div>
 
-              {previewImage && (
-  <img
-    src={previewImage}
-    alt="Logomat preview"
-    className="mb-6 w-full max-w-md rounded-lg border"
+  {previewImage && (
+    <img
+      src={previewImage}
+      alt="Logomat preview"
+      className="mb-6 max-w-full rounded-lg border"
  
 
    
