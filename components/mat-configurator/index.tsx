@@ -812,15 +812,33 @@ if (config.logo.dataUrl) {
                     </TabsContent>
 
                     <TabsContent value="logo" className="mt-0 space-y-6">
-                      <LogoUploader
-  currentFile={config.logo.file}
-  onUpload={handleLogoUpload}
-  onColorSuggestionsFound={handleColorSuggestionsFound}
-  onLogoInfoFound={handleLogoInfoFound}
-/>
+  <LogoUploader
+    currentFile={config.logo.file}
+    onUpload={handleLogoUpload}
+    onColorSuggestionsFound={handleColorSuggestionsFound}
+    onLogoInfoFound={handleLogoInfoFound}
+  />
 
-                      
-                    </TabsContent>
+  {logoInfo.width > 0 && (
+    <div className="rounded-lg border p-4 bg-muted/30 space-y-2">
+      <h4 className="font-medium">
+        Logo analyse
+      </h4>
+
+      <div className="text-sm">
+        Resolutie: {logoInfo.width} × {logoInfo.height} px
+      </div>
+
+      <div className="text-sm">
+        Bestandstype: {logoInfo.format}
+      </div>
+
+      <div className="text-sm">
+        Gedetecteerde kleuren: {logoInfo.colors}
+      </div>
+    </div>
+  )}
+</TabsContent>
                   </div>
                 </ScrollArea>
               </Tabs>
