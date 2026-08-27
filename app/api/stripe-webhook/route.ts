@@ -32,8 +32,10 @@ console.log(session);
 console.log("FULL METADATA:");
 console.log(data);
 
-console.log("PREVIEW URL:");
+console.log("XXXXXXXXXXXXXXXX");
+console.log("PREVIEW URL WEBHOOK");
 console.log(data.previewUrl);
+console.log("XXXXXXXXXXXXXXXX");
 
       const today = new Date();
 
@@ -207,7 +209,7 @@ await resend.emails.send({
 `,
 });
 
-      console.log("METADATA:");
+      console.log("FULL STRIPE METADATA");
 console.log(paymentIntent.metadata);
 
       console.log("BESTELLING:");
