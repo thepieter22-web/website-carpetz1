@@ -287,6 +287,12 @@ export function MatConfigurator() {
   }, [])
 
   const selectedColor = MAT_COLORS.find((c) => c.code === config.colorCode)
+  
+  const hasGoodResolution =
+  logoInfo.width >= 1000 &&
+  logoInfo.height >= 1000
+
+  
   const indoorInfo = {
   normal: {
     title: "Classic",
