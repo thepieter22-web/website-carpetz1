@@ -113,8 +113,22 @@ export function MatConfigurator() {
     format: string
     colors: number
   }) => {
-    console.log("Logo info:", info)
     setLogoInfo(info)
+
+    if (info.width < 1000 || info.height < 1000) {
+      alert(
+        "⚠️ Dit logo heeft een lage resolutie. Voor een optimaal drukresultaat raden wij minimaal 1000 × 1000 pixels aan."
+      )
+    }
+
+    if (
+      info.format === "image/jpeg" ||
+      info.format === "image/jpg"
+    ) {
+      alert(
+        "⚠️ JPG-bestand gedetecteerd. Upload bij voorkeur een PNG met transparante achtergrond."
+      )
+    }
   },
   []
 )
