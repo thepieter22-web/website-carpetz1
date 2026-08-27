@@ -816,33 +816,7 @@ export function MatConfigurator() {
                         onColorSuggestionsFound={handleColorSuggestionsFound}
                       />
 
-                      {config.logo.dataUrl && (
-                        <>
-                          <Separator />
-
-                          <div className="space-y-3">
-                            <Label className="text-sm font-medium">Logo Colors</Label>
-                            <Select
-                              value={config.logoColors.toString()}
-                              onValueChange={(v) => updateConfig({ logoColors: parseInt(v) })}
-                            >
-                              <SelectTrigger>
-                                <SelectValue />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectItem value="1">1 color (included)</SelectItem>
-                                <SelectItem value="2">2 colors (+€5)</SelectItem>
-                                <SelectItem value="3">3 colors (+€10)</SelectItem>
-                                <SelectItem value="4">4 colors (+€15)</SelectItem>
-                                <SelectItem value="5">5+ colors (+€20)</SelectItem>
-                              </SelectContent>
-                            </Select>
-                            <p className="text-xs text-muted-foreground">
-                              Number of distinct colors in your logo for printing
-                            </p>
-                          </div>
-                        </>
-                      )}
+                      
                     </TabsContent>
                   </div>
                 </ScrollArea>
