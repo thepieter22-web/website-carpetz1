@@ -140,9 +140,7 @@ await resend.emails.send({
     <p><strong>Bestelnummer:</strong> ${data.orderNumber}</p>
     <p><strong>Preview:</strong></p>
     <p><a href="${data.previewUrl}">Bekijk ontwerp</a></p>
-    <p>
-      <img src="cid:preview-admin" alt="Logomat preview" width="300" style="display:block;border:none;" />
-    </p>
+    
     <p><strong>E-mail:</strong> ${data.email}</p>
     <p><strong>Afmeting:</strong> ${data.width} × ${data.height} cm</p>
     <p><strong>Aantal:</strong> ${data.quantity}</p>
@@ -168,11 +166,7 @@ await resend.emails.send({
       <p><strong>Afmetingen:</strong> ${data.width} × ${data.height} cm</p>
       <p><strong>Aantal:</strong> ${data.quantity}</p>
       <p><strong>Totaal:</strong> €${data.grandTotal}</p>
-      ${
-        imageBuffer
-          ? `<p><strong>Jouw ontwerp:</strong></p>
-             <p><img src="cid:preview-customer" alt="Logomat preview" width="300" style="display:block;border:none;" /></p>`
-          : ""
+      
       }
       <hr>
       <p>✅ Binnen enkele werkdagen ontvang je een digitale proefdruk.</p>
