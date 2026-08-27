@@ -123,103 +123,70 @@ console.log(
   await billitResponse.text()
 );
 
-     await resend.emails.send({
+      // Eenmalig ophalen, hergebruiken voor beide mails
+let imageBuffer: Buffer | null = null;
+if (data.previewUrl) {
+  const imageResponse = await fetch(data.previewUrl);
+  imageBuffer = Buffer.from(await imageResponse.arrayBuffer());
+}
+
+// --- Interne mail (ongewijzigd, andere cid) ---
+await resend.emails.send({
   from: "Carpetz <noreply@carpetz.be>",
   to: "info@carpetz.be",
   subject: `Nieuwe bestelling ${data.orderNumber}`,
   html: `
     <h2>Nieuwe bestelling ontvangen</h2>
+    <p><strong>Bestelnummer:</strong> ${data.orderNumber}</p>
+    <p><strong>Preview:</strong></p>
+    <p><a href="${data.previewUrl}">Bekijk ontwerp</a></p>
     <p>
-      <strong>Bestelnummer:</strong>
-      ${data.orderNumber}
+      <img src="cid:preview-admin" alt="Logomat preview" width="300" style="display:block;border:none;" />
     </p>
-    <p>
-      <strong>Preview:</strong>
-    </p>
-    <p>
-      <a href="${data.previewUrl}">Bekijk ontwerp</a>
-    </p>
-    <p>
-      <img
-        src="${data.previewUrl}"
-        alt="Logomat preview"
-        width="300"
-        style="display:block;border:none;"
-      />
-    </p>
-    <p>
-      <strong>E-mail:</strong>
-      ${data.email}
-    </p>
-    <p>
-      <strong>Afmeting:</strong>
-      ${data.width} × ${data.height} cm
-    </p>
-    <p>
-      <strong>Aantal:</strong>
-      ${data.quantity}
-    </p>
-    <p>
-      <strong>Totaal:</strong>
-      €${data.grandTotal}
-    </p>
+    <p><strong>E-mail:</strong> ${data.email}</p>
+    <p><strong>Afmeting:</strong> ${data.width} × ${data.height} cm</p>
+    <p><strong>Aantal:</strong> ${data.quantity}</p>
+    <p><strong>Totaal:</strong> €${data.grandTotal}</p>
   `,
+  attachments: imageBuffer
+    ? [{ filename: "preview.png", content: imageBuffer, cid: "preview-admin" }]
+    : [],
 });
 
+// --- Klantmail (nieuw: preview toegevoegd, eigen cid) ---
 await resend.emails.send({
   from: "Carpetz <noreply@carpetz.be>",
   to: data.email,
-
   subject: `Bedankt voor je bestelling ${data.orderNumber}`,
-
- html: `
-<div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;padding:20px;">
-
-  <h1 style="color:#C69C4D;">
-    Bedankt voor je bestelling!
-  </h1>
-
-  <p>
-    Beste ${
-      data.firstName.charAt(0).toUpperCase() +
-      data.firstName.slice(1)
-    },
-  </p>
-
-  <p>
-    Bedankt voor je bestelling bij Carpetz.
-  </p>
-
-  <hr>
-
-  <p><strong>Bestelnummer:</strong> ${data.orderNumber}</p>
-  <p><strong>Afmetingen:</strong> ${data.width} × ${data.height} cm</p>
-  <p><strong>Aantal:</strong> ${data.quantity}</p>
-  <p><strong>Totaal:</strong> €${data.grandTotal}</p>
-
-  <hr>
-
-  <p>✅ Binnen enkele werkdagen ontvang je een digitale proefdruk.</p>
-
-  <p>
-    ✅ De productie start pas na jouw goedkeuring.
-  </p>
-
-  <p>
-    Met vriendelijke groeten,<br>
-    Team Carpetz
-  </p>
-
-  <p>
-    <a href="https://carpetz.be">
-      www.carpetz.be
-    </a>
-  </p>
-
-</div>
-`,
+  html: `
+    <div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;padding:20px;">
+      <h1 style="color:#C69C4D;">Bedankt voor je bestelling!</h1>
+      <p>Beste ${data.firstName.charAt(0).toUpperCase() + data.firstName.slice(1)},</p>
+      <p>Bedankt voor je bestelling bij Carpetz.</p>
+      <hr>
+      <p><strong>Bestelnummer:</strong> ${data.orderNumber}</p>
+      <p><strong>Afmetingen:</strong> ${data.width} × ${data.height} cm</p>
+      <p><strong>Aantal:</strong> ${data.quantity}</p>
+      <p><strong>Totaal:</strong> €${data.grandTotal}</p>
+      ${
+        imageBuffer
+          ? `<p><strong>Jouw ontwerp:</strong></p>
+             <p><img src="cid:preview-customer" alt="Logomat preview" width="300" style="display:block;border:none;" /></p>`
+          : ""
+      }
+      <hr>
+      <p>✅ Binnen enkele werkdagen ontvang je een digitale proefdruk.</p>
+      <p>✅ De productie start pas na jouw goedkeuring.</p>
+      <p>Met vriendelijke groeten,<br>Team Carpetz</p>
+      <p><a href="https://carpetz.be">www.carpetz.be</a></p>
+    </div>
+  `,
+  attachments: imageBuffer
+    ? [{ filename: "preview.png", content: imageBuffer, cid: "preview-customer" }]
+    : [],
 });
 
+     
       console.log("FULL STRIPE METADATA");
 console.log(paymentIntent.metadata);
 
