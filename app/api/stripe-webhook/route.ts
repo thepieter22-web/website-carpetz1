@@ -127,15 +127,14 @@ console.log(
   from: "Carpetz <noreply@carpetz.be>",
   to: "info@carpetz.be",
   subject: `Nieuwe bestelling ${data.orderNumber}`,
-  html: `
+ html: `
   <h2>Nieuwe bestelling ontvangen</h2>
 
   <p><strong>Bestelnummer:</strong> ${data.orderNumber}</p>
 
   <p>
     <strong>Preview:</strong><br>
-    <adata.previewUrl}
-      Bekijk ontwerp
+    <a href="${data.preview  Bekijk ontwerp
     </a>
   </p>
 
@@ -144,25 +143,19 @@ console.log(
       src="${data.previewUrl}"
       alt="Logomat preview"
       width="300"
-      style="display:block;border"><p>
+      style="display:block;border:1px solid #
+  ${data.email}</p>
 
-      
- <p><strong>Klant:</strong>
-${data.firstName} ${data.lastName}</p>
+  <p><strong>Afmeting:</strong>
+  ${data.width} × ${data.height} cm</p>
 
-<p><strong>E-mail:</strong>
-${data.email}</p>
+  <p><strong>Aantal:</strong>
+  ${data.quantity}</p>
 
-<p><strong>Afmeting:</strong>
-${data.width} × ${data.height} cm</p>
-
-<p><strong>Aantal:</strong>
-${data.quantity}</p>
-
-<p><strong>Totaal:</strong>
-€${data.grandTotal}</p>
-``
+  <p><strong>Totaal:</strong>
+  €${data.grandTotal}</p>
 `,
+
 });
 
 await resend.emails.send({
