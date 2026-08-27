@@ -11,6 +11,9 @@ export async function POST(request: Request) {
 
     const previewImage = body.previewImage || "";
 
+console.log("BODY PREVIEW IMAGE:");
+console.log(previewImage ? "AANWEZIG" : "LEEG");
+
 let previewUrl = "";
 
 if (previewImage) {
@@ -31,8 +34,8 @@ if (previewImage) {
 
 previewUrl = blob.url;
 
-console.log("PREVIEW IMAGE:");
-console.log(previewImage ? "AANWEZIG" : "LEEG");
+console.log("PREVIEW URL AFTER BLOB:");
+console.log(previewUrl);
 
 console.log("PREVIEW URL TO STRIPE:");
 console.log(previewUrl);
