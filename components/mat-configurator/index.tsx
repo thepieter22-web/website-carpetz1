@@ -316,11 +316,21 @@ export function MatConfigurator() {
     "carpetz-mat-preview-canvas"
   ) as HTMLCanvasElement | null;
 
+  console.log("CANVAS GEVONDEN:", !!canvas);
+
   if (canvas) {
-    sessionStorage.setItem(
-      "matPreview",
-      canvas.toDataURL("image/png")
-    );
+    const dataUrl = canvas.toDataURL("image/png");
+    console.log("DATAURL LENGTE:", dataUrl.length);
+    console.log("DATAURL PREVIEW:", dataUrl.substring(0, 50));
+
+    try {
+      sessionStorage.setItem("matPreview", dataUrl);
+      console.log("SESSIONSTORAGE GEZET, CHECK:", sessionStorage.getItem("matPreview")?.length);
+    } catch (e) {
+      console.error("SESSIONSTORAGE SETITEM FOUT:", e);
+    }
+  } else {
+    console.error("CANVAS NIET GEVONDEN — dit is het probleem");
   }
 
   const params = new URLSearchParams({
