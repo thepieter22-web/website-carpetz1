@@ -14,14 +14,37 @@ export async function POST(request: Request) {
     const event = JSON.parse(body);
 
     if (event.type === "checkout.session.completed") {
+
+      console.log("WEBHOOK VERSION 999");
+      
       const session = event.data.object;
 
       const paymentIntent =
-        await stripe.paymentIntents.retrieve(
-          session.payment_intent
-        );
+  await stripe.paymentIntents.retrieve(
+    session.payment_intent
+  );
 
-      const data = paymentIntent.metadata;
+console.log(JSON.stringify(paymentIntent.metadata, null, 2));
+
+
+console.log("SESSION:");
+console.log(session);
+
+console.log("SESSION METADATA:");
+console.log(session.metadata);
+
+const data = {
+  ...session.metadata,
+  ...paymentIntent.metadata,
+};
+
+console.log("FULL METADATA:");
+console.log(data);
+
+console.log("XXXXXXXXXXXXXXXX");
+console.log("PREVIEW URL WEBHOOK");
+console.log(data.previewUrl);
+console.log("XXXXXXXXXXXXXXXX");
 
       const today = new Date();
 
@@ -109,6 +132,21 @@ console.log(
 
     <p><strong>Bestelnummer:</strong> ${data.orderNumber}</p>
 
+    <p>
+  <strong>Preview:</strong><br>
+  <img
+  src="${data.previewUrl}"
+  style="href="${data.previewUrl}">
+    Bekijk ontwerp
+
+
+<p>
+  <img
+    src="${data.previewUrl}"
+    style="max-width:400px;"
+ 
+
+
     <p><strong>Klant:</strong>
     ${data.firstName} ${data.lastName}</p>
 
@@ -180,7 +218,8 @@ await resend.emails.send({
 `,
 });
 
-      
+      console.log("FULL STRIPE METADATA");
+console.log(paymentIntent.metadata);
 
       console.log("BESTELLING:");
       console.log({

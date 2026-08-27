@@ -9,13 +9,40 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-const testBlob = await put(
-  `test-${Date.now()}.txt`,
-  "Blob werkt!",
+    const previewImage = body.previewImage || "";
+
+console.log("BODY PREVIEW IMAGE:");
+console.log(previewImage ? "AANWEZIG" : "LEEG");
+
+let previewUrl = "";
+
+if (previewImage) {
+  const base64Data = previewImage.split(",")[1];
+
+  const buffer = Buffer.from(
+    base64Data,
+    "base64"
+  );
+
+  const blob = await put(
+  `previews/${Date.now()}.png`,
+  buffer,
   {
     access: "public",
   }
 );
+
+previewUrl = blob.url;
+
+console.log("PREVIEW URL AFTER BLOB:");
+console.log(previewUrl);
+
+console.log("PREVIEW URL TO STRIPE:");
+console.log(previewUrl);
+``
+
+}
+
 
 console.log("TEST BLOB URL:");
 console.log(testBlob.url);
@@ -34,12 +61,16 @@ const randomPart = Math.floor(
 const orderNumber =
   `CAR-${datePart}-${randomPart}`;
 
+  console.log("PREVIEW URL TO STRIPE:");
+console.log(previewUrl);
+
     const session = await stripe.checkout.sessions.create({
   mode: "payment",
 
   payment_intent_data: {
     metadata: {
       orderNumber,
+      previewUrl,
 
 
       subtotal: String(body.subtotal || ""),
@@ -93,6 +124,9 @@ total: String(body.total || ""),
         "origin"
       )}/cart`,
     });
+
+    console.log("SESSION CREATED:");
+console.log(session.id);
 
     return NextResponse.json({
       url: session.url,
