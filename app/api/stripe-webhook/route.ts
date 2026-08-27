@@ -27,7 +27,13 @@ console.log(JSON.stringify(paymentIntent.metadata, null, 2));
 console.log("SESSION:");
 console.log(session);
 
-      const data = paymentIntent.metadata;
+console.log("SESSION METADATA:");
+console.log(session.metadata);
+
+const data = {
+  ...session.metadata,
+  ...paymentIntent.metadata,
+};
 
 console.log("FULL METADATA:");
 console.log(data);
