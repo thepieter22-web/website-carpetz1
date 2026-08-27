@@ -140,7 +140,21 @@ export function LogoUploader({
       setIsAnalyzing(true);
 
       try {
+
+        const img = new Image();
+
+await new Promise<void>((resolve) => {
+  img.onload = () => resolve();
+  img.src = dataUrl;
+});
         const dominantColors = await extractDominantColors(dataUrl);
+
+        onLogoInfoFound?.({
+  width: img.width,
+  height: img.height,
+  format: file.type,
+  colors: dominantColors.length,
+});
 
         if (dominantColors.length > 0) {
           // 1) merge bijna identieke tinten
