@@ -292,6 +292,9 @@ export function MatConfigurator() {
   logoInfo.width >= 1000 &&
   logoInfo.height >= 1000
 
+  const isPng =
+  logoInfo.format === "image/png"
+
   
   const indoorInfo = {
   normal: {
