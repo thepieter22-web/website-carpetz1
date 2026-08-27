@@ -143,25 +143,25 @@ console.log(
     <img
       src="${data.previewUrl}"
       alt="Logomat preview"
-      style="max-width:400px;border:1px solid #ddd;"
- <strong>E-mail:</strong>
-    ${data.email}
-  </p>
+      width="300"
+      style="display:block;border"><p>
 
-  <p>
-    <strong>Afmeting:</strong>
-    ${data.width} × ${data.height} cm
-  </p>
+      
+ <p><strong>Klant:</strong>
+${data.firstName} ${data.lastName}</p>
 
-  <p>
-    <strong>Aantal:</strong>
-    ${data.quantity}
-  </p>
+<p><strong>E-mail:</strong>
+${data.email}</p>
 
-  <p>
-    <strong>Totaal:</strong>
-    €${data.grandTotal}
-  </p>
+<p><strong>Afmeting:</strong>
+${data.width} × ${data.height} cm</p>
+
+<p><strong>Aantal:</strong>
+${data.quantity}</p>
+
+<p><strong>Totaal:</strong>
+€${data.grandTotal}</p>
+``
 `,
 });
 
