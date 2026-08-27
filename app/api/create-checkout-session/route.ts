@@ -68,7 +68,7 @@ console.log(previewUrl);
   payment_intent_data: {
     metadata: {
       orderNumber,
-      previewUrl: String(previewUrl),
+      previewUrl,
 
 
       subtotal: String(body.subtotal || ""),
@@ -122,6 +122,9 @@ total: String(body.total || ""),
         "origin"
       )}/cart`,
     });
+
+    console.log("SESSION CREATED:");
+console.log(session.id);
 
     return NextResponse.json({
       url: session.url,
