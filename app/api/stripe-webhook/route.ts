@@ -127,29 +127,47 @@ console.log(
   from: "Carpetz <noreply@carpetz.be>",
   to: "info@carpetz.be",
   subject: `Nieuwe bestelling ${data.orderNumber}`,
- html: `
+html: `
   <h2>Nieuwe bestelling ontvangen</h2>
 
-  <p><strong>Bestelnummer:</strong> ${data.orderNumber}</p>
+  <p>
+    <strong>Bestelnummer:</strong>
+    ${data.orderNumber}
+  </p>
 
   <p>
-  <strong>Preview:</strong><br>
-  <a href=
-    Bekijk ontwerp
-    src="${data.previewUrl}"
-    alt="Logomat preview"
-    width="300"
-    style="display:blockng>E-mail:</strong>
-${data.email}</p>
+    <strong>Preview:</strong>
+  </p>
 
-<p><strong>Afmeting:</strong>
-${data.width} × ${data.height} cm</p>
+  <p>
+    ${data.previewUrl}
+      Bekijk ontwerp
+    </a>
+  </p>
 
-<p><strong>Aantal:</strong>
-${data.quantity}</p>
+  <p>
+    <img
+      src="${data.previewUrl}"
+      alt="Logomat preview"
+      width="300"
+      style="display:block;border   <strong>E-mail:</strong>
+    ${data.email}
+  </p>
 
-<p><strong>Totaal:</strong>
-€${data.grandTotal}</p>
+  <p>
+    <strong>Afmeting:</strong>
+    ${data.width} × ${data.height} cm
+  </p>
+
+  <p>
+    <strong>Aantal:</strong>
+    ${data.quantity}
+  </p>
+
+  <p>
+    <strong>Totaal:</strong>
+    €${data.grandTotal}
+  </p>
 `,
 
 });
