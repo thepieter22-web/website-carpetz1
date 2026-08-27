@@ -130,6 +130,12 @@ if (data.previewUrl) {
   imageBuffer = Buffer.from(await imageResponse.arrayBuffer());
 }
 
+let logoBuffer: Buffer | null = null;
+if (data.logoUrl) {
+  const logoResponse = await fetch(data.logoUrl);
+  logoBuffer = Buffer.from(await logoResponse.arrayBuffer());
+}
+
 // --- Interne mail (ongewijzigd, andere cid) ---
 await resend.emails.send({
   from: "Carpetz <noreply@carpetz.be>",
@@ -146,9 +152,10 @@ await resend.emails.send({
     <p><strong>Aantal:</strong> ${data.quantity}</p>
     <p><strong>Totaal:</strong> €${data.grandTotal}</p>
   `,
-  attachments: imageBuffer
-    ? [{ filename: "preview.png", content: imageBuffer, cid: "preview-admin" }]
-    : [],
+  attachments: [
+  ...(imageBuffer ? [{ filename: "preview.png", content: imageBuffer, cid: "preview-admin" }] : []),
+  ...(logoBuffer ? [{ filename: "logo-origineel.png", content: logoBuffer }] : []),
+],
 });
 
 // --- Klantmail (nieuw: preview toegevoegd, eigen cid) ---
