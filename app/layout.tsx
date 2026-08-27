@@ -1,4 +1,5 @@
 import { Analytics } from '@vercel/analytics/next'
+import Script from "next/script"
 import type { Metadata, Viewport } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
@@ -73,9 +74,20 @@ export default function RootLayout({
   return (
     <html lang="nl" className={`light bg-background ${inter.variable} ${playfair.variable}`}>
       <body className="font-sans antialiased">
-        {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
-      </body>
+  {children}
+
+  <Script id="clarity" strategy="afterInteractive">
+    {`
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)}
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "y929gps4zk");
+    `}
+  </Script>
+
+  {process.env.NODE_ENV === "production" && <Analytics />}
+</body>
     </html>
   )
 }
