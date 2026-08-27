@@ -836,6 +836,18 @@ if (config.logo.dataUrl) {
       </div>
 
       <div className="text-sm">
+  {hasGoodResolution ? (
+    <span className="text-green-600">
+      ✅ Resolutie geschikt voor productie
+    </span>
+  ) : (
+    <span className="text-amber-600">
+      ⚠️ Resolutie mogelijk te laag
+    </span>
+  )}
+</div>
+
+      <div className="text-sm">
         Bestandstype: {logoInfo.format}
       </div>
 
