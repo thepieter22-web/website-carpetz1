@@ -318,11 +318,15 @@ export function MatConfigurator() {
   ) as HTMLCanvasElement | null;
 
   if (canvas) {
-    sessionStorage.setItem(
-      "matPreview",
-      canvas.toDataURL("image/png")
-    );
-  }
+  sessionStorage.setItem(
+    "matPreview",
+    canvas.toDataURL("image/png")
+  );
+}
+
+if (config.logo.dataUrl) {
+  sessionStorage.setItem("matLogo", config.logo.dataUrl);
+}
 
   const params = new URLSearchParams({
     type: config.indoorSubtype,
