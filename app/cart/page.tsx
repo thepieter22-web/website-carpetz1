@@ -366,7 +366,9 @@ console.log({
   vatNumber,
 });
 
-    
+console.log("PREVIEW IMAGE IN CART:");
+console.log(previewImage);    
+
     const response = await fetch("/api/create-checkout-session", {
       method: "POST",
       headers: {
