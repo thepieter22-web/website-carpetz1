@@ -9,6 +9,12 @@ interface LogoUploaderProps {
   currentFile: File | null;
   onUpload: (file: File, dataUrl: string) => void;
   onColorSuggestionsFound: (codes: string[]) => void;
+  onLogoInfoFound?: (info: {
+    width: number;
+    height: number;
+    format: string;
+    colors: number;
+  }) => void;
 }
 
 type RGB = { r: number; g: number; b: number };
@@ -116,6 +122,7 @@ export function LogoUploader({
   currentFile,
   onUpload,
   onColorSuggestionsFound,
+  onLogoInfoFound,
 }: LogoUploaderProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [isDragging, setIsDragging] = useState(false);
