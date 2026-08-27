@@ -14,6 +14,9 @@ export async function POST(request: Request) {
     const event = JSON.parse(body);
 
     if (event.type === "checkout.session.completed") {
+
+      console.log("WEBHOOK VERSION 999");
+      
       const session = event.data.object;
 
       const paymentIntent =
