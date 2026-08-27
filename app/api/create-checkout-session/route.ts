@@ -7,23 +7,17 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
-
-    const previewImage = body.previewImage || "";
-
+   const body = await request.json();
+const previewImage = body.previewImage || "";
 console.log("BODY PREVIEW IMAGE:");
 console.log(previewImage ? "AANWEZIG" : "LEEG");
-
 let previewUrl = "";
-
 if (previewImage) {
   const base64Data = previewImage.split(",")[1];
-
   const buffer = Buffer.from(
     base64Data,
     "base64"
   );
-
   const blob = await put(
   `previews/${Date.now()}.png`,
   buffer,
@@ -31,14 +25,25 @@ if (previewImage) {
     access: "public",
   }
 );
-
 previewUrl = blob.url;
-
 console.log("PREVIEW URL AFTER BLOB:");
 console.log(previewUrl);
-
 console.log("PREVIEW URL TO STRIPE:");
 console.log(previewUrl);
+}
+
+const logoImage = body.logoImage || "";
+let logoUrl = "";
+if (logoImage) {
+  const logoBase64 = logoImage.split(",")[1];
+  const logoBuffer = Buffer.from(logoBase64, "base64");
+  const logoBlob = await put(
+    `logos/${Date.now()}.png`,
+    logoBuffer,
+    { access: "public" }
+  );
+  logoUrl = logoBlob.url;
+}
 ``
 
 }
@@ -70,6 +75,7 @@ console.log(previewUrl);
     metadata: {
       orderNumber,
       previewUrl,
+      logoUrl,
 
 
       subtotal: String(body.subtotal || ""),
