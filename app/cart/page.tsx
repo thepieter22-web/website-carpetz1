@@ -57,12 +57,17 @@ const [city, setCity] = useState("");
 const [country, setCountry] = useState("België");
   const [sameAddress, setSameAddress] = useState(true);
   const [previewImage, setPreviewImage] = useState("");
+  const [logoImage, setLogoImage] = useState("");
 
- useEffect(() => {
+useEffect(() => {
   const image = sessionStorage.getItem("matPreview");
-
   if (image) {
     setPreviewImage(image);
+  }
+
+  const logo = sessionStorage.getItem("matLogo");
+  if (logo) {
+    setLogoImage(logo);
   }
 }, []);
 
@@ -349,13 +354,15 @@ const [country, setCountry] = useState("België");
   className="mt-8 w-full rounded-lg bg-[#C69C4D] px-6 py-4 text-white font-medium hover:bg-[#B88D3C]"
   onClick={async () => { 
 
-   const previewImage =
+  const previewImage =
   sessionStorage.getItem("matPreview") || "";
-    
-   
 
-    
-    console.log("TEST BUTTON");
+const logoImage =
+  sessionStorage.getItem("matLogo") || "";
+
+
+
+console.log("TEST BUTTON");
 console.log({
   customerType,
   firstName,
@@ -369,40 +376,41 @@ console.log({
 console.log("PREVIEW IMAGE IN CART:");
 console.log(previewImage);    
 
-    const response = await fetch("/api/create-checkout-session", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-  amount: grandTotal,
-        previewImage,
-        subtotal: productExclVat.toFixed(2),
+const response = await fetch("/api/create-checkout-session", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+amount: grandTotal,
+    previewImage,
+    logoImage,
+    subtotal: productExclVat.toFixed(2),
 vat: vatAmount.toFixed(2),
 shipping: shipping.toFixed(2),
 grandTotal: grandTotal.toFixed(2),
 
-  customerType,
-  firstName,
-  lastName,
-  email,
-  phone,
-  company,
-  vatNumber,
-  street,
-  postalCode,
-  city,
-  country,
+customerType,
+firstName,
+lastName,
+email,
+phone,
+company,
+vatNumber,
+street,
+postalCode,
+city,
+country,
 
-  matType: searchParams.type,
+matType: searchParams.type,
 width: searchParams.width,
 height: searchParams.height,
 quantity: searchParams.quantity,
 total: grandTotal,
-        
-        
+    
+    
 }),
-    });
+});
 
     const data = await response.json();
 
