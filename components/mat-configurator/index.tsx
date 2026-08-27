@@ -812,10 +812,11 @@ if (config.logo.dataUrl) {
 
                     <TabsContent value="logo" className="mt-0 space-y-6">
                       <LogoUploader
-                        currentFile={config.logo.file}
-                        onUpload={handleLogoUpload}
-                        onColorSuggestionsFound={handleColorSuggestionsFound}
-                      />
+  currentFile={config.logo.file}
+  onUpload={handleLogoUpload}
+  onColorSuggestionsFound={handleColorSuggestionsFound}
+  onLogoInfoFound={handleLogoInfoFound}
+/>
 
                       
                     </TabsContent>
