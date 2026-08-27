@@ -128,33 +128,41 @@ console.log(
   to: "info@carpetz.be",
   subject: `Nieuwe bestelling ${data.orderNumber}`,
   html: `
-    <h2>Nieuwe bestelling ontvangen</h2>
+  <h2>Nieuwe bestelling ontvangen</h2>
 
-<p><strong>Bestelnummer:</strong> ${data.orderNumber}</p>
+  <p><strong>Bestelnummer:</strong> ${data.orderNumber}</p>
 
-<p>
-  <strong>Preview:</strong><br>
-  ${data.previewUrl}
-    Bekijk ontwerp
-  </a>
-</p>
+  <p>
+    <strong>Preview:</strong><br>
+    <adata.previewUrl}
+      Bekijk ontwerp
+    </a>
+  </p>
 
-<p>
-  <img
-    src="${data.previewUrl}"
-    alt="Logomat preview"
-    style="max-width:400px; border:1px solid #ddd:</strong>
-${data.email}</p>
+  <p>
+    <img
+      src="${data.previewUrl}"
+      alt="Logomat preview"
+      style="max-width:400px;border:1px solid #ddd;"
+ <strong>E-mail:</strong>
+    ${data.email}
+  </p>
 
-<p><strong>Afmeting:</strong>
-${data.width} × ${data.height} cm</p>
+  <p>
+    <strong>Afmeting:</strong>
+    ${data.width} × ${data.height} cm
+  </p>
 
-<p><strong>Aantal:</strong>
-${data.quantity}</p>
+  <p>
+    <strong>Aantal:</strong>
+    ${data.quantity}
+  </p>
 
-<p><strong>Totaal:</strong>
-€${data.grandTotal}</p>
-  `,
+  <p>
+    <strong>Totaal:</strong>
+    €${data.grandTotal}
+  </p>
+`,
 });
 
 await resend.emails.send({
