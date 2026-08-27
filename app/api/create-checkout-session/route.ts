@@ -44,6 +44,8 @@ console.log(previewUrl);
 }
 
 
+console.log("TEST BLOB URL:");
+console.log(testBlob.url);
 
     const today = new Date();
 
