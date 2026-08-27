@@ -55,6 +55,12 @@ export function MatConfigurator() {
   const [activeTab, setActiveTab] = useState("logo")
   const [suggestedColorCodes, setSuggestedColorCodes] = useState<string[]>([])
   const [logoImage, setLogoImage] = useState<HTMLImageElement | null>(null)
+  const [logoInfo, setLogoInfo] = useState({
+  width: 0,
+  height: 0,
+  format: "",
+  colors: 0,
+})
 
   const [indoorSubtype, setIndoorSubtype] = useState<IndoorSubtype>(
   DEFAULT_CONFIG.indoorSubtype
@@ -81,6 +87,19 @@ export function MatConfigurator() {
     (type: "indoor" | "outdoor") => {
       updateConfig({ type })
       setVisibleTypeBlock(type)
+
+
+      const handleLogoInfoFound = useCallback(
+  (info: {
+    width: number
+    height: number
+    format: string
+    colors: number
+  }) => {
+    setLogoInfo(info)
+  },
+  []
+)
 
       if (type === "indoor") {
   setIndoorSubtype("normal")
