@@ -143,7 +143,7 @@ console.log(
   <img
     src="${data.previewUrl}"
     alt="Logomat preview"
-    style="max-width:400px; border:1strong>E-mail:</strong>
+    style="max-width:400px; border:1px solid #ddd:</strong>
 ${data.email}</p>
 
 <p><strong>Afmeting:</strong>
