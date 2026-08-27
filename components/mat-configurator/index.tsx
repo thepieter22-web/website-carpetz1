@@ -88,19 +88,6 @@ export function MatConfigurator() {
       updateConfig({ type })
       setVisibleTypeBlock(type)
 
-
-      const handleLogoInfoFound = useCallback(
-  (info: {
-    width: number
-    height: number
-    format: string
-    colors: number
-  }) => {
-    setLogoInfo(info)
-  },
-  []
-)
-
       if (type === "indoor") {
   setIndoorSubtype("normal")
 
@@ -136,6 +123,8 @@ export function MatConfigurator() {
     },
     [config.logo, updateConfig]
   )
+
+  handleMatTypeChange
 
   const handleLogoUpdate = useCallback(
     (updates: Partial<MatConfig["logo"]>) => {
