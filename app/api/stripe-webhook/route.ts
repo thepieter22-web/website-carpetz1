@@ -133,27 +133,23 @@ console.log(
   <p><strong>Bestelnummer:</strong> ${data.orderNumber}</p>
 
   <p>
-    <strong>Preview:</strong><br>
-    <a href="${data.preview  Bekijk ontwerp
-    </a>
-  </p>
+  <strong>Preview:</strong><br>
+  <a href=
+    Bekijk ontwerp
+    src="${data.previewUrl}"
+    alt="Logomat preview"
+    width="300"
+    style="display:blockng>E-mail:</strong>
+${data.email}</p>
 
-  <p>
-    <img
-      src="${data.previewUrl}"
-      alt="Logomat preview"
-      width="300"
-      style="display:block;border:1px solid #
-  ${data.email}</p>
+<p><strong>Afmeting:</strong>
+${data.width} × ${data.height} cm</p>
 
-  <p><strong>Afmeting:</strong>
-  ${data.width} × ${data.height} cm</p>
+<p><strong>Aantal:</strong>
+${data.quantity}</p>
 
-  <p><strong>Aantal:</strong>
-  ${data.quantity}</p>
-
-  <p><strong>Totaal:</strong>
-  €${data.grandTotal}</p>
+<p><strong>Totaal:</strong>
+€${data.grandTotal}</p>
 `,
 
 });
