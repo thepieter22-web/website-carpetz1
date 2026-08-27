@@ -137,7 +137,7 @@ export function LogoUploader({
 
         if (dominantColors.length > 0) {
           // 1) merge bijna identieke tinten
-          const mergedDominantColors = mergeSimilarColors(dominantColors, 32);
+          const mergedDominantColors = mergeSimilarColors(dominantColors, 60);
 
           // 2) toon nu tot 5 echte kleuren i.p.v. max 3
           const effectiveColors = mergedDominantColors.slice(0, 10);
