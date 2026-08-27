@@ -880,9 +880,7 @@ if (config.logo.dataUrl) {
   )}
 </div>
 
-<div className="text-sm">
-  Gedetecteerde kleuren: {logoInfo.colors}
-</div>
+
     </div>
   )}
 </TabsContent>
