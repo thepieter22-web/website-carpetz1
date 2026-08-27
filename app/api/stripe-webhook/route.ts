@@ -167,7 +167,6 @@ await resend.emails.send({
       <p><strong>Aantal:</strong> ${data.quantity}</p>
       <p><strong>Totaal:</strong> €${data.grandTotal}</p>
       
-      }
       <hr>
       <p>✅ Binnen enkele werkdagen ontvang je een digitale proefdruk.</p>
       <p>✅ De productie start pas na jouw goedkeuring.</p>
