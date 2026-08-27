@@ -851,12 +851,24 @@ if (config.logo.dataUrl) {
 </div>
 
       <div className="text-sm">
-        Bestandstype: {logoInfo.format}
-      </div>
+  Bestandstype: {logoInfo.format}
+</div>
 
-      <div className="text-sm">
-        Gedetecteerde kleuren: {logoInfo.colors}
-      </div>
+<div className="text-sm">
+  {isPng ? (
+    <span className="text-green-600">
+      ✅ PNG-bestand gedetecteerd
+    </span>
+  ) : (
+    <span className="text-amber-600">
+      ⚠️ JPG/WebP-bestand. Transparantie wordt mogelijk niet ondersteund.
+    </span>
+  )}
+</div>
+
+<div className="text-sm">
+  Gedetecteerde kleuren: {logoInfo.colors}
+</div>
     </div>
   )}
 </TabsContent>
