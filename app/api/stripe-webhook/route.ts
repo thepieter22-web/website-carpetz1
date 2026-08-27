@@ -150,7 +150,7 @@ html: `
       src="${data.previewUrl}"
       alt="Logomat preview"
       width="300"
-      style="display:block;border   <strong>E-mail:</strong>
+      style="display:block;border   <strong>E-mail:</strong>/>
     ${data.email}
   </p>
 
