@@ -139,11 +139,9 @@ console.log(
   style="href="${data.previewUrl}">
     Bekijk ontwerp
 
-
 <p>
-  <img
-    src="${data.previewUrl}"
-    style="max-width:400px;"
+  <imgh:400px;"
+
  
 
 
