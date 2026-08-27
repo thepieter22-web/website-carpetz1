@@ -17,7 +17,7 @@ import { LogoUploader } from "./logo-uploader"
 import { PriceCalculator } from "./price-calculator"
 import { RenderPreview } from "./render-preview"
 import { STANDARD_SIZES, type MatConfig, MAT_COLORS } from "@/lib/mat-config"
-import { Layers, Palette, Image as ImageIcon, ShoppingCart, RotateCcw, Plus, Minus } from "lucide-react"
+import { Layers, Palette, Image as ImageIcon, ShoppingCart, RotateCcw, Plus, Minus, ArrowRight } from "lucide-react"
 
 const DEFAULT_CONFIG: MatConfig = {
   type: "indoor",
@@ -311,26 +311,17 @@ export function MatConfigurator() {
             </Button>      
 <Button
   size="sm"
+  className="bg-[#C69C4D] hover:bg-[#B88D3C] text-white"
   onClick={() => {
   const canvas = document.getElementById(
     "carpetz-mat-preview-canvas"
   ) as HTMLCanvasElement | null;
 
-  console.log("CANVAS GEVONDEN:", !!canvas);
-
   if (canvas) {
-    const dataUrl = canvas.toDataURL("image/png");
-    console.log("DATAURL LENGTE:", dataUrl.length);
-    console.log("DATAURL PREVIEW:", dataUrl.substring(0, 50));
-
-    try {
-      sessionStorage.setItem("matPreview", dataUrl);
-      console.log("SESSIONSTORAGE GEZET, CHECK:", sessionStorage.getItem("matPreview")?.length);
-    } catch (e) {
-      console.error("SESSIONSTORAGE SETITEM FOUT:", e);
-    }
-  } else {
-    console.error("CANVAS NIET GEVONDEN — dit is het probleem");
+    sessionStorage.setItem(
+      "matPreview",
+      canvas.toDataURL("image/png")
+    );
   }
 
   const params = new URLSearchParams({
@@ -347,8 +338,8 @@ export function MatConfigurator() {
 }}
 
 >
-  <ShoppingCart className="w-4 h-4 mr-2" />
   Bestelling plaatsen
+  <ArrowRight className="w-4 h-4 ml-2" />
 </Button>
           </div>
         </div>
