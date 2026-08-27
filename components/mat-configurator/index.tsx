@@ -52,7 +52,7 @@ type VisibleTypeBlock = "indoor" | "outdoor" | null
 
 export function MatConfigurator() {
   const [config, setConfig] = useState<MatConfig>(DEFAULT_CONFIG)
-  const [activeTab, setActiveTab] = useState("mat")
+  const [activeTab, setActiveTab] = useState("logo")
   const [suggestedColorCodes, setSuggestedColorCodes] = useState<string[]>([])
   const [logoImage, setLogoImage] = useState<HTMLImageElement | null>(null)
 
@@ -360,20 +360,7 @@ if (config.logo.dataUrl) {
 
             <CardContent className="flex-1 overflow-hidden p-0">
               <Tabs value={activeTab} onValueChange={setActiveTab} className="h-full flex flex-col">
-                <TabsList className="w-full justify-start rounded-none border-b bg-transparent px-4">
-                  <TabsTrigger value="mat" className="data-[state=active]:bg-muted rounded-b-none gap-1.5">
-                    <Layers className="w-4 h-4" />
-                    Logo Mat
-                  </TabsTrigger>
-                  <TabsTrigger value="colors" className="data-[state=active]:bg-muted rounded-b-none gap-1.5">
-                    <Palette className="w-4 h-4" />
-                    Kleuren
-                  </TabsTrigger>
-                  <TabsTrigger value="logo" className="data-[state=active]:bg-muted rounded-b-none gap-1.5">
-                    <ImageIcon className="w-4 h-4" />
-                    Logo Upload
-                  </TabsTrigger>
-                </TabsList>
+                <TabsList className="w-full justify-start rounded-none border-b bg-transparent px-4"> <TabsTrigger value="logo" className="data-[state=active]:bg-muted rounded-b-none gap-1.5"> <ImageIcon className="w-4 h-4" /> Logo Upload </TabsTrigger> <TabsTrigger value="colors" className="data-[state=active]:bg-muted rounded-b-none gap-1.5"> <Palette className="w-4 h-4" /> Kleuren </TabsTrigger> <TabsTrigger value="mat" className="data-[state=active]:bg-muted rounded-b-none gap-1.5"> <Layers className="w-4 h-4" /> Logo Mat </TabsTrigger> </TabsList>
 
                 <ScrollArea className="flex-1">
                   <div className="px-4 py-4">
