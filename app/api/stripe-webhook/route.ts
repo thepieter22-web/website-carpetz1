@@ -207,7 +207,8 @@ await resend.emails.send({
 `,
 });
 
-      
+      console.log("METADATA:");
+console.log(paymentIntent.metadata);
 
       console.log("BESTELLING:");
       console.log({
