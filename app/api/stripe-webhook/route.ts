@@ -23,8 +23,6 @@ export async function POST(request: Request) {
 
 console.log(JSON.stringify(paymentIntent.metadata, null, 2));
 
-        console.log("PAYMENT INTENT METADATA:");
-console.log(paymentIntent.metadata);
 
 console.log("SESSION:");
 console.log(session);
