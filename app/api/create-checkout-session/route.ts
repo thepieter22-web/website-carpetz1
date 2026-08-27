@@ -44,7 +44,6 @@ if (logoImage) {
   );
   logoUrl = logoBlob.url;
 }
-``
 
 }
 
