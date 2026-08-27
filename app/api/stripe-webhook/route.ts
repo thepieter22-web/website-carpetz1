@@ -17,9 +17,11 @@ export async function POST(request: Request) {
       const session = event.data.object;
 
       const paymentIntent =
-        await stripe.paymentIntents.retrieve(
-          session.payment_intent
-        );
+  await stripe.paymentIntents.retrieve(
+    session.payment_intent
+  );
+
+console.log(JSON.stringify(paymentIntent.metadata, null, 2));
 
         console.log("PAYMENT INTENT METADATA:");
 console.log(paymentIntent.metadata);
