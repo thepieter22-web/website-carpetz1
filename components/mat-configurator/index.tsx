@@ -106,6 +106,18 @@ export function MatConfigurator() {
     [updateConfig]
   )
 
+  const handleLogoInfoFound = useCallback(
+  (info: {
+    width: number
+    height: number
+    format: string
+    colors: number
+  }) => {
+    setLogoInfo(info)
+  },
+  []
+)
+
   const handleLogoUpload = useCallback(
     (file: File, dataUrl: string) => {
       setSuggestedColorCodes([])
@@ -124,7 +136,6 @@ export function MatConfigurator() {
     [config.logo, updateConfig]
   )
 
-  handleMatTypeChange
 
   const handleLogoUpdate = useCallback(
     (updates: Partial<MatConfig["logo"]>) => {
