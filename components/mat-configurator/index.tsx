@@ -113,6 +113,7 @@ export function MatConfigurator() {
     format: string
     colors: number
   }) => {
+    console.log("Logo info:", info)
     setLogoInfo(info)
   },
   []
