@@ -140,7 +140,7 @@ export function LogoUploader({
           const mergedDominantColors = mergeSimilarColors(dominantColors, 32);
 
           // 2) toon nu tot 5 echte kleuren i.p.v. max 3
-          const effectiveColors = mergedDominantColors.slice(0, 5);
+          const effectiveColors = mergedDominantColors.slice(0, 10);
 
           // 3) per kleur 1 beste mat-match
           const matchedCodes = getBestSuggestionPerColor(effectiveColors);
@@ -149,7 +149,7 @@ export function LogoUploader({
           const suggestionCount = Math.min(
             matchedCodes.length,
             effectiveColors.length,
-            5
+            10
           );
 
           onColorSuggestionsFound(matchedCodes.slice(0, suggestionCount));
