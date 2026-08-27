@@ -31,7 +31,10 @@ if (previewImage) {
 
 previewUrl = blob.url;
 
-console.log("PREVIEW URL:");
+console.log("PREVIEW IMAGE:");
+console.log(previewImage ? "AANWEZIG" : "LEEG");
+
+console.log("PREVIEW URL TO STRIPE:");
 console.log(previewUrl);
 ``
 
