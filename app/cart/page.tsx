@@ -93,20 +93,7 @@ useEffect(() => {
 <div className="min-w-0">
 
  
-      <p className="text-sm text-muted-foreground">Afmetingen</p>
-      <p className="font-medium">
-        {searchParams.width} × {searchParams.height} cm
-      </p>
-    </div>
-
-    <div>
-      <p className="text-sm text-muted-foreground">Aantal</p>
-      <p className="font-medium">
-        {searchParams.quantity}
-      </p>
-    </div>
-  </div>
-</div>
+      
                     
           
 
