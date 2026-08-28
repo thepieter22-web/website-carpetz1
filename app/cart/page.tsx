@@ -90,13 +90,13 @@ useEffect(() => {
           <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
 
            {/* Linkerkolom */}
-<div>
+<div className="min-w-0">
 
   {previewImage && (
     <img
       src={previewImage}
       alt="Logomat preview"
-      className="mb-6 max-w-full rounded-lg border"  />
+      className="mb-6 w-full max-w-full h-auto rounded-lg border"  />
 )}
  
 
