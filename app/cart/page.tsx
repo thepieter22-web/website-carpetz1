@@ -96,7 +96,7 @@ useEffect(() => {
     <img
       src={previewImage}
       alt="Logomat preview"
-      className="mb-6 w-full max-w-full h-auto rounded-lg border"  />
+      className="mb-6 max-h-[300px] w-full object-contain rounded-lg border"  />
 )}
  
 
