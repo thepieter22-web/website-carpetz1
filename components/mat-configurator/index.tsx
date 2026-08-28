@@ -335,8 +335,8 @@ export function MatConfigurator() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+            <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-lg bg-foreground flex items-center justify-center">
               <Layers className="w-5 h-5 text-background" />
@@ -347,14 +347,14 @@ export function MatConfigurator() {
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
-            <Button variant="ghost" size="sm" onClick={handleReset}>
+                    <div className="flex items-center gap-3 w-full sm:w-auto">
+            <Button variant="ghost" size="sm" onClick={handleReset} className="flex-1 sm:flex-none">
               <RotateCcw className="w-4 h-4 mr-2" />
               Opnieuw starten
             </Button>      
 <Button
   size="sm"
-  className="bg-[#C69C4D] hover:bg-[#B88D3C] text-white"
+  className="bg-[#C69C4D] hover:bg-[#B88D3C] text-white flex-1 sm:flex-none"
   onClick={() => {
   const canvas = document.getElementById(
     "carpetz-mat-preview-canvas"
@@ -403,7 +403,7 @@ if (config.logo.dataUrl) {
 
             <CardContent className="flex-1 overflow-hidden p-0">
               <Tabs value={activeTab} onValueChange={setActiveTab} className="h-full flex flex-col">
-                <TabsList className="w-full justify-start rounded-none border-b bg-transparent px-4"> <TabsTrigger value="logo" className="data-[state=active]:bg-muted rounded-b-none gap-1.5"> <ImageIcon className="w-4 h-4" /> Logo Upload </TabsTrigger> <TabsTrigger value="colors" className="data-[state=active]:bg-muted rounded-b-none gap-1.5"> <Palette className="w-4 h-4" /> Kleuren </TabsTrigger> <TabsTrigger value="mat" className="data-[state=active]:bg-muted rounded-b-none gap-1.5"> <Layers className="w-4 h-4" /> Logo Mat </TabsTrigger> </TabsList>
+                <TabsList className="w-full justify-start rounded-none border-b bg-transparent px-4 overflow-x-auto flex-nowrap"> <TabsTrigger value="logo" className="data-[state=active]:bg-muted rounded-b-none gap-1.5"> <ImageIcon className="w-4 h-4" /> Logo Upload </TabsTrigger> <TabsTrigger value="colors" className="data-[state=active]:bg-muted rounded-b-none gap-1.5"> <Palette className="w-4 h-4" /> Kleuren </TabsTrigger> <TabsTrigger value="mat" className="data-[state=active]:bg-muted rounded-b-none gap-1.5"> <Layers className="w-4 h-4" /> Logo Mat </TabsTrigger> </TabsList>
 
                 <ScrollArea className="flex-1">
                   <div className="px-4 py-4">
