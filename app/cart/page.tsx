@@ -87,7 +87,7 @@ useEffect(() => {
             </p>
           </div>
 
-          <div className="grid gap-8 lg:grid-cols-[1fr_380px] items-start">
+          <div className="grid items-start gap-8 lg:grid-cols-[1fr_380px]">
 
            {/* Linkerkolom */}
 <div className="min-w-0">
