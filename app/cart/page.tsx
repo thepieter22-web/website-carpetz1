@@ -92,44 +92,7 @@ useEffect(() => {
            {/* Linkerkolom */}
 <div className="min-w-0">
 
-  {previewImage && (
-    <img
-      src={previewImage}
-      alt="Logomat preview"
-      className="mb-6 max-h-[300px] w-full object-contain rounded-lg border"  />
-)}
- 
-
-   
-
-              <div className="rounded-xl border bg-card p-6 shadow-sm">
-  <h2 className="text-xl font-semibold mb-4">
-    Jouw logomat
-  </h2>
-
-  <div className="grid grid-cols-3 gap-4">
-    <div>
-      <p className="text-sm text-muted-foreground">Type</p>
-      <p className="font-medium">
-        {matNames[searchParams.type || ""] || searchParams.type}
-      </p>
-    </div>
-
-    <div>
-      <p className="text-sm text-muted-foreground">Afmetingen</p>
-      <p className="font-medium">
-        {searchParams.width} × {searchParams.height} cm
-      </p>
-    </div>
-
-    <div>
-      <p className="text-sm text-muted-foreground">Aantal</p>
-      <p className="font-medium">
-        {searchParams.quantity}
-      </p>
-    </div>
-  </div>
-</div>
+  
                     
           
 
@@ -313,6 +276,33 @@ useEffect(() => {
               <h2 className="text-xl font-semibold">
                 Bestelsamenvatting
               </h2>
+
+              {previewIm*ge && (
+  <img
+    src*{previewImage}
+    alt="Logomat pr*view"
+    className="*y-4 w-full rounded*t-semibold">
+    Jouw logomat
+  </h3>
+
+  <div className="space-y-2 text-sm">
+    <div className="flex justify-between">
+      <span className="text-muted-foreground">Type</span>
+      <span>
+        {matNames[searchParams.type || ""] || searchParams.type}
+      </span>
+    </div>
+
+    <div className="flex justify-between">
+      <span className="text-muted-foreground">
+        Afmetingen
+      </span>
+      <span>
+        {searchParams.width} × {searchParams.height} cm
+      </span>
+    </div>
+
+    <div className="flex justify
 
               <div className="mt-6 space-y-4">
 
