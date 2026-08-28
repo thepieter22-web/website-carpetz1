@@ -130,13 +130,7 @@ useEffect(() => {
     </div>
   </div>
 </div>
-                    <span className="text-muted-foreground">Aantal</span>
-                    <p className="font-medium">
-                      {searchParams.quantity}
-                    </p>
-                  </div>
-
-                </div>
+                    
               </div>
 
               <div className="mt-8 rounded-xl border bg-card p-8 shadow-sm">
