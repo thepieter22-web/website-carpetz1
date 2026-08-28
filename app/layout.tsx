@@ -3,19 +3,16 @@ import Script from "next/script"
 import type { Metadata, Viewport } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
-
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
 })
-
 const playfair = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-playfair',
   display: 'swap',
 })
-
 export const metadata: Metadata = {
   metadataBase: new URL('https://carpetz.example'),
   title: {
@@ -60,12 +57,10 @@ export const metadata: Metadata = {
     apple: '/apple-icon.png',
   },
 }
-
 export const viewport: Viewport = {
   colorScheme: 'light',
   themeColor: '#f7f4ee',
 }
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -75,17 +70,19 @@ export default function RootLayout({
     <html lang="nl" className={`light bg-background ${inter.variable} ${playfair.variable}`}>
       <body className="font-sans antialiased">
   {children}
-
-  <Script id="clarity" strategy="afterInteractive">
-  {`
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)}
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "y929gps4zk");
-  `}
-</Script>
-
+  <Script
+    id="clarity"
+    strategy="afterInteractive"
+    dangerouslySetInnerHTML={{
+      __html: `
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)}
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "y929gps4zk");
+      `,
+    }}
+  />
   {process.env.NODE_ENV === "production" && <Analytics />}
 </body>
     </html>
