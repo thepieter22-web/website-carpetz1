@@ -167,7 +167,7 @@ useEffect(() => {
   </button>
 </div>
 
-                <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div className="mt-6 flex flex-col gap-4">
 
                   {customerType === "zakelijk" && (
   <>
