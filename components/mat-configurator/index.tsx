@@ -16,7 +16,12 @@ import { MatCanvas } from "./mat-canvas"
 import { LogoUploader } from "./logo-uploader"
 import { PriceCalculator } from "./price-calculator"
 import { RenderPreview } from "./render-preview"
-import { STANDARD_SIZES, type MatConfig, MAT_COLORS } from "@/lib/mat-config"
+import {
+  STANDARD_SIZES,
+  type MatConfig,
+  MAT_COLORS,
+  calculatePrice,
+} from "@/lib/mat-config"
 import { Layers, Palette, Image as ImageIcon, ShoppingCart, RotateCcw, Plus, Minus, ArrowRight } from "lucide-react"
 
 const DEFAULT_CONFIG: MatConfig = {
@@ -371,17 +376,20 @@ if (config.logo.dataUrl) {
   sessionStorage.setItem("matLogo", config.logo.dataUrl);
 }
 
-  const params = new URLSearchParams({
-    type: config.indoorSubtype,
-    width: String(config.size.width),
-    height: String(config.size.height),
-    quantity: String(config.quantity),
-    total: `€${(
-  calculatePrice(config).total +
+   const pricing = calculatePrice(config);
+
+const finalTotal =
+  pricing.total +
   15 +
-  (15 * 0.21)
-).toFixed(2)}`,
-  });
+  (15 * 0.21);
+
+const params = new URLSearchParams({
+  type: config.indoorSubtype,
+  width: String(config.size.width),
+  height: String(config.size.height),
+  quantity: String(config.quantity),
+  total: `€${finalTotal.toFixed(2)}`,
+});
 
   window.location.href = `/cart?${params.toString()}`;
 }}
