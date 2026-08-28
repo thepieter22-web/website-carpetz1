@@ -93,10 +93,8 @@ useEffect(() => {
 <div className="min-w-0">
 
   
-                    
-          
 
-              <div className="mt-8 rounded-xl border bg-card p-8 shadow-sm">
+              <div className="rounded-xl border bg-card p-8 shadow-sm">
                 <h2 className="text-2xl font-semibold">
                   Klantgegevens
                 </h2>
@@ -271,7 +269,7 @@ useEffect(() => {
             </div>
 
             {/* Rechterkolom */}
-            <div className="rounded-xl border bg-card p-8 shadow-sm h-fit sticky top-24">
+            <div className="rounded-xl border bg-card p-8 shadow-sm sticky top-24 self-start">
 
               <h2 className="text-xl font-semibold">
                 Bestelsamenvatting
