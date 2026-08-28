@@ -25,9 +25,12 @@ export default function CartPage({
 const shipping = 15;
 const vatRate = 0.21;
 
-const productExclVat = (grandTotal - shipping) / (1 + vatRate);
+const totalExclVat = grandTotal / (1 + vatRate);
 
-const vatAmount = grandTotal - shipping - productExclVat;
+const vatAmount = grandTotal - totalExclVat;
+
+const productExclVat = totalExclVat - shipping;
+
 
 
   const matNames: Record<string, string> = {
