@@ -271,9 +271,9 @@ useEffect(() => {
             {/* Rechterkolom */}
             <div className="rounded-xl border bg-card p-8 shadow-sm sticky top-24 self-start">
 
-              <h2 className="text-xl font-semibold">
-                Bestelsamenvatting
-              </h2>
+              <h2 className="text-xl font-semibold mb-4">
+  Bestelsamenvatting
+</h2>
 
               {previewImage && (
     <img
@@ -285,10 +285,10 @@ useEffect(() => {
 
    
 
-              <div className="rounded-xl border bg-card p-6 shadow-sm">
-  <h2 className="text-xl font-semibold mb-4">
-    Jouw logomat
-  </h2>
+              <div className="rounded-lg border p-4">
+ <h3 className="mb-2 text-base font-semibold">
+  Jouw logomat
+</h3>
 
   <div className="grid grid-cols-3 gap-4">
     <div>
