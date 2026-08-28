@@ -221,7 +221,7 @@ useEffect(() => {
   onChange={(e) => setPhone(e.target.value)}
 />
 
-                  <h3 className="mt-8 text-lg font-semibold">
+                  <h3 className="col-span-1 md:col-span-2 mt-8 text-lg font-semibold">
   {customerType === "zakelijk"
     ? "Factuuradres"
     : "Leveringsadres"}
