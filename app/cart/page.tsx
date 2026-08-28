@@ -93,8 +93,6 @@ useEffect(() => {
 <div className="min-w-0">
 
  
-      
-                    
           
 
               <div className="mt-8 rounded-xl border bg-card p-8 shadow-sm">
@@ -275,8 +273,9 @@ useEffect(() => {
             <div className="rounded-xl border bg-card p-8 shadow-sm h-fit sticky top-24">
 
               {previewImage && (
-  {previewImage}
-)}
+  <img
+    src={previewImage}
+    alt="Logomat
 
 <div className="mb-6 rounded-lg border p-4">
   <h3 className="mb-3 font-semibold">
