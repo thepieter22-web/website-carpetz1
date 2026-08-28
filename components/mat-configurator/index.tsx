@@ -376,9 +376,11 @@ if (config.logo.dataUrl) {
     width: String(config.size.width),
     height: String(config.size.height),
     quantity: String(config.quantity),
-    total: String(
-      document.body.innerText.match(/€[\d,.]+/)?.[0] || ""
-    ),
+    total: `€${(
+  calculatePrice(config).total +
+  15 +
+  (15 * 0.21)
+).toFixed(2)}`,
   });
 
   window.location.href = `/cart?${params.toString()}`;
