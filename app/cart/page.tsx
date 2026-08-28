@@ -102,31 +102,34 @@ useEffect(() => {
 
    
 
-              <div className="rounded-xl border bg-card p-8 shadow-sm">
-                <h2 className="text-2xl font-semibold">
-                  Jouw logomat
-                </h2>
+              <div className="rounded-xl border bg-card p-6 shadow-sm">
+  <h2 className="text-xl font-semibold mb-4">
+    Jouw logomat
+  </h2>
 
-                <div className="mt-8 space-y-4">
+  <div className="grid grid-cols-3 gap-4">
+    <div>
+      <p className="text-sm text-muted-foreground">Type</p>
+      <p className="font-medium">
+        {matNames[searchParams.type || ""] || searchParams.type}
+      </p>
+    </div>
 
-                  <div>
-                    <span className="text-muted-foreground">Type</span>
-                    <p className="font-medium">
-                      {matNames[searchParams.type || ""] ||
-                        searchParams.type}
-                    </p>
-                  </div>
+    <div>
+      <p className="text-sm text-muted-foreground">Afmetingen</p>
+      <p className="font-medium">
+        {searchParams.width} × {searchParams.height} cm
+      </p>
+    </div>
 
-                  <div>
-                    <span className="text-muted-foreground">
-                      Afmetingen
-                    </span>
-                    <p className="font-medium">
-                      {searchParams.width} × {searchParams.height} cm
-                    </p>
-                  </div>
-
-                  <div>
+    <div>
+      <p className="text-sm text-muted-foreground">Aantal</p>
+      <p className="font-medium">
+        {searchParams.quantity}
+      </p>
+    </div>
+  </div>
+</div>
                     <span className="text-muted-foreground">Aantal</span>
                     <p className="font-medium">
                       {searchParams.quantity}
