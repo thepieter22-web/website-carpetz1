@@ -22,6 +22,10 @@ const finalTotal =
   shipping +
   shippingVat;
 
+  const totalVat =
+  pricing.vat +
+  shippingVat;
+
 
   // Find current discount tier
   const tier = PRICING.quantity.tiers.find(
@@ -108,7 +112,7 @@ const finalTotal =
           </div>
           <div className="flex justify-between text-sm">
             <span className="text-muted-foreground">BTW ({PRICING.vat * 100}%)</span>
-            <span className="font-medium">€{pricing.vat.toFixed(2)}</span>
+            <span className="font-medium">€{totalVat.toFixed(2)}</span>
           </div>
 
           <div className="flex justify-between text-sm">
