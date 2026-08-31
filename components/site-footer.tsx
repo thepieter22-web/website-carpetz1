@@ -77,46 +77,49 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-primary-foreground/10">
-       <div className="mx-auto max-w-7xl px-6 py-6 text-xs text-primary-foreground/60 lg:px-8">
-  <div className="flex flex-col items-center gap-3 text-center">
-    <p>
-      © {new Date().getFullYear()} Carpetz BV |
-      Ondernemingsnummer: BE XXXXXXXX |
-      BTW: BE XXXXXXXX
-    </p>
+  <div className="mx-auto max-w-7xl px-6 py-6 text-xs text-primary-foreground/60 lg:px-8">
+    <div className="flex flex-col items-center gap-3 text-center">
 
-    <div className="flex flex-wrap items-center justify-center gap-2">
-      <Link href="/rwaarden
-        Algemene voorwaarden
-      </Link>
+      <p>
+        © {new Date().getFullYear()} Carpetz BV |
+        Ondernemingsnummer: BE XXXXXXXX |
+        BTW: BE XXXXXXXX
+      </p>
 
-      <span>|</span>
+      <div className="flex flex-wrap items-center justify-center gap-2">
 
-      /privacybeleid
-        Privacybeleid
-      </Link>
+        /algemene-voorwaarden
+          Algemene voorwaarden
+        </Link>
 
-      <span>|</span>
+        <span>|</span>
 
-      /cookiebeleid
-        Cookiebeleid
-      </Link>
+        /privacybeleid
+          Privacybeleid
+        </Link>
 
-      <span>|</span>
+        <span>|</span>
 
-      <Linkurbeleid
-        Retourbeleid
-      </Link>
+        /cookiebeleid
+          Cookiebeleid
+        </Link>
 
-      <span>|</span>
+        <span>|</span>
 
-      <Linkact
-        Contact
-      </Link>
+        /retourbeleid
+          Retourbeleid
+        </Link>
+
+        <span>|</span>
+
+        /contact
+          Contact
+        </Link>
+
+      </div>
     </div>
   </div>
 </div>
-      </div>
     </footer>
   )
 }
