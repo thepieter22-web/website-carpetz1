@@ -12,6 +12,8 @@ const companyLinks = [
   { href: '/contact', label: 'Contact & offerte' },
 ]
 
+const legalLinks = [ { href: '/algemene-voorwaarden', label: 'Algemene voorwaarden' }, { href: '/privacybeleid', label: 'Privacybeleid' }, { href: '/retourbeleid', label: 'Retourbeleid' }, ]
+
 export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-primary text-primary-foreground">
