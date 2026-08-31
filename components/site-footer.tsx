@@ -32,7 +32,7 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-3 text-sm">
             {productLinks.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="text-primary-foreground/75 transition-colors hover:text-accent">
+                <Link href={l.href} className="text-primary-foreground/75 transition-colors hover:text-accent"
                   {l.label}
                 </Link>
               </li>
@@ -55,7 +55,7 @@ export function SiteFooter() {
 
         <div>
           <h2 className="text-sm font-semibold uppercase tracking-widest text-accent">Contact</h2>
-          <ul className="mt-4 space-y-3 text-sm text-/75">
+          <ul className="mt-4 space-y-3 text-sm text-primary-foreground/75">
             <li className="flex items-start gap-3">
               <MapPin className="mt-0.5 size-4 shrink-0 text-accent" />
               <span>Berkenlaan 1D, 9840 de Pinte, België</span>
