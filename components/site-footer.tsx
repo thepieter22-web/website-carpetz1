@@ -32,7 +32,7 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-3 text-sm">
             {productLinks.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="text-primary-foreground/75 transition-colors hover:text-accent"
+                <Link href={l.href} className="text-primary-foreground/75 transition-colors hover:text-accent">
                   {l.label}
                 </Link>
               </li>
@@ -45,7 +45,7 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-3 text-sm">
             {companyLinks.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="text-/75 transition-colors hover:text-accent">
+                <Link href={l.href} className="text-primary-foreground/75 transition-colors hover:text-accent">
                   {l.label}
                 </Link>
               </li>
@@ -77,49 +77,11 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-primary-foreground/10">
-  <div className="mx-auto max-w-7xl px-6 py-6 text-xs text-primary-foreground/60 lg:px-8">
-    <div className="flex flex-col items-center gap-3 text-center">
-
-      <p>
-        © {new Date().getFullYear()} Carpetz BV |
-        Ondernemingsnummer: BE XXXXXXXX |
-        BTW: BE XXXXXXXX
-      </p>
-
-      <div className="flex flex-wrap items-center justify-center gap-2">
-
-        /algemene-voorwaarden
-          Algemene voorwaarden
-        </Link>
-
-        <span>|</span>
-
-        /privacybeleid
-          Privacybeleid
-        </Link>
-
-        <span>|</span>
-
-        /cookiebeleid
-          Cookiebeleid
-        </Link>
-
-        <span>|</span>
-
-        /retourbeleid
-          Retourbeleid
-        </Link>
-
-        <span>|</span>
-
-        /contact
-          Contact
-        </Link>
-
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-6 text-xs text-primary-foreground/60 sm:flex-row lg:px-8">
+          <p>&copy; {new Date().getFullYear()} Carpetz. Alle rechten voorbehouden.</p>
+          <p>Logomatten &middot; Geprint tapijt &middot; Event tapijt &middot; Rode lopers op maat</p>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
     </footer>
   )
 }
