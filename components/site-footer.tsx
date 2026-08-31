@@ -78,12 +78,7 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="border-t border-primary-foreground/10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-6 text-xs text-primary-foreground/60 sm:flex-row lg:px-8">
-          <p>&copy; {new Date().getFullYear()} Carpetz. Alle rechten voorbehouden.</p>
-          <p>Logomatten &middot; Geprint tapijt &middot; Event tapijt &middot; Rode lopers op maat</p>
-        </div>
-      </div>
+      <div className="border-t border-primary-foreground/10"> <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-6 text-xs text-primary-foreground/60 sm:flex-row lg:px-8"> <p>&copy; {new Date().getFullYear()} Carpetz. Alle rechten voorbehouden.</p> <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2"> {legalLinks.map((l) => ( <Link key={l.href} href={l.href} className="transition-colors hover:text-accent"> {l.label} </Link> ))} </div> </div> </div>
     </footer>
   )
 }
