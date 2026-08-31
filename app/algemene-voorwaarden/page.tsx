@@ -1,1 +1,1 @@
-
+import { SiteHeader } from "@/components/site-header"; import { SiteFooter } from "@/components/site-footer"; export const metadata = { title: "Algemene voorwaarden", }; export default function AlgemeneVoorwaardenPage() { return ( <> <SiteHeader /> <main className="mx-auto max-w-3xl px-6 py-16"> <h1 className="font-serif text-4xl font-semibold mb-8">Algemene voorwaarden</h1> <div className="prose prose-neutral max-w-none"> {/* Plak hier jouw bestaande tekst voor algemene voorwaarden */} </div> </main> <SiteFooter /> </> ); }
