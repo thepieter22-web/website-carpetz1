@@ -426,7 +426,7 @@ function createPrintedLogoCanvas(
         overlayCtx.drawImage(mask, 0, 0);
 
         ctx.save();
-        ctx.globalAlpha = 0.14;
+        ctx.globalAlpha = 0.22;
         ctx.globalCompositeOperation = "multiply";
         ctx.drawImage(overlay, 0, 0);
         ctx.restore();
@@ -451,7 +451,7 @@ function createPrintedLogoCanvas(
         overlayCtx.drawImage(mask, 0, 0);
 
         ctx.save();
-        ctx.globalAlpha = 0.08;
+        ctx.globalAlpha = 0.14;
         ctx.globalCompositeOperation = "multiply";
         ctx.drawImage(overlay, 0, 0);
         ctx.restore();
@@ -494,7 +494,7 @@ function createPrintedLogoCanvas(
   ctx.fillRect(0, 0, printed.width, printed.height);
   ctx.restore();
 
-  applyCanvasNoise(ctx, printed.width, printed.height, 4);
+  applyCanvasNoise(ctx, printed.width, printed.height, 6);
 
   ctx.globalAlpha = 1;
   ctx.globalCompositeOperation = "source-over";
@@ -728,8 +728,8 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
     } = layout;
 
     const baseColor = muteHex(selectedMatColor);
-    const topColor = lightenHex(baseColor, 0.06);
-    const bottomColor = darkenHex(baseColor, 0.1);
+    const topColor = lightenHex(baseColor, 0.10);
+    const bottomColor = darkenHex(baseColor, 0.16);
 
     if (!isFramePlacement) {
       ctx.save();
@@ -898,7 +898,7 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
     if (textures.base) {
       const pattern = createScaledPattern(ctx, textures.base, 0.35);
       if (pattern) {
-        ctx.globalAlpha = 0.11;
+        ctx.globalAlpha = 0.18;
         ctx.fillStyle = pattern;
         ctx.fillRect(innerX, innerY, innerW, innerH);
         ctx.globalAlpha = 1;
@@ -908,7 +908,7 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
     if (textures.soft) {
       const pattern = createScaledPattern(ctx, textures.soft, 0.42);
       if (pattern) {
-        ctx.globalAlpha = 0.07;
+        ctx.globalAlpha = 0.12;
         ctx.fillStyle = pattern;
         ctx.fillRect(innerX, innerY, innerW, innerH);
         ctx.globalAlpha = 1;
@@ -918,7 +918,7 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
     if (textures.noise) {
       const pattern = createScaledPattern(ctx, textures.noise, 0.18);
       if (pattern) {
-        ctx.globalAlpha = 0.025;
+        ctx.globalAlpha = 0.04;
         ctx.fillStyle = pattern;
         ctx.fillRect(innerX, innerY, innerW, innerH);
         ctx.globalAlpha = 1;
