@@ -728,8 +728,8 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
     } = layout;
 
     const baseColor = muteHex(selectedMatColor);
-    const topColor = lightenHex(baseColor, 0.10);
-    const bottomColor = darkenHex(baseColor, 0.16);
+    const topColor = lightenHex(baseColor, 0.14);
+    const bottomColor = darkenHex(baseColor, 0.20);
 
     if (!isFramePlacement) {
       ctx.save();
@@ -788,7 +788,7 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
       if (textures.noise) {
         const metalNoise = createScaledPattern(ctx, textures.noise, 0.22);
         if (metalNoise) {
-          ctx.globalAlpha = 0.04;
+          ctx.globalAlpha = 0.03;
           ctx.fillStyle = metalNoise;
           ctx.fill();
           ctx.globalAlpha = 1;
@@ -908,7 +908,7 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
     if (textures.soft) {
       const pattern = createScaledPattern(ctx, textures.soft, 0.42);
       if (pattern) {
-        ctx.globalAlpha = 0.12;
+        ctx.globalAlpha = 0.15;
         ctx.fillStyle = pattern;
         ctx.fillRect(innerX, innerY, innerW, innerH);
         ctx.globalAlpha = 1;
