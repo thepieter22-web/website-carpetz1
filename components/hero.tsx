@@ -17,14 +17,14 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-primary/50" />
       </div>
 
-     <div className="relative mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-24">
+     <div className="relative mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-16">
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-accent">
             <Star className="size-3.5 fill-accent" />
             Branding tapijt voor bedrijven, retail & events
           </div>
 
-          <h1 className="mt-6 font-serif text-4xl font-semibold leading-[1.05] text-balance sm:text-5xl lg:text-7xl">
+          <h1 className="mt-6 font-serif text-4xl font-semibold leading-[1.05] text-balance sm:text-5xl lg:text-6xl">
             Logomatten, geprint tapijt &amp; event tapijt op maat
           </h1>
 
@@ -43,7 +43,7 @@ export function Hero() {
             </Cta>
           </div>
 
-          <dl className="mt-14 grid max-w-xl grid-cols-3 gap-6 border-t border-primary-foreground/15 pt-8">
+          <dl className="mt-18 grid max-w-xl grid-cols-3 gap-6 border-t border-primary-foreground/15 pt-6">
             <div>
               <dt className="text-3xl font-semibold text-accent">15+</dt>
               <dd className="mt-1 text-sm text-primary-foreground/70">jaar ervaring in tapijt op maat</dd>
