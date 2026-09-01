@@ -27,7 +27,7 @@ export function PageHero({ eyebrow, title, intro, image, imageAlt }: PageHeroPro
                <h1 className="mt-3 max-w-xl font-serif text-3xl font-semibold leading-tight text-balance sm:text-4xl lg:text-5xl">
           {title}
         </h1>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-primary-foreground/80 text-pretty">
+                <p className="mt-4 max-w-md text-base leading-relaxed text-primary-foreground/80 text-pretty">
           {intro}
         </p>
       </div>
