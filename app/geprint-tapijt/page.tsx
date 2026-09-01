@@ -1,3 +1,4 @@
+import { PrintedCarpetSimulator } from '@/components/printed-carpet-simulator'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { CheckCircle2, Printer, Layers, Maximize, Image as ImageIcon } from 'lucide-react'
