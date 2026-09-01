@@ -62,6 +62,70 @@ export default function HomePage() {
       <main>
         <Hero />
 
+        <section className="border-t border-border bg-background">
+  <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+
+    <div className="text-center">
+      <p className="text-sm font-semibold uppercase tracking-[0.25em] text-accent">
+        Waar ben je naar op zoek?
+      </p>
+
+      <h2 className="mt-4 font-serif text-3xl font-semibold">
+        Kies jouw oplossing
+      </h2>
+
+      <p className="mt-4 text-muted-foreground">
+        Ontdek onze populairste oplossingen voor branding op de vloer.
+      </p>
+    </div>
+
+    <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+      <Link
+        href="/logomat"
+        className="rounded-sm border border-border bg-card p-8 transition
+        <p className="mt-4 text-sm text-muted-foreground">
+          Voor winkels, kantoren, hotels en inkomhallen.
+        </p>
+
+        <span className="mt-6 inline-block font-medium text-accent">
+          Ontdek logomatten →
+        </span>
+      </Link>
+
+      /geprint-tapijt
+        <h3 className="font-serif text-2xl font-semibold">
+          Geprint tapijt
+        </h3>
+
+        <p className="mt-4 text-sm text-muted-foreground">
+          Perfect voor showrooms, retail en beursstanden.
+        </p>
+
+        <span className="mt-6 inline-block font-medium text-accent">
+          Ontdek geprint tapijt →
+        </span>
+      </Link>
+
+      /event-tapijt
+        <h3 className="font-serif text-2xl font-semibold">
+          Event tapijt
+        </h3>
+
+        <p className="mt-4 text-sm text-muted-foreground">
+          Rode lopers en event tapijt voor beurzen en evenementen.
+        </p>
+
+        <span className="mt-6 inline-block font-medium text-accent">
+          Ontdek event tapijt →
+        </span>
+      </Link>
+
+    </div>
+
+  </div>
+</section>
+
         
         {/* Logomatten op maat */}
         <section id="logomatten" className="border-t border-border bg-secondary/40">
