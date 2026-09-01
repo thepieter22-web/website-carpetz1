@@ -22,12 +22,12 @@ export function PageHero({ eyebrow, title, intro, image, imageAlt }: PageHeroPro
         />
         <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/85 to-primary/40" />
       </div>
-      <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
+           <div className="relative mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-16">
         <p className="text-sm font-semibold uppercase tracking-[0.25em] text-accent">{eyebrow}</p>
-        <h1 className="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-tight text-balance sm:text-5xl lg:text-6xl">
+        <h1 className="mt-3 max-w-3xl font-serif text-3xl font-semibold leading-tight text-balance sm:text-4xl lg:text-5xl">
           {title}
         </h1>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/80 text-pretty">
+        <p className="mt-4 max-w-2xl text-base leading-relaxed text-primary-foreground/80 text-pretty">
           {intro}
         </p>
       </div>
