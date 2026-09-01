@@ -8,7 +8,7 @@ export function Hero() {
       <div className="absolute inset-0">
         <Image
           src="/images/hero-event-carpet.png"
-          alt="Rode loper op maat bij een premium event met brass afzetpalen"
+          alt=""
           fill
           priority
           sizes="100vw"
