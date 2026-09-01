@@ -59,6 +59,8 @@ export default function GeprintTapijtPage() {
           </p>
         </section>
 
+        <PrintedCarpetSimulator />
+
         <section className="border-t border-border bg-secondary/40">
           <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
             <h2 className="font-serif text-3xl font-semibold leading-tight text-balance">Waarom geprint tapijt?</h2>
