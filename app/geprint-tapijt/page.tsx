@@ -40,22 +40,14 @@ export default function GeprintTapijtPage() {
           imageAlt="Geprint vloertapijt met kleurrijk patroon"
         />
 
-        <section className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
+               <section className="mx-auto max-w-3xl px-6 pt-16 pb-8 lg:px-8">
           <h2 className="font-serif text-3xl font-semibold leading-tight text-balance">
             Van neutrale vloer naar krachtig branding tapijt
           </h2>
           <p className="mt-5 text-base leading-relaxed text-muted-foreground text-pretty">
-            Met moderne printtechnieken kunnen we tapijt bedrukken met vrijwel elk visueel element:
-            een fotografisch beeld, een grafisch patroon, kleurvlakken in je huisstijl of je volledige
-            campagne. Zo transformeer je een gewone vloer tot een meeslepend merkverhaal. Ons geprint
-            vloertapijt is naadloos te leggen over grote oppervlakken en beschikbaar in verschillende
-            kwaliteiten &mdash; van licht en tijdelijk tot slijtvast en permanent.
-          </p>
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty">
-            Of je nu een pop-upstore inricht, een beursstand bekleedt of je showroom een nieuwe look
-            geeft: geprint tapijt op maat zorgt voor een consistente, professionele uitstraling. Ons
-            team denkt mee over kleur, resolutie en materiaal, en levert je drukklaar advies zodat het
-            eindresultaat exact aansluit bij je verwachtingen.
+            Met moderne printtechnieken bedrukken we tapijt met elk visueel element &mdash; van logo tot
+            volledige campagne &mdash; naadloos over grote oppervlakken, in verschillende kwaliteiten.
+            Bereken hieronder direct een prijsindicatie.
           </p>
         </section>
 
