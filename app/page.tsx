@@ -65,12 +65,17 @@ export default function HomePage() {
        <section className="py-12">
   <div className="mx-auto max-w-7xl px-6">
     <div className="grid gap-6 lg:grid-cols-3">
-      <div className="rounded-sm border p-8">
-        <h3 className="text-2xl font-semibold">Logomatten</h3>
-        <p className="mt-4">
-          Voor winkels, kantoren, hotels en inkomhallen.
-        </p>
-      </div>
+     <Link
+  href="/logomat"
+  className="rounded-sm border border-border bg-card p-8 transition-all hover:border-accent hover:shadow-lg"
+>
+  <h3 className="font-serif en, hotels en inkomhallen.
+  </p>
+
+  <p className="mt-6 font-medium text-accent">
+    Ontdek logomatten →
+  </p>
+</Link>
     </div>
   </div>
 </section>
