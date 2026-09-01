@@ -17,7 +17,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-primary/50" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-36">
+     <div className="relative mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-24">
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-accent">
             <Star className="size-3.5 fill-accent" />
