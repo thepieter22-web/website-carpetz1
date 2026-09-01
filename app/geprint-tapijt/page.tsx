@@ -32,7 +32,7 @@ export default function GeprintTapijtPage() {
     <>
       <SiteHeader />
       <main>
-        <PageHero
+                <PageHero
           eyebrow="Geprint tapijt"
           title="Geprint tapijt & geprint vloertapijt"
           intro="Geef een volledige ruimte in één keer je eigen gezicht. Met geprint tapijt op maat vertaal je je merk naar de vloer — scherp, kleurvast en naadloos."
@@ -40,18 +40,22 @@ export default function GeprintTapijtPage() {
           imageAlt="Geprint vloertapijt met kleurrijk patroon"
         />
 
-               <section className="mx-auto max-w-3xl px-6 pt-16 pb-8 lg:px-8">
-          <h2 className="font-serif text-3xl font-semibold leading-tight text-balance">
-            Van neutrale vloer naar krachtig branding tapijt
-          </h2>
-          <p className="mt-5 text-base leading-relaxed text-muted-foreground text-pretty">
-            Met moderne printtechnieken bedrukken we tapijt met elk visueel element &mdash; van logo tot
-            volledige campagne &mdash; naadloos over grote oppervlakken, in verschillende kwaliteiten.
-            Bereken hieronder direct een prijsindicatie.
-          </p>
+        <section className="relative px-6 lg:px-8">
+          <div className="relative z-10 mx-auto -mt-10 max-w-2xl rounded-sm border-l-4 border-accent bg-card px-8 py-7 shadow-xl lg:-mt-14 lg:px-10 lg:py-8">
+            <h2 className="font-serif text-2xl font-semibold leading-tight text-balance sm:text-3xl">
+              Van neutrale vloer naar krachtig branding tapijt
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty">
+              Met moderne printtechnieken bedrukken we tapijt met elk visueel element &mdash; van logo
+              tot volledige campagne &mdash; naadloos over grote oppervlakken, in verschillende
+              kwaliteiten. Bereken hieronder direct een prijsindicatie.
+            </p>
+          </div>
         </section>
 
-        <PrintedCarpetSimulator />
+        <div className="pt-10">
+          <PrintedCarpetSimulator />
+        </div>
 
         <section className="border-t border-border bg-secondary/40">
           <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
