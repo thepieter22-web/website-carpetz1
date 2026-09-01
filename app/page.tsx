@@ -79,47 +79,47 @@ export default function HomePage() {
       </p>
     </div>
 
-    <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+   <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 
-      <Link
-        href="/logomat"
-        className="rounded-sm border border-border bg-card p-8 transition-all hover:borderName="mt-4 text-sm text-muted-foreground">
-          Voor winkels, kantoren, hotels en inkomhallen.
-        </p>
+  <Link
+    href="/logomat"
+    className="rounded-sm border border-border bg-card p-  </h3>
 
-        <span className="mt-6 inline-block font-medium text-accent">
-          Ontdek logomatten →
-        </span>
-      </Link>
+    <p className="mt-4 text-sm text-muted-foreground">
+      Voor winkels, kantoren, hotels en inkomhallen.
+    </p>
 
-      <Link
-        href="/geprint-tapijt"
-        className="rounded-sm border border     Geprint tapijt
-        </h3>
+    <span className="mt-6 inline-block font-medium text-accent">
+      Ontdek logomatten →
+    </span>
+  </Link>
 
-        <p className="mt-4 text-sm text-muted-foreground">
-          Perfect voor showrooms, retail en beursstanden.
-        </p>
+  <Link
+    href="/geprint-tapijt"
+    className="rounded-sm border border-border bg-t tapijt
+    </h3>
 
-        <span className="mt-6 inline-block font-medium text-accent">
-          Ontdek geprint tapijt →
-        </span>
-      </Link>
+    <p className="mt-4 text-sm text-muted-foreground">
+      Perfect voor showrooms, retail en beursstanden.
+    </p>
 
-      <Link
-        href="/event-tapijt"
-        className="rounded-sm border border-border bg-card p-        </h3>
+    <span className="mt-6 inline-block font-medium text-accent">
+      Ontdek geprint tapijt →
+    </span>
+  </Link>
 
-        <p className="mt-4 text-sm text-muted-foreground">
-          Rode lopers en event tapijt voor beurzen en evenementen.
-        </p>
+  <Link
+    href="/event-tapijt"
+    className="rounded-sm border border-border bg-card p-8 transition-all hoversName="mt-4 text-sm text-muted-foreground">
+      Rode lopers en event tapijt voor beurzen en evenementen.
+    </p>
 
-        <span className="mt-6 inline-block font-medium text-accent">
-          Ontdek event tapijt →
-        </span>
-      </Link>
+    <span className="mt-6 inline-block font-medium text-accent">
+      Ontdek event tapijt →
+    </span>
+  </Link>
 
-    </div>
+</div>
 
   </div>
 </section>
