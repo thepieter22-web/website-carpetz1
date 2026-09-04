@@ -40,16 +40,18 @@ export default function GeprintTapijtPage() {
           imageAlt="Geprint vloertapijt met kleurrijk patroon"
         />
 
-        <section className="relative px-6 lg:px-8">
-                    <div className="relative z-10 ml-auto -mt-24 max-w-2xl rounded-sm border-l-4 border-accent bg-card px-8 py-7 shadow-xl lg:-mt-28 lg:px-10 lg:py-8">
-            <h2 className="font-serif text-2xl font-semibold leading-tight text-balance sm:text-3xl">
-              Van neutrale vloer naar krachtig branding tapijt
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty">
-              Met moderne printtechnieken bedrukken we tapijt met elk visueel element &mdash; van logo
-              tot volledige campagne &mdash; naadloos over grote oppervlakken, in verschillende
-              kwaliteiten. Bereken hieronder direct een prijsindicatie.
-            </p>
+                <section className="relative px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <div className="relative z-10 ml-auto -mt-24 max-w-2xl rounded-sm border-l-4 border-accent bg-card px-8 py-7 shadow-xl lg:-mt-28 lg:px-10 lg:py-8">
+              <h2 className="font-serif text-2xl font-semibold leading-tight text-balance sm:text-3xl">
+                Van neutrale vloer naar krachtig branding tapijt
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty">
+                Met moderne printtechnieken bedrukken we tapijt met elk visueel element &mdash; van
+                logo tot volledige campagne &mdash; naadloos over grote oppervlakken, in verschillende
+                kwaliteiten. Bereken hieronder direct een prijsindicatie.
+              </p>
+            </div>
           </div>
         </section>
 
