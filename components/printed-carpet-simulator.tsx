@@ -13,11 +13,13 @@ const QUALITIES: { id: Quality; label: string; pricePerM2: number; description: 
 ];
 
 const PRESET_WIDTHS = [1, 2];
+const PX_PER_METER = 120;
+const MAX_HEIGHT = 360;
+const MIN_HEIGHT = 60;
 
 export function PrintedCarpetSimulator() {
   const [quality, setQuality] = useState<Quality>("velvet");
   const [width, setWidth] = useState<number>(1);
-  const [isCustomWidth, setIsCustomWidth] = useState(false);
   const [length, setLength] = useState<number>(2);
   const [pattern, setPattern] = useState<string | null>(null);
   const [showContactModal, setShowContactModal] = useState(false);
@@ -28,18 +30,6 @@ export function PrintedCarpetSimulator() {
     return width * length * selectedQuality.pricePerM2;
   }, [width, length, selectedQuality]);
 
-  const handleCustomWidthChange = (value: string) => {
-    const parsed = parseFloat(value.replace(",", "."));
-    if (isNaN(parsed)) return;
-
-    if (parsed > 2) {
-      setShowContactModal(true);
-      return;
-    }
-
-    setWidth(parsed);
-  };
-
   const handlePatternUpload = (file: File) => {
     const reader = new FileReader();
     reader.onload = () => {
@@ -48,31 +38,8 @@ export function PrintedCarpetSimulator() {
     reader.readAsDataURL(file);
   };
 
-  const MAX_BOX = 360;
-  const MIN_BOX = 60;
-  const VISUAL_RATIO_LIMIT = 2.5;
-
-  const { boxWidth, boxHeight } = useMemo(() => {
-    if (!width || !length) return { boxWidth: MAX_BOX, boxHeight: MAX_BOX };
-
-    let visualWidth = width;
-    let visualLength = length;
-    const ratio = Math.max(visualWidth, visualLength) / Math.min(visualWidth, visualLength);
-
-    if (ratio > VISUAL_RATIO_LIMIT) {
-      if (visualWidth < visualLength) {
-        visualWidth = visualLength / VISUAL_RATIO_LIMIT;
-      } else {
-        visualLength = visualWidth / VISUAL_RATIO_LIMIT;
-      }
-    }
-
-    const scale = Math.min(MAX_BOX / visualWidth, MAX_BOX / visualLength);
-    return {
-      boxWidth: Math.max(MIN_BOX, visualWidth * scale),
-      boxHeight: Math.max(MIN_BOX, visualLength * scale),
-    };
-  }, [width, length]);
+  const boxWidth = Math.max(MIN_HEIGHT, width * PX_PER_METER);
+  const boxHeight = Math.min(MAX_HEIGHT, Math.max(MIN_HEIGHT, length * PX_PER_METER));
 
   return (
     <section className="border-t border-border bg-secondary/40">
@@ -87,8 +54,8 @@ export function PrintedCarpetSimulator() {
         </p>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_380px]">
-          {/* Linkerkolom: configuratie */}
-          <div className="min-w-0 space-y-8">
+          {/* Configuratie */}
+          <div className="order-2 min-w-0 space-y-8 lg:order-1">
             {/* Kwaliteit */}
             <div>
               <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">Kwaliteit</h3>
@@ -120,12 +87,9 @@ export function PrintedCarpetSimulator() {
                   <button
                     key={w}
                     type="button"
-                    onClick={() => {
-                      setIsCustomWidth(false);
-                      setWidth(w);
-                    }}
+                    onClick={() => setWidth(w)}
                     className={`rounded-sm border px-5 py-3 text-sm font-medium transition-all ${
-                      !isCustomWidth && width === w
+                      width === w
                         ? "border-accent bg-accent/10"
                         : "border-border hover:border-accent/50"
                     }`}
@@ -135,28 +99,12 @@ export function PrintedCarpetSimulator() {
                 ))}
                 <button
                   type="button"
-                  onClick={() => setIsCustomWidth(true)}
-                  className={`rounded-sm border px-5 py-3 text-sm font-medium transition-all ${
-                    isCustomWidth ? "border-accent bg-accent/10" : "border-border hover:border-accent/50"
-                  }`}
+                  onClick={() => setShowContactModal(true)}
+                  className="rounded-sm border border-border px-5 py-3 text-sm font-medium transition-all hover:border-accent/50"
                 >
                   Eigen keuze
                 </button>
               </div>
-
-              {isCustomWidth && (
-                <div className="mt-3">
-                  <input
-                    type="number"
-                    step={0.1}
-                    min={0.1}
-                    max={2}
-                    placeholder="Breedte in meter (max. 2m)"
-                    className="w-48 rounded-sm border border-border p-3 text-sm"
-                    onChange={(e) => handleCustomWidthChange(e.target.value)}
-                  />
-                </div>
-              )}
             </div>
 
             {/* Lengte */}
@@ -209,24 +157,8 @@ export function PrintedCarpetSimulator() {
             </div>
           </div>
 
-          {/* Rechterkolom: preview + prijs */}
-          <div className="space-y-6 lg:sticky lg:top-24 lg:self-start">
-            <div
-              className="flex items-center justify-center rounded-sm border border-border bg-secondary/30"
-              style={{ height: MAX_BOX }}
-            >
-              <div
-                className="rounded-sm border border-border bg-muted overflow-hidden"
-                style={{
-                  width: boxWidth,
-                  height: boxHeight,
-                  backgroundImage: pattern ? `url(${pattern})` : undefined,
-                  backgroundRepeat: "repeat",
-                  backgroundSize: "80px 80px",
-                }}
-              />
-            </div>
-
+          {/* Preview + prijs */}
+          <div className="order-1 space-y-6 lg:order-2 lg:sticky lg:top-24 lg:self-start">
             <div className="rounded-sm border border-border bg-card p-6">
               <div className="flex justify-between text-sm text-muted-foreground">
                 <span>Kwaliteit</span>
@@ -251,6 +183,19 @@ export function PrintedCarpetSimulator() {
                 Neem contact op voor een offerte
               </Link>
             </div>
+
+            <div className="flex items-center justify-center rounded-sm border border-border bg-secondary/30 p-4">
+              <div
+                className="rounded-sm border border-border bg-muted overflow-hidden"
+                style={{
+                  width: boxWidth,
+                  height: boxHeight,
+                  backgroundImage: pattern ? `url(${pattern})` : undefined,
+                  backgroundRepeat: "repeat",
+                  backgroundSize: "80px 80px",
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -259,9 +204,9 @@ export function PrintedCarpetSimulator() {
       {showContactModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-6">
           <div className="max-w-sm rounded-sm bg-card p-8 text-center">
-            <h3 className="text-lg font-semibold">Afwijkende breedte</h3>
+            <h3 className="text-lg font-semibold">Eigen afmeting</h3>
             <p className="mt-3 text-sm text-muted-foreground">
-              Voor breedtes boven 2 meter werken we op maat. Neem contact met ons op zodat we dit voor je
+              Voor afwijkende breedtes werken we op maat. Neem contact met ons op zodat we dit voor je
               kunnen bekijken.
             </p>
             <div className="mt-6 flex flex-col gap-3">
