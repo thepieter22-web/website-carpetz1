@@ -27,29 +27,6 @@ const features = [
   { icon: Repeat, title: 'Herbruikbaar', text: 'Kwaliteitstapijt dat je meermaals kan inzetten.' },
 ]
 
-const audiences = [
-  {
-    icon: PartyPopper,
-    title: 'Verjaardagsfeesten',
-    text: 'Een rode loper met naam, leeftijd of thema erin verwerkt — voor een entree en fotomoment dat bijblijft.',
-  },
-  {
-    icon: Heart,
-    title: 'Trouw rode loper',
-    text: 'De intrede van het bruidspaar op een loper met jullie namen en trouwdatum, als blijvend aandenken na de bruiloft.',
-  },
-  {
-    icon: Gem,
-    title: 'Unieke event rode lopers',
-    text: 'Jubilea, gala’s of exclusieve feesten: een rode loper op maat qua kleur, tekst of logo, volledig naar jouw gelegenheid.',
-  },
-]
-
-const steps = [
-  { title: 'Kies afmeting & kleur', text: 'Bepaal de lengte, breedte en kleur die past bij jouw gelegenheid.' },
-  { title: 'Voeg tekst of logo toe', text: 'Namen, een datum, een boodschap of logo — helemaal naar wens.' },
-  { title: 'Wij leveren op tijd', text: 'Je rode loper wordt gemaakt en geleverd, klaar voor jouw grote dag.' },
-]
 
 const weddingDetails = [
   { icon: Type, title: 'Jullie namen', text: 'Of initialen' },
@@ -101,32 +78,7 @@ export default function EventTapijtPage() {
           </p>
         </section>
 
-        <section className="mx-auto max-w-7xl px-6 pb-16 lg:px-8">
-          <h2 className="font-serif text-3xl font-semibold leading-tight text-balance">
-            Voor jouw grote moment
-          </h2>
-          <div className="mt-10 grid gap-6 sm:grid-cols-3">
-            {audiences.map((a) => (
-              <div key={a.title} className="rounded-sm border border-border bg-card p-6">
-                <span className="inline-flex size-11 items-center justify-center rounded-sm bg-accent/15 text-accent">
-                  <a.icon className="size-5" />
-                </span>
-                <h3 className="mt-5 text-base font-semibold">{a.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{a.text}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-14 grid gap-8 sm:grid-cols-3">
-            {steps.map((s, i) => (
-              <div key={s.title}>
-                <span className="text-sm font-semibold text-accent">{i + 1}</span>
-                <h3 className="mt-2 text-base font-semibold">{s.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+      
 
         <CustomRunnerHighlight
           eyebrow="Trouwloper op maat"
