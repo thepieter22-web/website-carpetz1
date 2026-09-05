@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { CheckCircle2, Sparkles, Zap, Repeat, Palette, PartyPopper, Heart, Gem } from 'lucide-react'
+import { CheckCircle2, Sparkles, Zap, Repeat, Palette, PartyPopper, Heart, Gem, Type, CalendarHeart, ScrollText, Printer } from 'lucide-react'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { PageHero } from '@/components/page-hero'
 import { QuoteBand } from '@/components/quote-band'
-import { WeddingRunnerSection } from '@/components/wedding-runner-section'
+import { CustomRunnerHighlight } from '@/components/custom-runner-highlight'
 
 export const metadata: Metadata = {
   title: 'Event tapijt & rode loper op maat',
@@ -49,6 +49,25 @@ const steps = [
   { title: 'Kies afmeting & kleur', text: 'Bepaal de lengte, breedte en kleur die past bij jouw gelegenheid.' },
   { title: 'Voeg tekst of logo toe', text: 'Namen, een datum, een boodschap of logo — helemaal naar wens.' },
   { title: 'Wij leveren op tijd', text: 'Je rode loper wordt gemaakt en geleverd, klaar voor jouw grote dag.' },
+]
+
+const weddingDetails = [
+  { icon: Type, title: 'Jullie namen', text: 'Of initialen' },
+  { icon: CalendarHeart, title: 'Datum', text: 'Jullie speciale dag' },
+  { icon: Heart, title: 'Eigen tekst', text: 'Een quote, belofte of boodschap' },
+]
+
+const birthdayDetails = [
+  { icon: PartyPopper, title: 'Gelukkige verjaardag', text: 'Als feestelijke openingstekst' },
+  { icon: Type, title: 'De leeftijd', text: 'Groot en trots in beeld' },
+  { icon: Heart, title: 'Persoonlijke tekst', text: 'Een boodschap naar keuze' },
+]
+
+const runnerQualities = [
+  { icon: ScrollText, title: 'Hoogwaardig materiaal', text: 'Stevig, slijtvast en elegant' },
+  { icon: Printer, title: 'Haarscherpe print', text: 'Levendige kleuren en strakke details' },
+  { icon: Heart, title: 'Volledig op maat', text: 'Jullie ontwerp, jullie stijl' },
+  { icon: Sparkles, title: 'Perfecte afwerking', text: 'Voor een onvergetelijke entree' },
 ]
 
 export default function EventTapijtPage() {
@@ -109,7 +128,30 @@ export default function EventTapijtPage() {
           </div>
         </section>
 
-              <WeddingRunnerSection />
+        <CustomRunnerHighlight
+          eyebrow="Trouwloper op maat"
+          title="Maak jullie trouwloper uniek"
+          description="Laat jullie namen, datum of een persoonlijke boodschap printen op de loper die jullie dag compleet maakt."
+          image="/images/trouwloper.png"
+          imageAlt="Trouwloper op maat met namen en datum, versierd met bloemen en kaarsen"
+          details={weddingDetails}
+          taglineTitle="Jullie droom, onze print."
+          taglineSubtitle="Uniek zoals jullie liefde."
+          qualities={runnerQualities}
+        />
+
+        <CustomRunnerHighlight
+          eyebrow="Verjaardagsloper op maat"
+          title="Elk feest verdient een entree"
+          description="Van 'Gelukkige verjaardag' tot de leeftijd van de jarige of een persoonlijke tekst: de entreemat kan volledig op maat geprint worden, precies zoals jij het wil."
+          image="/images/verjaardagsloper.jpg"
+          imageAlt="Verjaardagsloper op maat met feestelijke tekst"
+          details={birthdayDetails}
+          freeformNote="Bovenstaande zijn slechts voorbeelden — alles is bespreekbaar en volledig aanpasbaar."
+          taglineTitle="Jouw feest, jouw stijl."
+          taglineSubtitle="Onvergetelijk vanaf de eerste stap."
+          qualities={runnerQualities}
+        />
 
         <section className="border-t border-border bg-secondary/40">
           <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
