@@ -87,9 +87,9 @@ export default function EventTapijtPage() {
           image="/images/trouwloper.png"
           imageAlt="Trouwloper op maat met namen en datum, versierd met bloemen en kaarsen"
           details={weddingDetails}
-          taglineTitle="Jullie droom, onze print."
+                   taglineTitle="Jullie droom, onze print."
           taglineSubtitle="Uniek zoals jullie liefde."
-          qualities={runnerQualities}
+          priceExample={{ length: 10, width: 1, pricePerM2: 17.5, productSlug: 'trouwloper' }}
         />
 
                 <CustomRunnerHighlight
