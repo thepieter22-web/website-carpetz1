@@ -17,7 +17,6 @@ type CustomRunnerHighlightProps = {
   taglineTitle: string;
   taglineSubtitle: string;
   freeformNote?: string;
-  qualities: Detail[];
 };
 
 export function CustomRunnerHighlight({
@@ -30,7 +29,6 @@ export function CustomRunnerHighlight({
   taglineTitle,
   taglineSubtitle,
   freeformNote,
-  qualities,
 }: CustomRunnerHighlightProps) {
   return (
     <section className="border-t border-border bg-secondary/40">
@@ -67,17 +65,6 @@ export function CustomRunnerHighlight({
         </div>
       </div>
 
-      <div className="mx-auto mt-px grid max-w-7xl grid-cols-2 gap-6 border-t border-border px-6 py-10 lg:grid-cols-4 lg:px-8">
-        {qualities.map((q) => (
-          <div key={q.title} className="flex items-start gap-3">
-            <q.icon className="mt-0.5 size-5 shrink-0 text-accent" />
-            <div>
-              <h4 className="text-sm font-semibold">{q.title}</h4>
-              <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">{q.text}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
+         </section>
   );
 }
