@@ -20,7 +20,7 @@ export function WeddingRunnerSection() {
       <div className="mx-auto grid max-w-7xl items-stretch gap-0 overflow-hidden rounded-sm border border-border lg:grid-cols-2">
         <div className="relative min-h-[420px]">
           <Image
-            src="/images/trouwloper.jpg"
+            src="/images/trouwloper.png"
             alt="Trouwloper op maat met namen en datum, versierd met bloemen en kaarsen"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
