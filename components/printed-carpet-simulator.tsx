@@ -79,6 +79,39 @@ export function PrintedCarpetSimulator() {
               </div>
             </div>
 
+                       {/* Patroon upload */}
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">
+                Patroon (optioneel)
+              </h3>
+              <div className="mt-4">
+                {pattern ? (
+                  <button
+                    type="button"
+                    onClick={() => setPattern(null)}
+                    className="flex items-center gap-2 rounded-sm border border-border px-4 py-3 text-sm hover:border-accent/50"
+                  >
+                    <X className="size-4" />
+                    Patroon verwijderen
+                  </button>
+                ) : (
+                  <label className="flex w-fit cursor-pointer items-center gap-2 rounded-sm border border-dashed border-border px-6 py-4 text-sm text-muted-foreground hover:border-accent/50">
+                    <Upload className="size-4" />
+                    Upload een wederkerend patroon
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) handlePatternUpload(file);
+                      }}
+                    />
+                  </label>
+                )}
+              </div>
+            </div>
+
             {/* Breedte */}
             <div>
               <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">Breedte</h3>
@@ -120,39 +153,6 @@ export function PrintedCarpetSimulator() {
                   className="w-48 rounded-sm border border-border p-3 text-sm"
                 />
                 <span className="ml-2 text-sm text-muted-foreground">meter</span>
-              </div>
-            </div>
-
-            {/* Patroon upload */}
-            <div>
-              <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">
-                Patroon (optioneel)
-              </h3>
-              <div className="mt-4">
-                {pattern ? (
-                  <button
-                    type="button"
-                    onClick={() => setPattern(null)}
-                    className="flex items-center gap-2 rounded-sm border border-border px-4 py-3 text-sm hover:border-accent/50"
-                  >
-                    <X className="size-4" />
-                    Patroon verwijderen
-                  </button>
-                ) : (
-                  <label className="flex w-fit cursor-pointer items-center gap-2 rounded-sm border border-dashed border-border px-6 py-4 text-sm text-muted-foreground hover:border-accent/50">
-                    <Upload className="size-4" />
-                    Upload een wederkerend patroon
-                    <input
-                      type="file"
-                      accept="image/*"
-                      className="hidden"
-                      onChange={(e) => {
-                        const file = e.target.files?.[0];
-                        if (file) handlePatternUpload(file);
-                      }}
-                    />
-                  </label>
-                )}
               </div>
             </div>
           </div>
