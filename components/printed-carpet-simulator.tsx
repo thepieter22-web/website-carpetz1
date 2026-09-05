@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Upload, X } from "lucide-react";
 
 type Quality = "velvet" | "globosoft" | "pxl";
+type Shape = "rectangle" | "circle";
 
 const QUALITIES: { id: Quality; label: string; pricePerM2: number; description: string }[] = [
   { id: "velvet", label: "Velvet", pricePerM2: 20, description: "Zacht en luxueus, ideaal voor showrooms." },
@@ -13,22 +14,29 @@ const QUALITIES: { id: Quality; label: string; pricePerM2: number; description: 
 ];
 
 const PRESET_WIDTHS = [1, 2];
+const PRESET_DIAMETERS = [1, 2];
 const PX_PER_METER = 120;
 const MAX_HEIGHT = 360;
 const MIN_HEIGHT = 60;
 
 export function PrintedCarpetSimulator() {
   const [quality, setQuality] = useState<Quality>("velvet");
+  const [shape, setShape] = useState<Shape>("rectangle");
   const [width, setWidth] = useState<number>(1);
   const [length, setLength] = useState<number>(2);
+  const [diameter, setDiameter] = useState<number>(1);
   const [pattern, setPattern] = useState<string | null>(null);
   const [showContactModal, setShowContactModal] = useState(false);
 
   const selectedQuality = QUALITIES.find((q) => q.id === quality)!;
 
   const price = useMemo(() => {
+    if (shape === "circle") {
+      const radius = diameter / 2;
+      return Math.PI * radius * radius * selectedQuality.pricePerM2;
+    }
     return width * length * selectedQuality.pricePerM2;
-  }, [width, length, selectedQuality]);
+  }, [shape, width, length, diameter, selectedQuality]);
 
   const handlePatternUpload = (file: File) => {
     const reader = new FileReader();
@@ -38,8 +46,15 @@ export function PrintedCarpetSimulator() {
     reader.readAsDataURL(file);
   };
 
-  const boxWidth = Math.max(MIN_HEIGHT, width * PX_PER_METER);
-  const boxHeight = Math.min(MAX_HEIGHT, Math.max(MIN_HEIGHT, length * PX_PER_METER));
+  const boxWidth =
+    shape === "circle"
+      ? Math.max(MIN_HEIGHT, Math.min(MAX_HEIGHT, diameter * PX_PER_METER))
+      : Math.max(MIN_HEIGHT, width * PX_PER_METER);
+
+  const boxHeight =
+    shape === "circle"
+      ? Math.max(MIN_HEIGHT, Math.min(MAX_HEIGHT, diameter * PX_PER_METER))
+      : Math.min(MAX_HEIGHT, Math.max(MIN_HEIGHT, length * PX_PER_METER));
 
   return (
     <section className="border-t border-border bg-secondary/40">
@@ -48,7 +63,7 @@ export function PrintedCarpetSimulator() {
           Bereken een prijsindicatie
         </h2>
         <p className="mt-3 max-w-2xl text-sm text-muted-foreground">
-          Kies een kwaliteit, geef je afmetingen op en upload eventueel een patroon om een idee te krijgen
+          Kies een kwaliteit, vorm en afmetingen en upload eventueel een patroon om een idee te krijgen
           van het resultaat. Dit is een prijsindicatie &mdash; voor een defintieve offerte nemen we
           graag persoonlijk contact met je op.
         </p>
@@ -79,7 +94,7 @@ export function PrintedCarpetSimulator() {
               </div>
             </div>
 
-                       {/* Patroon upload */}
+            {/* Patroon upload */}
             <div>
               <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">
                 Patroon (optioneel)
@@ -112,49 +127,110 @@ export function PrintedCarpetSimulator() {
               </div>
             </div>
 
-            {/* Breedte */}
+            {/* Vorm */}
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">Breedte</h3>
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">Vorm</h3>
               <div className="mt-4 flex flex-wrap gap-3">
-                {PRESET_WIDTHS.map((w) => (
-                  <button
-                    key={w}
-                    type="button"
-                    onClick={() => setWidth(w)}
-                    className={`rounded-sm border px-5 py-3 text-sm font-medium transition-all ${
-                      width === w
-                        ? "border-accent bg-accent/10"
-                        : "border-border hover:border-accent/50"
-                    }`}
-                  >
-                    {w}m
-                  </button>
-                ))}
                 <button
                   type="button"
-                  onClick={() => setShowContactModal(true)}
-                  className="rounded-sm border border-border px-5 py-3 text-sm font-medium transition-all hover:border-accent/50"
+                  onClick={() => setShape("rectangle")}
+                  className={`rounded-sm border px-5 py-3 text-sm font-medium transition-all ${
+                    shape === "rectangle"
+                      ? "border-accent bg-accent/10"
+                      : "border-border hover:border-accent/50"
+                  }`}
                 >
-                  Eigen keuze
+                  Rechthoek
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setShape("circle")}
+                  className={`rounded-sm border px-5 py-3 text-sm font-medium transition-all ${
+                    shape === "circle"
+                      ? "border-accent bg-accent/10"
+                      : "border-border hover:border-accent/50"
+                  }`}
+                >
+                  Cirkel
                 </button>
               </div>
             </div>
 
-            {/* Lengte */}
-            <div>
-              <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">Lengte</h3>
-              <div className="mt-4">
-                <input
-                  type="number"
-                  step={0.1}
-                  min={0.1}
-                  value={length}
-                  onChange={(e) => setLength(parseFloat(e.target.value) || 0)}
-                  className="w-48 rounded-sm border border-border p-3 text-sm"
-                />
-                <span className="ml-2 text-sm text-muted-foreground">meter</span>
+            {shape === "rectangle" ? (
+              <>
+                {/* Breedte */}
+                <div>
+                  <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">Breedte</h3>
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    {PRESET_WIDTHS.map((w) => (
+                      <button
+                        key={w}
+                        type="button"
+                        onClick={() => setWidth(w)}
+                        className={`rounded-sm border px-5 py-3 text-sm font-medium transition-all ${
+                          width === w
+                            ? "border-accent bg-accent/10"
+                            : "border-border hover:border-accent/50"
+                        }`}
+                      >
+                        {w}m
+                      </button>
+                    ))}
+                    <button
+                      type="button"
+                      onClick={() => setShowContactModal(true)}
+                      className="rounded-sm border border-border px-5 py-3 text-sm font-medium transition-all hover:border-accent/50"
+                    >
+                      Eigen keuze
+                    </button>
+                  </div>
+                </div>
+
+                {/* Lengte */}
+                <div>
+                  <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">Lengte</h3>
+                  <div className="mt-4">
+                    <input
+                      type="number"
+                      step={0.1}
+                      min={0.1}
+                      value={length}
+                      onChange={(e) => setLength(parseFloat(e.target.value) || 0)}
+                      className="w-48 rounded-sm border border-border p-3 text-sm"
+                    />
+                    <span className="ml-2 text-sm text-muted-foreground">meter</span>
+                  </div>
+                </div>
+              </>
+            ) : (
+              /* Diameter */
+              <div>
+                <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">Diameter</h3>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  {PRESET_DIAMETERS.map((d) => (
+                    <button
+                      key={d}
+                      type="button"
+                      onClick={() => setDiameter(d)}
+                      className={`rounded-sm border px-5 py-3 text-sm font-medium transition-all ${
+                        diameter === d
+                          ? "border-accent bg-accent/10"
+                          : "border-border hover:border-accent/50"
+                      }`}
+                    >
+                      {d}m
+                    </button>
+                  ))}
+                  <button
+                    type="button"
+                    onClick={() => setShowContactModal(true)}
+                    className="rounded-sm border border-border px-5 py-3 text-sm font-medium transition-all hover:border-accent/50"
+                  >
+                    Eigen keuze
+                  </button>
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           {/* Preview + prijs */}
@@ -167,7 +243,7 @@ export function PrintedCarpetSimulator() {
               <div className="mt-2 flex justify-between text-sm text-muted-foreground">
                 <span>Afmetingen</span>
                 <span className="font-medium text-foreground">
-                  {width}m &times; {length}m
+                  {shape === "circle" ? `\u00d8 ${diameter}m` : `${width}m \u00d7 ${length}m`}
                 </span>
               </div>
               <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
@@ -177,7 +253,7 @@ export function PrintedCarpetSimulator() {
               <p className="mt-1 text-xs text-muted-foreground">Excl. btw &mdash; richtprijs, geen definitieve offerte.</p>
 
               <Link
-                href={`/contact?product=geprint-tapijt&kwaliteit=${selectedQuality.label}&breedte=${width}&lengte=${length}&prijsindicatie=${price.toFixed(2)}`}
+                href={`/contact?product=geprint-tapijt&kwaliteit=${selectedQuality.label}&vorm=${shape}&breedte=${width}&lengte=${length}&diameter=${diameter}&prijsindicatie=${price.toFixed(2)}`}
                 className="mt-6 block w-full rounded-sm bg-accent px-4 py-3 text-center text-sm font-medium text-accent-foreground hover:opacity-90 transition-opacity"
               >
                 Neem contact op voor een offerte
@@ -186,10 +262,11 @@ export function PrintedCarpetSimulator() {
 
             <div className="flex items-center justify-center rounded-sm border border-border bg-secondary/30 p-4">
               <div
-                className="rounded-sm border border-border bg-muted overflow-hidden"
+                className="border border-border bg-muted overflow-hidden"
                 style={{
                   width: boxWidth,
                   height: boxHeight,
+                  borderRadius: shape === "circle" ? "9999px" : "0.125rem",
                   backgroundImage: pattern ? `url(${pattern})` : undefined,
                   backgroundRepeat: "repeat",
                   backgroundSize: "80px 80px",
@@ -200,13 +277,13 @@ export function PrintedCarpetSimulator() {
         </div>
       </div>
 
-      {/* Modal voor afwijkende breedte */}
+      {/* Modal voor afwijkende afmeting */}
       {showContactModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-6">
           <div className="max-w-sm rounded-sm bg-card p-8 text-center">
             <h3 className="text-lg font-semibold">Eigen afmeting</h3>
             <p className="mt-3 text-sm text-muted-foreground">
-              Voor afwijkende breedtes werken we op maat. Neem contact met ons op zodat we dit voor je
+              Voor afwijkende afmetingen werken we op maat. Neem contact met ons op zodat we dit voor je
               kunnen bekijken.
             </p>
             <div className="mt-6 flex flex-col gap-3">
