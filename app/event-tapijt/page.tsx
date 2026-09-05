@@ -140,17 +140,17 @@ export default function EventTapijtPage() {
           qualities={runnerQualities}
         />
 
-        <CustomRunnerHighlight
+                <CustomRunnerHighlight
           eyebrow="Verjaardagsloper op maat"
           title="Elk feest verdient een entree"
           description="Van 'Gelukkige verjaardag' tot de leeftijd van de jarige of een persoonlijke tekst: de entreemat kan volledig op maat geprint worden, precies zoals jij het wil."
-          image="/images/verjaardagsloper.png"
+          image="/images/verjaardagsloper.jpg"
           imageAlt="Verjaardagsloper op maat met feestelijke tekst"
           details={birthdayDetails}
           freeformNote="Bovenstaande zijn slechts voorbeelden — alles is bespreekbaar en volledig aanpasbaar."
           taglineTitle="Jouw feest, jouw stijl."
           taglineSubtitle="Onvergetelijk vanaf de eerste stap."
-          qualities={runnerQualities}
+          imagePosition="right"
         />
 
         <section className="border-t border-border bg-secondary/40">
