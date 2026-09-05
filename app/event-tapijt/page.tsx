@@ -5,6 +5,7 @@ import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { PageHero } from '@/components/page-hero'
 import { QuoteBand } from '@/components/quote-band'
+import { WeddingRunnerSection } from '@/components/wedding-runner-section'
 
 export const metadata: Metadata = {
   title: 'Event tapijt & rode loper op maat',
@@ -107,6 +108,8 @@ export default function EventTapijtPage() {
             ))}
           </div>
         </section>
+
+              <WeddingRunnerSection />
 
         <section className="border-t border-border bg-secondary/40">
           <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
