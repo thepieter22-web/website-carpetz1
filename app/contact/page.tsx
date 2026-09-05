@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import { Mail, Phone, MapPin, Clock } from 'lucide-react'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
@@ -88,8 +89,10 @@ export default function ContactPage() {
               Offerte aanvragen
             </h2>
             <p className="mt-2 text-sm text-muted-foreground">Vul het formulier in en we nemen snel contact op.</p>
-            <div className="mt-6">
-              <ContactForm />
+                        <div className="mt-6">
+              <Suspense fallback={null}>
+                <ContactForm />
+              </Suspense>
             </div>
           </div>
         </section>
