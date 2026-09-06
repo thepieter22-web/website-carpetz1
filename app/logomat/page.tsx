@@ -40,23 +40,22 @@ export default function LogomatPage() {
           imageAlt="Logomat op maat met ingeweven bedrijfslogo"
         />
 
-        <section className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
-          <h2 className="font-serif text-3xl font-semibold leading-tight text-balance">
-            Een logomat als verlengstuk van je merk
-          </h2>
-          <p className="mt-5 text-base leading-relaxed text-muted-foreground text-pretty">
-            De ingang is het eerste dat je klanten en gasten zien. Met logomatten op maat van Carpetz
-            maak je meteen een professionele indruk én houd je vuil en vocht buiten. Wij bedrukken
-            tapijt met een fotorealistische print van je logo, zodat kleuren scherp en herkenbaar
-            blijven &mdash; ook na jaren intensief gebruik. Zo combineer je functionaliteit met een
-            sterke merkbeleving.
-          </p>
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty">
-            Je bepaalt zelf het formaat, de vorm, de kleur van de rand en het type drager. Of je nu
-            één logomat voor je kantoor nodig hebt of tientallen exemplaren voor een filiaalketen: we
-            leveren consistent branding tapijt van dezelfde hoge kwaliteit.
-          </p>
-       </section>
+               <section className="relative px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <div className="relative z-10 ml-auto -mt-24 max-w-2xl rounded-sm border-l-4 border-accent bg-card px-8 py-7 shadow-xl lg:-mt-28 lg:px-10 lg:py-8">
+              <h2 className="font-serif text-2xl font-semibold leading-tight text-balance sm:text-3xl">
+                Een logomat als verlengstuk van je merk
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty">
+                Wij bedrukken tapijt met een fotorealistische print van je logo, zodat kleuren scherp
+                en herkenbaar blijven &mdash; ook na jaren intensief gebruik. Kies zelf formaat, vorm
+                en randkleur, van één logomat tot een volledige filiaalketen.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <div className="pt-10" />
 
 <section className="border-t border-border bg-white">
   <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
