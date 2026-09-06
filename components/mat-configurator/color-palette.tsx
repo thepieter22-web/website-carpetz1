@@ -104,7 +104,7 @@ export function ColorPalette({
       )}
 
       <div className="space-y-2">
-        <span className="text-sm font-medium text-foreground">All Colors</span>
+        <span className="text-sm font-medium text-foreground">Kies je achtergrondkleur</span>
 
         <div className="grid grid-cols-8 gap-2">
           {MAT_COLORS.map((color) => (
