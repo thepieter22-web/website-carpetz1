@@ -60,23 +60,22 @@ export default function EventTapijtPage() {
           imageAlt="Rode loper op maat bij een exclusief event"
         />
 
-        <section className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
-          <h2 className="font-serif text-3xl font-semibold leading-tight text-balance">
-            Tapijt voor events dat indruk maakt
-          </h2>
-          <p className="mt-5 text-base leading-relaxed text-muted-foreground text-pretty">
-            De loopweg naar je event is een van de eerste dingen die gasten ervaren. Met ons event
-            tapijt en rode lopers op maat zet je meteen de toon. We leveren tapijt voor events in elke
-            kleur en afmeting, met de mogelijkheid om je logo, naam of boodschap te integreren. Zo
-            wordt zelfs de entree een deel van je verhaal, of het nu gaat om een zakelijk event of een
-            persoonlijke mijlpaal.
-          </p>
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty">
-            Van een verjaardagsfeest en huwelijk tot filmpremière, awardshow of productlancering: onze
-            rode loper op maat past zich aan jouw gelegenheid aan. En omdat we ook tapijt voor beurzen
-            leveren, ben je bij Carpetz aan het juiste adres voor elk evenement, groot of klein.
-          </p>
+              <section className="relative px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <div className="relative z-10 ml-auto -mt-24 max-w-2xl rounded-sm border-l-4 border-accent bg-card px-8 py-7 shadow-xl lg:-mt-28 lg:px-10 lg:py-8">
+              <h2 className="font-serif text-2xl font-semibold leading-tight text-balance sm:text-3xl">
+                Tapijt voor events dat indruk maakt
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty">
+                Van een verjaardagsfeest en huwelijk tot filmpremière, gala of beursstand: onze rode
+                loper en event tapijt op maat passen zich aan jouw gelegenheid aan, met je eigen logo,
+                naam of boodschap erin verwerkt.
+              </p>
+            </div>
+          </div>
         </section>
+
+        <div className="pt-10" />
 
       
 
