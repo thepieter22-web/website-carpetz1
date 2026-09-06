@@ -40,6 +40,12 @@ const birthdayDetails = [
   { icon: Heart, title: 'Persoonlijke tekst', text: 'Een boodschap naar keuze' },
 ]
 
+const eventDetails = [
+  { icon: Gem, title: 'Elke gelegenheid', text: 'Communie, gala, jubileum of bedrijfsevent' },
+  { icon: Sparkles, title: 'Jouw thema of logo', text: 'Kleur, stijl en boodschap volledig naar wens' },
+  { icon: Heart, title: 'Persoonlijke tekst', text: 'Naam, datum of quote die het moment vastlegt' },
+]
+
 const runnerQualities = [
   { icon: ScrollText, title: 'Hoogwaardig materiaal', text: 'Stevig, slijtvast en elegant' },
   { icon: Printer, title: 'Haarscherpe print', text: 'Levendige kleuren en strakke details' },
@@ -101,8 +107,21 @@ export default function EventTapijtPage() {
           freeformNote="Bovenstaande zijn slechts voorbeelden — alles is bespreekbaar en volledig aanpasbaar."
                    taglineTitle="Jouw feest, jouw stijl."
           taglineSubtitle="Onvergetelijk vanaf de eerste stap."
-          imagePosition="right"
+                   imagePosition="right"
           priceExample={{ length: 5, width: 1, pricePerM2: 17.5, productSlug: 'verjaardagsloper' }}
+        />
+
+        <CustomRunnerHighlight
+          eyebrow="Feestloper op maat"
+          title="Maak jouw feest uniek"
+          description="Communie, gala, jubileum of bedrijfsevent: met een loper op maat geef je elk moment een unieke, persoonlijke touch vanaf de eerste stap."
+          image="/images/feestloper.png"
+          imageAlt="Feestloper op maat voor communie, gala of event"
+          details={eventDetails}
+          freeformNote="Vertel ons je gelegenheid en wij denken mee over het perfecte ontwerp."
+          taglineTitle="Elk feest, jouw stijl."
+          taglineSubtitle="Uniek vanaf de allereerste stap."
+          priceExample={{ length: 5, width: 1, pricePerM2: 17.5, productSlug: 'feestloper' }}
         />
 
         <section className="border-t border-border bg-secondary/40">
