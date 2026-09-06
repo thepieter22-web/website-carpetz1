@@ -239,10 +239,10 @@ await new Promise<void>((resolve) => {
           <Upload className="w-8 h-8 text-muted-foreground" />
           <div>
             <p className="text-sm font-medium text-foreground">
-              {currentFile ? "Replace logo" : "Upload your logo"}
+              {currentFile ? "Replace logo" : "Upload logo"}
             </p>
             <p className="text-xs text-muted-foreground">
-              PNG, JPG or WebP (transparent PNG recommended)
+              PNG, JPG of WebP (transparante PNG aanbevolen)
             </p>
           </div>
         </div>
@@ -264,8 +264,7 @@ await new Promise<void>((resolve) => {
       <div className="flex items-start gap-2 p-3 bg-amber-50 dark:bg-amber-950/30 rounded-md border border-amber-200 dark:border-amber-800">
         <Sparkles className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
         <p className="text-xs text-amber-800 dark:text-amber-200">
-          Upload a PNG with transparent background for best results. We&apos;ll
-          automatically suggest matching mat colors.
+          Upload een PNG met transparante achtergrond voor het beste resultaat.
         </p>
       </div>
     </div>
