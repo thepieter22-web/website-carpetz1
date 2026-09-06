@@ -21,6 +21,7 @@ import { Hero } from '@/components/hero'
 import { QuoteBand } from '@/components/quote-band'
 import { Cta } from '@/components/cta'
 import { LocalBusinessJsonLd } from '@/components/local-business-jsonld'
+import { HowItWorks } from '@/components/how-it-works'
 
 const usps = [
   {
@@ -60,7 +61,9 @@ export default function HomePage() {
       <LocalBusinessJsonLd />
       <SiteHeader />
       <main>
-        <Hero />
+                <Hero />
+
+        <HowItWorks />
 
        <section className="py-12">
   <div className="mx-auto max-w-7xl px-6">
