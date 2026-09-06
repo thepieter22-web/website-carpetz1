@@ -4,9 +4,6 @@ import { useState, useCallback, useEffect } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -15,14 +12,19 @@ import { ColorPalette } from "./color-palette"
 import { MatCanvas } from "./mat-canvas"
 import { LogoUploader } from "./logo-uploader"
 import { PriceCalculator } from "./price-calculator"
-import { RenderPreview } from "./render-preview"
+import { STANDARD_SIZES, type MatConfig, MAT_COLORS } from "@/lib/mat-config"
 import {
-  STANDARD_SIZES,
-  type MatConfig,
-  MAT_COLORS,
-  calculatePrice,
-} from "@/lib/mat-config"
-import { Layers, Palette, Image as ImageIcon, ShoppingCart, RotateCcw, Plus, Minus, ArrowRight } from "lucide-react"
+  Layers,
+  Image as ImageIcon,
+  ShoppingCart,
+  RotateCcw,
+  Plus,
+  Minus,
+  ArrowRight,
+  ChevronDown,
+  Check,
+  Palette as PaletteIcon,
+} from "lucide-react"
 
 const DEFAULT_CONFIG: MatConfig = {
   type: "indoor",
@@ -47,29 +49,24 @@ const DEFAULT_CONFIG: MatConfig = {
   logoColors: 1,
 }
 
-type IndoorSubtype =
-  | "normal"
-  | "eco"
-  | "budget"
-  | "luxe"
+type IndoorSubtype = "normal" | "eco" | "budget" | "luxe"
 type OutdoorSubtype = "outdoor1" | "outdoor2" | "outdoor3" | "outdoor4"
 type VisibleTypeBlock = "indoor" | "outdoor" | null
 
 export function MatConfigurator() {
   const [config, setConfig] = useState<MatConfig>(DEFAULT_CONFIG)
-  const [activeTab, setActiveTab] = useState("logo")
+  const [currentStep, setCurrentStep] = useState<number>(1)
+  const [maxStepReached, setMaxStepReached] = useState<number>(1)
   const [suggestedColorCodes, setSuggestedColorCodes] = useState<string[]>([])
   const [logoImage, setLogoImage] = useState<HTMLImageElement | null>(null)
   const [logoInfo, setLogoInfo] = useState({
-  width: 0,
-  height: 0,
-  format: "",
-  colors: 0,
-})
+    width: 0,
+    height: 0,
+    format: "",
+    colors: 0,
+  })
 
-  const [indoorSubtype, setIndoorSubtype] = useState<IndoorSubtype>(
-  DEFAULT_CONFIG.indoorSubtype
-)
+  const [indoorSubtype, setIndoorSubtype] = useState<IndoorSubtype>(DEFAULT_CONFIG.indoorSubtype)
   const [outdoorSubtype, setOutdoorSubtype] = useState<OutdoorSubtype>("outdoor1")
   const [visibleTypeBlock, setVisibleTypeBlock] = useState<VisibleTypeBlock>(null)
 
@@ -88,21 +85,21 @@ export function MatConfigurator() {
     setConfig((prev) => ({ ...prev, ...updates }))
   }, [])
 
+  const goToStep = useCallback((step: number) => {
+    setCurrentStep(step)
+    setMaxStepReached((prev) => Math.max(prev, step))
+  }, [])
+
   const handleMatTypeChange = useCallback(
     (type: "indoor" | "outdoor") => {
       updateConfig({ type })
       setVisibleTypeBlock(type)
 
       if (type === "indoor") {
-  setIndoorSubtype("normal")
-
-  updateConfig({
-    type,
-    indoorSubtype: "normal",
-  })
-
-  return
-}
+        setIndoorSubtype("normal")
+        updateConfig({ type, indoorSubtype: "normal" })
+        return
+      }
 
       if (type === "outdoor") {
         setOutdoorSubtype("outdoor1")
@@ -112,31 +109,21 @@ export function MatConfigurator() {
   )
 
   const handleLogoInfoFound = useCallback(
-  (info: {
-    width: number
-    height: number
-    format: string
-    colors: number
-  }) => {
-    setLogoInfo(info)
+    (info: { width: number; height: number; format: string; colors: number }) => {
+      setLogoInfo(info)
 
-    if (info.width < 1000 || info.height < 1000) {
-      alert(
-        "⚠️ Dit logo heeft een lage resolutie. Voor een optimaal drukresultaat raden wij minimaal 1000 × 1000 pixels aan."
-      )
-    }
+      if (info.width < 1000 || info.height < 1000) {
+        alert(
+          "⚠️ Dit logo heeft een lage resolutie. Voor een optimaal drukresultaat raden wij minimaal 1000 × 1000 pixels aan."
+        )
+      }
 
-    if (
-      info.format === "image/jpeg" ||
-      info.format === "image/jpg"
-    ) {
-      alert(
-        "⚠️ JPG-bestand gedetecteerd. Upload bij voorkeur een PNG met transparante achtergrond."
-      )
-    }
-  },
-  []
-)
+      if (info.format === "image/jpeg" || info.format === "image/jpg") {
+        alert("⚠️ JPG-bestand gedetecteerd. Upload bij voorkeur een PNG met transparante achtergrond.")
+      }
+    },
+    []
+  )
 
   const handleLogoUpload = useCallback(
     (file: File, dataUrl: string) => {
@@ -156,7 +143,6 @@ export function MatConfigurator() {
     [config.logo, updateConfig]
   )
 
-
   const handleLogoUpdate = useCallback(
     (updates: Partial<MatConfig["logo"]>) => {
       updateConfig({
@@ -173,6 +159,8 @@ export function MatConfigurator() {
     setIndoorSubtype("normal")
     setOutdoorSubtype("outdoor1")
     setVisibleTypeBlock(null)
+    setCurrentStep(1)
+    setMaxStepReached(1)
   }, [])
 
   const parseEuroAmount = (value: string): number | null => {
@@ -185,17 +173,13 @@ export function MatConfigurator() {
       const lastComma = cleaned.lastIndexOf(",")
 
       if (lastComma > lastDot) {
-        // Europese stijl: 1.234,56
         cleaned = cleaned.replace(/\./g, "").replace(",", ".")
       } else {
-        // Engelse stijl: 1,234.56
         cleaned = cleaned.replace(/,/g, "")
       }
     } else if (cleaned.includes(",")) {
-      // bv 41,68
       cleaned = cleaned.replace(",", ".")
     }
-    // alleen punt? dan niets doen, bv 41.68
 
     const parsed = Number(cleaned)
     return Number.isFinite(parsed) ? parsed : null
@@ -204,7 +188,6 @@ export function MatConfigurator() {
   const getDisplayedConfiguratorTotal = (): number | null => {
     const bodyText = document.body.innerText || ""
 
-    // Zoek eerst expliciet naar een "Total" blok met een eurobedrag erna
     const totalMatch = bodyText.match(/Total[\s\S]{0,80}?€\s*[\d.,]+/i)
     if (totalMatch) {
       const euroMatch = totalMatch[0].match(/€\s*[\d.,]+/)
@@ -213,7 +196,6 @@ export function MatConfigurator() {
       }
     }
 
-    // Fallback: neem laatste eurobedrag op pagina
     const allMatches = [...bodyText.matchAll(/€\s*[\d.,]+/g)]
     if (allMatches.length > 0) {
       const lastMatch = allMatches[allMatches.length - 1][0]
@@ -222,80 +204,6 @@ export function MatConfigurator() {
 
     return null
   }
-
-  const handleAddToCart = useCallback(async () => {
-    try {
-      const canvas = document.getElementById("carpetz-mat-preview-canvas") as HTMLCanvasElement | null
-
-      if (!canvas) {
-        alert("Mat preview canvas niet gevonden.")
-        return
-      }
-
-      // 1) Volledige mat preview als PNG
-      const previewDataUrl = canvas.toDataURL("image/png")
-
-      // 2) Upload preview naar WordPress
-      const uploadResponse = await fetch("https://www.carpetz.be/wp-json/carpetz/v1/upload-preview", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          image: previewDataUrl,
-        }),
-      })
-
-      const uploadResult = await uploadResponse.json()
-
-      if (!uploadResponse.ok || !uploadResult?.success || !uploadResult?.url) {
-        console.error("Upload preview mislukt:", uploadResult)
-        alert("Preview upload mislukt.")
-        return
-      }
-
-      const previewUrl = uploadResult.url
-
-      // 3) Totale prijs uit de zichtbare calculator halen
-      const totalPrice = getDisplayedConfiguratorTotal()
-
-      if (totalPrice === null) {
-        alert("Prijs kon niet uit de configurator gehaald worden.")
-        return
-      }
-
-      console.log("Totaalprijs uit configurator:", totalPrice)
-
-      // 4) Alles doorsturen naar WooCommerce
-      const params = new URLSearchParams({
-        "add-to-cart": "5950",
-        quantity: String(config.quantity),
-        preview_url: previewUrl,
-        custom_price: String(totalPrice),
-        mat_type: config.type,
-        placement: config.placement,
-        orientation: config.orientation,
-        size_label: `${config.size.width} x ${config.size.height} cm`,
-        width_cm: String(config.size.width),
-        height_cm: String(config.size.height),
-        rubber_border: config.rubberBorder ? "Ja" : "Nee",
-        logo_colors: String(config.logoColors),
-        color_code: config.colorCode,
-        is_custom_size: config.size.isCustom ? "Ja" : "Nee",
-      })
-
-      const url = `https://www.carpetz.be/winkelwagen/?${params.toString()}`
-
-      if (window.top) {
-        window.top.location.href = url
-      } else {
-        window.location.href = url
-      }
-    } catch (error) {
-      console.error("handleAddToCart error:", error)
-      alert("Er is iets misgegaan bij het toevoegen aan de winkelwagen.")
-    }
-  }, [config])
 
   const handleColorSuggestionsFound = useCallback((codes: string[]) => {
     setSuggestedColorCodes(codes)
@@ -306,41 +214,30 @@ export function MatConfigurator() {
   }, [])
 
   const selectedColor = MAT_COLORS.find((c) => c.code === config.colorCode)
-  
-  const hasGoodResolution =
-  logoInfo.width >= 1000 &&
-  logoInfo.height >= 1000
 
-  const isPng =
-  logoInfo.format === "image/png"
+  const hasGoodResolution = logoInfo.width >= 1000 && logoInfo.height >= 1000
+  const isPng = logoInfo.format === "image/png"
 
-  
   const indoorInfo = {
-  normal: {
-    title: "Classic",
-    description: "Betrouwbare logomat voor dagelijks gebruik.",
-  },
+    normal: { title: "Classic", description: "Betrouwbare logomat voor dagelijks gebruik." },
+    eco: { title: "Eco", description: "Gemaakt met gerecycleerde materialen." },
+    budget: { title: "Professional", description: "Onze populairste keuze voor bedrijven." },
+    luxe: { title: "Elite", description: "Premium afwerking en maximale levensduur." },
+  }
 
-  eco: {
-    title: "Eco",
-    description: "Gemaakt met gerecycleerde materialen.",
-  },
+  const step1Complete = Boolean(config.logo.file)
+  const step2Complete = maxStepReached > 2
 
-  budget: {
-    title: "Professional",
-    description: "Onze populairste keuze voor bedrijven.",
-  },
-
-  luxe: {
-    title: "Elite",
-    description: "Premium afwerking en maximale levensduur.",
-  },
-}
+  const steps = [
+    { number: 1, title: "Logo Upload", icon: ImageIcon },
+    { number: 2, title: "Kleuren", icon: PaletteIcon },
+    { number: 3, title: "Logo Mat", icon: Layers },
+  ]
 
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-            <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
+      <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-lg bg-foreground flex items-center justify-center">
@@ -348,56 +245,45 @@ export function MatConfigurator() {
             </div>
             <div>
               <h1 className="text-xl font-semibold text-foreground">Ontwerp jouw logomat op maat</h1>
-              <p className="text-sm text-muted-foreground">Upload jouw logo, kies kleur en afmetingen en bestel direct online.</p>
+              <p className="text-sm text-muted-foreground">
+                Upload jouw logo, kies kleur en afmetingen en bestel direct online.
+              </p>
             </div>
           </div>
 
-                    <div className="flex items-center gap-3 w-full sm:w-auto">
+          <div className="flex items-center gap-3 w-full sm:w-auto">
             <Button variant="ghost" size="sm" onClick={handleReset} className="flex-1 sm:flex-none">
               <RotateCcw className="w-4 h-4 mr-2" />
               Opnieuw starten
-            </Button>      
-<Button
-  size="sm"
-  className="bg-[#C69C4D] hover:bg-[#B88D3C] text-white flex-1 sm:flex-none"
-  onClick={() => {
-  const canvas = document.getElementById(
-    "carpetz-mat-preview-canvas"
-  ) as HTMLCanvasElement | null;
+            </Button>
+            <Button
+              size="sm"
+              className="bg-[#C69C4D] hover:bg-[#B88D3C] text-white flex-1 sm:flex-none"
+              onClick={() => {
+                const canvas = document.getElementById("carpetz-mat-preview-canvas") as HTMLCanvasElement | null
 
-  if (canvas) {
-  sessionStorage.setItem(
-    "matPreview",
-    canvas.toDataURL("image/png")
-  );
-}
+                if (canvas) {
+                  sessionStorage.setItem("matPreview", canvas.toDataURL("image/png"))
+                }
 
-if (config.logo.dataUrl) {
-  sessionStorage.setItem("matLogo", config.logo.dataUrl);
-}
+                if (config.logo.dataUrl) {
+                  sessionStorage.setItem("matLogo", config.logo.dataUrl)
+                }
 
-   const pricing = calculatePrice(config);
+                const params = new URLSearchParams({
+                  type: config.indoorSubtype,
+                  width: String(config.size.width),
+                  height: String(config.size.height),
+                  quantity: String(config.quantity),
+                  total: String(document.body.innerText.match(/€[\d,.]+/)?.[0] || ""),
+                })
 
-const finalTotal =
-  pricing.total +
-  15 +
-  (15 * 0.21);
-
-const params = new URLSearchParams({
-  type: config.indoorSubtype,
-  width: String(config.size.width),
-  height: String(config.size.height),
-  quantity: String(config.quantity),
-  total: `€${finalTotal.toFixed(2)}`,
-});
-
-  window.location.href = `/cart?${params.toString()}`;
-}}
-
->
-  Bestelling plaatsen
-  <ArrowRight className="w-4 h-4 ml-2" />
-</Button>
+                window.location.href = `/cart?${params.toString()}`
+              }}
+            >
+              Bestelling plaatsen
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
           </div>
         </div>
       </header>
@@ -405,498 +291,520 @@ const params = new URLSearchParams({
       {/* Main Content */}
       <main className="container mx-auto px-4 py-6">
         <div className="grid grid-cols-1 xl:grid-cols-[340px_1fr_380px] lg:grid-cols-[380px_1fr] gap-6">
-          {/* Configuration Panel */}
+          {/* Configuration Panel — verticale stappen-accordion */}
           <Card className="flex flex-col">
             <CardHeader className="pb-2">
               <CardTitle className="text-lg">Stel jouw logomat samen</CardTitle>
             </CardHeader>
 
-            <CardContent className="flex-1 overflow-hidden p-0">
-              <Tabs value={activeTab} onValueChange={setActiveTab} className="h-full flex flex-col">
-                <TabsList className="w-full justify-start rounded-none border-b bg-transparent px-4 overflow-x-auto flex-nowrap"> <TabsTrigger value="logo" className="data-[state=active]:bg-muted rounded-b-none gap-1.5"> <ImageIcon className="w-4 h-4" /> Logo Upload </TabsTrigger> <TabsTrigger value="colors" className="data-[state=active]:bg-muted rounded-b-none gap-1.5"> <Palette className="w-4 h-4" /> Kleuren </TabsTrigger> <TabsTrigger value="mat" className="data-[state=active]:bg-muted rounded-b-none gap-1.5"> <Layers className="w-4 h-4" /> Logo Mat </TabsTrigger> </TabsList>
+            <CardContent className="p-0">
+              {steps.map((step) => {
+                const isOpen = currentStep === step.number
+                const isComplete =
+                  step.number === 1 ? step1Complete : step.number === 2 ? step2Complete : false
 
-                <ScrollArea className="flex-1">
-                  <div className="px-4 py-4">
-                    <TabsContent value="mat" className="mt-0 space-y-6">
-                      {/* Mat Type */}
-                      <div className="space-y-3">
-                        <Label className="text-sm font-medium">Type logomat</Label>
-                        <div className="grid grid-cols-2 gap-2">
-                          <button
-                            type="button"
-                            onClick={() => handleMatTypeChange("indoor")}
-                            className={`p-3 rounded-lg border-2 transition-all text-left ${
-                              visibleTypeBlock === "indoor"
-                                ? "border-foreground bg-foreground/5"
-                                : "border-border hover:border-muted-foreground"
-                            }`}
-                          >
-                            <div className="font-medium text-sm">Indoor</div>
-                            <div className="text-xs text-muted-foreground">Voor binnengebruik</div>
-                          </button>
-
-                          <button
-                            type="button"
-                            onClick={() => handleMatTypeChange("outdoor")}
-                            className={`p-3 rounded-lg border-2 transition-all text-left ${
-                              visibleTypeBlock === "outdoor"
-                                ? "border-foreground bg-foreground/5"
-                                : "border-border hover:border-muted-foreground"
-                            }`}
-                          >
-                            <div className="font-medium text-sm">Outdoor</div>
-                            <div className="text-xs text-muted-foreground">Weerbestendig</div>
-                          </button>
-                        </div>
-                      </div>
-
-                      {/* Indoor Type */}
-                      {visibleTypeBlock === "indoor" && (
-                        <div className="space-y-3">
-                          <Label className="text-sm font-medium">Indoor Type</Label>
-                          <div className="grid grid-cols-2 gap-2">
-                            <button
-                              type="button"
-                              onClick={() => {
-  setIndoorSubtype("normal")
-  updateConfig({ indoorSubtype: "normal" })
-}}
-                              className={`p-3 rounded-lg border-2 transition-all text-left ${
-                                config.indoorSubtype === "normal"
-  ? "border-[#C69C4D] bg-[#FFF8EB] shadow-sm"
-  : "border-border hover:border-[#C69C4D]"
-                              }`}
-                            >
-                              <div className="font-medium text-sm">Classic</div>
-                              <div className="text-xs text-muted-foreground">Betrouwbare logomat voor dagelijks gebruik</div>
-                            </button>
-
-                            <button
-                              type="button"
-                              onClick={() => {
-  setIndoorSubtype("eco")
-  updateConfig({ indoorSubtype: "eco" })
-}}
-                              className={`p-3 rounded-lg border-2 transition-all text-left ${
-                                config.indoorSubtype === "eco"
-  ? "border-[#C69C4D] bg-[#FFF8EB] shadow-sm"
-  : "border-border hover:border-[#C69C4D]"
-                              }`}
-                            >
-                              <div className="font-medium text-sm">Eco</div>
-                              <div className="text-xs text-muted-foreground">Gemaakt met gerecycleerde materialen</div>
-                            </button>
-
-                            <button
-                              type="button"
-                              onClick={() => {
-  setIndoorSubtype("luxe")
-  updateConfig({ indoorSubtype: "luxe" })
-}}
-                              className={`p-3 rounded-lg border-2 transition-all text-left ${
-                                config.indoorSubtype === "luxe"
-  ? "border-[#C69C4D] bg-[#FFF8EB] shadow-sm"
-  : "border-border hover:border-[#C69C4D]"
-                              }`}
-                            >
-                              <div className="font-medium text-sm">Elite</div>
-                              <div className="text-xs text-muted-foreground">Premium afwerking en maximale levensduur</div>
-                            </button>
-
-                            <button
-                              type="button"
-                              onClick={() => {
-  setIndoorSubtype("budget")
-  updateConfig({ indoorSubtype: "budget" })
-}}
-                              className={`p-3 rounded-lg border-2 transition-all text-left ${
-                               config.indoorSubtype === "budget"
-  ? "border-[#C69C4D] bg-[#FFF8EB] shadow-sm"
-  : "border-border hover:border-[#C69C4D]"
-                              }`}
-                            >
-                              <div className="font-medium text-sm">Professional</div>
-                              <div className="text-xs text-muted-foreground">Onze populairste keuze voor bedrijven</div>
-                            </button>
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Outdoor Type */}
-                      {visibleTypeBlock === "outdoor" && (
-                        <div className="space-y-3">
-                          <Label className="text-sm font-medium">Outdoor Type</Label>
-                          <div className="grid grid-cols-2 gap-2">
-                            <button
-                              type="button"
-                              onClick={() => setOutdoorSubtype("outdoor1")}
-                              className={`p-3 rounded-lg border-2 transition-all text-left ${
-                                outdoorSubtype === "outdoor1"
-                                  ? "border-foreground bg-foreground/5"
-                                  : "border-border hover:border-muted-foreground"
-                              }`}
-                            >
-                              <div className="font-medium text-sm">Outdoor 1</div>
-                              <div className="text-xs text-muted-foreground">Standard outdoor use</div>
-                            </button>
-
-                            <button
-                              type="button"
-                              onClick={() => setOutdoorSubtype("outdoor2")}
-                              className={`p-3 rounded-lg border-2 transition-all text-left ${
-                                outdoorSubtype === "outdoor2"
-                                  ? "border-foreground bg-foreground/5"
-                                  : "border-border hover:border-muted-foreground"
-                              }`}
-                            >
-                              <div className="font-medium text-sm">Outdoor 2</div>
-                              <div className="text-xs text-muted-foreground">Extra scraper effect</div>
-                            </button>
-
-                            <button
-                              type="button"
-                              onClick={() => setOutdoorSubtype("outdoor3")}
-                              className={`p-3 rounded-lg border-2 transition-all text-left ${
-                                outdoorSubtype === "outdoor3"
-                                  ? "border-foreground bg-foreground/5"
-                                  : "border-border hover:border-muted-foreground"
-                              }`}
-                            >
-                              <div className="font-medium text-sm">Outdoor 3</div>
-                              <div className="text-xs text-muted-foreground">Heavy-duty option</div>
-                            </button>
-
-                            <button
-                              type="button"
-                              onClick={() => setOutdoorSubtype("outdoor4")}
-                              className={`p-3 rounded-lg border-2 transition-all text-left ${
-                                outdoorSubtype === "outdoor4"
-                                  ? "border-foreground bg-foreground/5"
-                                  : "border-border hover:border-muted-foreground"
-                              }`}
-                            >
-                              <div className="font-medium text-sm">Outdoor 4</div>
-                              <div className="text-xs text-muted-foreground">Premium outdoor finish</div>
-                            </button>
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Placement */}
-                      <div className="space-y-3">
-                        <Label className="text-sm font-medium">Plaatsing</Label>
-                        <div className="grid grid-cols-2 gap-2">
-                          <button
-                            type="button"
-                            onClick={() =>
-                              updateConfig({
-                                placement: "floor",
-                                rubberBorder: true,
-                              })
-                            }
-                            className={`p-3 rounded-lg border-2 transition-all text-left ${
-                              config.placement === "floor"
-                                ? "border-foreground bg-foreground/5"
-                                : "border-border hover:border-muted-foreground"
-                            }`}
-                          >
-                            <div className="font-medium text-sm">Op de vloer</div>
-                            <div className="text-xs text-muted-foreground">Standaard plaatsing</div>
-                          </button>
-
-                          <button
-                            type="button"
-                            onClick={() =>
-                              updateConfig({
-                                placement: "frame",
-                                rubberBorder: false,
-                              })
-                            }
-                            className={`p-3 rounded-lg border-2 transition-all text-left ${
-                              config.placement === "frame"
-                                ? "border-foreground bg-foreground/5"
-                                : "border-border hover:border-muted-foreground"
-                            }`}
-                          >
-                            <div className="font-medium text-sm">Inbouwframe</div>
-                            <div className="text-xs text-muted-foreground">Verzonken plaatsing</div>
-                          </button>
-                        </div>
-                      </div>
-
-                      {/* Orientation */}
-                      <div className="space-y-3">
-                        <Label className="text-sm font-medium">Oriëntatie</Label>
-                        <div className="grid grid-cols-2 gap-2">
-                          <button
-                            type="button"
-                            onClick={() => updateConfig({ orientation: "landscape" })}
-                            className={`p-3 rounded-lg border-2 transition-all ${
-                              config.orientation === "landscape"
-                                ? "border-foreground bg-foreground/5"
-                                : "border-border hover:border-muted-foreground"
-                            }`}
-                          >
-                            <div className="w-12 h-8 mx-auto mb-2 bg-muted-foreground/20 rounded" />
-                            <div className="text-xs">Liggend</div>
-                          </button>
-
-                          <button
-                            type="button"
-                            onClick={() => updateConfig({ orientation: "portrait" })}
-                            className={`p-3 rounded-lg border-2 transition-all ${
-                              config.orientation === "portrait"
-                                ? "border-foreground bg-foreground/5"
-                                : "border-border hover:border-muted-foreground"
-                            }`}
-                          >
-                            <div className="w-8 h-12 mx-auto mb-2 bg-muted-foreground/20 rounded" />
-                            <div className="text-xs">Staand</div>
-                          </button>
-                        </div>
-                      </div>
-                        {config.placement !== "frame" && (
-                        <>
-                          <Separator />
-
-                          <div className="flex items-center justify-between">
-                            <div className="space-y-0.5">
-                              <Label className="text-sm font-medium">Rubberen rand</Label>
+                return (
+                  <div key={step.number} className={step.number !== 3 ? "border-b border-border" : ""}>
+                    <button
+                      type="button"
+                      onClick={() => goToStep(step.number)}
+                      className="w-full flex items-center justify-between gap-3 px-4 py-4 text-left"
+                    >
+                      <div className="flex items-center gap-3">
+                        <span
+                          className={`flex size-8 shrink-0 items-center justify-center rounded-full text-sm font-semibold ${
+                            isOpen
+                              ? "bg-[#C69C4D] text-white"
+                              : isComplete
+                              ? "bg-[#C69C4D]/15 text-[#C69C4D]"
+                              : "bg-muted text-muted-foreground"
+                          }`}
+                        >
+                          {isComplete && !isOpen ? <Check className="size-4" /> : step.number}
+                        </span>
+                        <div>
+                          <div className="font-medium text-sm">{step.title}</div>
+                          {!isOpen && step.number === 1 && config.logo.file && (
+                            <div className="text-xs text-muted-foreground">{config.logo.file.name}</div>
+                          )}
+                          {!isOpen && step.number === 2 && selectedColor && (
+                            <div className="text-xs text-muted-foreground">{selectedColor.name}</div>
+                          )}
+                          {!isOpen && step.number === 3 && (
+                            <div className="text-xs text-muted-foreground">
+                              {indoorInfo[indoorSubtype].title} &middot; {config.size.width}×{config.size.height}cm
                             </div>
-                            <Switch
-                              checked={config.rubberBorder}
-                              onCheckedChange={(v) => updateConfig({ rubberBorder: v })}
-                            />
-                          </div>
-
-                          <Separator />
-                        </>
-                      )}
-
-                      {/* Size as blocks */}
-                      <div className="space-y-3">
-                        <Label className="text-sm font-medium">Afmetingen (cm)</Label>
-
-                        <div className="grid grid-cols-2 gap-2">
-                          {STANDARD_SIZES.map((size) => {
-                            const isSelected =
-                              !config.size.isCustom &&
-                              config.size.width === size.width &&
-                              config.size.height === size.height
-
-                            return (
-                              <button
-                                key={size.label}
-                                type="button"
-                                onClick={() =>
-                                  updateConfig({
-                                    size: {
-                                      width: size.width,
-                                      height: size.height,
-                                      isCustom: false,
-                                    },
-                                  })
-                                }
-                                className={`p-3 rounded-lg border-2 transition-all text-left ${
-                                  isSelected
-                                    ? "border-foreground bg-foreground/5"
-                                    : "border-border hover:border-muted-foreground"
-                                }`}
-                              >
-                                <div className="font-medium text-sm">{size.label}</div>
-                                <div className="text-xs text-muted-foreground">
-                                  {size.width} × {size.height} cm
-                                </div>
-                              </button>
-                            )
-                          })}
-
-                          <button
-                            type="button"
-                            onClick={() =>
-                              updateConfig({
-                                size: {
-                                  ...config.size,
-                                  isCustom: true,
-                                },
-                              })
-                            }
-                            className={`p-3 rounded-lg border-2 transition-all text-left ${
-                              config.size.isCustom
-                                ? "border-foreground bg-foreground/5"
-                                : "border-border hover:border-muted-foreground"
-                            }`}
-                          >
-                            <div className="font-medium text-sm">Eigen afmetingen</div>
-                            <div className="text-xs text-muted-foreground">Voer jouw afmetingen in</div>
-                          </button>
+                          )}
                         </div>
-
-                        {config.size.isCustom && (
-                          <div className="grid grid-cols-2 gap-3 pt-2">
-                            <div className="space-y-1.5">
-                              <Label className="text-xs text-muted-foreground">Width (cm)</Label>
-                              <Input
-                                type="number"
-                                min={30}
-                                max={300}
-                                value={config.size.width}
-                                onChange={(e) =>
-                                  updateConfig({
-                                    size: {
-                                      ...config.size,
-                                      width: parseInt(e.target.value) || 30,
-                                      isCustom: true,
-                                    },
-                                  })
-                                }
-                              />
-                            </div>
-
-                            <div className="space-y-1.5">
-                              <Label className="text-xs text-muted-foreground">Height (cm)</Label>
-                              <Input
-                                type="number"
-                                min={30}
-                                max={300}
-                                value={config.size.height}
-                                onChange={(e) =>
-                                  updateConfig({
-                                    size: {
-                                      ...config.size,
-                                      height: parseInt(e.target.value) || 30,
-                                      isCustom: true,
-                                    },
-                                  })
-                                }
-                              />
-                            </div>
-                          </div>
-                        )}
                       </div>
-
-                      {/* Rubber Border only when not frame */}
-                    
-
-                      {/* Quantity */}
-                      <div className="space-y-3">
-                        <Label className="text-sm font-medium">Aantal</Label>
-                        <div className="flex items-center gap-3">
-                          <Button
-                            variant="outline"
-                            size="icon"
-                            onClick={() => updateConfig({ quantity: Math.max(1, config.quantity - 1) })}
-                            disabled={config.quantity <= 1}
-                          >
-                            <Minus className="w-4 h-4" />
-                          </Button>
-
-                          <Input
-                            type="number"
-                            min={1}
-                            max={100}
-                            value={config.quantity}
-                            onChange={(e) =>
-                              updateConfig({
-                                quantity: Math.max(1, Math.min(100, parseInt(e.target.value) || 1)),
-                              })
-                            }
-                            className="w-20 text-center"
-                          />
-
-                          <Button
-                            variant="outline"
-                            size="icon"
-                            onClick={() => updateConfig({ quantity: Math.min(100, config.quantity + 1) })}
-                            disabled={config.quantity >= 100}
-                          >
-                            <Plus className="w-4 h-4" />
-                          </Button>
-                        </div>
-
-                        {config.quantity >= 5 && (
-                          <Badge variant="secondary" className="text-xs">
-                            Volume discount applied!
-                          </Badge>
-                        )}
-                      </div>
-                    </TabsContent>
-
-                    <TabsContent value="colors" className="mt-0 space-y-6">
-                      {selectedColor && (
-                        <div className="flex items-center gap-3 p-3 bg-muted rounded-lg">
-                          <div
-                            className="w-10 h-10 rounded-md border border-border"
-                            style={{ backgroundColor: selectedColor.hex }}
-                          />
-                          <div>
-                            <p className="font-medium text-sm">{selectedColor.name}</p>
-                            <p className="text-xs text-muted-foreground">{selectedColor.code}</p>
-                          </div>
-                        </div>
-                      )}
-
-                      <ColorPalette
-                        selectedCode={config.colorCode}
-                        onSelect={(code) => updateConfig({ colorCode: code })}
-                        suggestedCodes={suggestedColorCodes}
-                        onResetSuggestions={handleResetSuggestions}
+                      <ChevronDown
+                        className={`size-4 shrink-0 text-muted-foreground transition-transform ${
+                          isOpen ? "rotate-180" : ""
+                        }`}
                       />
-                    </TabsContent>
+                    </button>
 
-                    <TabsContent value="logo" className="mt-0 space-y-6">
-  <LogoUploader
-    currentFile={config.logo.file}
-    onUpload={handleLogoUpload}
-    onColorSuggestionsFound={handleColorSuggestionsFound}
-    onLogoInfoFound={handleLogoInfoFound}
-  />
+                    {isOpen && (
+                      <div className="px-4 pb-6 space-y-6">
+                        {step.number === 1 && (
+                          <>
+                            <LogoUploader
+                              currentFile={config.logo.file}
+                              onUpload={handleLogoUpload}
+                              onColorSuggestionsFound={handleColorSuggestionsFound}
+                              onLogoInfoFound={handleLogoInfoFound}
+                            />
 
-  {logoInfo.width > 0 && (
-    <div className="rounded-lg border p-4 bg-muted/30 space-y-2">
-      <h4 className="font-medium">
-        Logo analyse
-      </h4>
+                            {logoInfo.width > 0 && (
+                              <div className="rounded-lg border p-4 bg-muted/30 space-y-2">
+                                <h4 className="font-medium">Logo analyse</h4>
+                                <div className="text-sm">
+                                  Resolutie: {logoInfo.width} × {logoInfo.height} px
+                                </div>
+                                <div className="text-sm">
+                                  {hasGoodResolution ? (
+                                    <span className="text-green-600">✅ Resolutie geschikt voor productie</span>
+                                  ) : (
+                                    <span className="text-amber-600">⚠️ Resolutie mogelijk te laag</span>
+                                  )}
+                                </div>
+                                <div className="text-sm">Bestandstype: {logoInfo.format}</div>
+                                <div className="text-sm">
+                                  {isPng ? (
+                                    <span className="text-green-600">✅ PNG-bestand gedetecteerd</span>
+                                  ) : (
+                                    <span className="text-amber-600">
+                                      ⚠️ JPG/WebP-bestand. Transparantie wordt mogelijk niet ondersteund.
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+                            )}
 
-      <div className="text-sm">
-        Resolutie: {logoInfo.width} × {logoInfo.height} px
-      </div>
+                            <Button className="w-full" onClick={() => goToStep(2)}>
+                              Volgende stap: Kleuren
+                              <ArrowRight className="w-4 h-4 ml-2" />
+                            </Button>
+                          </>
+                        )}
 
-      <div className="text-sm">
-  {hasGoodResolution ? (
-    <span className="text-green-600">
-      ✅ Resolutie geschikt voor productie
-    </span>
-  ) : (
-    <span className="text-amber-600">
-      ⚠️ Resolutie mogelijk te laag
-    </span>
-  )}
-</div>
+                        {step.number === 2 && (
+                          <>
+                            {selectedColor && (
+                              <div className="flex items-center gap-3 p-3 bg-muted rounded-lg">
+                                <div
+                                  className="w-10 h-10 rounded-md border border-border"
+                                  style={{ backgroundColor: selectedColor.hex }}
+                                />
+                                <div>
+                                  <p className="font-medium text-sm">{selectedColor.name}</p>
+                                  <p className="text-xs text-muted-foreground">{selectedColor.code}</p>
+                                </div>
+                              </div>
+                            )}
 
-      <div className="text-sm">
-  Bestandstype: {logoInfo.format}
-</div>
+                            <ColorPalette
+                              selectedCode={config.colorCode}
+                              onSelect={(code) => updateConfig({ colorCode: code })}
+                              suggestedCodes={suggestedColorCodes}
+                              onResetSuggestions={handleResetSuggestions}
+                            />
 
-<div className="text-sm">
-  {isPng ? (
-    <span className="text-green-600">
-      ✅ PNG-bestand gedetecteerd
-    </span>
-  ) : (
-    <span className="text-amber-600">
-      ⚠️ JPG/WebP-bestand. Transparantie wordt mogelijk niet ondersteund.
-    </span>
-  )}
-</div>
+                            <Button className="w-full" onClick={() => goToStep(3)}>
+                              Volgende stap: Logo Mat
+                              <ArrowRight className="w-4 h-4 ml-2" />
+                            </Button>
+                          </>
+                        )}
 
+                        {step.number === 3 && (
+                          <>
+                            {/* Mat Type */}
+                            <div className="space-y-3">
+                              <Label className="text-sm font-medium">Type logomat</Label>
+                              <div className="grid grid-cols-2 gap-2">
+                                <button
+                                  type="button"
+                                  onClick={() => handleMatTypeChange("indoor")}
+                                  className={`p-3 rounded-lg border-2 transition-all text-left ${
+                                    visibleTypeBlock === "indoor"
+                                      ? "border-foreground bg-foreground/5"
+                                      : "border-border hover:border-muted-foreground"
+                                  }`}
+                                >
+                                  <div className="font-medium text-sm">Indoor</div>
+                                  <div className="text-xs text-muted-foreground">Voor binnengebruik</div>
+                                </button>
 
-    </div>
-  )}
-</TabsContent>
+                                <button
+                                  type="button"
+                                  onClick={() => handleMatTypeChange("outdoor")}
+                                  className={`p-3 rounded-lg border-2 transition-all text-left ${
+                                    visibleTypeBlock === "outdoor"
+                                      ? "border-foreground bg-foreground/5"
+                                      : "border-border hover:border-muted-foreground"
+                                  }`}
+                                >
+                                  <div className="font-medium text-sm">Outdoor</div>
+                                  <div className="text-xs text-muted-foreground">Weerbestendig</div>
+                                </button>
+                              </div>
+                            </div>
+
+                            {visibleTypeBlock === "indoor" && (
+                              <div className="space-y-3">
+                                <Label className="text-sm font-medium">Indoor Type</Label>
+                                <div className="grid grid-cols-2 gap-2">
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      setIndoorSubtype("normal")
+                                      updateConfig({ indoorSubtype: "normal" })
+                                    }}
+                                    className={`p-3 rounded-lg border-2 transition-all text-left ${
+                                      config.indoorSubtype === "normal"
+                                        ? "border-[#C69C4D] bg-[#FFF8EB] shadow-sm"
+                                        : "border-border hover:border-[#C69C4D]"
+                                    }`}
+                                  >
+                                    <div className="font-medium text-sm">Classic</div>
+                                    <div className="text-xs text-muted-foreground">
+                                      Betrouwbare logomat voor dagelijks gebruik
+                                    </div>
+                                  </button>
+
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      setIndoorSubtype("eco")
+                                      updateConfig({ indoorSubtype: "eco" })
+                                    }}
+                                    className={`p-3 rounded-lg border-2 transition-all text-left ${
+                                      config.indoorSubtype === "eco"
+                                        ? "border-[#C69C4D] bg-[#FFF8EB] shadow-sm"
+                                        : "border-border hover:border-[#C69C4D]"
+                                    }`}
+                                  >
+                                    <div className="font-medium text-sm">Eco</div>
+                                    <div className="text-xs text-muted-foreground">
+                                      Gemaakt met gerecycleerde materialen
+                                    </div>
+                                  </button>
+
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      setIndoorSubtype("luxe")
+                                      updateConfig({ indoorSubtype: "luxe" })
+                                    }}
+                                    className={`p-3 rounded-lg border-2 transition-all text-left ${
+                                      config.indoorSubtype === "luxe"
+                                        ? "border-[#C69C4D] bg-[#FFF8EB] shadow-sm"
+                                        : "border-border hover:border-[#C69C4D]"
+                                    }`}
+                                  >
+                                    <div className="font-medium text-sm">Elite</div>
+                                    <div className="text-xs text-muted-foreground">
+                                      Premium afwerking en maximale levensduur
+                                    </div>
+                                  </button>
+
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      setIndoorSubtype("budget")
+                                      updateConfig({ indoorSubtype: "budget" })
+                                    }}
+                                    className={`p-3 rounded-lg border-2 transition-all text-left ${
+                                      config.indoorSubtype === "budget"
+                                        ? "border-[#C69C4D] bg-[#FFF8EB] shadow-sm"
+                                        : "border-border hover:border-[#C69C4D]"
+                                    }`}
+                                  >
+                                    <div className="font-medium text-sm">Professional</div>
+                                    <div className="text-xs text-muted-foreground">
+                                      Onze populairste keuze voor bedrijven
+                                    </div>
+                                  </button>
+                                </div>
+                              </div>
+                            )}
+
+                            {visibleTypeBlock === "outdoor" && (
+                              <div className="space-y-3">
+                                <Label className="text-sm font-medium">Outdoor Type</Label>
+                                <div className="grid grid-cols-2 gap-2">
+                                  <button
+                                    type="button"
+                                    onClick={() => setOutdoorSubtype("outdoor1")}
+                                    className={`p-3 rounded-lg border-2 transition-all text-left ${
+                                      outdoorSubtype === "outdoor1"
+                                        ? "border-foreground bg-foreground/5"
+                                        : "border-border hover:border-muted-foreground"
+                                    }`}
+                                  >
+                                    <div className="font-medium text-sm">Outdoor 1</div>
+                                    <div className="text-xs text-muted-foreground">Standard outdoor use</div>
+                                  </button>
+
+                                  <button
+                                    type="button"
+                                    onClick={() => setOutdoorSubtype("outdoor2")}
+                                    className={`p-3 rounded-lg border-2 transition-all text-left ${
+                                      outdoorSubtype === "outdoor2"
+                                        ? "border-foreground bg-foreground/5"
+                                        : "border-border hover:border-muted-foreground"
+                                    }`}
+                                  >
+                                    <div className="font-medium text-sm">Outdoor 2</div>
+                                    <div className="text-xs text-muted-foreground">Extra scraper effect</div>
+                                  </button>
+
+                                  <button
+                                    type="button"
+                                    onClick={() => setOutdoorSubtype("outdoor3")}
+                                    className={`p-3 rounded-lg border-2 transition-all text-left ${
+                                      outdoorSubtype === "outdoor3"
+                                        ? "border-foreground bg-foreground/5"
+                                        : "border-border hover:border-muted-foreground"
+                                    }`}
+                                  >
+                                    <div className="font-medium text-sm">Outdoor 3</div>
+                                    <div className="text-xs text-muted-foreground">Heavy-duty option</div>
+                                  </button>
+
+                                  <button
+                                    type="button"
+                                    onClick={() => setOutdoorSubtype("outdoor4")}
+                                    className={`p-3 rounded-lg border-2 transition-all text-left ${
+                                      outdoorSubtype === "outdoor4"
+                                        ? "border-foreground bg-foreground/5"
+                                        : "border-border hover:border-muted-foreground"
+                                    }`}
+                                  >
+                                    <div className="font-medium text-sm">Outdoor 4</div>
+                                    <div className="text-xs text-muted-foreground">Premium outdoor finish</div>
+                                  </button>
+                                </div>
+                              </div>
+                            )}
+
+                            <div className="space-y-3">
+                              <Label className="text-sm font-medium">Plaatsing</Label>
+                              <div className="grid grid-cols-2 gap-2">
+                                <button
+                                  type="button"
+                                  onClick={() => updateConfig({ placement: "floor", rubberBorder: true })}
+                                  className={`p-3 rounded-lg border-2 transition-all text-left ${
+                                    config.placement === "floor"
+                                      ? "border-foreground bg-foreground/5"
+                                      : "border-border hover:border-muted-foreground"
+                                  }`}
+                                >
+                                  <div className="font-medium text-sm">Op de vloer</div>
+                                  <div className="text-xs text-muted-foreground">Standaard plaatsing</div>
+                                </button>
+
+                                <button
+                                  type="button"
+                                  onClick={() => updateConfig({ placement: "frame", rubberBorder: false })}
+                                  className={`p-3 rounded-lg border-2 transition-all text-left ${
+                                    config.placement === "frame"
+                                      ? "border-foreground bg-foreground/5"
+                                      : "border-border hover:border-muted-foreground"
+                                  }`}
+                                >
+                                  <div className="font-medium text-sm">Inbouwframe</div>
+                                  <div className="text-xs text-muted-foreground">Verzonken plaatsing</div>
+                                </button>
+                              </div>
+                            </div>
+
+                            <div className="space-y-3">
+                              <Label className="text-sm font-medium">Oriëntatie</Label>
+                              <div className="grid grid-cols-2 gap-2">
+                                <button
+                                  type="button"
+                                  onClick={() => updateConfig({ orientation: "landscape" })}
+                                  className={`p-3 rounded-lg border-2 transition-all ${
+                                    config.orientation === "landscape"
+                                      ? "border-foreground bg-foreground/5"
+                                      : "border-border hover:border-muted-foreground"
+                                  }`}
+                                >
+                                  <div className="w-12 h-8 mx-auto mb-2 bg-muted-foreground/20 rounded" />
+                                  <div className="text-xs">Liggend</div>
+                                </button>
+
+                                <button
+                                  type="button"
+                                  onClick={() => updateConfig({ orientation: "portrait" })}
+                                  className={`p-3 rounded-lg border-2 transition-all ${
+                                    config.orientation === "portrait"
+                                      ? "border-foreground bg-foreground/5"
+                                      : "border-border hover:border-muted-foreground"
+                                  }`}
+                                >
+                                  <div className="w-8 h-12 mx-auto mb-2 bg-muted-foreground/20 rounded" />
+                                  <div className="text-xs">Staand</div>
+                                </button>
+                              </div>
+                            </div>
+
+                            {config.placement !== "frame" && (
+                              <>
+                                <Separator />
+                                <div className="flex items-center justify-between">
+                                  <div className="space-y-0.5">
+                                    <Label className="text-sm font-medium">Rubberen rand</Label>
+                                  </div>
+                                  <Switch
+                                    checked={config.rubberBorder}
+                                    onCheckedChange={(v) => updateConfig({ rubberBorder: v })}
+                                  />
+                                </div>
+                                <Separator />
+                              </>
+                            )}
+
+                            <div className="space-y-3">
+                              <Label className="text-sm font-medium">Afmetingen (cm)</Label>
+
+                              <div className="grid grid-cols-2 gap-2">
+                                {STANDARD_SIZES.map((size) => {
+                                  const isSelected =
+                                    !config.size.isCustom &&
+                                    config.size.width === size.width &&
+                                    config.size.height === size.height
+
+                                  return (
+                                    <button
+                                      key={size.label}
+                                      type="button"
+                                      onClick={() =>
+                                        updateConfig({
+                                          size: { width: size.width, height: size.height, isCustom: false },
+                                        })
+                                      }
+                                      className={`p-3 rounded-lg border-2 transition-all text-left ${
+                                        isSelected
+                                          ? "border-foreground bg-foreground/5"
+                                          : "border-border hover:border-muted-foreground"
+                                      }`}
+                                    >
+                                      <div className="font-medium text-sm">{size.label}</div>
+                                      <div className="text-xs text-muted-foreground">
+                                        {size.width} × {size.height} cm
+                                      </div>
+                                    </button>
+                                  )
+                                })}
+
+                                <button
+                                  type="button"
+                                  onClick={() => updateConfig({ size: { ...config.size, isCustom: true } })}
+                                  className={`p-3 rounded-lg border-2 transition-all text-left ${
+                                    config.size.isCustom
+                                      ? "border-foreground bg-foreground/5"
+                                      : "border-border hover:border-muted-foreground"
+                                  }`}
+                                >
+                                  <div className="font-medium text-sm">Eigen afmetingen</div>
+                                  <div className="text-xs text-muted-foreground">Voer jouw afmetingen in</div>
+                                </button>
+                              </div>
+
+                              {config.size.isCustom && (
+                                <div className="grid grid-cols-2 gap-3 pt-2">
+                                  <div className="space-y-1.5">
+                                    <Label className="text-xs text-muted-foreground">Width (cm)</Label>
+                                    <Input
+                                      type="number"
+                                      min={30}
+                                      max={300}
+                                      value={config.size.width}
+                                      onChange={(e) =>
+                                        updateConfig({
+                                          size: {
+                                            ...config.size,
+                                            width: parseInt(e.target.value) || 30,
+                                            isCustom: true,
+                                          },
+                                        })
+                                      }
+                                    />
+                                  </div>
+
+                                  <div className="space-y-1.5">
+                                    <Label className="text-xs text-muted-foreground">Height (cm)</Label>
+                                    <Input
+                                      type="number"
+                                      min={30}
+                                      max={300}
+                                      value={config.size.height}
+                                      onChange={(e) =>
+                                        updateConfig({
+                                          size: {
+                                            ...config.size,
+                                            height: parseInt(e.target.value) || 30,
+                                            isCustom: true,
+                                          },
+                                        })
+                                      }
+                                    />
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+
+                            <div className="space-y-3">
+                              <Label className="text-sm font-medium">Aantal</Label>
+                              <div className="flex items-center gap-3">
+                                <Button
+                                  variant="outline"
+                                  size="icon"
+                                  onClick={() => updateConfig({ quantity: Math.max(1, config.quantity - 1) })}
+                                  disabled={config.quantity <= 1}
+                                >
+                                  <Minus className="w-4 h-4" />
+                                </Button>
+
+                                <Input
+                                  type="number"
+                                  min={1}
+                                  max={100}
+                                  value={config.quantity}
+                                  onChange={(e) =>
+                                    updateConfig({
+                                      quantity: Math.max(1, Math.min(100, parseInt(e.target.value) || 1)),
+                                    })
+                                  }
+                                  className="w-20 text-center"
+                                />
+
+                                <Button
+                                  variant="outline"
+                                  size="icon"
+                                  onClick={() => updateConfig({ quantity: Math.min(100, config.quantity + 1) })}
+                                  disabled={config.quantity >= 100}
+                                >
+                                  <Plus className="w-4 h-4" />
+                                </Button>
+                              </div>
+
+                              {config.quantity >= 5 && (
+                                <Badge variant="secondary" className="text-xs">
+                                  Volume discount applied!
+                                </Badge>
+                              )}
+                            </div>
+                          </>
+                        )}
+                      </div>
+                    )}
                   </div>
-                </ScrollArea>
-              </Tabs>
+                )
+              })}
             </CardContent>
           </Card>
 
@@ -908,7 +816,6 @@ const params = new URLSearchParams({
                   <CardTitle className="text-lg">Voorbeeld van jouw logomat</CardTitle>
                 </div>
               </CardHeader>
-
               <CardContent>
                 <MatCanvas config={config} onLogoUpdate={handleLogoUpdate} />
               </CardContent>
@@ -927,23 +834,16 @@ const params = new URLSearchParams({
         <div className="xl:hidden mt-6">
           <PriceCalculator config={config} />
         </div>
+
         <Card className="mt-6 border-2 border-primary/20">
-  <CardHeader>
-    <CardTitle>
-  Productinformatie
-</CardTitle>
-  </CardHeader>
-
-  <CardContent>
-    <h3 className="text-xl font-semibold mb-2">
-      {indoorInfo[indoorSubtype].title}
-    </h3>
-
-    <p className="text-muted-foreground">
-      {indoorInfo[indoorSubtype].description}
-    </p>
-  </CardContent>
-</Card>
+          <CardHeader>
+            <CardTitle>Productinformatie</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <h3 className="text-xl font-semibold mb-2">{indoorInfo[indoorSubtype].title}</h3>
+            <p className="text-muted-foreground">{indoorInfo[indoorSubtype].description}</p>
+          </CardContent>
+        </Card>
       </main>
     </div>
   )
