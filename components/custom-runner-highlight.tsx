@@ -46,8 +46,8 @@ export function CustomRunnerHighlight({
     ? priceExample.length * priceExample.width * priceExample.pricePerM2
     : null;
 
-  const imageBlock = (
-    <div className="relative min-h-[420px]">
+    const imageBlock = (
+    <div className="relative h-full min-h-[420px]">
       <Image src={image} alt={imageAlt} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
     </div>
   );
