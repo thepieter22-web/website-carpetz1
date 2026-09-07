@@ -7,7 +7,7 @@ export function Hero() {
     <section className="relative overflow-hidden bg-primary text-primary-foreground">
       <div className="absolute inset-0">
         <Image
-          src="/images/hero-event-carpet.png"
+          src="/images/hero-event-carpet.webp"
           alt=""
           fill
           priority
