@@ -1,46 +1,153 @@
-import { Upload, Palette, ShoppingCart, PackageCheck } from "lucide-react"
+"use client";
 
-const steps = [
-  { number: "01", icon: Upload, title: "Upload je logo", text: "Laad je logo of ontwerp eenvoudig op in de configurator." },
-  { number: "02", icon: Palette, title: "Kies je achtergrondkleur", text: "Selecteer de kleur die het best bij je huisstijl past." },
-  { number: "03", icon: ShoppingCart, title: "Bestel & betaal veilig", text: "Rond je bestelling af via onze beveiligde checkout." },
-  { number: "04", icon: PackageCheck, title: "Ontvang je logomat", text: "Wij maken en leveren je logomat op maat, klaar voor gebruik." },
-]
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { Upload, Palette, ShoppingCart, Package, type LucideIcon } from "lucide-react";
 
-export function HowItWorks() {
+type Step = {
+  number: string;
+  title: string;
+  description: string;
+  icon: LucideIcon;
+  image: string; // pad naar afbeelding in /public
+};
+
+const steps: Step[] = [
+  {
+    number: "01",
+    title: "Upload je logo",
+    description: "Laad je logo of ontwerp eenvoudig op in de configurator.",
+    icon: Upload,
+    image: "/how-it-works/step-1-upload.jpg",
+  },
+  {
+    number: "02",
+    title: "Kies je achtergrondkleur",
+    description: "Selecteer de kleur die het best bij je huisstijl past.",
+    icon: Palette,
+    image: "/how-it-works/step-2-kleur.jpg",
+  },
+  {
+    number: "03",
+    title: "Bestel & betaal veilig",
+    description: "Rond je bestelling af via onze beveiligde checkout.",
+    icon: ShoppingCart,
+    image: "/how-it-works/step-3-checkout.jpg",
+  },
+  {
+    number: "04",
+    title: "Ontvang je logomat",
+    description: "Wij maken en leveren je logomat op maat, klaar voor gebruik.",
+    icon: Package,
+    image: "/how-it-works/step-4-levering.jpg",
+  },
+];
+
+const STEP_DURATION_MS = 3500;
+
+export default function HowItWorksSteps() {
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    if (paused) return;
+
+    timerRef.current = setInterval(() => {
+      setActive((prev) => (prev + 1) % steps.length);
+    }, STEP_DURATION_MS);
+
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [paused]);
+
   return (
-    <section className="border-t border-border bg-secondary/40">
-      <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
-        <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-accent">Hoe het werkt</p>
-          <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight text-balance sm:text-4xl">
-            Ontwerp je logomat in 1-2-3
-          </h2>
+    <section
+      className="w-full px-6 py-20"
+      style={{ backgroundColor: "#F5F1EA" }}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      <div className="mx-auto max-w-5xl">
+        <p
+          className="text-xs font-semibold tracking-[0.2em]"
+          style={{ color: "#C08A3E" }}
+        >
+          HOE HET WERKT
+        </p>
+        <h2 className="mt-3 font-serif text-3xl text-gray-900 sm:text-4xl">
+          Ontwerp je logomat in 1-2-3
+        </h2>
+
+        <div className="mt-16 grid grid-cols-1 gap-y-12 sm:grid-cols-4 sm:gap-x-4">
+          {steps.map((step, index) => {
+            const Icon = step.icon;
+            const isActive = index === active;
+            const isDone = index < active;
+
+            return (
+              <button
+                key={step.number}
+                onClick={() => setActive(index)}
+                className="relative flex flex-col items-center text-center"
+              >
+                {/* Dotted connector naar de volgende stap */}
+                {index < steps.length - 1 && (
+                  <div
+                    className="absolute left-1/2 top-8 hidden h-0 w-full border-t-2 border-dotted sm:block"
+                    style={{
+                      borderColor: isDone || isActive ? "#C08A3E" : "#E3DCCB",
+                      transition: "border-color 400ms ease",
+                    }}
+                  />
+                )}
+
+                <div className="relative z-10">
+                  <div
+                    className="flex h-16 w-16 items-center justify-center rounded-full transition-all duration-300"
+                    style={{
+                      backgroundColor: "#1C1A17",
+                      boxShadow: isActive ? "0 0 0 4px rgba(192,138,62,0.35)" : "none",
+                      transform: isActive ? "scale(1.06)" : "scale(1)",
+                    }}
+                  >
+                    <Icon className="h-6 w-6 text-white" strokeWidth={1.75} />
+                  </div>
+                  <span
+                    className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-semibold text-gray-900 transition-transform duration-300"
+                    style={{
+                      backgroundColor: "#D9A55A",
+                      transform: isActive ? "scale(1.1)" : "scale(1)",
+                    }}
+                  >
+                    {step.number}
+                  </span>
+                </div>
+
+                <h3 className="mt-4 text-sm font-semibold text-gray-900">{step.title}</h3>
+                <p className="mt-2 max-w-[220px] text-sm text-gray-500">{step.description}</p>
+              </button>
+            );
+          })}
         </div>
 
-        <div className="relative mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Voorbeeldafbeelding die meewisselt met de actieve stap */}
+        <div className="relative mx-auto mt-14 aspect-[16/9] w-full max-w-2xl overflow-hidden rounded-2xl shadow-md">
           {steps.map((step, index) => (
-            <div key={step.number} className="relative">
-              {index < steps.length - 1 && (
-                <div
-                  className="pointer-events-none absolute top-8 left-[calc(50%+2.5rem)] hidden h-px w-[calc(100%-5rem)] border-t border-dashed border-accent/40 lg:block"
-                  aria-hidden="true"
-                />
-              )}
-
-              <div className="relative mx-auto flex size-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                <step.icon className="size-6" />
-                <span className="absolute -top-2 -right-2 flex size-7 items-center justify-center rounded-full bg-accent text-xs font-bold text-accent-foreground">
-                  {step.number}
-                </span>
-              </div>
-
-              <h3 className="mt-5 text-center text-base font-semibold">{step.title}</h3>
-              <p className="mt-2 text-center text-sm leading-relaxed text-muted-foreground">{step.text}</p>
-            </div>
+            <Image
+              key={step.number}
+              src={step.image}
+              alt={step.title}
+              fill
+              sizes="(min-width: 640px) 640px, 100vw"
+              className="object-cover transition-opacity duration-700 ease-in-out"
+              style={{ opacity: index === active ? 1 : 0 }}
+              priority={index === 0}
+            />
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }
