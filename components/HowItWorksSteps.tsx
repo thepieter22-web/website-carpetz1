@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { Upload, Palette, ShoppingCart, Package, type LucideIcon } from "lucide-react";
 
 type Step = {
@@ -8,6 +9,7 @@ type Step = {
   title: string;
   description: string;
   icon: LucideIcon;
+  image: string;
 };
 
 const steps: Step[] = [
@@ -16,24 +18,28 @@ const steps: Step[] = [
     title: "Upload je logo",
     description: "Laad je logo of ontwerp eenvoudig op in de configurator.",
     icon: Upload,
+    image: "/images/stap1-upload.jpg",
   },
   {
     number: "02",
     title: "Kies je achtergrondkleur",
     description: "Selecteer de kleur die het best bij je huisstijl past.",
     icon: Palette,
+    image: "/images/stap2-kleur.jpg",
   },
   {
     number: "03",
     title: "Bestel & betaal veilig",
     description: "Rond je bestelling af via onze beveiligde checkout.",
     icon: ShoppingCart,
+    image: "/images/stap3-checkout.jpg",
   },
   {
     number: "04",
     title: "Ontvang je logomat",
     description: "Wij maken en leveren je logomat op maat, klaar voor gebruik.",
     icon: Package,
+    image: "/images/stap4-levering.jpg",
   },
 ];
 
@@ -120,6 +126,22 @@ export default function HowItWorksSteps() {
               </div>
             );
           })}
+        </div>
+
+        {/* Voorbeeldafbeelding die meewisselt met de actieve stap */}
+        <div className="relative mx-auto mt-14 aspect-[16/9] w-full max-w-2xl overflow-hidden rounded-2xl shadow-md">
+          {steps.map((step, index) => (
+            <Image
+              key={step.number}
+              src={step.image}
+              alt={step.title}
+              fill
+              sizes="(min-width: 640px) 640px, 100vw"
+              className="object-cover transition-opacity duration-700 ease-in-out"
+              style={{ opacity: index === active ? 1 : 0 }}
+              priority={index === 0}
+            />
+          ))}
         </div>
       </div>
     </section>
