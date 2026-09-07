@@ -64,7 +64,7 @@ export default function HomePage() {
       <main>
                <Hero />
 
-        <HowItWorksSteps />
+                {/* <HowItWorksSteps /> */}
 
        <section className="py-12">
   <div className="mx-auto max-w-7xl px-6">
