@@ -22,6 +22,7 @@ import { QuoteBand } from '@/components/quote-band'
 import { Cta } from '@/components/cta'
 import { LocalBusinessJsonLd } from '@/components/local-business-jsonld'
 import { HowItWorks } from '@/components/how-it-works'
+import HowItWorksSteps from "@/components/HowItWorksSteps";
 
 const usps = [
   {
@@ -61,9 +62,9 @@ export default function HomePage() {
       <LocalBusinessJsonLd />
       <SiteHeader />
       <main>
-                <Hero />
+               <Hero />
 
-        <HowItWorks />
+        <HowItWorksSteps />
 
        <section className="py-12">
   <div className="mx-auto max-w-7xl px-6">
