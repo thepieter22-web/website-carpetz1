@@ -9,7 +9,7 @@ type Step = {
   title: string;
   description: string;
   icon: LucideIcon;
-  image: string; // pad naar afbeelding in /public
+  image: string;
 };
 
 const steps: Step[] = [
@@ -18,32 +18,32 @@ const steps: Step[] = [
     title: "Upload je logo",
     description: "Laad je logo of ontwerp eenvoudig op in de configurator.",
     icon: Upload,
-    image: "/how-it-works/step-1-upload.jpg",
+    image: "/images/stap1-upload.jpg",
   },
   {
     number: "02",
     title: "Kies je achtergrondkleur",
     description: "Selecteer de kleur die het best bij je huisstijl past.",
     icon: Palette,
-    image: "/how-it-works/step-2-kleur.jpg",
+    image: "/images/stap2-kleur.jpg",
   },
   {
     number: "03",
     title: "Bestel & betaal veilig",
     description: "Rond je bestelling af via onze beveiligde checkout.",
     icon: ShoppingCart,
-    image: "/how-it-works/step-3-checkout.jpg",
+    image: "/images/stap3-checkout.jpg",
   },
   {
     number: "04",
     title: "Ontvang je logomat",
     description: "Wij maken en leveren je logomat op maat, klaar voor gebruik.",
     icon: Package,
-    image: "/how-it-works/step-4-levering.jpg",
+    image: "/images/stap4-levering.jpg",
   },
 ];
 
-const STEP_DURATION_MS = 3500;
+const STEP_DURATION_MS = 3000;
 
 export default function HowItWorksSteps() {
   const [active, setActive] = useState(0);
@@ -87,11 +87,7 @@ export default function HowItWorksSteps() {
             const isDone = index < active;
 
             return (
-              <button
-                key={step.number}
-                onClick={() => setActive(index)}
-                className="relative flex flex-col items-center text-center"
-              >
+              <div key={step.number} className="relative flex flex-col items-center text-center">
                 {/* Dotted connector naar de volgende stap */}
                 {index < steps.length - 1 && (
                   <div
@@ -127,7 +123,7 @@ export default function HowItWorksSteps() {
 
                 <h3 className="mt-4 text-sm font-semibold text-gray-900">{step.title}</h3>
                 <p className="mt-2 max-w-[220px] text-sm text-gray-500">{step.description}</p>
-              </button>
+              </div>
             );
           })}
         </div>
