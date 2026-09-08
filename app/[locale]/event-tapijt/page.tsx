@@ -101,7 +101,7 @@ export default function EventTapijtPage() {
           eyebrow="Verjaardagsloper op maat"
           title="Elk feest verdient een entree"
           description="Van 'Gelukkige verjaardag' tot de leeftijd van de jarige of een persoonlijke tekst: de entreemat kan volledig op maat geprint worden, precies zoals jij het wil."
-          image="/images/verjaardagsloper.png"
+          image="/images/verjaardagsloper-op-maat.webp"
           imageAlt="Verjaardagsloper op maat met feestelijke tekst"
           details={birthdayDetails}
           freeformNote="Bovenstaande zijn slechts voorbeelden — alles is bespreekbaar en volledig aanpasbaar."
