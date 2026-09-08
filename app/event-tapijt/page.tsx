@@ -115,7 +115,7 @@ export default function EventTapijtPage() {
           eyebrow="Feestloper op maat"
           title="Maak jouw feest uniek"
           description="Communie, gala, jubileum of bedrijfsevent: met een loper op maat geef je elk moment een unieke, persoonlijke touch vanaf de eerste stap."
-          image="/images/feestloper.png"
+          image="/images/feestloper-op-maat.webp"
           imageAlt="Feestloper op maat voor communie, gala of event"
           details={eventDetails}
           freeformNote="Vertel ons je gelegenheid en wij denken mee over het perfecte ontwerp."
