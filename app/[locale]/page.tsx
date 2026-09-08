@@ -165,7 +165,7 @@ export default function HomePage() {
             </div>
             <div className="relative order-1 aspect-[4/3] overflow-hidden rounded-sm lg:order-2">
               <Image
-                src="/images/printed-carpet.png"
+                src="/images/geprint-tapijt.webp"
                 alt="Geprint vloertapijt met kleurrijk patroon in een moderne retail showroom"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
