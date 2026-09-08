@@ -89,7 +89,7 @@ export default function EventTapijtPage() {
           eyebrow="Trouwloper op maat"
           title="Maak jullie trouwloper uniek"
           description="Laat jullie namen, datum of een persoonlijke boodschap printen op de loper die jullie dag compleet maakt."
-          image="/images/trouwloper.png"
+          image="/images/trouwloper.webp"
           imageAlt="Trouwloper op maat met namen en datum, versierd met bloemen en kaarsen"
           details={weddingDetails}
                    taglineTitle="Jullie droom, onze print."
