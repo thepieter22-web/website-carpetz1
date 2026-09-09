@@ -67,25 +67,22 @@ export function SiteHeader() {
 
       <div className="hidden lg:flex items-center gap-4">
   <div className="flex items-center gap-2 text-sm font-medium">
-   <Link
-  href={switchLocale('nl')}
-  className={currentLocale === 'nl' ? 'font-bold' : ''}
->
-  NL
-</Link>
+    <switchLocale('nl')}      className={currentLocale === 'nl' ? 'font-bold' : ''}
+    >
+      NL
+    </Link>
 
     <span>|</span>
 
     <Link
-  href={switchLocale('fr')}
-  className={currentLocale === 'fr' ? 'font-bold' : ''}
->
-  FR
-</Link>
+      href={switchLocale('fr')}
+      Locale === 'fr' ? 'font-bold' : ''}
+    >
+      FR
+    </Link>
   </div>
 
-  /contact
-    {t('offerte')}
+  <Cta href="/contact" rte')}
   </Cta>
 </div>
 
