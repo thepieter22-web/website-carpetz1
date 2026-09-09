@@ -8,16 +8,16 @@ import { cn } from '@/lib/utils'
 import { Cta } from '@/components/cta'
 
 const navItems = [
-  { href: '/', label: 'Home' },
-  { href: '/logomat', label: 'Logomatten' },
-  { href: '/geprint-tapijt', label: 'Geprint tapijt' },
-  { href: '/event-tapijt', label: 'Event tapijt' },
-  { href: '/over-ons', label: 'Over ons' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/', label: t('home') },
+  { href: '/logomat', label: t('logomatten') },
+  { href: '/geprint-tapijt', label: t('geprintTapijt') },
+  { href: '/event-tapijt', label: t('eventTapijt') },
+  { href: '/over-ons', label: t('overOns') },
+  { href: '/contact', label: t('contact') },
 ]
 
 export function SiteHeader() {
-  const t = useTranslations('Hero');
+  const t = useTranslations('Header');
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
 
@@ -55,7 +55,7 @@ export function SiteHeader() {
 
         <div className="hidden lg:block">
           <Cta href="/contact" variant="accent">
-            Vraag je offerte aan
+            {t('offerte')}
           </Cta>
         </div>
 
