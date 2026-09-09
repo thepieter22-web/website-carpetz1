@@ -6,4 +6,15 @@
     "cta1": "Demandez votre devis",
     "cta2": "Réponse sous 24 heures"
   }
+
+  "Header": {
+    "home": "Accueil",
+    "logomatten": "Tapis-logo",
+    "geprintTapijt": "Tapis imprimé",
+    "eventTapijt": "Tapis événementiel",
+    "overOns": "À propos",
+    "contact": "Contact",
+    "offerte": "Demandez votre devis"
+  }
 }
+
