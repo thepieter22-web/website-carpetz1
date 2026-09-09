@@ -1,8 +1,10 @@
+import { useTranslations } from 'next-intl';
 import Image from 'next/image'
 import { Cta } from '@/components/cta'
 import { Star } from 'lucide-react'
 
 export function Hero() {
+  const t = useTranslations('Hero');
   return (
     <section className="relative overflow-hidden bg-primary text-primary-foreground">
       <div className="absolute inset-0">
@@ -21,25 +23,23 @@ export function Hero() {
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-accent">
             <Star className="size-3.5 fill-accent" />
-            Branding tapijt voor bedrijven, retail & events
+            {t('badge')}
           </div>
 
           <h1 className="mt-6 font-serif text-4xl font-semibold leading-[1.05] text-balance sm:text-5xl lg:text-6xl">
-            Logomatten, geprint tapijt &amp; event tapijt op maat
+            {t('title')}
           </h1>
 
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/85 text-pretty">
-            Carpetz ontwerpt en produceert tapijt op maat dat je merk letterlijk op de kaart zet.
-            Van logomatten op maat en geprint tapijt tot rode lopers op maat voor je volgende beurs
-            of event &mdash; met snelle levering in België en Nederland.
+            {t('description')}
           </p>
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <Cta href="/contact" variant="accent">
-              Vraag je offerte aan
+              {t('cta1')}
             </Cta>
             <Cta href="/contact" variant="outlineLight" withArrow={false}>
-              Ontvang binnen 24 uur antwoord
+              {t('cta2')}
             </Cta>
           </div>
 
