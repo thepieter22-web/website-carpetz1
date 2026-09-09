@@ -30,6 +30,7 @@ export function SiteHeader() {
 
   const switchLocale = (locale: string) => {
   return pathname.replace(/^\/(nl|fr)/, `/${locale}`)
+    }
 
 
   return (
@@ -68,7 +69,7 @@ export function SiteHeader() {
   <div className="flex items-center gap-2 text-sm font-medium">
    <Link
   href={switchLocale('nl')}
-  className={=== 'nl' ? 'font-bold' : ''}
+  className={currentLocale === 'nl' ? 'font-bold' : ''}
 >
   NL
 </Link>
@@ -77,7 +78,7 @@ export function SiteHeader() {
 
     <Link
   href={switchLocale('fr')}
-  className={=== 'fr' ? 'font-bold' : ''}
+  className={currentLocale === 'fr' ? 'font-bold' : ''}
 >
   FR
 </Link>
