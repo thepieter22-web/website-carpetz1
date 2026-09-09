@@ -91,7 +91,7 @@ export function SiteHeader() {
             ))}
             <div className="pt-3">
               <Cta href="/contact" variant="accent" className="w-full">
-                Vraag je offerte aan
+                {t('offerte')}
               </Cta>
             </div>
           </nav>
