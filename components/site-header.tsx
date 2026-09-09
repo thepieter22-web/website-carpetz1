@@ -64,10 +64,11 @@ export function SiteHeader() {
           })}
         </nav>
 
-       <div className="hidden lg:flex items-center gap-4">
+      <div className="hidden lg:flex items-center gap-4">
   <div className="flex items-center gap-2 text-sm font-medium">
     <Link
-      href={switchLocale(Name={currentLocale === 'nl' ? 'font-bold' : ''}
+      href={switchLocale('nl')}
+     tLocale === 'nl' ? 'font-bold' : ''}
     >
       NL
     </Link>
@@ -76,7 +77,7 @@ export function SiteHeader() {
 
     <Link
       href={switchLocale('fr')}
-      className={currentLocalebold' : ''}
+      className={currentLocale === 'fr''}
     >
       FR
     </Link>
