@@ -7,7 +7,11 @@ import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Cta } from '@/components/cta'
 
-const navItems = [
+
+export function SiteHeader() {
+  const t = useTranslations('Header');
+
+  const navItems = [
   { href: '/', label: t('home') },
   { href: '/logomat', label: t('logomatten') },
   { href: '/geprint-tapijt', label: t('geprintTapijt') },
@@ -16,8 +20,10 @@ const navItems = [
   { href: '/contact', label: t('contact') },
 ]
 
-export function SiteHeader() {
-  const t = useTranslations('Header');
+
+
+
+  
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
 
