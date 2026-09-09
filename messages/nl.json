@@ -5,5 +5,16 @@
     "description": "Carpetz ontwerpt en produceert tapijt op maat dat je merk letterlijk op de kaart zet. Van logomatten op maat en geprint tapijt tot rode lopers op maat voor je volgende beurs of event — met snelle levering in België en Nederland.",
     "cta1": "Vraag je offerte aan",
     "cta2": "Ontvang binnen 24 uur antwoord"
+  }, 
+
+  "Header": {
+    "home": "Home",
+    "logomatten": "Logomatten",
+    "geprintTapijt": "Geprint tapijt",
+    "eventTapijt": "Event tapijt",
+    "overOns": "Over ons",
+    "contact": "Contact",
+    "offerte": "Vraag je offerte aan"
   }
 }
+
