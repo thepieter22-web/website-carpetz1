@@ -1,5 +1,5 @@
 'use client'
-
+import {useTranslations} from 'next-intl';
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -17,6 +17,7 @@ const navItems = [
 ]
 
 export function SiteHeader() {
+  const t = useTranslations('Hero');
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
 
