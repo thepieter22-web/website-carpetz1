@@ -356,110 +356,8 @@ const steps = [
                         {step.number === 1 && (
                           <>
 
-                            {/* Mat Type */}
-                            <div className="space-y-3">
-                              <Label className="text-sm font-medium">Type logomat</Label>
-                              <div className="grid grid-cols-2 gap-2">
-                                <button
-                                  type="button"
-                                  onClick={() => handleMatTypeChange("indoor")}
-                                  className={`p-3 rounded-lg border-2 transition-all text-left ${
-                                    visibleTypeBlock === "indoor"
-                                      ? "border-foreground bg-foreground/5"
-                                      : "border-border hover:border-muted-foreground"
-                                  }`}
-                                >
-                                  <div className="font-medium text-sm">Indoor</div>
-                                  <div className="text-xs text-muted-foreground">Voor binnengebruik</div>
-                                </button>
+                           
 
-                                <button
-                                  type="button"
-                                  onClick={() => handleMatTypeChange("outdoor")}
-                                  className={`p-3 rounded-lg border-2 transition-all text-left ${
-                                    visibleTypeBlock === "outdoor"
-                                      ? "border-foreground bg-foreground/5"
-                                      : "border-border hover:border-muted-foreground"
-                                  }`}
-                                >
-                                  <div className="font-medium text-sm">Outdoor</div>
-                                  <div className="text-xs text-muted-foreground">Weerbestendig</div>
-                                </button>
-                              </div>
-                            </div>
-
-                            
-                            <LogoUploader
-                              currentFile={config.logo.file}
-                              onUpload={handleLogoUpload}
-                              onColorSuggestionsFound={handleColorSuggestionsFound}
-                              onLogoInfoFound={handleLogoInfoFound}
-                            />
-
-                            {logoInfo.width > 0 && (
-                              <div className="rounded-lg border p-4 bg-muted/30 space-y-2">
-                                <h4 className="font-medium">Logo analyse</h4>
-                                <div className="text-sm">
-                                  Resolutie: {logoInfo.width} × {logoInfo.height} px
-                                </div>
-                                <div className="text-sm">
-                                  {hasGoodResolution ? (
-                                    <span className="text-green-600">✅ Resolutie geschikt voor productie</span>
-                                  ) : (
-                                    <span className="text-amber-600">⚠️ Resolutie mogelijk te laag</span>
-                                  )}
-                                </div>
-                                <div className="text-sm">Bestandstype: {logoInfo.format}</div>
-                                <div className="text-sm">
-                                  {isPng ? (
-                                    <span className="text-green-600">✅ PNG-bestand gedetecteerd</span>
-                                  ) : (
-                                    <span className="text-amber-600">
-                                      ⚠️ JPG/WebP-bestand. Transparantie wordt mogelijk niet ondersteund.
-                                    </span>
-                                  )}
-                                </div>
-                              </div>
-                            )}
-
-                            <Button className="w-full" onClick={() => goToStep(2)}>
-                              Volgende stap: Kleuren
-                              <ArrowRight className="w-4 h-4 ml-2" />
-                            </Button>
-                          </>
-                        )}
-
-                        {step.number === 2 && (
-                          <>
-                            {selectedColor && (
-                              <div className="flex items-center gap-3 p-3 bg-muted rounded-lg">
-                                <div
-                                  className="w-10 h-10 rounded-md border border-border"
-                                  style={{ backgroundColor: selectedColor.hex }}
-                                />
-                                <div>
-                                  <p className="font-medium text-sm">{selectedColor.name}</p>
-                                  <p className="text-xs text-muted-foreground">{selectedColor.code}</p>
-                                </div>
-                              </div>
-                            )}
-
-                          <ColorPalette
-  selectedCode={config.colorCode}
-  onSelect={(code) => updateConfig({ colorCode: code })}
-  suggestedCodes={suggestedColorCodes}
-  onResetSuggestions={handleResetSuggestions}
-/>
-
-                            <Button className="w-full" onClick={() => goToStep(3)}>
-                              Volgende stap: Logo Mat
-                              <ArrowRight className="w-4 h-4 ml-2" />
-                            </Button>
-                          </>
-                        )}
-
-                        {step.number === 3 && (
-                          <>
                             {/* Mat Type */}
                             <div className="space-y-3">
                               <Label className="text-sm font-medium">Type logomat</Label>
@@ -774,6 +672,80 @@ const steps = [
                               )}
                             </div>
 
+
+                            
+                            <LogoUploader
+                              currentFile={config.logo.file}
+                              onUpload={handleLogoUpload}
+                              onColorSuggestionsFound={handleColorSuggestionsFound}
+                              onLogoInfoFound={handleLogoInfoFound}
+                            />
+
+                            {logoInfo.width > 0 && (
+                              <div className="rounded-lg border p-4 bg-muted/30 space-y-2">
+                                <h4 className="font-medium">Logo analyse</h4>
+                                <div className="text-sm">
+                                  Resolutie: {logoInfo.width} × {logoInfo.height} px
+                                </div>
+                                <div className="text-sm">
+                                  {hasGoodResolution ? (
+                                    <span className="text-green-600">✅ Resolutie geschikt voor productie</span>
+                                  ) : (
+                                    <span className="text-amber-600">⚠️ Resolutie mogelijk te laag</span>
+                                  )}
+                                </div>
+                                <div className="text-sm">Bestandstype: {logoInfo.format}</div>
+                                <div className="text-sm">
+                                  {isPng ? (
+                                    <span className="text-green-600">✅ PNG-bestand gedetecteerd</span>
+                                  ) : (
+                                    <span className="text-amber-600">
+                                      ⚠️ JPG/WebP-bestand. Transparantie wordt mogelijk niet ondersteund.
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+                            )}
+
+                            <Button className="w-full" onClick={() => goToStep(2)}>
+                              Volgende stap: Kleuren
+                              <ArrowRight className="w-4 h-4 ml-2" />
+                            </Button>
+                          </>
+                        )}
+
+                        {step.number === 2 && (
+                          <>
+                            {selectedColor && (
+                              <div className="flex items-center gap-3 p-3 bg-muted rounded-lg">
+                                <div
+                                  className="w-10 h-10 rounded-md border border-border"
+                                  style={{ backgroundColor: selectedColor.hex }}
+                                />
+                                <div>
+                                  <p className="font-medium text-sm">{selectedColor.name}</p>
+                                  <p className="text-xs text-muted-foreground">{selectedColor.code}</p>
+                                </div>
+                              </div>
+                            )}
+
+                          <ColorPalette
+  selectedCode={config.colorCode}
+  onSelect={(code) => updateConfig({ colorCode: code })}
+  suggestedCodes={suggestedColorCodes}
+  onResetSuggestions={handleResetSuggestions}
+/>
+
+                            <Button className="w-full" onClick={() => goToStep(3)}>
+                              Volgende stap: Logo Mat
+                              <ArrowRight className="w-4 h-4 ml-2" />
+                            </Button>
+                          </>
+                        )}
+
+                        {step.number === 3 && (
+                          <>
+                            
                             <div className="space-y-3">
                               <Label className="text-sm font-medium">Aantal</Label>
                               <div className="flex items-center gap-3">
