@@ -234,9 +234,9 @@ const selectedColor =
 
   const step1Complete = Boolean(config.logo.file)
   const step2Complete = maxStepReached > 2
-
-  const steps = [
-  { number: 1, title: "Logo Mat", icon: Layers },
+  
+const steps = [
+  { number: 1, title: "Logomat configureren", icon: Layers },
   { number: 2, title: "Logo Upload", icon: ImageIcon },
   { number: 3, title: "Kleuren", icon: PaletteIcon },
 ]
@@ -355,6 +355,40 @@ const selectedColor =
                       <div className="px-4 pb-6 space-y-6">
                         {step.number === 1 && (
                           <>
+
+                            {/* Mat Type */}
+                            <div className="space-y-3">
+                              <Label className="text-sm font-medium">Type logomat</Label>
+                              <div className="grid grid-cols-2 gap-2">
+                                <button
+                                  type="button"
+                                  onClick={() => handleMatTypeChange("indoor")}
+                                  className={`p-3 rounded-lg border-2 transition-all text-left ${
+                                    visibleTypeBlock === "indoor"
+                                      ? "border-foreground bg-foreground/5"
+                                      : "border-border hover:border-muted-foreground"
+                                  }`}
+                                >
+                                  <div className="font-medium text-sm">Indoor</div>
+                                  <div className="text-xs text-muted-foreground">Voor binnengebruik</div>
+                                </button>
+
+                                <button
+                                  type="button"
+                                  onClick={() => handleMatTypeChange("outdoor")}
+                                  className={`p-3 rounded-lg border-2 transition-all text-left ${
+                                    visibleTypeBlock === "outdoor"
+                                      ? "border-foreground bg-foreground/5"
+                                      : "border-border hover:border-muted-foreground"
+                                  }`}
+                                >
+                                  <div className="font-medium text-sm">Outdoor</div>
+                                  <div className="text-xs text-muted-foreground">Weerbestendig</div>
+                                </button>
+                              </div>
+                            </div>
+
+                            
                             <LogoUploader
                               currentFile={config.logo.file}
                               onUpload={handleLogoUpload}
