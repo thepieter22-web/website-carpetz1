@@ -50,7 +50,7 @@ const DEFAULT_CONFIG: MatConfig = {
 }
 
 type IndoorSubtype = "normal" | "eco" | "budget" | "luxe"
-type OutdoorSubtype = "outdoor1" | "outdoor2" | "outdoor3" | "outdoor4"
+type OutdoorSubtype = "PrintGrass Outdoor" | "outdoor2" | "outdoor3" | "outdoor4"
 type VisibleTypeBlock = "indoor" | "outdoor" | null
 
 export function MatConfigurator() {
@@ -67,7 +67,7 @@ export function MatConfigurator() {
   })
 
   const [indoorSubtype, setIndoorSubtype] = useState<IndoorSubtype>(DEFAULT_CONFIG.indoorSubtype)
-  const [outdoorSubtype, setOutdoorSubtype] = useState<OutdoorSubtype>("outdoor1")
+  const [outdoorSubtype, setOutdoorSubtype] = useState<OutdoorSubtype>("PrintGrass Outdoor")
   const [visibleTypeBlock, setVisibleTypeBlock] = useState<VisibleTypeBlock>(null)
 
   useEffect(() => {
@@ -102,7 +102,7 @@ export function MatConfigurator() {
       }
 
       if (type === "outdoor") {
-        setOutdoorSubtype("outdoor1")
+        setOutdoorSubtype("PrintGrass Outdoor")
       }
     },
     [updateConfig]
@@ -157,7 +157,7 @@ export function MatConfigurator() {
     setSuggestedColorCodes([])
     setLogoImage(null)
     setIndoorSubtype("normal")
-    setOutdoorSubtype("outdoor1")
+    setOutdoorSubtype("PrintGrass Outdoor")
     setVisibleTypeBlock(null)
     setCurrentStep(1)
     setMaxStepReached(1)
@@ -536,9 +536,9 @@ export function MatConfigurator() {
                                 <div className="grid grid-cols-2 gap-2">
                                   <button
                                     type="button"
-                                    onClick={() => setOutdoorSubtype("outdoor1")}
+                                    onClick={() => setOutdoorSubtype("PrintGrass Outdoor")}
                                     className={`p-3 rounded-lg border-2 transition-all text-left ${
-                                      outdoorSubtype === "outdoor1"
+                                      outdoorSubtype === "PrintGrass Outdoor"
                                         ? "border-foreground bg-foreground/5"
                                         : "border-border hover:border-muted-foreground"
                                     }`}
