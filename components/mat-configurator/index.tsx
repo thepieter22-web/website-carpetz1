@@ -50,7 +50,7 @@ const DEFAULT_CONFIG: MatConfig = {
 }
 
 type IndoorSubtype = "normal" | "eco" | "budget" | "luxe"
-type OutdoorSubtype = "PrintGrass Outdoor" | "outdoor2" | "outdoor3" | "outdoor4"
+type OutdoorSubtype = "PrintGrass Outdoor" | "Signature Brush"
 type VisibleTypeBlock = "indoor" | "outdoor" | null
 
 export function MatConfigurator() {
@@ -551,40 +551,16 @@ export function MatConfigurator() {
                                     type="button"
                                     onClick={() => setOutdoorSubtype("outdoor2")}
                                     className={`p-3 rounded-lg border-2 transition-all text-left ${
-                                      outdoorSubtype === "outdoor2"
+                                      outdoorSubtype === "Signature Brush"
                                         ? "border-foreground bg-foreground/5"
                                         : "border-border hover:border-muted-foreground"
                                     }`}
                                   >
-                                    <div className="font-medium text-sm">Outdoor 2</div>
+                                    <div className="font-medium text-sm">Signature Brush</div>
                                     <div className="text-xs text-muted-foreground">Extra scraper effect</div>
                                   </button>
 
-                                  <button
-                                    type="button"
-                                    onClick={() => setOutdoorSubtype("outdoor3")}
-                                    className={`p-3 rounded-lg border-2 transition-all text-left ${
-                                      outdoorSubtype === "outdoor3"
-                                        ? "border-foreground bg-foreground/5"
-                                        : "border-border hover:border-muted-foreground"
-                                    }`}
-                                  >
-                                    <div className="font-medium text-sm">Outdoor 3</div>
-                                    <div className="text-xs text-muted-foreground">Heavy-duty option</div>
-                                  </button>
-
-                                  <button
-                                    type="button"
-                                    onClick={() => setOutdoorSubtype("outdoor4")}
-                                    className={`p-3 rounded-lg border-2 transition-all text-left ${
-                                      outdoorSubtype === "outdoor4"
-                                        ? "border-foreground bg-foreground/5"
-                                        : "border-border hover:border-muted-foreground"
-                                    }`}
-                                  >
-                                    <div className="font-medium text-sm">Outdoor 4</div>
-                                    <div className="text-xs text-muted-foreground">Premium outdoor finish</div>
-                                  </button>
+                                  
                                 </div>
                               </div>
                             )}
