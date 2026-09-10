@@ -29,6 +29,7 @@ import {
 const DEFAULT_CONFIG: MatConfig = {
   type: "indoor",
   indoorSubtype: "normal",
+  outdoorSubtype: "printgrass",
   placement: "floor",
   orientation: "landscape",
   rubberBorder: true,
