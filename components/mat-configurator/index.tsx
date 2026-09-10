@@ -543,7 +543,7 @@ export function MatConfigurator() {
                                         : "border-border hover:border-muted-foreground"
                                     }`}
                                   >
-                                    <div className="font-medium text-sm">Outdoor 1</div>
+                                    <div className="font-medium text-sm">PrintGrass Outdoor</div>
                                     <div className="text-xs text-muted-foreground">Standard outdoor use</div>
                                   </button>
 
