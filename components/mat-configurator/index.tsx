@@ -544,7 +544,7 @@ export function MatConfigurator() {
                                     }`}
                                   >
                                     <div className="font-medium text-sm">PrintGrass Outdoor</div>
-                                    <div className="text-xs text-muted-foreground">Standard outdoor use</div>
+                                    <div className="text-xs text-muted-foreground">Full-colour bedrukte buitenmat</div>
                                   </button>
 
                                   <button
@@ -557,7 +557,7 @@ export function MatConfigurator() {
                                     }`}
                                   >
                                     <div className="font-medium text-sm">Signature Brush</div>
-                                    <div className="text-xs text-muted-foreground">Extra scraper effect</div>
+                                    <div className="text-xs text-muted-foreground">Premium logomat met 2-3 kleuren</div>
                                   </button>
 
                                   
