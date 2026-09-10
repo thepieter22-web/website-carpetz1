@@ -410,16 +410,11 @@ const selectedColor =
                               </div>
                             )}
 
-                           <ColorPalette
+                          <ColorPalette
   selectedCode={config.colorCode}
   onSelect={(code) => updateConfig({ colorCode: code })}
   suggestedCodes={suggestedColorCodes}
   onResetSuggestions={handleResetSuggestions}
-  colorSet={
-    outdoorSubtype === "PrintGrass Outdoor"
-      ? "printgrass"
-      : "standard"
-  }
 />
 
                             <Button className="w-full" onClick={() => goToStep(3)}>
