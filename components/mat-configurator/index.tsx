@@ -1,5 +1,5 @@
 "use client"
-
+import { PRINTGRASS_COLORS } from "@/lib/printgrass-colors"
 import { useState, useCallback, useEffect } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
@@ -214,7 +214,14 @@ export function MatConfigurator() {
     setSuggestedColorCodes([])
   }, [])
 
-  const selectedColor = MAT_COLORS.find((c) => c.code === config.colorCode)
+ const activeColors =
+  outdoorSubtype === "PrintGrass Outdoor"
+    ? PRINTGRASS_COLORS
+    : MAT_COLORS
+
+const selectedColor =
+  activeColors.find((c) => c.code === config.colorCode)
+``
 
   const hasGoodResolution = logoInfo.width >= 1000 && logoInfo.height >= 1000
   const isPng = logoInfo.format === "image/png"
@@ -404,12 +411,17 @@ export function MatConfigurator() {
                               </div>
                             )}
 
-                            <ColorPalette
-                              selectedCode={config.colorCode}
-                              onSelect={(code) => updateConfig({ colorCode: code })}
-                              suggestedCodes={suggestedColorCodes}
-                              onResetSuggestions={handleResetSuggestions}
-                            />
+                           <ColorPalette
+  selectedCode={config.colorCode}
+  onSelect={(code) => updateConfig({ colorCode: code })}
+  suggestedCodes={suggestedColorCodes}
+  onResetSuggestions={handleResetSuggestions}
+  colorSet={
+    outdoorSubtype === "PrintGrass Outdoor"
+      ? "printgrass"
+      : "standard"
+  }
+/>
 
                             <Button className="w-full" onClick={() => goToStep(3)}>
                               Volgende stap: Logo Mat
@@ -550,7 +562,7 @@ export function MatConfigurator() {
 
                                   <button
                                     type="button"
-                                    onClick={() => setOutdoorSubtype("outdoor2")}
+                                    onClick={() => setOutdoorSubtype("Signature Brush")}
                                     className={`p-3 rounded-lg border-2 transition-all text-left ${
                                       outdoorSubtype === "Signature Brush"
                                         ? "border-foreground bg-foreground/5"
