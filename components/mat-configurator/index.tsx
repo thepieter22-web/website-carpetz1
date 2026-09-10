@@ -236,10 +236,10 @@ const selectedColor =
   const step2Complete = maxStepReached > 2
 
   const steps = [
-    { number: 1, title: "Logo Upload", icon: ImageIcon },
-    { number: 2, title: "Kleuren", icon: PaletteIcon },
-    { number: 3, title: "Logo Mat", icon: Layers },
-  ]
+  { number: 1, title: "Logo Mat", icon: Layers },
+  { number: 2, title: "Logo Upload", icon: ImageIcon },
+  { number: 3, title: "Kleuren", icon: PaletteIcon },
+]
 
   return (
     <div className="min-h-screen bg-background">
