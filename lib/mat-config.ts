@@ -108,7 +108,7 @@ export const PRICING = {
   },
 
   outdoorTypes: {
-  printgrass: 220.76
+  printgrass: 220.76,
   signature: 270.07,
 },
 
