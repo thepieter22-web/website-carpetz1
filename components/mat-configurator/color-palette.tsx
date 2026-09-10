@@ -1,5 +1,6 @@
 "use client";
 
+import { PRINTGRASS_COLORS } from "@/lib/printgrass-colors";
 import { MAT_COLORS } from "@/lib/mat-config";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
@@ -10,6 +11,7 @@ interface ColorPaletteProps {
   onSelect: (code: string) => void;
   suggestedCodes?: string[];
   onResetSuggestions?: () => void;
+  colorSet?: "standard" | "printgrass";
 }
 
 function getSwatchStyle(color: { hex: string }) {
@@ -23,10 +25,10 @@ export function ColorPalette({
   onSelect,
   suggestedCodes = [],
   onResetSuggestions,
+  colorSet = "standard",
 }: ColorPaletteProps) {
   const selectedColor =
-    MAT_COLORS.find((c) => c.code === selectedCode) ?? MAT_COLORS[0];
-
+  colors.find((c) => c.code === selectedCode) ?? colors[0];
   return (
     <div className="space-y-4">
       {suggestedCodes.length > 0 && (
@@ -107,7 +109,7 @@ export function ColorPalette({
         <span className="text-sm font-medium text-foreground">Kies je achtergrondkleur</span>
 
         <div className="grid grid-cols-8 gap-2">
-          {MAT_COLORS.map((color) => (
+         {colors.map((color) => (
             <Tooltip key={color.code}>
               <TooltipTrigger asChild>
                 <button
