@@ -11,22 +11,18 @@ import { Cta } from '@/components/cta'
 export function SiteHeader() {
   const t = useTranslations('Header');
 
-  const navItems = [
-  { href: '/', label: t('home') },
-  { href: '/logomat', label: t('logomatten') },
-  { href: '/geprint-tapijt', label: t('geprintTapijt') },
-  { href: '/event-tapijt', label: t('eventTapijt') },
-  { href: '/over-ons', label: t('overOns') },
-  { href: '/contact', label: t('contact') },
-]
-
-
-
-
-  
-  const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(false)
   const pathname = usePathname()
   const currentLocale = pathname.startsWith('/fr') ? 'fr' : 'nl'
+
+  const navItems = [
+    { href: `/${currentLocale}`, label: t('home') },
+    { href: `/${currentLocale}/logomat`, label: t('logomatten') },
+    { href: `/${currentLocale}/geprint-tapijt`, label: t('geprintTapijt') },
+    { href: `/${currentLocale}/event-tapijt`, label: t('eventTapijt') },
+    { href: `/${currentLocale}/over-ons`, label: t('overOns') },
+    { href: `/${currentLocale}/contact`, label: t('contact') },
+  ]
 
   const switchLocale = (locale: string) => {
   return pathname.replace(/^\/(nl|fr)/, `/${locale}`)
