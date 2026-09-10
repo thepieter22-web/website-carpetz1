@@ -723,7 +723,7 @@ const steps = [
                         
 
                             <Button className="w-full" onClick={() => goToStep(3)}>
-                              Volgende stap: Logo Mat
+                              Volgende stap: Kies je achtergrondkleur
                               <ArrowRight className="w-4 h-4 ml-2" />
                             </Button>
                           </>
