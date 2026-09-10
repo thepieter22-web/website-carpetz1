@@ -221,7 +221,6 @@ export function MatConfigurator() {
 
 const selectedColor =
   activeColors.find((c) => c.code === config.colorCode)
-``
 
   const hasGoodResolution = logoInfo.width >= 1000 && logoInfo.height >= 1000
   const isPng = logoInfo.format === "image/png"
