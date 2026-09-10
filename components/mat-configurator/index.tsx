@@ -673,7 +673,16 @@ const steps = [
                             </div>
 
 
-                            
+                            <Button className="w-full" onClick={() => goToStep(2)}>
+                              Volgende stap: Logo Upload
+                              <ArrowRight className="w-4 h-4 ml-2" />
+                            </Button>
+                          </>
+                        )}
+
+                        {step.number === 2 && (
+                          <>
+
                             <LogoUploader
                               currentFile={config.logo.file}
                               onUpload={handleLogoUpload}
@@ -707,15 +716,22 @@ const steps = [
                               </div>
                             )}
 
-                            <Button className="w-full" onClick={() => goToStep(2)}>
-                              Volgende stap: Kleuren
+
+
+
+
+                        
+
+                            <Button className="w-full" onClick={() => goToStep(3)}>
+                              Volgende stap: Logo Mat
                               <ArrowRight className="w-4 h-4 ml-2" />
                             </Button>
                           </>
                         )}
 
-                        {step.number === 2 && (
+                        {step.number === 3 && (
                           <>
+
                             {selectedColor && (
                               <div className="flex items-center gap-3 p-3 bg-muted rounded-lg">
                                 <div
@@ -736,15 +752,10 @@ const steps = [
   onResetSuggestions={handleResetSuggestions}
 />
 
-                            <Button className="w-full" onClick={() => goToStep(3)}>
-                              Volgende stap: Logo Mat
-                              <ArrowRight className="w-4 h-4 ml-2" />
-                            </Button>
-                          </>
-                        )}
 
-                        {step.number === 3 && (
-                          <>
+
+
+                            
                             
                             <div className="space-y-3">
                               <Label className="text-sm font-medium">Aantal</Label>
