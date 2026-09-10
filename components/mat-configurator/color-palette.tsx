@@ -27,8 +27,15 @@ export function ColorPalette({
   onResetSuggestions,
   colorSet = "standard",
 }: ColorPaletteProps) {
+
+  const colors =
+    colorSet === "printgrass"
+      ? PRINTGRASS_COLORS
+      : MAT_COLORS;
+
   const selectedColor =
-  colors.find((c) => c.code === selectedCode) ?? colors[0];
+    colors.find((c) => c.code === selectedCode) ?? colors[0];
+
   return (
     <div className="space-y-4">
       {suggestedCodes.length > 0 && (
