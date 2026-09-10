@@ -107,9 +107,12 @@ export const PRICING = {
     luxe: 72.00,        // Elite
   },
 
-  outdoor: {
-    basePrice: 75.00,
-  },
+  outdoorTypes: {
+  printgrass: €220,76
+  signature: 270.07,
+},
+
+  
   rubberBorder: {
     percentage: 0,
   },
@@ -137,6 +140,7 @@ export type Orientation = "landscape" | "portrait";
 export interface MatConfig {
   type: MatType;
   indoorSubtype: "normal" | "eco" | "budget" | "luxe";
+  outdoorSubtype: "printgrass" | "signature";
   placement: Placement;
   orientation: Orientation;
   rubberBorder: boolean;
