@@ -618,7 +618,7 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
       if (!containerRef.current) return;
 
       const containerWidth = containerRef.current.clientWidth;
-      const maxHeight = 500;
+      const maxHeight = 700;
       const aspectRatio = displayWidth / displayHeight;
 
       let matWidthPx = containerWidth - 32;
