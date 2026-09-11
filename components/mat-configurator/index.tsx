@@ -334,8 +334,10 @@ export function MatConfigurator() {
                         </span>
                         <div>
                           <div className="font-medium text-sm">{step.title}</div>
-                          {!isOpen && step.number === 1 && config.logo.file && (
-                            <div className="text-xs text-muted-foreground">{config.logo.file.name}</div>
+                                                    {!isOpen && step.number === 1 && visibleTypeBlock && (
+                            <div className="text-xs text-muted-foreground">
+                              {visibleTypeBlock === "indoor" ? indoorInfo[indoorSubtype].title : outdoorSubtype}
+                            </div>
                           )}
                           {!isOpen && step.number === 2 && (
                             <div className="text-xs text-muted-foreground">
