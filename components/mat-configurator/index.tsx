@@ -239,9 +239,10 @@ const selectedColor =
   const step2Complete = maxStepReached > 2
   
 const steps = [
-  { number: 1, title: "Logomat configureren", icon: Layers },
-  { number: 2, title: "Logo Upload", icon: ImageIcon },
-  { number: 3, title: "Kleuren", icon: PaletteIcon },
+  { number: 1, title: "Type logomat", icon: Layers },
+  { number: 2, title: "Afmetingen", icon: Layers },
+  { number: 3, title: "Logo Upload", icon: ImageIcon },
+  { number: 4, title: "Kleuren", icon: PaletteIcon },
 ]
 
   return (
@@ -311,7 +312,13 @@ const steps = [
               {steps.map((step) => {
                 const isOpen = currentStep === step.number
                 const isComplete =
-                  step.number === 1 ? step1Complete : step.number === 2 ? step2Complete : false
+  step.number === 1
+    ? visibleTypeBlock !== null
+    : step.number === 2
+    ? true
+    : step.number === 3
+    ? Boolean(config.logo.file)
+    : false
 
                 return (
                   <div key={step.number} className={step.number !== 3 ? "border-b border-border" : ""}>
@@ -682,7 +689,14 @@ const steps = [
                             </div>
 
 
-                            <Button className="w-full" onClick={() => goToStep(2)}>
+                           <Button
+  className="w-full"
+  onClick={() => goToStep(2)}
+>
+  Verder naar afmetingen
+  <ArrowRight className="w-4 h-4 ml-2" />
+</Button>
+
                               Volgende stap: Logo Upload
                               <ArrowRight className="w-4 h-4 ml-2" />
                             </Button>
