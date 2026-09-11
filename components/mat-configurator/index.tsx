@@ -602,26 +602,7 @@ const steps = [
 
                            
 
-                              {config.size.isCustom && (
-                                <div className="grid grid-cols-2 gap-3 pt-2">
-                                  <div className="space-y-1.5">
-                                    <Label className="text-xs text-muted-foreground">Width (cm)</Label>
-                                    <Input
-                                      type="number"
-                                      min={30}
-                                      max={300}
-                                      value={config.size.width}
-                                      onChange={(e) =>
-                                        updateConfig({
-                                          size: {
-                                            ...config.size,
-                                            width: parseInt(e.target.value) || 30,
-                                            isCustom: true,
-                                          },
-                                        })
-                                      }
-                                    />
-                                  </div>
+                              
 
                                   <div className="space-y-1.5">
                                     <Label className="text-xs text-muted-foreground">Height (cm)</Label>
@@ -706,17 +687,53 @@ const steps = [
                                 </button>
                               </div>
 
-                               <Button
-  className="w-full"
-  onClick={() => goToStep(3)}
->
-  Verder naar logo upload
-  <ArrowRight className="w-4 h-4 ml-2" />
-</Button>
+                              {config.size.isCustom && (
+  <div className="grid grid-cols-2 gap-3 pt-2">
+    <div className="space-y-1.5">
+      <Label className="text-xs text-muted-foreground">
+        Width (cm)
+      </Label>
 
-                            
-                          </>
-                        )}
+      <Input
+        type="number"
+        min={30}
+        max={300}
+        value={config.size.width}
+        onChange={(e) =>
+          updateConfig({
+            size: {
+              ...config.size,
+              width: parseInt(e.target.value) || 30,
+              isCustom: true,
+            },
+          })
+        }
+      />
+    </div>
+
+    <div className="space-y-1.5">
+      <Label className="text-xs text-muted-foreground">
+        Height (cm)
+      </Label>
+
+      <Input
+        type="number"
+        min={30}
+        max={300}
+        value={config.size.height}
+        onChange={(e) =>
+          updateConfig({
+            size: {
+              ...config.size,
+              height: parseInt(e.target.value) || 30,
+              isCustom: true,
+            },
+          })
+        }
+      />
+    </div>
+  </div>
+)}
 
 {step.number === 3 && (
   <>
