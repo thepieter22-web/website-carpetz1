@@ -822,17 +822,17 @@ const steps = [
             </Card>
           </div>
 
-         {/* Price Calculator - Desktop */}
-<div class*ame="hidden lg:block">
-  <div clas*Name="sticky top-24">
-    <PriceCa*culator config*{config} />
+        {/* Price Calculator - Desktop */}
+<div className="hidden lg:block">
+  <div className="sticky top-24">
+    <PriceCalculator config={config} />
   </div>
 </div>
-        </div>
+</div>
 
-        {/* Price Calculator - Mobile/Tablet */}
-<div className="lg:hidden mt-6"*
-  <PriceCalculator config={config* />
+{/* Price Calculator - Mobile/Tablet */}
+<div className="lg:hidden mt-6">
+  <PriceCalculator config={config} />
 </div>
 
         <Card className="mt-6 border-2 border-primary/20">
