@@ -54,8 +54,6 @@ type IndoorSubtype = "normal" | "eco" | "budget" | "luxe"
 type OutdoorSubtype = "PrintGrass Outdoor" | "Signature Brush"
 type VisibleTypeBlock = "indoor" | "outdoor" | null
 
-
-
 export function MatConfigurator() {
   const [config, setConfig] = useState<MatConfig>(DEFAULT_CONFIG)
   const [currentStep, setCurrentStep] = useState<number>(1)
@@ -72,7 +70,6 @@ export function MatConfigurator() {
   const [indoorSubtype, setIndoorSubtype] = useState<IndoorSubtype>(DEFAULT_CONFIG.indoorSubtype)
   const [outdoorSubtype, setOutdoorSubtype] = useState<OutdoorSubtype>("PrintGrass Outdoor")
   const [visibleTypeBlock, setVisibleTypeBlock] = useState<VisibleTypeBlock>(null)
-  
 
   useEffect(() => {
     if (config.logo.dataUrl) {
@@ -217,13 +214,9 @@ export function MatConfigurator() {
     setSuggestedColorCodes([])
   }, [])
 
- const activeColors =
-  outdoorSubtype === "PrintGrass Outdoor"
-    ? PRINTGRASS_COLORS
-    : MAT_COLORS
+  const activeColors = outdoorSubtype === "PrintGrass Outdoor" ? PRINTGRASS_COLORS : MAT_COLORS
 
-const selectedColor =
-  activeColors.find((c) => c.code === config.colorCode)
+  const selectedColor = activeColors.find((c) => c.code === config.colorCode)
 
   const hasGoodResolution = logoInfo.width >= 1000 && logoInfo.height >= 1000
   const isPng = logoInfo.format === "image/png"
@@ -237,13 +230,13 @@ const selectedColor =
 
   const step1Complete = Boolean(config.logo.file)
   const step2Complete = maxStepReached > 2
-  
-const steps = [
-  { number: 1, title: "Type logomat", icon: Layers },
-  { number: 2, title: "Afmetingen", icon: Layers },
-  { number: 3, title: "Logo Upload", icon: ImageIcon },
-  { number: 4, title: "Kleuren", icon: PaletteIcon },
-]
+
+  const steps = [
+    { number: 1, title: "Type logomat", icon: Layers },
+    { number: 2, title: "Afmetingen", icon: Layers },
+    { number: 3, title: "Logo Upload", icon: ImageIcon },
+    { number: 4, title: "Kleuren", icon: PaletteIcon },
+  ]
 
   return (
     <div className="min-h-screen bg-background">
@@ -300,7 +293,7 @@ const steps = [
       </header>
 
       {/* Main Content */}
-     <main className="max-w-[1800px] mx-auto px-6 py-6">
+      <main className="max-w-[1800px] mx-auto px-6 py-6">
         <div className="grid grid-cols-1 lg:grid-cols-[360px_1.6fr_320px] gap-6">
           {/* Configuration Panel — verticale stappen-accordion */}
           <Card className="flex flex-col">
@@ -312,19 +305,16 @@ const steps = [
               {steps.map((step) => {
                 const isOpen = currentStep === step.number
                 const isComplete =
-  step.number === 1
-    ? visibleTypeBlock !== null
-    : step.number === 2
-    ? true
-    : step.number === 3
-    ? Boolean(config.logo.file)
-    : false
+                  step.number === 1
+                    ? visibleTypeBlock !== null
+                    : step.number === 2
+                    ? true
+                    : step.number === 3
+                    ? Boolean(config.logo.file)
+                    : false
 
                 return (
-                  <div
-  key={step.number}
-  className={step.number !== 4 ? "border-b border-border" : ""}
->
+                  <div key={step.number} className={step.number !== 4 ? "border-b border-border" : ""}>
                     <button
                       type="button"
                       onClick={() => goToStep(step.number)}
@@ -347,16 +337,14 @@ const steps = [
                           {!isOpen && step.number === 1 && config.logo.file && (
                             <div className="text-xs text-muted-foreground">{config.logo.file.name}</div>
                           )}
-                         {!isOpen && step.number === 2 && (
-  <div className="text-xs text-muted-foreground">
-    {config.size.width}×{config.size.height} cm
-  </div>
-)}
+                          {!isOpen && step.number === 2 && (
+                            <div className="text-xs text-muted-foreground">
+                              {config.size.width}×{config.size.height} cm
+                            </div>
+                          )}
                           {!isOpen && step.number === 3 && config.logo.file && (
-  <div className="text-xs text-muted-foreground">
-    {config.logo.file.name}
-  </div>
-)}
+                            <div className="text-xs text-muted-foreground">{config.logo.file.name}</div>
+                          )}
                         </div>
                       </div>
                       <ChevronDown
@@ -370,11 +358,6 @@ const steps = [
                       <div className="px-4 pb-6 space-y-6">
                         {step.number === 1 && (
                           <>
-
-                            
-
-                           
-
                             {/* Mat Type */}
                             <div className="space-y-3">
                               <Label className="text-sm font-medium">Type logomat</Label>
@@ -515,8 +498,6 @@ const steps = [
                                     <div className="font-medium text-sm">Signature Brush</div>
                                     <div className="text-xs text-muted-foreground">Premium logomat met 2-3 kleuren</div>
                                   </button>
-
-                                  
                                 </div>
                               </div>
                             )}
@@ -599,48 +580,16 @@ const steps = [
                               </>
                             )}
 
-
-                           
-
-                              
-
-                                  <div className="space-y-1.5">
-                                    <Label className="text-xs text-muted-foreground">Height (cm)</Label>
-                                    <Input
-                                      type="number"
-                                      min={30}
-                                      max={300}
-                                      value={config.size.height}
-                                      onChange={(e) =>
-                                        updateConfig({
-                                          size: {
-                                            ...config.size,
-                                            height: parseInt(e.target.value) || 30,
-                                            isCustom: true,
-                                          },
-                                        })
-                                      }
-                                    />
-                                  </div>
-                                </div>
-                              )}
-                            </div>
-
-
-                           <Button
-  className="w-full"
-  onClick={() => goToStep(2)}
->
-  Verder naar afmetingen
-  <ArrowRight className="w-4 h-4 ml-2" />
-</Button>
+                            <Button className="w-full" onClick={() => goToStep(2)}>
+                              Verder naar afmetingen
+                              <ArrowRight className="w-4 h-4 ml-2" />
+                            </Button>
                           </>
                         )}
 
                         {step.number === 2 && (
                           <>
-
-                             <div className="space-y-3">
+                            <div className="space-y-3">
                               <Label className="text-sm font-medium">Afmetingen (cm)</Label>
 
                               <div className="grid grid-cols-2 gap-2">
@@ -688,56 +637,58 @@ const steps = [
                               </div>
 
                               {config.size.isCustom && (
-  <div className="grid grid-cols-2 gap-3 pt-2">
-    <div className="space-y-1.5">
-      <Label className="text-xs text-muted-foreground">
-        Width (cm)
-      </Label>
+                                <div className="grid grid-cols-2 gap-3 pt-2">
+                                  <div className="space-y-1.5">
+                                    <Label className="text-xs text-muted-foreground">Width (cm)</Label>
+                                    <Input
+                                      type="number"
+                                      min={30}
+                                      max={300}
+                                      value={config.size.width}
+                                      onChange={(e) =>
+                                        updateConfig({
+                                          size: {
+                                            ...config.size,
+                                            width: parseInt(e.target.value) || 30,
+                                            isCustom: true,
+                                          },
+                                        })
+                                      }
+                                    />
+                                  </div>
 
-      <Input
-        type="number"
-        min={30}
-        max={300}
-        value={config.size.width}
-        onChange={(e) =>
-          updateConfig({
-            size: {
-              ...config.size,
-              width: parseInt(e.target.value) || 30,
-              isCustom: true,
-            },
-          })
-        }
-      />
-    </div>
+                                  <div className="space-y-1.5">
+                                    <Label className="text-xs text-muted-foreground">Height (cm)</Label>
+                                    <Input
+                                      type="number"
+                                      min={30}
+                                      max={300}
+                                      value={config.size.height}
+                                      onChange={(e) =>
+                                        updateConfig({
+                                          size: {
+                                            ...config.size,
+                                            height: parseInt(e.target.value) || 30,
+                                            isCustom: true,
+                                          },
+                                        })
+                                      }
+                                    />
+                                  </div>
+                                </div>
+                              )}
+                            </div>
 
-    <div className="space-y-1.5">
-      <Label className="text-xs text-muted-foreground">
-        Height (cm)
-      </Label>
+                            <Button className="w-full" onClick={() => goToStep(3)}>
+                              Verder naar logo upload
+                              <ArrowRight className="w-4 h-4 ml-2" />
+                            </Button>
+                          </>
+                        )}
 
-      <Input
-        type="number"
-        min={30}
-        max={300}
-        value={config.size.height}
-        onChange={(e) =>
-          updateConfig({
-            size: {
-              ...config.size,
-              height: parseInt(e.target.value) || 30,
-              isCustom: true,
-            },
-          })
-        }
-      />
-    </div>
-  </div>
-)}
-
-{step.number === 3 && (
-  <>
-    <LogoUploader
+                        {step.number === 3 && (
+                          <>
+                            <LogoUploader
                               currentFile={config.logo.file}
                               onUpload={handleLogoUpload}
                               onColorSuggestionsFound={handleColorSuggestionsFound}
@@ -770,23 +721,15 @@ const steps = [
                               </div>
                             )}
 
-
-
-
-
-                        
-
                             <Button className="w-full" onClick={() => goToStep(4)}>
-  Volgende stap: Kies je achtergrondkleur
-  <ArrowRight className="w-4 h-4 ml-2" />
-</Button>
-  </>
-)}
-                            
+                              Volgende stap: Kies je achtergrondkleur
+                              <ArrowRight className="w-4 h-4 ml-2" />
+                            </Button>
+                          </>
+                        )}
 
                         {step.number === 4 && (
                           <>
-
                             {selectedColor && (
                               <div className="flex items-center gap-3 p-3 bg-muted rounded-lg">
                                 <div
@@ -800,18 +743,13 @@ const steps = [
                               </div>
                             )}
 
-                          <ColorPalette
-  selectedCode={config.colorCode}
-  onSelect={(code) => updateConfig({ colorCode: code })}
-  suggestedCodes={suggestedColorCodes}
-  onResetSuggestions={handleResetSuggestions}
-/>
+                            <ColorPalette
+                              selectedCode={config.colorCode}
+                              onSelect={(code) => updateConfig({ colorCode: code })}
+                              suggestedCodes={suggestedColorCodes}
+                              onResetSuggestions={handleResetSuggestions}
+                            />
 
-
-
-
-                            
-                            
                             <div className="space-y-3">
                               <Label className="text-sm font-medium">Aantal</Label>
                               <div className="flex items-center gap-3">
@@ -877,18 +815,18 @@ const steps = [
             </Card>
           </div>
 
-        {/* Price Calculator - Desktop */}
-<div className="hidden lg:block">
-  <div className="sticky top-24">
-    <PriceCalculator config={config} />
-  </div>
-</div>
-</div>
+          {/* Price Calculator - Desktop */}
+          <div className="hidden lg:block">
+            <div className="sticky top-24">
+              <PriceCalculator config={config} />
+            </div>
+          </div>
+        </div>
 
-{/* Price Calculator - Mobile/Tablet */}
-<div className="lg:hidden mt-6">
-  <PriceCalculator config={config} />
-</div>
+        {/* Price Calculator - Mobile/Tablet */}
+        <div className="lg:hidden mt-6">
+          <PriceCalculator config={config} />
+        </div>
 
         <Card className="mt-6 border-2 border-primary/20">
           <CardHeader>
