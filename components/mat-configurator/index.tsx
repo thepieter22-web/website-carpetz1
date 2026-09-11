@@ -54,6 +54,10 @@ type IndoorSubtype = "normal" | "eco" | "budget" | "luxe"
 type OutdoorSubtype = "PrintGrass Outdoor" | "Signature Brush"
 type VisibleTypeBlock = "indoor" | "outdoor" | null
 
+const [configSection, setConfigSection] = useState<"options" | "sizes">(
+  "options"
+)
+
 export function MatConfigurator() {
   const [config, setConfig] = useState<MatConfig>(DEFAULT_CONFIG)
   const [currentStep, setCurrentStep] = useState<number>(1)
@@ -356,6 +360,9 @@ const steps = [
                         {step.number === 1 && (
                           <>
 
+                            {configSection === "options" && (
+  <>
+
                            
 
                             {/* Mat Type */}
@@ -581,6 +588,24 @@ const steps = [
                                 <Separator />
                               </>
                             )}
+
+
+    <Button
+  className="w-full"
+  onClick={() => {
+    setConfigSection("sizes")
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+  }}
+>
+  Verder naar afmetingen
+  <ArrowRight className="w-4 h-4 ml-2" />
+</Button>
+
+</>
+)}
 
                             <div className="space-y-3">
                               <Label className="text-sm font-medium">Afmetingen (cm)</Label>
