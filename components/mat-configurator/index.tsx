@@ -823,10 +823,9 @@ const steps = [
           </div>
 
           {/* Price Calculator - Desktop */}
-<div className="hidden lg:block">
-  <div className="sticky top-24">
-    <PriceCalculator config={config} />
-  </div>
+<div className="lg:hidden mt-6">
+  <PriceCalculator config={config} />
+</div>
 </div>
         </div>
 
