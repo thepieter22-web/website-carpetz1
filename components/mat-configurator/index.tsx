@@ -72,9 +72,7 @@ export function MatConfigurator() {
   const [indoorSubtype, setIndoorSubtype] = useState<IndoorSubtype>(DEFAULT_CONFIG.indoorSubtype)
   const [outdoorSubtype, setOutdoorSubtype] = useState<OutdoorSubtype>("PrintGrass Outdoor")
   const [visibleTypeBlock, setVisibleTypeBlock] = useState<VisibleTypeBlock>(null)
-  const [configSection, setConfigSection] = useState<"options" | "sizes">(
-  "options"
-)
+  
 
   useEffect(() => {
     if (config.logo.dataUrl) {
@@ -361,8 +359,7 @@ const steps = [
                         {step.number === 1 && (
                           <>
 
-                            {configSection === "options" && (
-  <>
+                            
 
                            
 
@@ -591,20 +588,7 @@ const steps = [
                             )}
 
 
-    <Button
-  className="w-full"
-  onClick={() => {
-    setConfigSection("sizes")
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    })
-  }}
->
-  Verder naar afmetingen
-  <ArrowRight className="w-4 h-4 ml-2" />
-</Button>
-
+   
 </>
 )}
 
