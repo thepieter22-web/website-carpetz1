@@ -589,8 +589,7 @@ const steps = [
 
 
    
-</>
-)}
+
 
                             <div className="space-y-3">
                               <Label className="text-sm font-medium">Afmetingen (cm)</Label>
