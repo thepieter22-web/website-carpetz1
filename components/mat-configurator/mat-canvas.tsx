@@ -1188,12 +1188,12 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
           <div className="flex items-center gap-2 flex-wrap">
             <Button size="sm" variant="outline" onClick={handleCenterLogo}>
               <Crosshair className="w-4 h-4 mr-1" />
-              Center
+              Centreren
             </Button>
 
             <Button size="sm" variant="destructive" onClick={handleDeleteLogo}>
               <Trash2 className="w-4 h-4 mr-1" />
-              Remove
+              Verwijderen
             </Button>
           </div>
 
@@ -1202,7 +1202,7 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
               <div className="flex items-center justify-between">
                 <span className="text-sm flex items-center gap-1">
                   <ZoomIn className="w-4 h-4" />
-                  Scale
+                  Schaal
                 </span>
                 <span className="text-xs text-muted-foreground">
                   {Math.round(config.logo.scale * 100)}%
@@ -1225,7 +1225,7 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
               <div className="flex items-center justify-between">
                 <span className="text-sm flex items-center gap-1">
                   <RotateCw className="w-4 h-4" />
-                  Rotation
+                  Rotatie
                 </span>
                 <span className="text-xs text-muted-foreground">
                   {config.logo.rotation}°
@@ -1247,7 +1247,7 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
 
           <p className="text-xs text-muted-foreground flex items-center gap-1">
             <Move className="w-3 h-3" />
-            Drag the logo on the canvas to reposition
+            Sleep het logo op de mat om te verplaatsen
           </p>
         </div>
       )}
