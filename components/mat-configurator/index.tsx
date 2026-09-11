@@ -321,7 +321,10 @@ const steps = [
     : false
 
                 return (
-                  <div key={step.number} className={step.number !== 3 ? "border-b border-border" : ""}>
+                  <div
+  key={step.number}
+  className={step.number !== 4 ? "border-b border-border" : ""}
+>
                     <button
                       type="button"
                       onClick={() => goToStep(step.number)}
@@ -344,14 +347,16 @@ const steps = [
                           {!isOpen && step.number === 1 && config.logo.file && (
                             <div className="text-xs text-muted-foreground">{config.logo.file.name}</div>
                           )}
-                          {!isOpen && step.number === 2 && selectedColor && (
-                            <div className="text-xs text-muted-foreground">{selectedColor.name}</div>
-                          )}
-                          {!isOpen && step.number === 3 && (
-                            <div className="text-xs text-muted-foreground">
-                              {indoorInfo[indoorSubtype].title} &middot; {config.size.width}×{config.size.height}cm
-                            </div>
-                          )}
+                         {!isOpen && step.number === 2 && (
+  <div className="text-xs text-muted-foreground">
+    {config.size.width}×{config.size.height} cm
+  </div>
+)}
+                          {!isOpen && step.number === 3 && config.logo.file && (
+  <div className="text-xs text-muted-foreground">
+    {config.logo.file.name}
+  </div>
+)}
                         </div>
                       </div>
                       <ChevronDown
@@ -595,55 +600,7 @@ const steps = [
                             )}
 
 
-   
-
-
-                            <div className="space-y-3">
-                              <Label className="text-sm font-medium">Afmetingen (cm)</Label>
-
-                              <div className="grid grid-cols-2 gap-2">
-                                {STANDARD_SIZES.map((size) => {
-                                  const isSelected =
-                                    !config.size.isCustom &&
-                                    config.size.width === size.width &&
-                                    config.size.height === size.height
-
-                                  return (
-                                    <button
-                                      key={size.label}
-                                      type="button"
-                                      onClick={() =>
-                                        updateConfig({
-                                          size: { width: size.width, height: size.height, isCustom: false },
-                                        })
-                                      }
-                                      className={`p-3 rounded-lg border-2 transition-all text-left ${
-                                        isSelected
-                                          ? "border-foreground bg-foreground/5"
-                                          : "border-border hover:border-muted-foreground"
-                                      }`}
-                                    >
-                                      <div className="font-medium text-sm">{size.label}</div>
-                                      <div className="text-xs text-muted-foreground">
-                                        {size.width} × {size.height} cm
-                                      </div>
-                                    </button>
-                                  )
-                                })}
-
-                                <button
-                                  type="button"
-                                  onClick={() => updateConfig({ size: { ...config.size, isCustom: true } })}
-                                  className={`p-3 rounded-lg border-2 transition-all text-left ${
-                                    config.size.isCustom
-                                      ? "border-foreground bg-foreground/5"
-                                      : "border-border hover:border-muted-foreground"
-                                  }`}
-                                >
-                                  <div className="font-medium text-sm">Eigen afmetingen</div>
-                                  <div className="text-xs text-muted-foreground">Voer jouw afmetingen in</div>
-                                </button>
-                              </div>
+                           
 
                               {config.size.isCustom && (
                                 <div className="grid grid-cols-2 gap-3 pt-2">
@@ -702,7 +659,68 @@ const steps = [
                         {step.number === 2 && (
                           <>
 
-                            <LogoUploader
+                             <div className="space-y-3">
+                              <Label className="text-sm font-medium">Afmetingen (cm)</Label>
+
+                              <div className="grid grid-cols-2 gap-2">
+                                {STANDARD_SIZES.map((size) => {
+                                  const isSelected =
+                                    !config.size.isCustom &&
+                                    config.size.width === size.width &&
+                                    config.size.height === size.height
+
+                                  return (
+                                    <button
+                                      key={size.label}
+                                      type="button"
+                                      onClick={() =>
+                                        updateConfig({
+                                          size: { width: size.width, height: size.height, isCustom: false },
+                                        })
+                                      }
+                                      className={`p-3 rounded-lg border-2 transition-all text-left ${
+                                        isSelected
+                                          ? "border-foreground bg-foreground/5"
+                                          : "border-border hover:border-muted-foreground"
+                                      }`}
+                                    >
+                                      <div className="font-medium text-sm">{size.label}</div>
+                                      <div className="text-xs text-muted-foreground">
+                                        {size.width} × {size.height} cm
+                                      </div>
+                                    </button>
+                                  )
+                                })}
+
+                                <button
+                                  type="button"
+                                  onClick={() => updateConfig({ size: { ...config.size, isCustom: true } })}
+                                  className={`p-3 rounded-lg border-2 transition-all text-left ${
+                                    config.size.isCustom
+                                      ? "border-foreground bg-foreground/5"
+                                      : "border-border hover:border-muted-foreground"
+                                  }`}
+                                >
+                                  <div className="font-medium text-sm">Eigen afmetingen</div>
+                                  <div className="text-xs text-muted-foreground">Voer jouw afmetingen in</div>
+                                </button>
+                              </div>
+
+                               <Button
+  className="w-full"
+  onClick={() => goToStep(3)}
+>
+  Verder naar logo upload
+  <ArrowRight className="w-4 h-4 ml-2" />
+</Button>
+
+                            
+                          </>
+                        )}
+
+{step.number === 3 && (
+  <>
+    <LogoUploader
                               currentFile={config.logo.file}
                               onUpload={handleLogoUpload}
                               onColorSuggestionsFound={handleColorSuggestionsFound}
@@ -741,14 +759,15 @@ const steps = [
 
                         
 
-                            <Button className="w-full" onClick={() => goToStep(3)}>
-                              Volgende stap: Kies je achtergrondkleur
-                              <ArrowRight className="w-4 h-4 ml-2" />
-                            </Button>
-                          </>
-                        )}
+                            <Button className="w-full" onClick={() => goToStep(4)}>
+  Volgende stap: Kies je achtergrondkleur
+  <ArrowRight className="w-4 h-4 ml-2" />
+</Button>
+  </>
+)}
+                            
 
-                        {step.number === 3 && (
+                        {step.number === 4 && (
                           <>
 
                             {selectedColor && (
