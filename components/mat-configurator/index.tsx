@@ -696,10 +696,6 @@ const steps = [
   Verder naar afmetingen
   <ArrowRight className="w-4 h-4 ml-2" />
 </Button>
-
-                              Volgende stap: Logo Upload
-                              <ArrowRight className="w-4 h-4 ml-2" />
-                            </Button>
                           </>
                         )}
 
