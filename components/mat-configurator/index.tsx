@@ -296,8 +296,8 @@ const steps = [
       </header>
 
       {/* Main Content */}
-     <main className="max-w-[2200px] mx-auto px-6 py-6">
-        <div className="grid grid-cols-1 xl:grid-cols-[500px_1fr_450px] lg:grid-cols-[450px_1fr] gap-6">
+     <main className="max-w-[1800px] mx-auto px-6 py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[420px_1fr_340px] gap-6">
           {/* Configuration Panel — verticale stappen-accordion */}
           <Card className="flex flex-col">
             <CardHeader className="pb-2">
