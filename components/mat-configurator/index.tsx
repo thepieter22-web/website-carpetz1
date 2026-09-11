@@ -54,9 +54,7 @@ type IndoorSubtype = "normal" | "eco" | "budget" | "luxe"
 type OutdoorSubtype = "PrintGrass Outdoor" | "Signature Brush"
 type VisibleTypeBlock = "indoor" | "outdoor" | null
 
-const [configSection, setConfigSection] = useState<"options" | "sizes">(
-  "options"
-)
+
 
 export function MatConfigurator() {
   const [config, setConfig] = useState<MatConfig>(DEFAULT_CONFIG)
@@ -74,6 +72,9 @@ export function MatConfigurator() {
   const [indoorSubtype, setIndoorSubtype] = useState<IndoorSubtype>(DEFAULT_CONFIG.indoorSubtype)
   const [outdoorSubtype, setOutdoorSubtype] = useState<OutdoorSubtype>("PrintGrass Outdoor")
   const [visibleTypeBlock, setVisibleTypeBlock] = useState<VisibleTypeBlock>(null)
+  const [configSection, setConfigSection] = useState<"options" | "sizes">(
+  "options"
+)
 
   useEffect(() => {
     if (config.logo.dataUrl) {
