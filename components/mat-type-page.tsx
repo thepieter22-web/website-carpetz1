@@ -46,53 +46,53 @@ export function MatTypePage({
 }: MatTypePageProps) {
   return (
     <main className="bg-background">
-      {/* Hero */}
-      <section className="mx-auto max-w-5xl px-6 pt-16 pb-10 lg:px-8">
-        <p className="text-sm font-semibold uppercase tracking-[0.25em] text-accent">
-          {eyebrow}
-        </p>
-        <h1 className="mt-3 font-serif text-4xl font-semibold leading-tight text-balance sm:text-5xl">
-          {title}
-        </h1>
-        <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
-          {description}
-        </p>
-      </section>
+            {/* Hero + Eigenschappen naast elkaar */}
+      <section className="border-b border-border">
+        <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 lg:grid-cols-2 lg:px-8">
+          {/* Linkerkolom: titel, tekst, foto */}
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-accent">
+              {eyebrow}
+            </p>
+            <h1 className="mt-3 font-serif text-4xl font-semibold leading-tight text-balance sm:text-5xl">
+              {title}
+            </h1>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
+              {description}
+            </p>
 
-      {/* Grote detailfoto */}
-      <section className="mx-auto max-w-5xl px-6 pb-16 lg:px-8">
-        <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-border shadow-md">
-          <Image
-            src={heroImage}
-            alt={heroAlt}
-            fill
-            sizes="(min-width: 1024px) 1024px, 100vw"
-            className="object-cover"
-            priority
-          />
-        </div>
-      </section>
+            <div className="relative mt-8 aspect-[16/10] overflow-hidden rounded-2xl border border-border shadow-md">
+              <Image
+                src={heroImage}
+                alt={heroAlt}
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+                priority
+              />
+            </div>
+          </div>
 
-      {/* Eigenschappen */}
-      <section className="border-t border-border bg-secondary/40">
-        <div className="mx-auto max-w-5xl px-6 py-16 lg:px-8">
-          <h2 className="text-2xl font-semibold text-foreground">Eigenschappen</h2>
+          {/* Rechterkolom: eigenschappen */}
+          <div className="rounded-2xl bg-secondary/40 p-6 lg:p-8">
+            <h2 className="text-2xl font-semibold text-foreground">Eigenschappen</h2>
 
-          <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature) => {
-              const Icon = feature.icon;
-              return (
-                <div key={feature.label} className="flex items-center gap-3">
-                  <span className="flex size-11 shrink-0 items-center justify-center rounded-lg bg-foreground text-background">
-                    <Icon className="size-5" />
-                  </span>
-                  <div>
-                    <p className="text-sm font-semibold text-foreground">{feature.label}</p>
-                    <p className="text-sm text-muted-foreground">{feature.value}</p>
+            <div className="mt-8 grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2">
+              {features.map((feature) => {
+                const Icon = feature.icon;
+                return (
+                  <div key={feature.label} className="flex items-center gap-3">
+                    <span className="flex size-11 shrink-0 items-center justify-center rounded-lg bg-foreground text-background">
+                      <Icon className="size-5" />
+                    </span>
+                    <div>
+                      <p className="text-sm font-semibold text-foreground">{feature.label}</p>
+                      <p className="text-sm text-muted-foreground">{feature.value}</p>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
