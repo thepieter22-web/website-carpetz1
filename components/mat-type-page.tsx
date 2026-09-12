@@ -168,8 +168,8 @@ export function MatTypePage({
           <p className="mt-3 text-muted-foreground">
             Upload je logo en zie direct hoe jouw logomat eruitziet.
           </p>
-                   <Link
-            href={`/${locale}/logomat?type=${configuratorType}`}
+                            <Link
+            href={`/${locale}/logomat?type=${configuratorType}#configurator`}
             className="mt-6 inline-flex items-center gap-2 rounded-md bg-foreground px-6 py-3 text-sm font-semibold text-background transition-opacity hover:opacity-90"
           >
             Start de configurator
