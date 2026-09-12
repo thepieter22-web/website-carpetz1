@@ -96,17 +96,15 @@ export function MatConfigurator() {
       updateConfig({ type })
       setVisibleTypeBlock(type)
 
-      if (type === "indoor") {
+           if (type === "indoor") {
         setIndoorSubtype("normal")
         updateConfig({ type, indoorSubtype: "normal" })
         return
       }
 
-                 if (type === "outdoor") {
+      if (type === "outdoor") {
         setOutdoorSubtype("printgrass")
         updateConfig({ type, outdoorSubtype: "printgrass" })
-      }
-        updateConfig({ type, outdoorSubtype: "PrintGrass Outdoor" })
       }
     },
     [updateConfig]
