@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Wind, Droplet, Home, ShieldCheck, Flame, Zap, BadgeCheck, Globe } from "lucide-react";
 import { MatTypePage } from "@/components/mat-type-page";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
   title: "Eco logomat op maat",
