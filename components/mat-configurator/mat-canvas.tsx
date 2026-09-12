@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState, useCallback, useMemo } from "react";
 import { MAT_COLORS, type MatConfig } from "@/lib/mat-config";
+import { PRINTGRASS_COLORS } from "@/lib/printgrass-colors";
 import { Button } from "@/components/ui/button";
 import { RotateCw, ZoomIn, Move, Trash2, Crosshair } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
@@ -603,9 +604,14 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
 
   const borderThickness = config.rubberBorder ? 2 : 0;
 
-  const selectedMatColor = useMemo(() => {
-    return MAT_COLORS.find((c) => c.code === config.colorCode)?.hex || "#4a4a4a";
-  }, [config.colorCode]);
+   const selectedMatColor = useMemo(() => {
+    const activeColors =
+      config.type === "outdoor" && config.outdoorSubtype === "PrintGrass Outdoor"
+        ? PRINTGRASS_COLORS
+        : MAT_COLORS;
+
+    return activeColors.find((c) => c.code === config.colorCode)?.hex || "#4a4a4a";
+  }, [config.colorCode, config.type, config.outdoorSubtype]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
