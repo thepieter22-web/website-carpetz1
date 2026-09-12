@@ -604,9 +604,9 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
 
   const borderThickness = config.rubberBorder ? 2 : 0;
 
-   const selectedMatColor = useMemo(() => {
+     const selectedMatColor = useMemo(() => {
     const activeColors =
-      config.type === "outdoor" && config.outdoorSubtype === "PrintGrass Outdoor"
+      config.type === "outdoor" && config.outdoorSubtype === "printgrass"
         ? PRINTGRASS_COLORS
         : MAT_COLORS;
 
