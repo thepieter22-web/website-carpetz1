@@ -910,23 +910,29 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
     ctx.fillStyle = sideLight;
     ctx.fillRect(innerX, innerY, innerW, innerH);
 
-    if (textures.base) {
-      const pattern = createScaledPattern(ctx, textures.base, 0.35);
+        if (textures.base) {
+      const scale = isPrintGrass ? 0.5 : 0.35;
+      const pattern = createScaledPattern(ctx, textures.base, scale);
       if (pattern) {
-        ctx.globalAlpha = 0.16;
+        ctx.save();
+        ctx.globalAlpha = isPrintGrass ? 0.55 : 0.16;
+        ctx.globalCompositeOperation = isPrintGrass ? "multiply" : "source-over";
         ctx.fillStyle = pattern;
         ctx.fillRect(innerX, innerY, innerW, innerH);
-        ctx.globalAlpha = 1;
+        ctx.restore();
       }
     }
 
     if (textures.soft) {
-      const pattern = createScaledPattern(ctx, textures.soft, 0.42);
+      const scale = isPrintGrass ? 0.6 : 0.42;
+      const pattern = createScaledPattern(ctx, textures.soft, scale);
       if (pattern) {
-        ctx.globalAlpha = 0.15;
+        ctx.save();
+        ctx.globalAlpha = isPrintGrass ? 0.35 : 0.15;
+        ctx.globalCompositeOperation = isPrintGrass ? "multiply" : "source-over";
         ctx.fillStyle = pattern;
         ctx.fillRect(innerX, innerY, innerW, innerH);
-        ctx.globalAlpha = 1;
+        ctx.restore();
       }
     }
 
