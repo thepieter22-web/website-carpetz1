@@ -31,6 +31,8 @@ export interface MatTypePageProps {
   references: MatTypeReference[];
   /** Interne code voor de configurator query-param, bv. "eco" */
   configuratorType: string;
+  /** Huidige taal, bv. "nl" of "fr", voor de correcte link naar de configurator */
+  locale: string;
 }
 
 export function MatTypePage({
@@ -43,6 +45,7 @@ export function MatTypePage({
   specs,
   references,
   configuratorType,
+  locale,
 }: MatTypePageProps) {
   return (
     <main className="bg-background">
@@ -165,8 +168,8 @@ export function MatTypePage({
           <p className="mt-3 text-muted-foreground">
             Upload je logo en zie direct hoe jouw logomat eruitziet.
           </p>
-          <Link
-            href={`/logomat/configurator?type=${configuratorType}`}
+                   <Link
+            href={`/${locale}/logomat?type=${configuratorType}`}
             className="mt-6 inline-flex items-center gap-2 rounded-md bg-foreground px-6 py-3 text-sm font-semibold text-background transition-opacity hover:opacity-90"
           >
             Start de configurator
