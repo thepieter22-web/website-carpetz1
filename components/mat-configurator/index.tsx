@@ -51,7 +51,7 @@ const DEFAULT_CONFIG: MatConfig = {
 }
 
 type IndoorSubtype = "normal" | "eco" | "budget" | "luxe"
-type OutdoorSubtype = "PrintGrass Outdoor" | "Signature Brush"
+type OutdoorSubtype = "printgrass" | "signature"
 type VisibleTypeBlock = "indoor" | "outdoor" | null
 
 export function MatConfigurator() {
@@ -68,7 +68,7 @@ export function MatConfigurator() {
   })
 
   const [indoorSubtype, setIndoorSubtype] = useState<IndoorSubtype>(DEFAULT_CONFIG.indoorSubtype)
-  const [outdoorSubtype, setOutdoorSubtype] = useState<OutdoorSubtype>("PrintGrass Outdoor")
+    const [outdoorSubtype, setOutdoorSubtype] = useState<OutdoorSubtype>("printgrass")
   const [visibleTypeBlock, setVisibleTypeBlock] = useState<VisibleTypeBlock>(null)
 
   useEffect(() => {
@@ -102,8 +102,10 @@ export function MatConfigurator() {
         return
       }
 
-           if (type === "outdoor") {
-        setOutdoorSubtype("PrintGrass Outdoor")
+                 if (type === "outdoor") {
+        setOutdoorSubtype("printgrass")
+        updateConfig({ type, outdoorSubtype: "printgrass" })
+      }
         updateConfig({ type, outdoorSubtype: "PrintGrass Outdoor" })
       }
     },
@@ -159,7 +161,7 @@ export function MatConfigurator() {
     setSuggestedColorCodes([])
     setLogoImage(null)
     setIndoorSubtype("normal")
-    setOutdoorSubtype("PrintGrass Outdoor")
+       setOutdoorSubtype("printgrass")
     setVisibleTypeBlock(null)
     setCurrentStep(1)
     setMaxStepReached(1)
@@ -215,18 +217,23 @@ export function MatConfigurator() {
     setSuggestedColorCodes([])
   }, [])
 
-  const activeColors = outdoorSubtype === "PrintGrass Outdoor" ? PRINTGRASS_COLORS : MAT_COLORS
+    const activeColors = outdoorSubtype === "printgrass" ? PRINTGRASS_COLORS : MAT_COLORS
 
   const selectedColor = activeColors.find((c) => c.code === config.colorCode)
 
   const hasGoodResolution = logoInfo.width >= 1000 && logoInfo.height >= 1000
   const isPng = logoInfo.format === "image/png"
 
-  const indoorInfo = {
+    const indoorInfo = {
     normal: { title: "Classic", description: "Betrouwbare logomat voor dagelijks gebruik." },
     eco: { title: "Eco", description: "Gemaakt met gerecycleerde materialen." },
     budget: { title: "Professional", description: "Onze populairste keuze voor bedrijven." },
     luxe: { title: "Elite", description: "Premium afwerking en maximale levensduur." },
+  }
+
+  const outdoorInfo = {
+    printgrass: { title: "PrintGrass Outdoor", description: "Full-colour bedrukte buitenmat." },
+    signature: { title: "Signature Brush", description: "Premium logomat met 2-3 kleuren." },
   }
 
   const step1Complete = Boolean(config.logo.file)
@@ -335,9 +342,11 @@ export function MatConfigurator() {
                         </span>
                         <div>
                           <div className="font-medium text-sm">{step.title}</div>
-                                                    {!isOpen && step.number === 1 && visibleTypeBlock && (
+                                                                              {!isOpen && step.number === 1 && visibleTypeBlock && (
                             <div className="text-xs text-muted-foreground">
-                              {visibleTypeBlock === "indoor" ? indoorInfo[indoorSubtype].title : outdoorSubtype}
+                              {visibleTypeBlock === "indoor"
+                                ? indoorInfo[indoorSubtype].title
+                                : outdoorInfo[outdoorSubtype].title}
                             </div>
                           )}
                           {!isOpen && step.number === 2 && (
@@ -476,14 +485,14 @@ export function MatConfigurator() {
                               <div className="space-y-3">
                                 <Label className="text-sm font-medium">Outdoor Type</Label>
                                 <div className="grid grid-cols-2 gap-2">
-                                                                   <button
+                                                                                                     <button
                                     type="button"
                                     onClick={() => {
-                                      setOutdoorSubtype("PrintGrass Outdoor")
-                                      updateConfig({ outdoorSubtype: "PrintGrass Outdoor" })
+                                      setOutdoorSubtype("printgrass")
+                                      updateConfig({ outdoorSubtype: "printgrass" })
                                     }}
                                     className={`p-3 rounded-lg border-2 transition-all text-left ${
-                                      outdoorSubtype === "PrintGrass Outdoor"
+                                      outdoorSubtype === "printgrass"
                                         ? "border-foreground bg-foreground/5"
                                         : "border-border hover:border-muted-foreground"
                                     }`}
@@ -492,14 +501,14 @@ export function MatConfigurator() {
                                     <div className="text-xs text-muted-foreground">Full-colour bedrukte buitenmat</div>
                                   </button>
 
-                                                                   <button
+                                  <button
                                     type="button"
                                     onClick={() => {
-                                      setOutdoorSubtype("Signature Brush")
-                                      updateConfig({ outdoorSubtype: "Signature Brush" })
+                                      setOutdoorSubtype("signature")
+                                      updateConfig({ outdoorSubtype: "signature" })
                                     }}
                                     className={`p-3 rounded-lg border-2 transition-all text-left ${
-                                      outdoorSubtype === "Signature Brush"
+                                      outdoorSubtype === "signature"
                                         ? "border-foreground bg-foreground/5"
                                         : "border-border hover:border-muted-foreground"
                                     }`}
