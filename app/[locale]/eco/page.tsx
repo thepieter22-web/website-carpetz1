@@ -12,7 +12,9 @@ export const metadata: Metadata = {
 
 export default function EcoLogomatPage() {
   return (
-    <MatTypePage
+    <>
+      <SiteHeader />
+      <MatTypePage
       eyebrow="LOGO MAT • ECO"
       title="Eco logomat"
       description="De Eco logomat combineert een lage milieu-impact met dezelfde betrouwbare prestaties als onze klassieke logomatten. Ideaal voor bedrijven die duurzaamheid centraal willen zetten, zonder in te leveren op uitstraling of levensduur."
@@ -48,8 +50,10 @@ export default function EcoLogomatPage() {
         { image: "/images/references/ref-1.jpg", alt: "Logomat referentie 1" },
         { image: "/images/references/ref-2.jpg", alt: "Logomat referentie 2" },
         { image: "/images/references/ref-3.jpg", alt: "Logomat referentie 3" },
-        { image: "/images/references/ref-4.jpg", alt: "Logomat referentie 4" },
-      ]}
-    />
+                { image: "/images/references/ref-4.jpg", alt: "Logomat referentie 4" },
+        ]}
+      />
+      <SiteFooter />
+    </>
   );
 }
