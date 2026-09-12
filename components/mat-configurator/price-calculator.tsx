@@ -125,20 +125,14 @@ const finalTotal =
 
         <Separator />
 
-        <div className="rounded-lg bg-muted p-4 text-sm">
-  <p>✅ Digitale proefdruk inbegrepen</p>
-  <p>✅ Productie na jouw goedkeuring</p>
-  <p>✅ Levering in België & Nederland</p>
-</div>
-
-       <div className="rounded-xl border-2 border-[#C69C4D] bg-[#FFF8EB] p-5 shadow-sm">
+              <div className="rounded-lg border border-[#C69C4D] bg-[#FFF8EB] p-3 shadow-sm">
   <div className="flex justify-between items-center">
-    <span className="text-lg font-semibold flex items-center gap-2">
-      <Tag className="w-4 h-4" />
+    <span className="text-sm font-semibold flex items-center gap-1.5">
+      <Tag className="w-3.5 h-3.5" />
       Totaal incl. btw
     </span>
 
-    <span className="text-3xl font-bold text-primary">
+    <span className="text-xl font-bold text-primary">
       €{finalTotal.toFixed(2)}
     </span>
   </div>
