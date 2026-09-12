@@ -35,10 +35,16 @@ type CanvasLayout = {
   innerH: number;
 };
 
-const TEXTURES = {
-  base: "/textures/mat-base.png",
-  soft: "/textures/mat-soft.png",
-  noise: "/textures/noise.png",
+const STANDARD_TEXTURES = {
+  base: "/textures/mat-base.webp",
+  soft: "/textures/mat-soft.webp",
+  noise: "/textures/noise.webp",
+};
+
+const PRINTGRASS_TEXTURES = {
+  base: "/textures/printgrass-base.webp",
+  soft: "/textures/printgrass-soft.webp",
+  noise: "/textures/noise.webp",
 };
 
 function clamp(value: number, min: number, max: number) {
@@ -604,7 +610,7 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
 
   const borderThickness = config.rubberBorder ? 2 : 0;
 
-     const selectedMatColor = useMemo(() => {
+      const selectedMatColor = useMemo(() => {
     const activeColors =
       config.type === "outdoor" && config.outdoorSubtype === "printgrass"
         ? PRINTGRASS_COLORS
@@ -612,6 +618,8 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
 
     return activeColors.find((c) => c.code === config.colorCode)?.hex || "#4a4a4a";
   }, [config.colorCode, config.type, config.outdoorSubtype]);
+
+  const isPrintGrass = config.type === "outdoor" && config.outdoorSubtype === "printgrass";
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -673,13 +681,14 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
     };
   }, [config.logo.dataUrl]);
 
-  useEffect(() => {
+   useEffect(() => {
     let mounted = true;
+    const activeTextures = isPrintGrass ? PRINTGRASS_TEXTURES : STANDARD_TEXTURES;
 
     Promise.all([
-      loadImage(TEXTURES.base).catch(() => null),
-      loadImage(TEXTURES.soft).catch(() => null),
-      loadImage(TEXTURES.noise).catch(() => null),
+      loadImage(activeTextures.base).catch(() => null),
+      loadImage(activeTextures.soft).catch(() => null),
+      loadImage(activeTextures.noise).catch(() => null),
     ]).then(([base, soft, noise]) => {
       if (!mounted) return;
       setTextures({ base, soft, noise });
@@ -688,7 +697,7 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
     return () => {
       mounted = false;
     };
-  }, []);
+  }, [isPrintGrass]);
 
   const drawCanvas = useCallback(() => {
     const canvas = canvasRef.current;
