@@ -10,11 +10,16 @@ export const metadata: Metadata = {
     "De Eco logomat is gemaakt met gerecycleerde materialen, zonder in te boeten op kwaliteit of uitstraling.",
 };
 
-export default function EcoLogomatPage() {
+export default function EcoLogomatPage({
+  params,
+}: {
+  params: { locale: string };
+}) {
   return (
     <>
       <SiteHeader />
       <MatTypePage
+        locale={params.locale}
       eyebrow="LOGO MAT • ECO"
       title="Eco logomat"
       description="De Eco logomat combineert een lage milieu-impact met dezelfde betrouwbare prestaties als onze klassieke logomatten. Ideaal voor bedrijven die duurzaamheid centraal willen zetten, zonder in te leveren op uitstraling of levensduur."
