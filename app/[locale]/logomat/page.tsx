@@ -57,7 +57,7 @@ export default function LogomatPage() {
 
         <div className="pt-10" />
 
-<section className="border-t border-border bg-white">
+<section id="configurator" className="scroll-mt-24 border-t border-border bg-white">
   <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
 
     <div className="mx-auto max-w-3xl text-center">
