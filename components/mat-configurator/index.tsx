@@ -759,11 +759,12 @@ export function MatConfigurator() {
                               </div>
                             )}
 
-                            <ColorPalette
+                                                       <ColorPalette
                               selectedCode={config.colorCode}
                               onSelect={(code) => updateConfig({ colorCode: code })}
                               suggestedCodes={suggestedColorCodes}
                               onResetSuggestions={handleResetSuggestions}
+                              colorSet={outdoorSubtype === "printgrass" && visibleTypeBlock === "outdoor" ? "printgrass" : "standard"}
                             />
 
                             <div className="space-y-3">
