@@ -102,8 +102,9 @@ export function MatConfigurator() {
         return
       }
 
-      if (type === "outdoor") {
+           if (type === "outdoor") {
         setOutdoorSubtype("PrintGrass Outdoor")
+        updateConfig({ type, outdoorSubtype: "PrintGrass Outdoor" })
       }
     },
     [updateConfig]
@@ -475,9 +476,12 @@ export function MatConfigurator() {
                               <div className="space-y-3">
                                 <Label className="text-sm font-medium">Outdoor Type</Label>
                                 <div className="grid grid-cols-2 gap-2">
-                                  <button
+                                                                   <button
                                     type="button"
-                                    onClick={() => setOutdoorSubtype("PrintGrass Outdoor")}
+                                    onClick={() => {
+                                      setOutdoorSubtype("PrintGrass Outdoor")
+                                      updateConfig({ outdoorSubtype: "PrintGrass Outdoor" })
+                                    }}
                                     className={`p-3 rounded-lg border-2 transition-all text-left ${
                                       outdoorSubtype === "PrintGrass Outdoor"
                                         ? "border-foreground bg-foreground/5"
@@ -488,9 +492,12 @@ export function MatConfigurator() {
                                     <div className="text-xs text-muted-foreground">Full-colour bedrukte buitenmat</div>
                                   </button>
 
-                                  <button
+                                                                   <button
                                     type="button"
-                                    onClick={() => setOutdoorSubtype("Signature Brush")}
+                                    onClick={() => {
+                                      setOutdoorSubtype("Signature Brush")
+                                      updateConfig({ outdoorSubtype: "Signature Brush" })
+                                    }}
                                     className={`p-3 rounded-lg border-2 transition-all text-left ${
                                       outdoorSubtype === "Signature Brush"
                                         ? "border-foreground bg-foreground/5"
