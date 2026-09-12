@@ -18,7 +18,7 @@ export default function EcoLogomatPage() {
       eyebrow="LOGO MAT • ECO"
       title="Eco logomat"
       description="De Eco logomat combineert een lage milieu-impact met dezelfde betrouwbare prestaties als onze klassieke logomatten. Ideaal voor bedrijven die duurzaamheid centraal willen zetten, zonder in te leveren op uitstraling of levensduur."
-      heroImage="/images/logomat-eco-detail.jpg"
+      heroImage="/images/logomat-eco-detail.webp"
       heroAlt="Detailfoto van de Eco logomat structuur"
       configuratorType="eco"
       // Placeholder-data — later te vervangen door de exacte specs die je bezorgt
