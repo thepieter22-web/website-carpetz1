@@ -13,6 +13,7 @@ import { MatCanvas } from "./mat-canvas"
 import { LogoUploader } from "./logo-uploader"
 import { PriceCalculator } from "./price-calculator"
 import { STANDARD_SIZES, type MatConfig, MAT_COLORS } from "@/lib/mat-config"
+import { useSearchParams } from "next/navigation"
 import {
   Layers,
   Image as ImageIcon,
@@ -55,6 +56,7 @@ type OutdoorSubtype = "printgrass" | "signature"
 type VisibleTypeBlock = "indoor" | "outdoor" | null
 
 export function MatConfigurator() {
+  const searchParams = useSearchParams()
   const [config, setConfig] = useState<MatConfig>(DEFAULT_CONFIG)
   const [currentStep, setCurrentStep] = useState<number>(1)
   const [maxStepReached, setMaxStepReached] = useState<number>(1)
@@ -71,7 +73,7 @@ export function MatConfigurator() {
     const [outdoorSubtype, setOutdoorSubtype] = useState<OutdoorSubtype>("printgrass")
   const [visibleTypeBlock, setVisibleTypeBlock] = useState<VisibleTypeBlock>(null)
 
-  useEffect(() => {
+    useEffect(() => {
     if (config.logo.dataUrl) {
       const img = new window.Image()
       img.crossOrigin = "anonymous"
@@ -81,6 +83,29 @@ export function MatConfigurator() {
       setLogoImage(null)
     }
   }, [config.logo.dataUrl])
+
+  useEffect(() => {
+    const typeParam = searchParams.get("type")
+    if (!typeParam) return
+
+    const indoorOptions = ["normal", "eco", "budget", "luxe"] as const
+    const outdoorOptions = ["printgrass", "signature"] as const
+
+    if (indoorOptions.includes(typeParam as (typeof indoorOptions)[number])) {
+      const subtype = typeParam as IndoorSubtype
+      setIndoorSubtype(subtype)
+      setVisibleTypeBlock("indoor")
+      setConfig((prev) => ({ ...prev, type: "indoor", indoorSubtype: subtype }))
+      return
+    }
+
+    if (outdoorOptions.includes(typeParam as (typeof outdoorOptions)[number])) {
+      const subtype = typeParam as OutdoorSubtype
+      setOutdoorSubtype(subtype)
+      setVisibleTypeBlock("outdoor")
+      setConfig((prev) => ({ ...prev, type: "outdoor", outdoorSubtype: subtype }))
+    }
+  }, [searchParams])
 
   const updateConfig = useCallback((updates: Partial<MatConfig>) => {
     setConfig((prev) => ({ ...prev, ...updates }))
