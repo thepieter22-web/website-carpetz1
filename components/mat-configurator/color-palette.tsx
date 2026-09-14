@@ -1,6 +1,7 @@
 "use client";
 
 import { PRINTGRASS_COLORS } from "@/lib/printgrass-colors";
+import { SIGNATURE_COLORS } from "@/lib/signature-colors";
 import { MAT_COLORS } from "@/lib/mat-config";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
