@@ -30,12 +30,12 @@ import {
 } from "lucide-react"
 
 const TYPE_PREVIEW_IMAGES: Record<string, string> = {
-  "indoor-normal": "/images/logomat-classic-detail.jpg",
-  "indoor-eco": "/images/logomat-eco-detail.jpg",
-  "indoor-budget": "/images/logomat-professional-detail.jpg",
-  "indoor-luxe": "/images/logomat-elite-detail.jpg",
-  "outdoor-printgrass": "/images/logomat-printgrass-detail.jpg",
-  "outdoor-signature": "/images/logomat-signature-detail.jpg",
+  "indoor-normal": "/images/logomat-classic-detail.webp",
+  "indoor-eco": "/images/logomat-eco-detail.webp",
+  "indoor-budget": "/images/logomat-professional-detail.webp",
+  "indoor-luxe": "/images/logomat-elite-detail.webp",
+  "outdoor-printgrass": "/images/logomat-printgrass-detail.webp",
+  "outdoor-signature": "/images/logomat-signature-detail.webp",
 }
 
 const DEFAULT_CONFIG: MatConfig = {
