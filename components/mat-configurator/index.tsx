@@ -449,7 +449,7 @@ export function MatConfigurator() {
                               <div className="space-y-3">
                                 <Label className="text-sm font-medium">Indoor Type</Label>
                                 <div className="grid grid-cols-2 gap-2">
-                                  <button
+                                                                   <button
                                     type="button"
                                     onClick={() => {
                                       setIndoorSubtype("normal")
@@ -461,9 +461,16 @@ export function MatConfigurator() {
                                         : "border-border hover:border-[#C69C4D]"
                                     }`}
                                   >
-                                    <div className="font-medium text-sm">Classic</div>
-                                    <div className="text-xs text-muted-foreground">
-                                      Betrouwbare logomat voor dagelijks gebruik
+                                    <div className="flex items-center gap-3">
+                                      <div className="relative size-12 shrink-0 overflow-hidden rounded-md border border-border">
+                                        <Image src={TYPE_PREVIEW_IMAGES["indoor-normal"]} alt="" fill sizes="48px" className="object-cover" />
+                                      </div>
+                                      <div>
+                                        <div className="font-medium text-sm">Classic</div>
+                                        <div className="text-xs text-muted-foreground">
+                                          Betrouwbare logomat voor dagelijks gebruik
+                                        </div>
+                                      </div>
                                     </div>
                                   </button>
 
@@ -479,9 +486,16 @@ export function MatConfigurator() {
                                         : "border-border hover:border-[#C69C4D]"
                                     }`}
                                   >
-                                    <div className="font-medium text-sm">Eco</div>
-                                    <div className="text-xs text-muted-foreground">
-                                      Gemaakt met gerecycleerde materialen
+                                    <div className="flex items-center gap-3">
+                                      <div className="relative size-12 shrink-0 overflow-hidden rounded-md border border-border">
+                                        <Image src={TYPE_PREVIEW_IMAGES["indoor-eco"]} alt="" fill sizes="48px" className="object-cover" />
+                                      </div>
+                                      <div>
+                                        <div className="font-medium text-sm">Eco</div>
+                                        <div className="text-xs text-muted-foreground">
+                                          Gemaakt met gerecycleerde materialen
+                                        </div>
+                                      </div>
                                     </div>
                                   </button>
 
@@ -497,9 +511,16 @@ export function MatConfigurator() {
                                         : "border-border hover:border-[#C69C4D]"
                                     }`}
                                   >
-                                    <div className="font-medium text-sm">Elite</div>
-                                    <div className="text-xs text-muted-foreground">
-                                      Premium afwerking en maximale levensduur
+                                    <div className="flex items-center gap-3">
+                                      <div className="relative size-12 shrink-0 overflow-hidden rounded-md border border-border">
+                                        <Image src={TYPE_PREVIEW_IMAGES["indoor-luxe"]} alt="" fill sizes="48px" className="object-cover" />
+                                      </div>
+                                      <div>
+                                        <div className="font-medium text-sm">Elite</div>
+                                        <div className="text-xs text-muted-foreground">
+                                          Premium afwerking en maximale levensduur
+                                        </div>
+                                      </div>
                                     </div>
                                   </button>
 
@@ -515,9 +536,16 @@ export function MatConfigurator() {
                                         : "border-border hover:border-[#C69C4D]"
                                     }`}
                                   >
-                                    <div className="font-medium text-sm">Professional</div>
-                                    <div className="text-xs text-muted-foreground">
-                                      Onze populairste keuze voor bedrijven
+                                    <div className="flex items-center gap-3">
+                                      <div className="relative size-12 shrink-0 overflow-hidden rounded-md border border-border">
+                                        <Image src={TYPE_PREVIEW_IMAGES["indoor-budget"]} alt="" fill sizes="48px" className="object-cover" />
+                                      </div>
+                                      <div>
+                                        <div className="font-medium text-sm">Professional</div>
+                                        <div className="text-xs text-muted-foreground">
+                                          Onze populairste keuze voor bedrijven
+                                        </div>
+                                      </div>
                                     </div>
                                   </button>
                                 </div>
@@ -528,7 +556,7 @@ export function MatConfigurator() {
                               <div className="space-y-3">
                                 <Label className="text-sm font-medium">Outdoor Type</Label>
                                 <div className="grid grid-cols-2 gap-2">
-                                                                                                     <button
+                                                                                                                                       <button
                                     type="button"
                                     onClick={() => {
                                       setOutdoorSubtype("printgrass")
@@ -540,8 +568,15 @@ export function MatConfigurator() {
                                         : "border-border hover:border-muted-foreground"
                                     }`}
                                   >
-                                    <div className="font-medium text-sm">PrintGrass Outdoor</div>
-                                    <div className="text-xs text-muted-foreground">Full-colour bedrukte buitenmat</div>
+                                    <div className="flex items-center gap-3">
+                                      <div className="relative size-12 shrink-0 overflow-hidden rounded-md border border-border">
+                                        <Image src={TYPE_PREVIEW_IMAGES["outdoor-printgrass"]} alt="" fill sizes="48px" className="object-cover" />
+                                      </div>
+                                      <div>
+                                        <div className="font-medium text-sm">PrintGrass Outdoor</div>
+                                        <div className="text-xs text-muted-foreground">Full-colour bedrukte buitenmat</div>
+                                      </div>
+                                    </div>
                                   </button>
 
                                   <button
@@ -556,8 +591,15 @@ export function MatConfigurator() {
                                         : "border-border hover:border-muted-foreground"
                                     }`}
                                   >
-                                    <div className="font-medium text-sm">Signature Brush</div>
-                                    <div className="text-xs text-muted-foreground">Premium logomat met 2-3 kleuren</div>
+                                    <div className="flex items-center gap-3">
+                                      <div className="relative size-12 shrink-0 overflow-hidden rounded-md border border-border">
+                                        <Image src={TYPE_PREVIEW_IMAGES["outdoor-signature"]} alt="" fill sizes="48px" className="object-cover" />
+                                      </div>
+                                      <div>
+                                        <div className="font-medium text-sm">Signature Brush</div>
+                                        <div className="text-xs text-muted-foreground">Premium logomat met 2-3 kleuren</div>
+                                      </div>
+                                    </div>
                                   </button>
                                 </div>
                               </div>
@@ -882,29 +924,7 @@ export function MatConfigurator() {
               </CardContent>
             </Card>
 
-            {activePreviewKey && (
-              <Card>
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-lg">Detail van jouw gekozen kwaliteit</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-border bg-muted">
-                    {Object.entries(TYPE_PREVIEW_IMAGES).map(([key, src]) => (
-                      <Image
-                        key={key}
-                        src={src}
-                        alt=""
-                        fill
-                        sizes="(min-width: 1024px) 500px, 100vw"
-                        className="object-cover transition-opacity duration-500 ease-in-out"
-                        style={{ opacity: key === activePreviewKey ? 1 : 0 }}
-                      />
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-          </div>
+                     </div>
 
           {/* Price Calculator - Desktop */}
           <div className="hidden lg:block">
