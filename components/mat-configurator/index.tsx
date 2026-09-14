@@ -411,24 +411,8 @@ export function MatConfigurator() {
 
                     {isOpen && (
                       <div className="px-4 pb-6 space-y-6">
-                                               {step.number === 1 && (
+                                                                       {step.number === 1 && (
                           <>
-                            {activePreviewKey && (
-                              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-border bg-muted">
-                                {Object.entries(TYPE_PREVIEW_IMAGES).map(([key, src]) => (
-                                  <Image
-                                    key={key}
-                                    src={src}
-                                    alt=""
-                                    fill
-                                    sizes="360px"
-                                    className="object-cover transition-opacity duration-500 ease-in-out"
-                                    style={{ opacity: key === activePreviewKey ? 1 : 0 }}
-                                  />
-                                ))}
-                              </div>
-                            )}
-
                             {/* Mat Type */}
                             <div className="space-y-3">
                               <Label className="text-sm font-medium">Type logomat</Label>
@@ -885,7 +869,7 @@ export function MatConfigurator() {
             </CardContent>
           </Card>
 
-          {/* Preview Panel */}
+                   {/* Preview Panel */}
           <div className="space-y-6">
             <Card>
               <CardHeader className="pb-2">
@@ -897,6 +881,29 @@ export function MatConfigurator() {
                 <MatCanvas config={config} onLogoUpdate={handleLogoUpdate} />
               </CardContent>
             </Card>
+
+            {activePreviewKey && (
+              <Card>
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-lg">Detail van jouw gekozen kwaliteit</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-border bg-muted">
+                    {Object.entries(TYPE_PREVIEW_IMAGES).map(([key, src]) => (
+                      <Image
+                        key={key}
+                        src={src}
+                        alt=""
+                        fill
+                        sizes="(min-width: 1024px) 500px, 100vw"
+                        className="object-cover transition-opacity duration-500 ease-in-out"
+                        style={{ opacity: key === activePreviewKey ? 1 : 0 }}
+                      />
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
           </div>
 
           {/* Price Calculator - Desktop */}
