@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image"
 import { PRINTGRASS_COLORS } from "@/lib/printgrass-colors"
 import { useState, useCallback, useEffect } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -27,6 +28,15 @@ import {
   Check,
   Palette as PaletteIcon,
 } from "lucide-react"
+
+const TYPE_PREVIEW_IMAGES: Record<string, string> = {
+  "indoor-normal": "/images/logomat-classic-detail.jpg",
+  "indoor-eco": "/images/logomat-eco-detail.jpg",
+  "indoor-budget": "/images/logomat-professional-detail.jpg",
+  "indoor-luxe": "/images/logomat-elite-detail.jpg",
+  "outdoor-printgrass": "/images/logomat-printgrass-detail.jpg",
+  "outdoor-signature": "/images/logomat-signature-detail.jpg",
+}
 
 const DEFAULT_CONFIG: MatConfig = {
   type: "indoor",
@@ -250,8 +260,12 @@ export function MatConfigurator() {
 
   const selectedColor = activeColors.find((c) => c.code === config.colorCode)
 
-  const hasGoodResolution = logoInfo.width >= 1000 && logoInfo.height >= 1000
+   const hasGoodResolution = logoInfo.width >= 1000 && logoInfo.height >= 1000
   const isPng = logoInfo.format === "image/png"
+
+  const activePreviewKey = visibleTypeBlock
+    ? `${visibleTypeBlock}-${visibleTypeBlock === "indoor" ? indoorSubtype : outdoorSubtype}`
+    : null
 
     const indoorInfo = {
     normal: { title: "Classic", description: "Betrouwbare logomat voor dagelijks gebruik." },
@@ -397,8 +411,24 @@ export function MatConfigurator() {
 
                     {isOpen && (
                       <div className="px-4 pb-6 space-y-6">
-                        {step.number === 1 && (
+                                               {step.number === 1 && (
                           <>
+                            {activePreviewKey && (
+                              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-border bg-muted">
+                                {Object.entries(TYPE_PREVIEW_IMAGES).map(([key, src]) => (
+                                  <Image
+                                    key={key}
+                                    src={src}
+                                    alt=""
+                                    fill
+                                    sizes="360px"
+                                    className="object-cover transition-opacity duration-500 ease-in-out"
+                                    style={{ opacity: key === activePreviewKey ? 1 : 0 }}
+                                  />
+                                ))}
+                              </div>
+                            )}
+
                             {/* Mat Type */}
                             <div className="space-y-3">
                               <Label className="text-sm font-medium">Type logomat</Label>
