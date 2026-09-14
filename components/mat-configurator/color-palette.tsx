@@ -11,7 +11,7 @@ interface ColorPaletteProps {
   onSelect: (code: string) => void;
   suggestedCodes?: string[];
   onResetSuggestions?: () => void;
-  colorSet?: "standard" | "printgrass";
+  colorSet?: "standard" | "printgrass" | "signature";
 }
 
 function getSwatchStyle(color: { hex: string }) {
@@ -28,9 +28,11 @@ export function ColorPalette({
   colorSet = "standard",
 }: ColorPaletteProps) {
 
-  const colors =
+    const colors =
     colorSet === "printgrass"
       ? PRINTGRASS_COLORS
+      : colorSet === "signature"
+      ? SIGNATURE_COLORS
       : MAT_COLORS;
 
   const selectedColor =
