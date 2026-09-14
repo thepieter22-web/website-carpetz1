@@ -13,6 +13,7 @@ import { MatCanvas } from "./mat-canvas"
 import { LogoUploader } from "./logo-uploader"
 import { PriceCalculator } from "./price-calculator"
 import { STANDARD_SIZES, type MatConfig, MAT_COLORS } from "@/lib/mat-config"
+import { SIGNATURE_COLORS } from "@/lib/signature-colors"
 import { useSearchParams } from "next/navigation"
 import {
   Layers,
@@ -240,7 +241,12 @@ export function MatConfigurator() {
     setSuggestedColorCodes([])
   }, [])
 
-    const activeColors = outdoorSubtype === "printgrass" ? PRINTGRASS_COLORS : MAT_COLORS
+        const activeColors =
+    visibleTypeBlock === "outdoor" && outdoorSubtype === "printgrass"
+      ? PRINTGRASS_COLORS
+      : visibleTypeBlock === "outdoor" && outdoorSubtype === "signature"
+      ? SIGNATURE_COLORS
+      : MAT_COLORS
 
   const selectedColor = activeColors.find((c) => c.code === config.colorCode)
 
@@ -789,7 +795,13 @@ export function MatConfigurator() {
                               onSelect={(code) => updateConfig({ colorCode: code })}
                               suggestedCodes={suggestedColorCodes}
                               onResetSuggestions={handleResetSuggestions}
-                              colorSet={outdoorSubtype === "printgrass" && visibleTypeBlock === "outdoor" ? "printgrass" : "standard"}
+                                                            colorSet={
+                                visibleTypeBlock === "outdoor" && outdoorSubtype === "printgrass"
+                                  ? "printgrass"
+                                  : visibleTypeBlock === "outdoor" && outdoorSubtype === "signature"
+                                  ? "signature"
+                                  : "standard"
+                              }
                             />
 
                             <div className="space-y-3">
