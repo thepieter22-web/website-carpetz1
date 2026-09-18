@@ -116,10 +116,11 @@ export default function HomePage() {
                   <li key={item} className="flex items-start gap-3">
                     <Sparkles className="mt-0.5 size-4 shrink-0 text-accent" />
                     {item}
-                  </li>
+                                    </li>
                 ))}
               </ul>
-                            <div className="mt-8">
+              <LogomatGuarantees />
+              <div className="mt-8">
                 <Link
                   href="/logomat"
                   className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-foreground"
