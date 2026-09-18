@@ -1,3 +1,4 @@
+import { LogomatGuarantees } from '@/components/logomat-guarantees'
 import Image from 'next/image'
 import Link from 'next/link'
 import {
@@ -118,7 +119,7 @@ export default function HomePage() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-8">
+                            <div className="mt-8">
                 <Link
                   href="/logomat"
                   className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-foreground"
@@ -129,8 +130,10 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+          <div className="mx-auto max-w-7xl px-6 pb-20 lg:px-8 lg:pb-28">
+            <LogomatGuarantees />
+          </div>
         </section>
-
         {/* Geprint tapijt */}
         <section id="geprint-tapijt" className="border-t border-border">
           <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-2 lg:px-8 lg:py-28">
