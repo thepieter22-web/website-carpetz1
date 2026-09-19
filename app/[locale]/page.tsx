@@ -7,7 +7,6 @@ import {
   Truck,
   Recycle,
   ShieldCheck,
-  Sparkles,
   Building2,
   Hotel,
   Store,
@@ -105,20 +104,7 @@ export default function HomePage() {
                 ingang: functioneel én representatief. Je kiest zelf het formaat, de vorm, de
                 antislibdrager en de afwerking van de randen.
               </p>
-              <h3 className="mt-6 text-lg font-semibold">Waarom een logomat van Carpetz?</h3>
-              <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
-                {[
-                  'Scherpe full-colour print van je logo en huisstijl',
-                  'Slijtvast en geschikt voor intensief gebruik',
-                  'Antislib rug en wasbaar voor eenvoudig onderhoud',
-                  'Elk formaat en elke vorm op maat gemaakt',
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <Sparkles className="mt-0.5 size-4 shrink-0 text-accent" />
-                    {item}
-                                    </li>
-                ))}
-              </ul>
+                            <h3 className="mt-6 text-lg font-semibold">Waarom een logomat van Carpetz?</h3>
               <LogomatGuarantees />
                             <div className="mt-8">
                 <Link
