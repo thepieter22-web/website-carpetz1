@@ -4,15 +4,16 @@ import { calculatePrice, type MatConfig, PRICING } from "@/lib/mat-config";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
-import { Calculator, Tag, Percent } from "lucide-react";
+import { Calculator, Tag, Percent, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 
 interface PriceCalculatorProps {
   config: MatConfig;
+  onOrder: () => void;
 }
 
-export function PriceCalculator({ config }: PriceCalculatorProps) {
+export function PriceCalculator({ config, onOrder }: PriceCalculatorProps) {
   const pricing = calculatePrice(config);
   const shipping = 15;
 const shippingVat = shipping * 0.21;
@@ -125,7 +126,7 @@ const finalTotal =
 
         <Separator />
 
-              <div className="rounded-lg border border-[#C69C4D] bg-[#FFF8EB] p-3 shadow-sm">
+                            <div className="rounded-lg border border-[#C69C4D] bg-[#FFF8EB] p-3 shadow-sm">
   <div className="flex justify-between items-center">
     <span className="text-sm font-semibold flex items-center gap-1.5">
       <Tag className="w-3.5 h-3.5" />
@@ -137,6 +138,14 @@ const finalTotal =
     </span>
   </div>
 </div>
+
+<Button
+  className="w-full bg-[#C69C4D] hover:bg-[#B88D3C] text-white"
+  onClick={onOrder}
+>
+  Bestelling plaatsen
+  <ArrowRight className="w-4 h-4 ml-2" />
+</Button>
 
 
 
