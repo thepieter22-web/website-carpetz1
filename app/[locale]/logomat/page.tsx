@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { CheckCircle2, Palette, Ruler, Droplets, ShieldCheck } from 'lucide-react'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { PageHero } from '@/components/page-hero'
@@ -20,12 +19,6 @@ export const metadata: Metadata = {
   },
 }
 
-const features = [
-  { icon: Palette, title: 'Full-colour print', text: 'Je logo en huisstijl scherp en kleurvast weergegeven op dichte tapijtvezel.' },
-  { icon: Ruler, title: 'Elk formaat & vorm', text: 'Rechthoekig, rond of volledig op maat gesneden voor jouw ingang.' },
-  { icon: Droplets, title: 'Wasbaar & antislib', text: 'Eenvoudig te reinigen met een stevige antislibrug voor veilig gebruik.' },
-  { icon: ShieldCheck, title: 'Slijtvast', text: 'Gemaakt voor intensief gebruik in drukke ingangen en publieke ruimtes.' },
-]
 
 export default function LogomatPage() {
   return (
@@ -63,53 +56,9 @@ export default function LogomatPage() {
   </div>
 </section>
 
-<section className="border-t border-border bg-secondary/40">
-          <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-            <h2 className="font-serif text-3xl font-semibold leading-tight text-balance">Kenmerken</h2>
-            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {features.map((f) => (
-                <div key={f.title} className="rounded-sm border border-border bg-card p-6">
-                  <span className="inline-flex size-11 items-center justify-center rounded-sm bg-accent/15 text-accent">
-                    <f.icon className="size-5" />
-                  </span>
-                  <h3 className="mt-5 text-base font-semibold">{f.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        <section className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-16 lg:grid-cols-2 lg:px-8">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-sm">
-            <Image
-              src="/images/logomat-winkel-entree.webp"
-              alt="Detail van een logomat op maat met scherpe logo-print"
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
-            />
-          </div>
-          <div>
-            <h2 className="font-serif text-3xl font-semibold leading-tight text-balance">
-              Waar zet je logomatten in?
-            </h2>
-            <ul className="mt-6 space-y-4 text-sm text-muted-foreground">
-              {[
-                'Ingangen van kantoren en bedrijfspanden',
-                'Winkels, flagshipstores en retailketens',
-                'Hotels, restaurants en horeca',
-                'Beursstanden en showrooms',
-                'Publieke gebouwen en ontvangstruimtes',
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-accent" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
+
+        
 
         <QuoteBand title="Bestel jouw logomat op maat" text="Stuur ons je logo en gewenste formaat. Wij bezorgen je een vrijblijvende offerte voor logomatten op maat." />
       </main>
