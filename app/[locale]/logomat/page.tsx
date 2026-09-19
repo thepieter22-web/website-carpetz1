@@ -55,29 +55,11 @@ export default function LogomatPage() {
           </div>
         </section>
 
-        <div className="pt-10" />
+       
 
 <section id="configurator" className="scroll-mt-24 border-t border-border bg-white">
-  <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-
-    <div className="mx-auto max-w-3xl text-center">
-      <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#C69C4D]">
-        Ontwerp online
-      </span>
-
-      <h2 className="mt-4 font-serif text-4xl font-semibold">
-        Stel jouw logomat samen
-      </h2>
-
-      <p className="mt-4 text-muted-foreground">
-        Upload jouw logo, kies het type logomat, bepaal de afmetingen en ontvang direct een prijsindicatie.
-      </p>
-    </div>
-
-    <div className="mt-12">
-      <MatConfigurator />
-    </div>
-
+  <div className="mx-auto max-w-7xl px-6 py-8 lg:px-8">
+    <MatConfigurator />
   </div>
 </section>
 
