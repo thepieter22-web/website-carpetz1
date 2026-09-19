@@ -294,19 +294,7 @@ export function MatConfigurator() {
       {/* Header */}
       <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-foreground flex items-center justify-center">
-              <Layers className="w-5 h-5 text-background" />
-            </div>
-            <div>
-              <h1 className="text-xl font-semibold text-foreground">Ontwerp jouw logomat op maat</h1>
-              <p className="text-sm text-muted-foreground">
-                Upload jouw logo, kies kleur en afmetingen en bestel direct online.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3 w-full sm:w-auto">
+                    <div className="flex items-center gap-3 w-full justify-end">
             <Button variant="ghost" size="sm" onClick={handleReset} className="flex-1 sm:flex-none">
               <RotateCcw className="w-4 h-4 mr-2" />
               Opnieuw starten
