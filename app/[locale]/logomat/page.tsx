@@ -43,13 +43,13 @@ export default function LogomatPage() {
                <section className="relative px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <div className="relative z-10 ml-auto -mt-24 max-w-2xl rounded-sm border-l-4 border-accent bg-card px-8 py-7 shadow-xl lg:-mt-28 lg:px-10 lg:py-8">
-              <h2 className="font-serif text-2xl font-semibold leading-tight text-balance sm:text-3xl">
-                Een logomat als verlengstuk van je merk
+                            <h2 className="font-serif text-2xl font-semibold leading-tight text-balance sm:text-3xl">
+                Ontwerp jouw logomat op maat
               </h2>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty">
-                Wij bedrukken tapijt met een fotorealistische print van je logo, zodat kleuren scherp
-                en herkenbaar blijven &mdash; ook na jaren intensief gebruik. Kies zelf formaat, vorm
-                en randkleur, van één logomat tot een volledige filiaalketen.
+                Upload jouw logo, kies kleur en afmetingen en bestel direct online. Wij bedrukken
+                tapijt met een fotorealistische print van je logo, zodat kleuren scherp en herkenbaar
+                blijven &mdash; ook na jaren intensief gebruik.
               </p>
             </div>
           </div>
