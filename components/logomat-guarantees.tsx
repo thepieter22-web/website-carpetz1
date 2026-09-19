@@ -10,9 +10,9 @@ const guarantees = [
   },
   {
     icon: RefreshCw,
-    subtitle: "Niet tevreden?",
-    title: "100 dagen ruilgarantie",
-    description: "Voldoet je logomat niet aan de verwachting? Binnen 100 dagen ruilen we hem kosteloos om.",
+    subtitle: "100 dagen kwaliteitsgarantie",
+    title: "Slijtage & kleurverlies gedekt",
+    description: "Vertoont je logomat binnen 100 dagen slijtage of kleurverlies die niet normaal is? Dan herstellen of vervangen we hem kosteloos.",
   },
   {
     icon: Award,
