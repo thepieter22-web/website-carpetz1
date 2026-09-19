@@ -106,7 +106,7 @@ export default function HomePage() {
               </p>
                             <h3 className="mt-6 text-lg font-semibold">Waarom een logomat van Carpetz?</h3>
               <LogomatGuarantees />
-                            <div className="mt-8">
+                            <div className="mt-6">
                 <Link
                   href="/logomat"
                   className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-foreground"
