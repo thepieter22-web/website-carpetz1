@@ -201,6 +201,28 @@ export function MatConfigurator() {
     setMaxStepReached(1)
   }, [])
 
+    const handleOrder = useCallback(() => {
+    const canvas = document.getElementById("carpetz-mat-preview-canvas") as HTMLCanvasElement | null
+
+    if (canvas) {
+      sessionStorage.setItem("matPreview", canvas.toDataURL("image/png"))
+    }
+
+    if (config.logo.dataUrl) {
+      sessionStorage.setItem("matLogo", config.logo.dataUrl)
+    }
+
+    const params = new URLSearchParams({
+      type: config.indoorSubtype,
+      width: String(config.size.width),
+      height: String(config.size.height),
+      quantity: String(config.quantity),
+      total: String(document.body.innerText.match(/€[\d,.]+/)?.[0] || ""),
+    })
+
+    window.location.href = `/cart?${params.toString()}`
+  }, [config])
+
   const parseEuroAmount = (value: string): number | null => {
     if (!value) return null
 
@@ -292,42 +314,12 @@ export function MatConfigurator() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                    <div className="flex items-center gap-3 w-full justify-end">
-            <Button variant="ghost" size="sm" onClick={handleReset} className="flex-1 sm:flex-none">
-              <RotateCcw className="w-4 h-4 mr-2" />
-              Opnieuw starten
-            </Button>
-            <Button
-              size="sm"
-              className="bg-[#C69C4D] hover:bg-[#B88D3C] text-white flex-1 sm:flex-none"
-              onClick={() => {
-                const canvas = document.getElementById("carpetz-mat-preview-canvas") as HTMLCanvasElement | null
-
-                if (canvas) {
-                  sessionStorage.setItem("matPreview", canvas.toDataURL("image/png"))
-                }
-
-                if (config.logo.dataUrl) {
-                  sessionStorage.setItem("matLogo", config.logo.dataUrl)
-                }
-
-                const params = new URLSearchParams({
-                  type: config.indoorSubtype,
-                  width: String(config.size.width),
-                  height: String(config.size.height),
-                  quantity: String(config.quantity),
-                  total: String(document.body.innerText.match(/€[\d,.]+/)?.[0] || ""),
-                })
-
-                window.location.href = `/cart?${params.toString()}`
-              }}
-            >
-              Bestelling plaatsen
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-          </div>
+            <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-end">
+          <Button variant="ghost" size="sm" onClick={handleReset}>
+            <RotateCcw className="w-4 h-4 mr-2" />
+            Opnieuw starten
+          </Button>
         </div>
       </header>
 
