@@ -34,11 +34,11 @@ export function Hero() {
             {t('description')}
           </p>
 
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <Cta href="/contact" variant="accent">
+                    <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <Cta href="/logomat" variant="accent">
               {t('cta1')}
             </Cta>
-            <Cta href="/contact" variant="outlineLight" withArrow={false}>
+            <Cta href="/geprint-tapijt" variant="outlineLight" withArrow={false}>
               {t('cta2')}
             </Cta>
           </div>
