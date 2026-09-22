@@ -26,16 +26,11 @@ export interface MatTypeEntry {
 }
 
 export const MAT_TYPE_DATA: Record<"go" | "green" | "studio" | "pro", MatTypeEntry> = {
-  go: {
+    go: {
     title: "Carpetz Go",
     tagline: "Instapmodel",
     description:
       "Carpetz Go is onze toegankelijke logomat voor wie een betrouwbare, scherp bedrukte mat zoekt zonder in te leveren op basiskwaliteit. Ideaal voor bedrijven die met een beperkt budget toch representatief willen binnenkomen.",
-    heroImage: "/images/logomat-CarpetzGo-detail.webp",
-      go: {
-    title: "Carpetz Go",
-    tagline: "Instapmodel",
-    description: "...", // bestaande tekst blijft
     heroImage: "/images/logomat-CarpetzGo-detail.webp",
     whyChoose: {
       text: "Carpetz Go is de slimme keuze wanneer je snel en betaalbaar een professionele eerste indruk wil maken, zonder in te leveren op basiskwaliteit. Perfect voor bedrijven die hun eerste logomat testen, een beperkt budget hebben, of een mat nodig hebben voor een tijdelijke locatie of pop-up.",
