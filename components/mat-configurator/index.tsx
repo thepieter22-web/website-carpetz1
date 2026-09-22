@@ -30,17 +30,17 @@ import {
 } from "lucide-react"
 
 const TYPE_PREVIEW_IMAGES: Record<string, string> = {
-  "indoor-normal": "/images/logomat-classic-detail.webp",
-  "indoor-eco": "/images/logomat-eco-detail.webp",
-  "indoor-budget": "/images/logomat-professional-detail.webp",
-  "indoor-luxe": "/images/logomat-elite-detail.webp",
+  "indoor-go": "/images/logomat-CarpetzGo-detail.webp",
+  "indoor-green": "/images/logomat-CarpetzGreen-detail.webp",
+  "indoor-studio": "/images/logomat-CarpetzStudio-detail.jpg",
+  "indoor-pro": "/images/logomat-CarpetzPro-detail.webp",
   "outdoor-printgrass": "/images/logomat-printgrass-detail.webp",
   "outdoor-signature": "/images/logomat-signature-detail.webp",
 }
 
 const DEFAULT_CONFIG: MatConfig = {
   type: "indoor",
-  indoorSubtype: "normal",
+  indoorSubtype: "go",
   outdoorSubtype: "printgrass",
   placement: "floor",
   orientation: "landscape",
@@ -62,7 +62,7 @@ const DEFAULT_CONFIG: MatConfig = {
   logoColors: 1,
 }
 
-type IndoorSubtype = "normal" | "eco" | "budget" | "luxe"
+type IndoorSubtype = "go" | "green" | "studio" | "pro"
 type OutdoorSubtype = "printgrass" | "signature"
 type VisibleTypeBlock = "indoor" | "outdoor" | null
 
@@ -99,7 +99,7 @@ export function MatConfigurator() {
     const typeParam = searchParams.get("type")
     if (!typeParam) return
 
-    const indoorOptions = ["normal", "eco", "budget", "luxe"] as const
+        const indoorOptions = ["go", "green", "studio", "pro"] as const
     const outdoorOptions = ["printgrass", "signature"] as const
 
     if (indoorOptions.includes(typeParam as (typeof indoorOptions)[number])) {
@@ -132,9 +132,9 @@ export function MatConfigurator() {
       updateConfig({ type })
       setVisibleTypeBlock(type)
 
-           if (type === "indoor") {
-        setIndoorSubtype("normal")
-        updateConfig({ type, indoorSubtype: "normal" })
+                 if (type === "indoor") {
+        setIndoorSubtype("go")
+        updateConfig({ type, indoorSubtype: "go" })
         return
       }
 
@@ -289,11 +289,11 @@ export function MatConfigurator() {
     ? `${visibleTypeBlock}-${visibleTypeBlock === "indoor" ? indoorSubtype : outdoorSubtype}`
     : null
 
-    const indoorInfo = {
-    normal: { title: "Classic", description: "Betrouwbare logomat voor dagelijks gebruik." },
-    eco: { title: "Eco", description: "Gemaakt met gerecycleerde materialen." },
-    budget: { title: "Professional", description: "Onze populairste keuze voor bedrijven." },
-    luxe: { title: "Elite", description: "Premium afwerking en maximale levensduur." },
+        const indoorInfo = {
+    go: { title: "Carpetz Go", description: "Instapmodel — betrouwbaar en toegankelijk geprijsd." },
+    green: { title: "Carpetz Green", description: "Duurzame logomat met gerecycleerde materialen." },
+    studio: { title: "Carpetz Studio", description: "Onze mooiste printkwaliteit, 100 kleuren." },
+    pro: { title: "Carpetz Pro", description: "Hoogste prestaties voor intensief gebruik." },
   }
 
   const outdoorInfo = {
@@ -430,24 +430,25 @@ export function MatConfigurator() {
                                 <Label className="text-sm font-medium">Indoor Type</Label>
                                 <div className="grid grid-cols-2 gap-2">
                                                                                                      <button
+                                                                      <button
                                     type="button"
                                     onClick={() => {
-                                      setIndoorSubtype("normal")
-                                      updateConfig({ indoorSubtype: "normal" })
+                                      setIndoorSubtype("go")
+                                      updateConfig({ indoorSubtype: "go" })
                                     }}
                                     className={`overflow-hidden rounded-lg border-2 text-left transition-all ${
-                                      config.indoorSubtype === "normal"
+                                      config.indoorSubtype === "go"
                                         ? "border-[#C69C4D] bg-[#FFF8EB] shadow-sm"
                                         : "border-border hover:border-[#C69C4D]"
                                     }`}
                                   >
                                     <div className="relative aspect-[4/3] w-full">
-                                      <Image src={TYPE_PREVIEW_IMAGES["indoor-normal"]} alt="" fill sizes="180px" className="object-cover" />
+                                      <Image src={TYPE_PREVIEW_IMAGES["indoor-go"]} alt="" fill sizes="180px" className="object-cover" />
                                     </div>
                                     <div className="p-3">
-                                      <div className="font-medium text-sm">Classic</div>
+                                      <div className="font-medium text-sm">Carpetz Go</div>
                                       <div className="text-xs text-muted-foreground">
-                                        Betrouwbare logomat voor dagelijks gebruik
+                                        Instapmodel — betrouwbaar en toegankelijk
                                       </div>
                                     </div>
                                   </button>
@@ -455,22 +456,22 @@ export function MatConfigurator() {
                                   <button
                                     type="button"
                                     onClick={() => {
-                                      setIndoorSubtype("eco")
-                                      updateConfig({ indoorSubtype: "eco" })
+                                      setIndoorSubtype("green")
+                                      updateConfig({ indoorSubtype: "green" })
                                     }}
                                     className={`overflow-hidden rounded-lg border-2 text-left transition-all ${
-                                      config.indoorSubtype === "eco"
+                                      config.indoorSubtype === "green"
                                         ? "border-[#C69C4D] bg-[#FFF8EB] shadow-sm"
                                         : "border-border hover:border-[#C69C4D]"
                                     }`}
                                   >
                                     <div className="relative aspect-[4/3] w-full">
-                                      <Image src={TYPE_PREVIEW_IMAGES["indoor-eco"]} alt="" fill sizes="180px" className="object-cover" />
+                                      <Image src={TYPE_PREVIEW_IMAGES["indoor-green"]} alt="" fill sizes="180px" className="object-cover" />
                                     </div>
                                     <div className="p-3">
-                                      <div className="font-medium text-sm">Eco</div>
+                                      <div className="font-medium text-sm">Carpetz Green</div>
                                       <div className="text-xs text-muted-foreground">
-                                        Gemaakt met gerecycleerde materialen
+                                        Duurzaam, gerecycleerde materialen
                                       </div>
                                     </div>
                                   </button>
@@ -478,22 +479,22 @@ export function MatConfigurator() {
                                   <button
                                     type="button"
                                     onClick={() => {
-                                      setIndoorSubtype("luxe")
-                                      updateConfig({ indoorSubtype: "luxe" })
+                                      setIndoorSubtype("studio")
+                                      updateConfig({ indoorSubtype: "studio" })
                                     }}
                                     className={`overflow-hidden rounded-lg border-2 text-left transition-all ${
-                                      config.indoorSubtype === "luxe"
+                                      config.indoorSubtype === "studio"
                                         ? "border-[#C69C4D] bg-[#FFF8EB] shadow-sm"
                                         : "border-border hover:border-[#C69C4D]"
                                     }`}
                                   >
                                     <div className="relative aspect-[4/3] w-full">
-                                      <Image src={TYPE_PREVIEW_IMAGES["indoor-luxe"]} alt="" fill sizes="180px" className="object-cover" />
+                                      <Image src={TYPE_PREVIEW_IMAGES["indoor-studio"]} alt="" fill sizes="180px" className="object-cover" />
                                     </div>
                                     <div className="p-3">
-                                      <div className="font-medium text-sm">Elite</div>
+                                      <div className="font-medium text-sm">Carpetz Studio</div>
                                       <div className="text-xs text-muted-foreground">
-                                        Premium afwerking en maximale levensduur
+                                        Mooiste printkwaliteit, 100 kleuren
                                       </div>
                                     </div>
                                   </button>
@@ -501,22 +502,22 @@ export function MatConfigurator() {
                                   <button
                                     type="button"
                                     onClick={() => {
-                                      setIndoorSubtype("budget")
-                                      updateConfig({ indoorSubtype: "budget" })
+                                      setIndoorSubtype("pro")
+                                      updateConfig({ indoorSubtype: "pro" })
                                     }}
                                     className={`overflow-hidden rounded-lg border-2 text-left transition-all ${
-                                      config.indoorSubtype === "budget"
+                                      config.indoorSubtype === "pro"
                                         ? "border-[#C69C4D] bg-[#FFF8EB] shadow-sm"
                                         : "border-border hover:border-[#C69C4D]"
                                     }`}
                                   >
                                     <div className="relative aspect-[4/3] w-full">
-                                      <Image src={TYPE_PREVIEW_IMAGES["indoor-budget"]} alt="" fill sizes="180px" className="object-cover" />
+                                      <Image src={TYPE_PREVIEW_IMAGES["indoor-pro"]} alt="" fill sizes="180px" className="object-cover" />
                                     </div>
                                     <div className="p-3">
-                                      <div className="font-medium text-sm">Professional</div>
+                                      <div className="font-medium text-sm">Carpetz Pro</div>
                                       <div className="text-xs text-muted-foreground">
-                                        Onze populairste keuze voor bedrijven
+                                        Hoogste prestaties, langste garantie
                                       </div>
                                     </div>
                                   </button>
