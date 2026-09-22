@@ -19,6 +19,10 @@ export interface MatTypeEntry {
   heroImage: string
   features: MatTypeFeature[]
   specs: MatTypeSpec[]
+  whyChoose: {
+    text: string
+    idealFor: string[]
+  }
 }
 
 export const MAT_TYPE_DATA: Record<"go" | "green" | "studio" | "pro", MatTypeEntry> = {
@@ -28,6 +32,15 @@ export const MAT_TYPE_DATA: Record<"go" | "green" | "studio" | "pro", MatTypeEnt
     description:
       "Carpetz Go is onze toegankelijke logomat voor wie een betrouwbare, scherp bedrukte mat zoekt zonder in te leveren op basiskwaliteit. Ideaal voor bedrijven die met een beperkt budget toch representatief willen binnenkomen.",
     heroImage: "/images/logomat-CarpetzGo-detail.webp",
+      go: {
+    title: "Carpetz Go",
+    tagline: "Instapmodel",
+    description: "...", // bestaande tekst blijft
+    heroImage: "/images/logomat-CarpetzGo-detail.webp",
+    whyChoose: {
+      text: "Carpetz Go is de slimme keuze wanneer je snel en betaalbaar een professionele eerste indruk wil maken, zonder in te leveren op basiskwaliteit. Perfect voor bedrijven die hun eerste logomat testen, een beperkt budget hebben, of een mat nodig hebben voor een tijdelijke locatie of pop-up.",
+      idealFor: ["Starters & kmo's", "Pop-upstores", "Tijdelijke locaties", "Beperkt budget"],
+    },
     features: [
       { icon: Recycle, label: "Materiaal", value: "Min. 75% gerecycleerd nylon" },
       { icon: ShieldCheck, label: "Rugmateriaal", value: "Phthalaatvrij nitrilrubber" },
@@ -59,6 +72,10 @@ export const MAT_TYPE_DATA: Record<"go" | "green" | "studio" | "pro", MatTypeEnt
     description:
       "Carpetz Green combineert een lage milieu-impact met stevige prestaties. Gemaakt uit minstens 75% gerecycleerd materiaal, zonder in te leveren op slipweerstand of duurzaamheid.",
     heroImage: "/images/logomat-CarpetzGreen-detail.webp",
+        whyChoose: {
+      text: "Kiest je organisatie bewust voor duurzaamheid? Carpetz Green is gemaakt met minstens 75% gerecycleerd materiaal, zonder concessies op slipweerstand of levensduur. Zo communiceer je je merk én je waarden vanaf de allereerste stap in je zaak.",
+      idealFor: ["Bedrijven met MVO-beleid", "Groene retailers", "Organisaties die duurzaamheid uitstralen"],
+    },
     features: [
       { icon: Recycle, label: "Materiaal", value: "Min. 75% gerecycleerd nylon" },
       { icon: ShieldCheck, label: "Rugmateriaal", value: "Phthalaatvrij nitrilrubber" },
@@ -91,6 +108,10 @@ export const MAT_TYPE_DATA: Record<"go" | "green" | "studio" | "pro", MatTypeEnt
     description:
       "Carpetz Studio staat voor de scherpste, meest kleurrijke print in ons gamma. Met 100 standaardkleuren en een hoge-definitie afdruk breng je zowel fotorealistische beelden als complexe logo's tot leven.",
     heroImage: "/images/logomat-CarpetzStudio-detail.jpg",
+        whyChoose: {
+      text: "Wil je meer dan een logo — een echte blikvanger? Carpetz Studio biedt de scherpste, meest kleurrijke print in ons gamma met 100 standaardkleuren, ideaal voor fotorealistische beelden of complexe designs die er tot in het kleinste detail perfect moeten uitzien.",
+      idealFor: ["Flagshipstores", "Hotels & horeca", "Campagnes met veel kleur of detail"],
+    },
     features: [
       { icon: Palette, label: "Kleuren", value: "100 standaardkleuren" },
       { icon: Recycle, label: "Materiaal", value: "100% gerecycleerd PET" },
@@ -122,6 +143,10 @@ export const MAT_TYPE_DATA: Record<"go" | "green" | "studio" | "pro", MatTypeEnt
     description:
       "Carpetz Pro is onze premium logomat voor intensief gebruik. Zwaarder, dikker en met de langste garantie van ons gamma — gebouwd voor drukke ingangen die dag na dag representatief moeten blijven.",
     heroImage: "/images/logomat-CarpetzPro-detail.webp",
+        whyChoose: {
+      text: "Voor ingangen die dag na dag intensief gebruikt worden, is Carpetz Pro de betrouwbare werkkracht. Zwaarder, dikker en met de langste garantie van ons gamma (5 jaar) — gebouwd om jarenlang representatief te blijven, ook bij hoge voetgangersaantallen.",
+      idealFor: ["Kantoren met veel doorstroom", "Drukke retail-ingangen", "Langdurige inzet"],
+    },
     features: [
       { icon: ShieldCheck, label: "Rugmateriaal", value: "100% nitrilrubber" },
       { icon: Award, label: "Garantie", value: "5 jaar (2 jaar industriële was)" },
