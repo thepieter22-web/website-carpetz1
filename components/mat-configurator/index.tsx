@@ -1,4 +1,6 @@
 "use client"
+import { MAT_TYPE_DATA } from "@/lib/mat-type-data"
+import { Check as CheckIcon, Sparkles } from "lucide-react"
 import Image from "next/image"
 import { PRINTGRASS_COLORS } from "@/lib/printgrass-colors"
 import { useState, useCallback, useEffect } from "react"
@@ -907,15 +909,91 @@ export function MatConfigurator() {
           <PriceCalculator config={config} onOrder={handleOrder} />
         </div>
 
-        <Card className="mt-6 border-2 border-primary/20">
-          <CardHeader>
-            <CardTitle>Productinformatie</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <h3 className="text-xl font-semibold mb-2">{indoorInfo[indoorSubtype].title}</h3>
-            <p className="text-muted-foreground">{indoorInfo[indoorSubtype].description}</p>
-          </CardContent>
-        </Card>
+                {visibleTypeBlock === "indoor" && (() => {
+          const typeData = MAT_TYPE_DATA[indoorSubtype]
+          return (
+            <div className="mt-6 space-y-6">
+              {/* Waarom deze mat kiezen */}
+              <Card className="border-2 border-[#C69C4D]/30 bg-[#FFFCF7]">
+                <CardHeader>
+                  <CardTitle className="text-xl">Waarom {typeData.title} kiezen?</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    {typeData.whyChoose.text}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {typeData.whyChoose.idealFor.map((item) => (
+                      <span
+                        key={item}
+                        className="inline-flex items-center gap-1.5 rounded-full border border-[#C69C4D]/40 bg-[#FFF8EB] px-3 py-1 text-xs font-medium text-[#3B2A1A]"
+                      >
+                        <Check className="size-3 text-[#C69C4D]" />
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Eigenschappen */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">Eigenschappen</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2 lg:grid-cols-4">
+                    {typeData.features.map((feature) => {
+                      const Icon = feature.icon
+                      return (
+                        <div key={feature.label} className="flex items-center gap-3">
+                          <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-foreground text-background">
+                            <Icon className="size-4" />
+                          </span>
+                          <div>
+                            <p className="text-sm font-semibold text-foreground">{feature.label}</p>
+                            <p className="text-xs text-muted-foreground">{feature.value}</p>
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Productspecificaties */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">Productspecificaties</CardTitle>
+                </CardHeader>
+                <CardContent className="p-0">
+                  <div className="overflow-hidden rounded-b-xl">
+                    <table className="w-full text-left text-sm">
+                      <thead>
+                        <tr className="bg-primary text-primary-foreground">
+                          <th className="px-5 py-3 font-semibold">Kenmerk</th>
+                          <th className="px-5 py-3 font-semibold">Eigenschap</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {typeData.specs.map((spec, index) => (
+                          <tr key={spec.label} className={index % 2 === 1 ? "bg-secondary/40" : "bg-card"}>
+                            <td className="border-t border-border px-5 py-3 text-muted-foreground">
+                              {spec.label}
+                            </td>
+                            <td className="border-t border-border px-5 py-3 font-medium text-foreground">
+                              {spec.value}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          )
+        })()}
       </main>
     </div>
   )
