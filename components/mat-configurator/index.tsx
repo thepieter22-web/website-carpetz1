@@ -32,7 +32,7 @@ import {
 const TYPE_PREVIEW_IMAGES: Record<string, string> = {
   "indoor-go": "/images/logomat-CarpetzGo-detail.webp",
   "indoor-green": "/images/logomat-CarpetzGreen-detail.webp",
-  "indoor-studio": "/images/logomat-CarpetzStudio-detail.jpg",
+  "indoor-studio": "/images/logomat-CarpetzStudio-detail.webp",
   "indoor-pro": "/images/logomat-CarpetzPro-detail.webp",
   "outdoor-printgrass": "/images/logomat-printgrass-detail.webp",
   "outdoor-signature": "/images/logomat-signature-detail.webp",
