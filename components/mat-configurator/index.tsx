@@ -194,7 +194,7 @@ export function MatConfigurator() {
     setConfig(DEFAULT_CONFIG)
     setSuggestedColorCodes([])
     setLogoImage(null)
-    setIndoorSubtype("normal")
+    setIndoorSubtype("go")
        setOutdoorSubtype("printgrass")
     setVisibleTypeBlock(null)
     setCurrentStep(1)
@@ -428,9 +428,8 @@ export function MatConfigurator() {
                             {visibleTypeBlock === "indoor" && (
                               <div className="space-y-3">
                                 <Label className="text-sm font-medium">Indoor Type</Label>
-                                <div className="grid grid-cols-2 gap-2">
-                                                                                                     <button
-                                                                      <button
+                                                                <div className="grid grid-cols-2 gap-2">
+                                    <button
                                     type="button"
                                     onClick={() => {
                                       setIndoorSubtype("go")
