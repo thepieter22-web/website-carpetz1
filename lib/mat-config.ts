@@ -100,11 +100,11 @@ export const PRICING = {
   outdoor: 75.0,
 },
   
-  indoorTypes: {
-    normal: 47.42,      // Classic
-    eco: 50.27,
-    budget: 68.43,      // Professional
-    luxe: 72.00,        // Elite
+    indoorTypes: {
+    go: 121.65,
+    green: 170.56,
+    studio: 171.82,
+    pro: 180.27,
   },
 
   outdoorTypes: {
@@ -139,7 +139,7 @@ export type Orientation = "landscape" | "portrait";
 
 export interface MatConfig {
   type: MatType;
-  indoorSubtype: "normal" | "eco" | "budget" | "luxe";
+  indoorSubtype: "go" | "green" | "studio" | "pro";
   outdoorSubtype: "printgrass" | "signature";
   placement: Placement;
   orientation: Orientation;
