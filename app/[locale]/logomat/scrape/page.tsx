@@ -4,14 +4,14 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { MAT_TYPE_DATA_OUTDOOR } from "@/lib/mat-type-data";
 
-const data = MAT_TYPE_DATA_OUTDOOR.grip;
+const data = MAT_TYPE_DATA_OUTDOOR.scrape;
 
 export const metadata: Metadata = {
   title: `${data.title} logomat op maat`,
   description: data.description,
 };
 
-export default function GripLogomatPage({
+export default function ScrapeLogomatPage({
   params,
 }: {
   params: { locale: string };
@@ -26,7 +26,7 @@ export default function GripLogomatPage({
         description={data.description}
         heroImage={data.heroImage}
         heroAlt={`Detailfoto van ${data.title}`}
-        configuratorType="grip"
+        configuratorType="scrape"
         features={data.features}
         specs={data.specs}
         references={[
