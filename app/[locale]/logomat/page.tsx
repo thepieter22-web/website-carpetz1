@@ -1,3 +1,4 @@
+import { MatComparisonTable } from "@/components/mat-comparison-table"
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { SiteHeader } from '@/components/site-header'
@@ -47,6 +48,27 @@ export default function LogomatPage() {
             </div>
           </div>
         </section>
+
+        <section className="border-t border-border bg-secondary/20">
+  <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+    <div className="mx-auto max-w-2xl text-center">
+      <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+        Vergelijk
+      </span>
+      <h2 className="mt-4 font-serif text-3xl font-semibold">
+        Welke logomat past bij jou?
+      </h2>
+      <p className="mt-3 text-muted-foreground">
+        Eén overzicht van alle kwaliteiten — vergelijk prijs, materiaal en toepassing voordat je start met ontwerpen.
+      </p>
+    </div>
+    <div className="mt-10">
+      <MatComparisonTable />
+    </div>
+  </div>
+</section>
+
+<section id="configurator" className="scroll-mt-24 border-t border-border bg-white">
 
        
 
