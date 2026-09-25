@@ -168,3 +168,74 @@ export const MAT_TYPE_DATA: Record<"go" | "green" | "studio" | "pro", MatTypeEnt
     ],
   },
 }
+
+export const MAT_TYPE_DATA_OUTDOOR: Record<"grip" | "scrape", MatTypeEntry> = {
+  grip: {
+    title: "Carpetz Grip",
+    tagline: "Weerbestendig",
+    description:
+      "Carpetz Grip is onze standaard buitenmat, gebouwd om jaar na jaar weerstand te bieden aan regen, wind en intensief voetgangersverkeer. Robuust monofilament materiaal zorgt voor duurzame, scherpe print ook onder extreme omstandigheden.",
+    heroImage: "/images/logomat-printgrass-detail.webp",
+    whyChoose: {
+      text: "Voor ingangen, events of stands die blootstaan aan weer en wind is Carpetz Grip de betrouwbare keuze. Het monofilament materiaal is bestand tegen vocht en intensief gebruik, terwijl je logo scherp en herkenbaar blijft.",
+      idealFor: ["Buiteningangen", "Events & beurzen", "Terrassen", "Alle weersomstandigheden"],
+    },
+    features: [
+      { icon: ShieldCheck, label: "Rugmateriaal", value: "Phthalaatvrij nitrilrubber" },
+      { icon: Recycle, label: "Pool", value: "100% monofilament PA6" },
+      { icon: Home, label: "Gebruik", value: "Geschikt voor buiten" },
+      { icon: Flame, label: "Brandgedrag", value: "EN13501-1 / Bfl-s1" },
+      { icon: Zap, label: "Vloerverwarming", value: "Geschikt" },
+      { icon: BadgeCheck, label: "Kleurvastheid", value: "Licht- en kleurecht" },
+      { icon: Globe, label: "Herkomst", value: "Made in Europe" },
+      { icon: Droplet, label: "Weerbestendig", value: "Regen & vocht" },
+    ],
+    specs: [
+      { label: "Gewicht", value: "3,6 kg/m²" },
+      { label: "Randen", value: "0 of 20 mm" },
+      { label: "Rugmateriaal", value: "100% phthalaatvrij nitrilrubber" },
+      { label: "Rugdikte", value: "1,8 mm" },
+      { label: "Pool", value: "100% monofilament PA6" },
+      { label: "Pool gewicht", value: "1420 g/m²" },
+      { label: "Pool hoogte", value: "± 6 mm" },
+      { label: "Mat hoogte", value: "± 8 mm" },
+      { label: "Brandgedrag", value: "EN13501-1 / Bfl-s1" },
+      { label: "Geschikt voor", value: "Buitengebruik" },
+    ],
+  },
+  scrape: {
+    title: "Carpetz Scrape",
+    tagline: "Superieure schrapwerking",
+    description:
+      "Carpetz Scrape combineert een unieke nylonvezelmix met een superieure schrapende werking tegen vuil en afval. Gemaakt uit ECONYL geregenereerd nylon, inzetbaar zowel binnen als buiten, met optionele afwateringsgaten voor extra vochtafvoer.",
+    heroImage: "/images/logomat-signature-detail.webp",
+    whyChoose: {
+      text: "Wil je vuil en afval al bij de deur tegenhouden? Carpetz Scrape is ontworpen met een schurende vezelmix die grondig schraapt, terwijl de briljante kleurechtheid je logo of ontwerp jarenlang scherp houdt — zowel binnen als buiten inzetbaar.",
+      idealFor: ["Drukke in- en uitgangen", "Horeca & retail", "Binnen & buiten", "Extra vuilafvoer nodig"],
+    },
+    features: [
+      { icon: Recycle, label: "Garen", value: "ECONYL geregenereerd nylon" },
+      { icon: ShieldCheck, label: "Rugmateriaal", value: "Nitrilrubber (34% gerecycleerd)" },
+      { icon: Droplet, label: "Afwateringsgaten", value: "Optioneel, Ø 7mm" },
+      { icon: Home, label: "Gebruik", value: "Binnen & buiten" },
+      { icon: BadgeCheck, label: "Kleurechtheid", value: "Briljant & duurzaam" },
+      { icon: Zap, label: "Schrapwerking", value: "Superieur tegen vuil" },
+      { icon: Globe, label: "Wasbaar", value: "Volledig wasbaar" },
+      { icon: Award, label: "Ontwerp", value: "Eigen ontwerpers, snelle doorlooptijd" },
+    ],
+    specs: [
+      { label: "Garen", value: "ECONYL geregenereerd nylon, 1/8th gesneden pool" },
+      { label: "Matgewicht", value: "3,9 kg/m²" },
+      { label: "Onderlaag", value: "Non-woven gesponnen gebonden polyester" },
+      { label: "Rugmateriaal", value: "100% nitrilrubber (34% postindustrieel gerecycleerd)" },
+      { label: "Patroon", value: "Klauw" },
+      { label: "Dikte", value: "3 mm" },
+      { label: "Afwateringsgaten", value: "Ø 7mm (optioneel, tot 130×200cm)" },
+      { label: "Randdikte", value: "2,5 mm" },
+      { label: "Randbreedte", value: "20 mm" },
+      { label: "Stapelgewicht", value: "715 g/m²" },
+      { label: "Stapelhoogte", value: "7 mm" },
+      { label: "Max. afmeting", value: "210×600cm (zonder afwateringsgaten)" },
+    ],
+  },
+}
