@@ -1,6 +1,5 @@
 "use client"
 import { MAT_TYPE_DATA, MAT_TYPE_DATA_OUTDOOR } from "@/lib/mat-type-data"
-import { MAT_TYPE_DATA } from "@/lib/mat-type-data"
 import { Check as CheckIcon, Sparkles } from "lucide-react"
 import Image from "next/image"
 import { PRINTGRASS_COLORS } from "@/lib/printgrass-colors"
@@ -66,7 +65,7 @@ const DEFAULT_CONFIG: MatConfig = {
 }
 
 type IndoorSubtype = "go" | "green" | "studio" | "pro"
-type OutdoorSubtype = "printgrass" | "signature"
+type OutdoorSubtype = "grip" | "scrape"
 type VisibleTypeBlock = "indoor" | "outdoor" | null
 
 export function MatConfigurator() {
@@ -84,7 +83,7 @@ export function MatConfigurator() {
   })
 
   const [indoorSubtype, setIndoorSubtype] = useState<IndoorSubtype>(DEFAULT_CONFIG.indoorSubtype)
-    const [outdoorSubtype, setOutdoorSubtype] = useState<OutdoorSubtype>("printgrass")
+    const [outdoorSubtype, setOutdoorSubtype] = useState<OutdoorSubtype>("grip")
   const [visibleTypeBlock, setVisibleTypeBlock] = useState<VisibleTypeBlock>(null)
 
     useEffect(() => {
@@ -531,7 +530,6 @@ export function MatConfigurator() {
                               <div className="space-y-3">
                                 <Label className="text-sm font-medium">Outdoor Type</Label>
                                 <div className="grid grid-cols-2 gap-2">
-                                                                                                                                                                         <button
                                                                      <button
                                     type="button"
                                     onClick={() => {
