@@ -1,4 +1,5 @@
 "use client"
+import { MAT_TYPE_DATA, MAT_TYPE_DATA_OUTDOOR } from "@/lib/mat-type-data"
 import { MAT_TYPE_DATA } from "@/lib/mat-type-data"
 import { Check as CheckIcon, Sparkles } from "lucide-react"
 import Image from "next/image"
@@ -36,14 +37,14 @@ const TYPE_PREVIEW_IMAGES: Record<string, string> = {
   "indoor-green": "/images/logomat-CarpetzGreen-detail.webp",
   "indoor-studio": "/images/logomat-CarpetzStudio-detail.webp",
   "indoor-pro": "/images/logomat-CarpetzPro-detail.webp",
-  "outdoor-printgrass": "/images/logomat-printgrass-detail.webp",
-  "outdoor-signature": "/images/logomat-signature-detail.webp",
+    "outdoor-grip": "/images/logomat-printgrass-detail.webp",
+  "outdoor-scrape": "/images/logomat-signature-detail.webp",
 }
 
 const DEFAULT_CONFIG: MatConfig = {
   type: "indoor",
   indoorSubtype: "go",
-  outdoorSubtype: "printgrass",
+  outdoorSubtype: "grip",
   placement: "floor",
   orientation: "landscape",
   rubberBorder: true,
@@ -102,7 +103,7 @@ export function MatConfigurator() {
     if (!typeParam) return
 
         const indoorOptions = ["go", "green", "studio", "pro"] as const
-    const outdoorOptions = ["printgrass", "signature"] as const
+    const outdoorOptions = ["grip", "scrape"] as const
 
     if (indoorOptions.includes(typeParam as (typeof indoorOptions)[number])) {
       const subtype = typeParam as IndoorSubtype
@@ -140,9 +141,9 @@ export function MatConfigurator() {
         return
       }
 
-      if (type === "outdoor") {
-        setOutdoorSubtype("printgrass")
-        updateConfig({ type, outdoorSubtype: "printgrass" })
+            if (type === "outdoor") {
+        setOutdoorSubtype("grip")
+        updateConfig({ type, outdoorSubtype: "grip" })
       }
     },
     [updateConfig]
@@ -197,7 +198,7 @@ export function MatConfigurator() {
     setSuggestedColorCodes([])
     setLogoImage(null)
     setIndoorSubtype("go")
-       setOutdoorSubtype("printgrass")
+       setOutdoorSubtype("grip")
     setVisibleTypeBlock(null)
     setCurrentStep(1)
     setMaxStepReached(1)
@@ -275,10 +276,10 @@ export function MatConfigurator() {
     setSuggestedColorCodes([])
   }, [])
 
-        const activeColors =
-    visibleTypeBlock === "outdoor" && outdoorSubtype === "printgrass"
+                const activeColors =
+    visibleTypeBlock === "outdoor" && outdoorSubtype === "grip"
       ? PRINTGRASS_COLORS
-      : visibleTypeBlock === "outdoor" && outdoorSubtype === "signature"
+      : visibleTypeBlock === "outdoor" && outdoorSubtype === "scrape"
       ? SIGNATURE_COLORS
       : MAT_COLORS
 
@@ -298,9 +299,9 @@ export function MatConfigurator() {
     pro: { title: "Carpetz Pro", description: "Hoogste prestaties voor intensief gebruik." },
   }
 
-  const outdoorInfo = {
-    printgrass: { title: "PrintGrass Outdoor", description: "Full-colour bedrukte buitenmat." },
-    signature: { title: "Signature Brush", description: "Premium logomat met 2-3 kleuren." },
+   const outdoorInfo = {
+    grip: { title: "Carpetz Grip", description: "Weerbestendige buitenmat voor intensief gebruik." },
+    scrape: { title: "Carpetz Scrape", description: "Superieure schrapwerking tegen vuil." },
   }
 
   const step1Complete = Boolean(config.logo.file)
@@ -531,44 +532,45 @@ export function MatConfigurator() {
                                 <Label className="text-sm font-medium">Outdoor Type</Label>
                                 <div className="grid grid-cols-2 gap-2">
                                                                                                                                                                          <button
+                                                                     <button
                                     type="button"
                                     onClick={() => {
-                                      setOutdoorSubtype("printgrass")
-                                      updateConfig({ outdoorSubtype: "printgrass" })
+                                      setOutdoorSubtype("grip")
+                                      updateConfig({ outdoorSubtype: "grip" })
                                     }}
                                     className={`overflow-hidden rounded-lg border-2 text-left transition-all ${
-                                      outdoorSubtype === "printgrass"
+                                      outdoorSubtype === "grip"
                                         ? "border-foreground bg-foreground/5"
                                         : "border-border hover:border-muted-foreground"
                                     }`}
                                   >
                                     <div className="relative aspect-[4/3] w-full">
-                                      <Image src={TYPE_PREVIEW_IMAGES["outdoor-printgrass"]} alt="" fill sizes="180px" className="object-cover" />
+                                      <Image src={TYPE_PREVIEW_IMAGES["outdoor-grip"]} alt="" fill sizes="180px" className="object-cover" />
                                     </div>
                                     <div className="p-3">
-                                      <div className="font-medium text-sm">PrintGrass Outdoor</div>
-                                      <div className="text-xs text-muted-foreground">Full-colour bedrukte buitenmat</div>
+                                      <div className="font-medium text-sm">Carpetz Grip</div>
+                                      <div className="text-xs text-muted-foreground">Weerbestendige buitenmat</div>
                                     </div>
                                   </button>
 
                                   <button
                                     type="button"
                                     onClick={() => {
-                                      setOutdoorSubtype("signature")
-                                      updateConfig({ outdoorSubtype: "signature" })
+                                      setOutdoorSubtype("scrape")
+                                      updateConfig({ outdoorSubtype: "scrape" })
                                     }}
                                     className={`overflow-hidden rounded-lg border-2 text-left transition-all ${
-                                      outdoorSubtype === "signature"
+                                      outdoorSubtype === "scrape"
                                         ? "border-foreground bg-foreground/5"
                                         : "border-border hover:border-muted-foreground"
                                     }`}
                                   >
                                     <div className="relative aspect-[4/3] w-full">
-                                      <Image src={TYPE_PREVIEW_IMAGES["outdoor-signature"]} alt="" fill sizes="180px" className="object-cover" />
+                                      <Image src={TYPE_PREVIEW_IMAGES["outdoor-scrape"]} alt="" fill sizes="180px" className="object-cover" />
                                     </div>
                                     <div className="p-3">
-                                      <div className="font-medium text-sm">Signature Brush</div>
-                                      <div className="text-xs text-muted-foreground">Premium logomat met 2-3 kleuren</div>
+                                      <div className="font-medium text-sm">Carpetz Scrape</div>
+                                      <div className="text-xs text-muted-foreground">Superieure schrapwerking</div>
                                     </div>
                                   </button>
                                 </div>
@@ -821,10 +823,10 @@ export function MatConfigurator() {
                               onSelect={(code) => updateConfig({ colorCode: code })}
                               suggestedCodes={suggestedColorCodes}
                               onResetSuggestions={handleResetSuggestions}
-                                                            colorSet={
-                                visibleTypeBlock === "outdoor" && outdoorSubtype === "printgrass"
+                                                                                                                       colorSet={
+                                visibleTypeBlock === "outdoor" && outdoorSubtype === "grip"
                                   ? "printgrass"
-                                  : visibleTypeBlock === "outdoor" && outdoorSubtype === "signature"
+                                  : visibleTypeBlock === "outdoor" && outdoorSubtype === "scrape"
                                   ? "signature"
                                   : "standard"
                               }
@@ -909,8 +911,11 @@ export function MatConfigurator() {
           <PriceCalculator config={config} onOrder={handleOrder} />
         </div>
 
-                {visibleTypeBlock === "indoor" && (() => {
-          const typeData = MAT_TYPE_DATA[indoorSubtype]
+                        {(visibleTypeBlock === "indoor" || visibleTypeBlock === "outdoor") && (() => {
+          const typeData =
+            visibleTypeBlock === "indoor"
+              ? MAT_TYPE_DATA[indoorSubtype]
+              : MAT_TYPE_DATA_OUTDOOR[outdoorSubtype]
           return (
             <div className="mt-6 space-y-6">
               {/* Waarom deze mat kiezen */}
