@@ -69,10 +69,6 @@ export default function LogomatPage() {
 </section>
 
 <section id="configurator" className="scroll-mt-24 border-t border-border bg-white">
-
-       
-
-<section id="configurator" className="scroll-mt-24 border-t border-border bg-white">
   <div className="mx-auto max-w-7xl px-6 py-8 lg:px-8">
     <MatConfigurator />
   </div>
