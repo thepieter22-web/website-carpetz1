@@ -46,8 +46,12 @@ const finalTotal =
         <div className="space-y-2 text-sm">
           <div className="flex justify-between">
             <span className="text-muted-foreground">Type logomat</span>
-                       <span className="font-medium">
-  {config.indoorSubtype === "go"
+                                  <span className="font-medium">
+  {config.type === "outdoor"
+    ? config.outdoorSubtype === "grip"
+      ? "Carpetz Grip"
+      : "Carpetz Scrape"
+    : config.indoorSubtype === "go"
     ? "Carpetz Go"
     : config.indoorSubtype === "green"
     ? "Carpetz Green"
