@@ -107,9 +107,9 @@ export const PRICING = {
     pro: 180.27,
   },
 
-  outdoorTypes: {
-  printgrass: 220.76,
-  signature: 270.07,
+    outdoorTypes: {
+  grip: 207.76,
+  scrape: 150.94,
 },
 
   
@@ -140,7 +140,7 @@ export type Orientation = "landscape" | "portrait";
 export interface MatConfig {
   type: MatType;
   indoorSubtype: "go" | "green" | "studio" | "pro";
-  outdoorSubtype: "printgrass" | "signature";
+    outdoorSubtype: "grip" | "scrape";
   placement: Placement;
   orientation: Orientation;
   rubberBorder: boolean;
