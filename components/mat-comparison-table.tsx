@@ -1,4 +1,3 @@
-import { PRICING } from "@/lib/mat-config"
 import { MAT_TYPE_DATA, MAT_TYPE_DATA_OUTDOOR, type MatTypeEntry } from "@/lib/mat-type-data"
 import { Check } from "lucide-react"
 
@@ -46,15 +45,7 @@ export function MatComparisonTable() {
                   </td>
                 ))}
               </tr>
-              <tr className="bg-secondary/40">
-                <td className="border-t border-border px-5 py-3 text-muted-foreground">Prijs per m²</td>
-                {INDOOR_TYPES.map((key) => (
-                  <td key={key} className="border-t border-border px-5 py-3 font-semibold text-accent">
-                    €{PRICING.indoorTypes[key].toFixed(2)}
-                  </td>
-                ))}
-              </tr>
-              <tr className="bg-card">
+             <tr className="bg-card">
                 <td className="border-t border-border px-5 py-3 text-muted-foreground">Materiaal</td>
                 {INDOOR_TYPES.map((key) => (
                   <td key={key} className="border-t border-border px-5 py-3 font-medium text-foreground">
@@ -112,14 +103,6 @@ export function MatComparisonTable() {
         <div className="overflow-x-auto rounded-xl border border-border">
           <table className="w-full min-w-[420px] text-left text-sm">
             <thead>
-              <tr className="bg-primary text-primary-foreground">
-                <th className="px-5 py-3 font-semibold">Kenmerk</th>
-                {OUTDOOR_TYPES.map((key) => (
-                  <th key={key} className="px-5 py-3 font-semibold">
-                    {MAT_TYPE_DATA_OUTDOOR[key].title}
-                  </th>
-                ))}
-              </tr>
             </thead>
             <tbody>
               <tr className="bg-card">
