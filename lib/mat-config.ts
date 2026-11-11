@@ -186,6 +186,7 @@ export function calculatePrice(config: MatConfig): {
   const {
   type,
   indoorSubtype,
+  outdoorSubtype,
   size,
   quantity,
   logoColors,
@@ -193,11 +194,11 @@ export function calculatePrice(config: MatConfig): {
 
   const area = (size.width * size.height) / 10000;
 
-let pricePerM2 = PRICING.basePrice[type];
-
-if (type === "indoor") {
-  pricePerM2 = PRICING.indoorTypes[indoorSubtype];
-}
+  // Prijs per m² volgens het gekozen subtype
+  const pricePerM2: number =
+    type === "outdoor"
+      ? PRICING.outdoorTypes[outdoorSubtype]
+      : PRICING.indoorTypes[indoorSubtype];
 
 let unitPrice = area * pricePerM2;
 
@@ -227,6 +228,115 @@ let unitPrice = area * pricePerM2;
     subtotal: Math.round(subtotal * 100) / 100,
     vat: Math.round(vat * 100) / 100,
     total: Math.round(total * 100) / 100,
+  };
+}
+
+// -----------------------------
+// Order spec + totals (gedeeld door winkelwagen en checkout API)
+// -----------------------------
+
+// Leveringskost excl. btw
+export const SHIPPING_EXCL_VAT = 15;
+
+export const ORDER_LIMITS = {
+  size: { min: 30, max: 300 },
+  quantity: { min: 1, max: 100 },
+  logoColors: { min: 1, max: 10 },
+} as const;
+
+type IndoorSubtype = MatConfig["indoorSubtype"];
+type OutdoorSubtype = MatConfig["outdoorSubtype"];
+
+// Enkel productspecificaties, nooit een prijs.
+export interface OrderSpec {
+  type: MatType;
+  indoorSubtype: IndoorSubtype;
+  outdoorSubtype: OutdoorSubtype;
+  width: number;
+  height: number;
+  quantity: number;
+  logoColors: number;
+  colorCode: string;
+  rubberBorder: boolean;
+  placement: Placement;
+}
+
+function toInt(value: unknown): number | null {
+  const n = typeof value === "number" ? value : Number(String(value ?? "").trim());
+  return Number.isInteger(n) ? n : null;
+}
+
+function inRange(n: number | null, range: { min: number; max: number }): n is number {
+  return n !== null && n >= range.min && n <= range.max;
+}
+
+// Valideert ruwe input (request body of URL-parameters). Geeft null bij ongeldige input.
+export function parseOrderSpec(input: Record<string, unknown>): OrderSpec | null {
+  const type = input.type;
+  if (type !== "indoor" && type !== "outdoor") return null;
+
+  const indoorSubtype = String(input.indoorSubtype ?? "go");
+  const outdoorSubtype = String(input.outdoorSubtype ?? "grip");
+  if (!Object.prototype.hasOwnProperty.call(PRICING.indoorTypes, indoorSubtype)) return null;
+  if (!Object.prototype.hasOwnProperty.call(PRICING.outdoorTypes, outdoorSubtype)) return null;
+
+  const width = toInt(input.width);
+  const height = toInt(input.height);
+  const quantity = toInt(input.quantity);
+  const logoColors = toInt(input.logoColors ?? 1);
+  if (!inRange(width, ORDER_LIMITS.size)) return null;
+  if (!inRange(height, ORDER_LIMITS.size)) return null;
+  if (!inRange(quantity, ORDER_LIMITS.quantity)) return null;
+  if (!inRange(logoColors, ORDER_LIMITS.logoColors)) return null;
+
+  const colorCode = String(input.colorCode ?? "");
+  if (colorCode && !MAT_COLORS.some((c) => c.code === colorCode)) return null;
+
+  const placement = input.placement === "frame" ? "frame" : "floor";
+  const rubberBorder = input.rubberBorder === true || input.rubberBorder === "true";
+
+  return {
+    type,
+    indoorSubtype: indoorSubtype as IndoorSubtype,
+    outdoorSubtype: outdoorSubtype as OutdoorSubtype,
+    width,
+    height,
+    quantity,
+    logoColors,
+    colorCode,
+    rubberBorder,
+    placement,
+  };
+}
+
+// Berekent alle bedragen op basis van de specificaties, via calculatePrice.
+export function calculateOrderTotals(spec: OrderSpec) {
+  const product = calculatePrice({
+    type: spec.type,
+    indoorSubtype: spec.indoorSubtype,
+    outdoorSubtype: spec.outdoorSubtype,
+    placement: spec.placement,
+    orientation: "landscape",
+    rubberBorder: spec.rubberBorder,
+    size: { width: spec.width, height: spec.height, isCustom: false },
+    colorCode: spec.colorCode,
+    logo: { file: null, dataUrl: null, position: { x: 0.5, y: 0.5 }, scale: 1, rotation: 0 },
+    quantity: spec.quantity,
+    logoColors: spec.logoColors,
+  });
+
+  const round = (n: number) => Math.round(n * 100) / 100;
+  const shipping = SHIPPING_EXCL_VAT;
+  const shippingVat = round(shipping * PRICING.vat);
+  const vat = round(product.vat + shippingVat);
+  const grandTotal = round(product.total + shipping + shippingVat);
+
+  return {
+    unitPrice: product.unitPrice,
+    productExclVat: product.subtotal,
+    shipping,
+    vat,
+    grandTotal,
   };
 }
 

@@ -5,42 +5,35 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { calculateOrderTotals, parseOrderSpec } from "@/lib/mat-config";
 
 export default function CartPage({
   searchParams,
 }: {
-  searchParams: {
-    type?: string;
-    width?: string;
-    height?: string;
-    quantity?: string;
-    total?: string;
-  };
+  searchParams: Record<string, string | undefined>;
 }) {
- const grandTotal = Number(
-  (searchParams.total || "0")
-    .replace("€", "")
-    .replace(",", ".")
-);
+  // Enkel specificaties komen uit de URL; prijzen worden hier alleen
+  // voor weergave berekend. De checkout API rekent zelf opnieuw.
+  const spec = parseOrderSpec(searchParams);
+  const totals = spec ? calculateOrderTotals(spec) : null;
 
-const shipping = 15;
-const vatRate = 0.21;
-
-const totalExclVat = grandTotal / (1 + vatRate);
-
-const vatAmount = grandTotal - totalExclVat;
-
-const productExclVat = totalExclVat - shipping;
-
-
+  const grandTotal = totals?.grandTotal ?? 0;
+  const shipping = totals?.shipping ?? 0;
+  const vatAmount = totals?.vat ?? 0;
+  const productExclVat = totals?.productExclVat ?? 0;
 
   const matNames: Record<string, string> = {
-    normal: "Classic",
-    eco: "Eco",
-    budget: "Professional",
-    luxe: "Elite",
+    go: "Carpetz Go",
+    green: "Carpetz Green",
+    studio: "Carpetz Studio",
+    pro: "Carpetz Pro",
+    grip: "Carpetz Grip",
+    scrape: "Carpetz Scrape",
   };
-  
+  const matName = spec
+    ? matNames[spec.type === "outdoor" ? spec.outdoorSubtype : spec.indoorSubtype]
+    : "";
+
   const [customerType, setCustomerType] = useState("particulier");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -291,21 +284,21 @@ useEffect(() => {
     <div>
       <p className="text-sm text-muted-foreground">Type</p>
       <p className="font-medium">
-        {matNames[searchParams.type || ""] || searchParams.type}
+        {matName}
       </p>
     </div>
 
     <div>
       <p className="text-sm text-muted-foreground">Afmetingen</p>
       <p className="font-medium">
-        {searchParams.width} × {searchParams.height} cm
+        {spec?.width} × {spec?.height} cm
       </p>
     </div>
 
     <div>
       <p className="text-sm text-muted-foreground">Aantal</p>
       <p className="font-medium">
-        {searchParams.quantity}
+        {spec?.quantity}
       </p>
     </div>
   </div>
@@ -345,8 +338,10 @@ useEffect(() => {
               </div>
 
               <button
-  className="mt-8 w-full rounded-lg bg-[#C69C4D] px-6 py-4 text-white font-medium hover:bg-[#B88D3C]"
-  onClick={async () => { 
+  className="mt-8 w-full rounded-lg bg-[#C69C4D] px-6 py-4 text-white font-medium hover:bg-[#B88D3C] disabled:opacity-50"
+  disabled={!spec}
+  onClick={async () => {
+  if (!spec) return;
 
   const previewImage =
   sessionStorage.getItem("matPreview") || "";
@@ -376,13 +371,11 @@ const response = await fetch("/api/create-checkout-session", {
     "Content-Type": "application/json",
   },
   body: JSON.stringify({
-amount: grandTotal,
     previewImage,
     logoImage,
-    subtotal: productExclVat.toFixed(2),
-vat: vatAmount.toFixed(2),
-shipping: shipping.toFixed(2),
-grandTotal: grandTotal.toFixed(2),
+
+    // Enkel productspecificaties, geen prijzen
+    product: spec,
 
 customerType,
 firstName,
@@ -395,14 +388,6 @@ street,
 postalCode,
 city,
 country,
-
-matType: searchParams.type,
-width: searchParams.width,
-height: searchParams.height,
-quantity: searchParams.quantity,
-total: grandTotal,
-    
-    
 }),
 });
 
@@ -410,6 +395,8 @@ total: grandTotal,
 
     if (data.url) {
       window.location.href = data.url;
+    } else {
+      alert(data.error || "Er ging iets mis bij het afrekenen.");
     }
   }}
 >

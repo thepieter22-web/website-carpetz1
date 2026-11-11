@@ -214,12 +214,18 @@ export function MatConfigurator() {
       sessionStorage.setItem("matLogo", config.logo.dataUrl)
     }
 
+    // Enkel productspecificaties; de prijs wordt altijd opnieuw berekend.
     const params = new URLSearchParams({
-      type: config.indoorSubtype,
+      type: config.type,
+      indoorSubtype: config.indoorSubtype,
+      outdoorSubtype: config.outdoorSubtype,
       width: String(config.size.width),
       height: String(config.size.height),
       quantity: String(config.quantity),
-      total: String(document.body.innerText.match(/€[\d,.]+/)?.[0] || ""),
+      logoColors: String(config.logoColors),
+      colorCode: config.colorCode,
+      placement: config.placement,
+      rubberBorder: String(config.rubberBorder),
     })
 
     window.location.href = `/cart?${params.toString()}`
