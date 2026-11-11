@@ -1,6 +1,0 @@
-{
-  "/api/create-checkout-session/route": "app/api/create-checkout-session/route.js",
-  "/[locale]/logomat/page": "app/[locale]/logomat/page.js",
-  "/[locale]/cart/page": "app/[locale]/cart/page.js",
-  "/[locale]/success/page": "app/[locale]/success/page.js"
-}
