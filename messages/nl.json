@@ -1,12 +1,81 @@
 {
-  "Hero": {
-    "badge": "Branding tapijt voor bedrijven, retail & events",
-    "title": "Logomatten, geprint tapijt & event tapijt op maat",
-    "description": "Carpetz ontwerpt en produceert tapijt op maat dat je merk letterlijk op de kaart zet. Van logomatten op maat en geprint tapijt tot rode lopers op maat voor je volgende beurs of event — met snelle levering in België en Nederland.",
-    "cta1": "Ontwerp je logomat",
-    "cta2": "Bereken je geprint tapijt"
+  "Meta": {
+    "defaultTitle": "Logomatten, geprint tapijt & event tapijt op maat | Carpetz",
+    "titleTemplate": "%s | Carpetz",
+    "description": "Carpetz maakt logomatten op maat, geprint tapijt, event tapijt en rode lopers op maat voor retail, hotels, beurzen en events. Branding tapijt met snelle levering in België & Nederland.",
+    "keywords": "logomatten op maat, geprint tapijt, event tapijt, rode loper op maat, tapijt bedrukken, tapijt op maat, branding tapijt, tapijt voor beurzen",
+    "ogLocale": "nl_BE",
+    "ogDescription": "Logomatten op maat, geprint tapijt, event tapijt en rode lopers op maat voor bedrijven, retail, hotels, beurzen en events.",
+    "twitterDescription": "Logomatten op maat, geprint tapijt, event tapijt en rode lopers op maat met snelle levering in België & Nederland.",
+    "ogImageAlt": "Carpetz event tapijt en rode loper",
+    "contact": {
+      "title": "Contact & offerte",
+      "description": "Contacteer Carpetz voor logomatten op maat, geprint tapijt, event tapijt en rode lopers. Vraag je offerte aan en ontvang binnen 24 uur antwoord in België & Nederland.",
+      "ogTitle": "Contact & offerte | Carpetz",
+      "ogDescription": "Vraag je offerte aan voor tapijt op maat. Ontvang binnen 24 uur antwoord van het Carpetz-team.",
+      "ogImageAlt": "Contacteer Carpetz"
+    },
+    "about": {
+      "title": "Over ons",
+      "description": "Carpetz is specialist in tapijt op maat: logomatten, geprint tapijt, event tapijt en rode lopers. Vakmanschap, moderne printtechnologie en persoonlijk advies in België & Nederland.",
+      "ogTitle": "Over Carpetz | Specialist in tapijt op maat",
+      "ogDescription": "Carpetz combineert vakmanschap met moderne printtechnologie voor logomatten, geprint tapijt en event tapijt op maat.",
+      "ogImageAlt": "Vakmanschap bij Carpetz"
+    },
+    "printedCarpet": {
+      "title": "Geprint tapijt & geprint vloertapijt op maat",
+      "description": "Geprint tapijt op maat met fotorealistische print. Tapijt bedrukken met je logo, patroon of campagne voor retail, beurzen en showrooms. Naadloos geprint vloertapijt.",
+      "ogTitle": "Geprint tapijt & geprint vloertapijt op maat | Carpetz",
+      "ogDescription": "Tapijt bedrukken met je logo, patroon of campagne. Naadloos geprint vloertapijt voor retail, beurzen en showrooms.",
+      "ogImageAlt": "Geprint tapijt op maat van Carpetz"
+    },
+    "event": {
+      "title": "Event tapijt & rode loper op maat",
+      "description": "Event tapijt en rode lopers op maat voor huwelijken, verjaardagen, gala’s en corporate events. Tapijt voor events in elke kleur en afmeting, met snelle levering in België & Nederland.",
+      "ogTitle": "Event tapijt & rode loper op maat | Carpetz",
+      "ogDescription": "Event tapijt en rode lopers op maat voor huwelijken, verjaardagen, gala’s en events. Tapijt voor events in elke kleur en afmeting.",
+      "ogImageAlt": "Rode loper op maat van Carpetz"
+    },
+    "logomat": {
+      "title": "Logomatten op maat laten maken",
+      "description": "Logomatten op maat met scherpe full-colour print van je logo. Slijtvast, antislib en wasbaar. Branding tapijt voor elke ingang, met snelle levering in België & Nederland.",
+      "ogTitle": "Logomatten op maat laten maken | Carpetz",
+      "ogDescription": "Logomatten op maat met scherpe print van je logo. Slijtvast, antislib en wasbaar branding tapijt voor elke ingang.",
+      "ogImageAlt": "Logomat op maat van Carpetz"
+    },
+    "compare": {
+      "title": "Vergelijk onze logomatten — Go, Green, Studio, Pro, Grip & Scrape",
+      "description": "Vergelijk alle Carpetz logomatten op materiaal, gewicht en toepassing. Vind snel de juiste kwaliteit voor jouw indoor of outdoor logomat."
+    },
+    "matType": {
+      "title": "{name} logomat op maat"
+    },
+    "terms": {
+      "title": "Algemene voorwaarden"
+    },
+    "privacy": {
+      "title": "Privacybeleid"
+    },
+    "returns": {
+      "title": "Retourbeleid"
+    },
+    "success": {
+      "title": "Bedankt voor je bestelling"
+    },
+    "countryBE": "België",
+    "countryNL": "Nederland",
+    "catalogName": "Tapijt op maat",
+    "inLanguage": "nl-BE"
   },
-
+  "Common": {
+    "requestQuote": "Vraag je offerte aan",
+    "contactUs": "Contacteer ons",
+    "replyWithin24h": "Ontvang binnen 24 uur antwoord",
+    "startConfigurator": "Start de configurator",
+    "close": "Sluiten",
+    "exclVat": "Excl. btw",
+    "inclVat": "Incl. btw"
+  },
   "Header": {
     "home": "Home",
     "logomatten": "Logomatten",
@@ -14,6 +83,1321 @@
     "eventTapijt": "Event tapijt",
     "overOns": "Over ons",
     "contact": "Contact",
-    "offerte": "Vraag je offerte aan"
+    "offerte": "Vraag je offerte aan",
+    "homeAria": "Carpetz home",
+    "mainNav": "Hoofdnavigatie",
+    "mobileNav": "Mobiele navigatie",
+    "openMenu": "Menu openen",
+    "closeMenu": "Menu sluiten",
+    "language": "Taal kiezen"
+  },
+  "Footer": {
+    "tagline": "Specialist in logomatten op maat, geprint tapijt, event tapijt en rode lopers op maat voor bedrijven, retail, hotels, beurzen en events in België & Nederland.",
+    "products": "Producten",
+    "company": "Bedrijf",
+    "contact": "Contact",
+    "logomats": "Logomatten op maat",
+    "printedCarpet": "Geprint tapijt",
+    "eventCarpet": "Event tapijt & rode lopers",
+    "about": "Over ons",
+    "contactQuote": "Contact & offerte",
+    "address": "Berkenlaan 1D, 9840 De Pinte, België",
+    "rights": "Alle rechten voorbehouden.",
+    "terms": "Algemene voorwaarden",
+    "privacy": "Privacybeleid",
+    "returns": "Retourbeleid",
+    "cookieSettings": "Cookie-instellingen"
+  },
+  "Hero": {
+    "badge": "Branding tapijt voor bedrijven, retail & events",
+    "title": "Logomatten, geprint tapijt & event tapijt op maat",
+    "description": "Carpetz ontwerpt en produceert tapijt op maat dat je merk letterlijk op de kaart zet. Van logomatten op maat en geprint tapijt tot rode lopers op maat voor je volgende beurs of event — met snelle levering in België en Nederland.",
+    "cta1": "Ontwerp je logomat",
+    "cta2": "Bereken je geprint tapijt"
+  },
+  "UspTicker": {
+    "label": "Waarom klanten voor Carpetz kiezen",
+    "items": [
+      "Snelle levering in België & Nederland",
+      "Veel wederkerende klanten die op ons vertrouwen",
+      "Kwalitatieve productie met oog voor detail",
+      "Ruim portfolio in maatwerk en design",
+      "Diepgaande expertise in geprint tapijt"
+    ]
+  },
+  "QuoteBand": {
+    "title": "Klaar voor tapijt op maat?",
+    "text": "Vertel ons over je project en ontvang een vrijblijvende offerte. Ons team denkt met je mee over materiaal, formaat, print en levering."
+  },
+  "Guarantees": {
+    "items": [
+      {
+        "subtitle": "Altijd scherp",
+        "title": "Pasvorm- & kleurgarantie",
+        "description": "We garanderen dat je logomat perfect past en de kleuren exact kloppen — of we passen hem gratis aan."
+      },
+      {
+        "subtitle": "100 dagen kwaliteitsgarantie",
+        "title": "Slijtage & kleurverlies gedekt",
+        "description": "Vertoont je logomat binnen 100 dagen slijtage of kleurverlies die niet normaal is? Dan herstellen of vervangen we hem kosteloos."
+      },
+      {
+        "subtitle": "Blijft zo uitzien",
+        "title": "Kwaliteitsgarantie rand & kleur",
+        "description": "Antislib rand en kleurvastheid gegarandeerd, ook na intensief gebruik."
+      }
+    ]
+  },
+  "Home": {
+    "intro": {
+      "title": "Logomatten",
+      "text": "Voor winkels, kantoren, hotels en inkomhallen."
+    },
+    "logomats": {
+      "eyebrow": "Logomatten",
+      "title": "Logomatten op maat",
+      "text": "Een logomat is het visitekaartje van je onderneming. Onze logomatten op maat worden geproduceerd met een fotorealistische print of ingeweven design, zodat je logo scherp, kleurvast en professioneel oogt — dag na dag. Ideaal als schoonloopmat bij de ingang: functioneel én representatief. Je kiest zelf het formaat, de vorm, de antislibdrager en de afwerking van de randen.",
+      "whyTitle": "Waarom een logomat van Carpetz?",
+      "link": "Ontdek logomatten",
+      "imageAlt": "Logomat op maat met ingeweven bedrijfslogo in dichte tapijtvezel"
+    },
+    "printed": {
+      "eyebrow": "Geprint tapijt",
+      "title": "Geprint tapijt & geprint vloertapijt",
+      "text": "Met geprint tapijt geef je een volledige ruimte in één keer je eigen gezicht. Dankzij moderne printtechnieken kunnen we tapijt bedrukken met fotografische beelden, patronen, kleurvlakken of je volledige campagne. Zo transformeer je een neutrale vloer tot een krachtig branding tapijt. Ons geprint vloertapijt is naadloos te leggen over grote oppervlakken en is even geschikt voor een tijdelijke pop-up als voor een permanente showroom.",
+      "applicationsTitle": "Toepassingen voor geprint tapijt",
+      "applicationsText": "Retailvloeren, beursstanden, productlanceringen, seizoenscampagnes en experience zones: overal waar je bezoekers wil onderdompelen in je merk is geprint tapijt op maat de oplossing. Wij begeleiden je van drukklaar bestand tot afgewerkt tapijt.",
+      "link": "Ontdek geprint tapijt",
+      "imageAlt": "Geprint vloertapijt met kleurrijk patroon in een moderne retail showroom"
+    },
+    "event": {
+      "eyebrow": "Event tapijt",
+      "title": "Event tapijt & rode lopers op maat",
+      "text": "Een event begint bij de entree. Met ons event tapijt en rode lopers op maat creëer je meteen de juiste sfeer — van glamoureuze filmpremière tot strakke corporate launch. We leveren tapijt voor events in elke kleur en afmeting, met de mogelijkheid om je logo of boodschap te integreren. Zo wordt zelfs de loopweg een deel van je verhaal.",
+      "subTitle": "Van beurs tot gala",
+      "subText": "Ons tapijt voor beurzen en events is snel te leggen, netjes af te werken en indien gewenst herbruikbaar. Ideaal voor organisatoren die op grote schaal willen uitpakken zonder in te boeten op kwaliteit of uitstraling.",
+      "link": "Ontdek event tapijt",
+      "imageAlt": "Rode loper op maat met warme spots bij een exclusief event"
+    },
+    "why": {
+      "eyebrow": "Waarom Carpetz?",
+      "title": "Jouw tapijt, van idee tot aan je deur",
+      "text": "Je stuurt ons je logo of een ruwe schets, wij denken mee en maken er een proefontwerp van. Pas als jij tevreden bent, gaan we printen. Heb je een vraag of een krappe deadline? Bel of stuur ons gewoon een bericht, dan zoeken we samen een oplossing.",
+      "usps": [
+        {
+          "title": "Jouw ontwerp, jouw kleuren",
+          "text": "We drukken je logo in de juiste kleuren, zodat je mat er net zo uitziet als de rest van je huisstijl."
+        },
+        {
+          "title": "Klein of groot, alles kan",
+          "text": "Een mat voor aan de voordeur of een volledige vloer voor je beursstand: geef ons de maten en wij maken het."
+        },
+        {
+          "title": "Snel bij je in huis",
+          "text": "We leveren in heel België en Nederland. Moet het tegen een bepaalde datum klaar zijn? Laat het ons weten."
+        },
+        {
+          "title": "Gemaakt om lang mee te gaan",
+          "text": "Stevige vezels die tegen een stootje kunnen. Even stofzuigen en je mat ziet er weer als nieuw uit."
+        }
+      ]
+    },
+    "applications": {
+      "eyebrow": "Toepassingen",
+      "title": "Tapijt op maat voor elke sector",
+      "text": "Bedrijven uit uiteenlopende sectoren vertrouwen op Carpetz voor logomatten, geprint tapijt en event tapijt. Ontdek waar ons tapijt op maat het verschil maakt.",
+      "items": [
+        {
+          "title": "Retail",
+          "text": "Trek klanten binnen met logomatten en geprint tapijt in je winkel of flagshipstore."
+        },
+        {
+          "title": "Hotels",
+          "text": "Verwelkom gasten met stijlvol tapijt op maat in lobby, gangen en suites."
+        },
+        {
+          "title": "Beurzen",
+          "text": "Val op met tapijt voor beurzen dat je stand herkenbaar en uitnodigend maakt."
+        },
+        {
+          "title": "Events",
+          "text": "Zet de toon met event tapijt en rode lopers op maat voor elke gelegenheid."
+        },
+        {
+          "title": "Showrooms",
+          "text": "Presenteer je producten op geprint vloertapijt dat perfect aansluit bij je merk."
+        },
+        {
+          "title": "Kantoren",
+          "text": "Versterk je bedrijfsidentiteit met logomatten op maat bij elke ingang."
+        }
+      ]
+    },
+    "durability": {
+      "eyebrow": "Duurzaamheid & onderhoud",
+      "title": "Gemaakt om lang mee te gaan",
+      "text": "Duurzaamheid zit bij ons in het materiaal én in het gebruik. We werken met slijtvaste, kleurvaste vezels en recycleerbare dragers, zodat je tapijt op maat er ook na intensief gebruik nog representatief uitziet. Onze logomatten zijn eenvoudig te reinigen en wasbaar, geprint tapijt is stofafstotend en makkelijk te onderhouden.",
+      "colorfastTitle": "Kleurvast & slijtvast",
+      "colorfastText": "Behoudt jarenlang scherpe kleuren en vorm.",
+      "recyclableTitle": "Recycleerbaar",
+      "recyclableText": "Dragers en vezels met oog voor milieu.",
+      "imageAlt": "Vakman inspecteert een rol geprint tapijt op maat in de productie"
+    },
+    "delivery": {
+      "title": "Snelle levering in België & Nederland",
+      "text": "Deadlines voor een beurs, opening of event laten zich niet uitstellen. Daarom houden wij onze productietijden kort en leveren we tapijt op maat betrouwbaar in heel de Benelux. Vraag je offerte aan en ontvang binnen 24 uur antwoord van ons team, inclusief een realistische leveringsdatum voor je logomatten, geprint tapijt of event tapijt."
+    }
+  },
+  "Contact": {
+    "eyebrow": "Contact & offerte",
+    "title": "Vraag je offerte aan",
+    "intro": "Vertel ons over je project en ontvang binnen 24 uur antwoord. Ons team denkt met je mee over materiaal, formaat, print en levering van je tapijt op maat.",
+    "imageAlt": "Contacteer Carpetz voor tapijt op maat",
+    "contactTitle": "Contacteer ons",
+    "contactText": "Liever meteen persoonlijk contact? Bel of mail ons gerust. We helpen je graag verder met logomatten op maat, geprint tapijt, event tapijt en rode lopers op maat.",
+    "phone": "Telefoon",
+    "email": "E-mail",
+    "address": "Adres",
+    "addressValue": "Berkenlaan 1D, 9840 De Pinte, België",
+    "openingHours": "Openingsuren",
+    "openingHoursValue": "Ma – Vr, 08:30 – 17:30",
+    "replyText": "Elke offerte-aanvraag krijgt binnen één werkdag een persoonlijk antwoord van ons team.",
+    "formTitle": "Offerte aanvragen",
+    "formText": "Vul het formulier in en we nemen snel contact op."
+  },
+  "ContactForm": {
+    "products": {
+      "logomats": "Logomatten op maat",
+      "printedCarpet": "Geprint tapijt",
+      "eventCarpet": "Event tapijt",
+      "redCarpet": "Rode loper op maat",
+      "other": "Anders"
+    },
+    "prefill": {
+      "productLabels": {
+        "geprint-tapijt": "geprint tapijt",
+        "trouwloper": "een trouwloper",
+        "verjaardagsloper": "een verjaardagsloper",
+        "feestloper": "een feestloper"
+      },
+      "interest": "Ik heb interesse in {product}",
+      "quality": " (kwaliteit: {quality})",
+      "diameter": " met een diameter van {diameter} m",
+      "size": " van {length} m x {width} m",
+      "price": " (richtprijs €{price})",
+      "closing": ". Graag ontvang ik een persoonlijke offerte."
+    },
+    "successTitle": "Bedankt voor je aanvraag!",
+    "successText": "We hebben je aanvraag goed ontvangen en nemen binnen 24 uur contact met je op met een antwoord op maat.",
+    "name": "Naam",
+    "namePlaceholder": "Je naam",
+    "company": "Bedrijf",
+    "companyPlaceholder": "Je bedrijf",
+    "email": "E-mail",
+    "emailPlaceholder": "jij@bedrijf.be",
+    "phone": "Telefoon",
+    "phonePlaceholder": "+32 ...",
+    "subject": "Waarover gaat je aanvraag?",
+    "message": "Je bericht",
+    "messagePlaceholder": "Vertel ons over je project: formaat, aantal, gewenste leverdatum ...",
+    "sending": "Versturen ...",
+    "submit": "Vraag je offerte aan",
+    "privacyNote": "We reageren binnen 24 uur op je aanvraag. Je gegevens worden vertrouwelijk behandeld."
+  },
+  "About": {
+    "eyebrow": "Over ons",
+    "title": "Specialist in tapijt op maat",
+    "intro": "Carpetz helpt bedrijven, retailers, hotels en organisatoren om hun merk tot leven te brengen met logomatten, geprint tapijt, event tapijt en rode lopers op maat.",
+    "heroImageAlt": "Productie van geprint tapijt op maat bij Carpetz",
+    "storyTitle": "Vakmanschap ontmoet moderne printtechnologie",
+    "story1": "Carpetz ontstond uit een eenvoudige overtuiging: de vloer is een van de sterkste, maar meest onderschatte branddragers. Al meer dan vijftien jaar vertalen wij die overtuiging naar tapijt op maat dat merken versterkt. We combineren jarenlange ervaring in tapijt met de nieuwste printtechnologie, zodat we logomatten op maat, geprint tapijt en event tapijt kunnen leveren die zowel functioneel als visueel uitblinken.",
+    "story2": "Onze klanten waarderen vooral onze persoonlijke aanpak. Van het eerste ontwerp tot de uiteindelijke levering krijg je één vast aanspreekpunt dat met je meedenkt over materiaal, formaat, print en planning. Zo weet je zeker dat je branding tapijt precies doet wat het moet doen — indruk maken.",
+    "storyImageAlt": "Stijlvol tapijt op maat in een luxe hotellobby",
+    "valuesTitle": "Waar we voor staan",
+    "values": [
+      {
+        "title": "Merkgericht",
+        "text": "Elk project vertrekt vanuit jouw merk en doelen."
+      },
+      {
+        "title": "Persoonlijk",
+        "text": "Eén vast aanspreekpunt van ontwerp tot levering."
+      },
+      {
+        "title": "Kwaliteit",
+        "text": "Vakmanschap en scherpe print in elk detail."
+      },
+      {
+        "title": "Duurzaam",
+        "text": "Slijtvaste, recycleerbare materialen als standaard."
+      }
+    ],
+    "quoteTitle": "Werk samen met Carpetz",
+    "quoteText": "Benieuwd wat we voor jouw merk kunnen betekenen? Vraag vrijblijvend je offerte aan voor tapijt op maat."
+  },
+  "PrintedCarpet": {
+    "eyebrow": "Geprint tapijt",
+    "title": "Geprint tapijt & geprint vloertapijt",
+    "intro": "Geef een volledige ruimte in één keer je eigen gezicht. Met geprint tapijt op maat vertaal je je merk naar de vloer — scherp, kleurvast en naadloos.",
+    "heroImageAlt": "Geprint vloertapijt met kleurrijk patroon",
+    "calloutTitle": "Van neutrale vloer naar krachtig branding tapijt",
+    "calloutText": "Met moderne printtechnieken bedrukken we tapijt met elk visueel element — van logo tot volledige campagne — naadloos over grote oppervlakken, in verschillende kwaliteiten. Bereken hieronder direct een prijsindicatie.",
+    "whyTitle": "Waarom geprint tapijt?",
+    "features": [
+      {
+        "title": "Tapijt bedrukken",
+        "text": "Fotorealistische print van logo, beelden, patronen of volledige campagnes."
+      },
+      {
+        "title": "Naadloos & groot",
+        "text": "Geprint vloertapijt voor grote oppervlakken, naadloos gelegd."
+      },
+      {
+        "title": "Meerdere kwaliteiten",
+        "text": "Van tijdelijke pop-up tot permanente showroomvloer."
+      },
+      {
+        "title": "Drukklaar advies",
+        "text": "Wij begeleiden je van ontwerpbestand tot afgewerkt tapijt."
+      }
+    ],
+    "applicationsTitle": "Toepassingen voor geprint vloertapijt",
+    "applications": [
+      "Retailvloeren en flagshipstores",
+      "Beursstanden en tapijt voor beurzen",
+      "Productlanceringen en experience zones",
+      "Showrooms en pop-upstores",
+      "Seizoens- en campagne-inrichtingen"
+    ],
+    "applicationsImageAlt": "Beursstand met geprint tapijt op maat als branding tapijt",
+    "quoteTitle": "Laat jouw geprint tapijt maken",
+    "quoteText": "Bezorg ons je ontwerp en afmetingen. Wij maken een offerte voor geprint tapijt of geprint vloertapijt op maat."
+  },
+  "CarpetSimulator": {
+    "title": "Bereken een prijsindicatie",
+    "intro": "Kies een kwaliteit, vorm en afmetingen en upload eventueel een patroon om een idee te krijgen van het resultaat. Dit is een prijsindicatie — voor een definitieve offerte nemen we graag persoonlijk contact met je op.",
+    "quality": "Kwaliteit",
+    "qualities": {
+      "velvet": "Zacht en luxueus, ideaal voor showrooms.",
+      "globosoft": "Duurzaam en slijtvast, voor intensief gebruik.",
+      "pxl": "Scherpste fotorealistische print, premium kwaliteit."
+    },
+    "pattern": "Patroon (optioneel)",
+    "removePattern": "Patroon verwijderen",
+    "uploadPattern": "Upload een wederkerend patroon",
+    "shape": "Vorm",
+    "rectangle": "Rechthoek",
+    "circle": "Cirkel",
+    "width": "Breedte",
+    "length": "Lengte",
+    "meter": "meter",
+    "diameter": "Diameter",
+    "custom": "Eigen keuze",
+    "dimensions": "Afmetingen",
+    "priceIndication": "Prijsindicatie",
+    "priceNote": "Excl. btw — richtprijs, geen definitieve offerte.",
+    "contactForQuote": "Neem contact op voor een offerte",
+    "customTitle": "Eigen afmeting",
+    "customText": "Voor afwijkende afmetingen werken we op maat. Neem contact met ons op zodat we dit voor je kunnen bekijken.",
+    "toContact": "Naar contactpagina"
+  },
+  "Event": {
+    "eyebrow": "Event tapijt",
+    "title": "Event tapijt & rode lopers op maat",
+    "intro": "Een event begint bij de entree. Van een verjaardagsfeest of huwelijk tot een gala of beursstand — met een rode loper of event tapijt op maat creëer je meteen de juiste sfeer.",
+    "heroImageAlt": "Rode loper op maat bij een exclusief event",
+    "calloutTitle": "Tapijt voor events dat indruk maakt",
+    "calloutText": "Van een verjaardagsfeest en huwelijk tot filmpremière, gala of beursstand: onze rode loper en event tapijt op maat passen zich aan jouw gelegenheid aan, met je eigen logo, naam of boodschap erin verwerkt.",
+    "wedding": {
+      "eyebrow": "Trouwloper op maat",
+      "title": "Maak jullie trouwloper uniek",
+      "description": "Laat jullie namen, datum of een persoonlijke boodschap printen op de loper die jullie dag compleet maakt.",
+      "imageAlt": "Trouwloper op maat met namen en datum, versierd met bloemen en kaarsen",
+      "details": [
+        {
+          "title": "Jullie namen",
+          "text": "Of initialen"
+        },
+        {
+          "title": "Datum",
+          "text": "Jullie speciale dag"
+        },
+        {
+          "title": "Eigen tekst",
+          "text": "Een quote, belofte of boodschap"
+        }
+      ],
+      "taglineTitle": "Jullie droom, onze print.",
+      "taglineSubtitle": "Uniek zoals jullie liefde."
+    },
+    "birthday": {
+      "eyebrow": "Verjaardagsloper op maat",
+      "title": "Elk feest verdient een entree",
+      "description": "Van ‘Gelukkige verjaardag’ tot de leeftijd van de jarige of een persoonlijke tekst: de entreemat kan volledig op maat geprint worden, precies zoals jij het wil.",
+      "imageAlt": "Verjaardagsloper op maat met feestelijke tekst",
+      "details": [
+        {
+          "title": "Gelukkige verjaardag",
+          "text": "Als feestelijke openingstekst"
+        },
+        {
+          "title": "De leeftijd",
+          "text": "Groot en trots in beeld"
+        },
+        {
+          "title": "Persoonlijke tekst",
+          "text": "Een boodschap naar keuze"
+        }
+      ],
+      "freeformNote": "Bovenstaande zijn slechts voorbeelden — alles is bespreekbaar en volledig aanpasbaar.",
+      "taglineTitle": "Jouw feest, jouw stijl.",
+      "taglineSubtitle": "Onvergetelijk vanaf de eerste stap."
+    },
+    "party": {
+      "eyebrow": "Feestloper op maat",
+      "title": "Maak jouw feest uniek",
+      "description": "Communie, gala, jubileum of bedrijfsevent: met een loper op maat geef je elk moment een unieke, persoonlijke touch vanaf de eerste stap.",
+      "imageAlt": "Feestloper op maat voor communie, gala of event",
+      "details": [
+        {
+          "title": "Elke gelegenheid",
+          "text": "Communie, gala, jubileum of bedrijfsevent"
+        },
+        {
+          "title": "Jouw thema of logo",
+          "text": "Kleur, stijl en boodschap volledig naar wens"
+        },
+        {
+          "title": "Persoonlijke tekst",
+          "text": "Naam, datum of quote die het moment vastlegt"
+        }
+      ],
+      "freeformNote": "Vertel ons je gelegenheid en wij denken mee over het perfecte ontwerp.",
+      "taglineTitle": "Elk feest, jouw stijl.",
+      "taglineSubtitle": "Uniek vanaf de allereerste stap."
+    },
+    "featuresTitle": "Kenmerken van ons event tapijt",
+    "features": [
+      {
+        "title": "Elke kleur & afmeting",
+        "text": "Van klassiek rood tot je eigen huisstijlkleur, in elk formaat."
+      },
+      {
+        "title": "Logo geïntegreerd",
+        "text": "Voeg je logo of boodschap toe aan je event tapijt of loper."
+      },
+      {
+        "title": "Snel te leggen",
+        "text": "Netjes af te werken en klaar op tijd voor je event."
+      },
+      {
+        "title": "Herbruikbaar",
+        "text": "Kwaliteitstapijt dat je meermaals kan inzetten."
+      }
+    ],
+    "typesImageAlt": "Tapijt voor beurzen op een moderne beursstand",
+    "typesTitle": "Voor elk soort event",
+    "types": [
+      "Verjaardagsfeesten en huwelijken",
+      "Premières, gala’s en awardshows",
+      "Corporate launches en persmomenten",
+      "Openingen en jubilea",
+      "Beurzen en tapijt voor beursstanden",
+      "Festivals en publieksevenementen"
+    ],
+    "quoteTitle": "Reserveer jouw rode loper op maat",
+    "quoteText": "Vertel ons over je event of je grote dag, de datum en de gewenste afmetingen. Wij bezorgen je snel een offerte voor event tapijt of een rode loper op maat."
+  },
+  "RunnerHighlight": {
+    "example": "Voorbeeld: {length} m × {width} m — richtprijs vanaf",
+    "priceNote": "Excl. btw — op basis van standaardkwaliteit.",
+    "cta": "Vraag je persoonlijke offerte aan"
+  },
+  "Logomat": {
+    "eyebrow": "Logomatten",
+    "title": "Logomatten op maat",
+    "intro": "Verwelkom bezoekers met een logomat op maat die je merk meteen op de kaart zet. Functioneel als schoonloopmat, representatief als visitekaartje.",
+    "heroImageAlt": "Logomat op maat met ingeweven bedrijfslogo",
+    "calloutTitle": "Ontwerp jouw logomat op maat",
+    "calloutText": "Upload jouw logo, kies kleur en afmetingen en bestel direct online. Wij bedrukken tapijt met een fotorealistische print van je logo, zodat kleuren scherp en herkenbaar blijven — ook na jaren intensief gebruik.",
+    "compareLink": "Keuzestress? Vergelijk hier de kwaliteiten",
+    "quoteTitle": "Bestel jouw logomat op maat",
+    "quoteText": "Stuur ons je logo en gewenste formaat. Wij bezorgen je een vrijblijvende offerte voor logomatten op maat."
+  },
+  "Compare": {
+    "eyebrow": "Logomatten",
+    "title": "Vergelijk onze logomatten",
+    "intro": "Elk type logomat heeft zijn eigen sterktes. Vergelijk materiaal, gewicht en toepassing en vind snel de kwaliteit die bij jouw situatie past.",
+    "heroImageAlt": "Overzicht van Carpetz logomatten",
+    "indoorTitle": "Indoor logomatten",
+    "outdoorTitle": "Outdoor logomatten",
+    "feature": "Kenmerk",
+    "positioning": "Positionering",
+    "material": "Materiaal",
+    "weight": "Gewicht",
+    "fire": "Brandgedrag",
+    "underfloorHeating": "Vloerverwarming",
+    "usage": "Gebruik",
+    "idealFor": "Ideaal voor",
+    "quoteTitle": "Nog twijfels?",
+    "quoteText": "Neem contact op en we helpen je graag de juiste logomat te kiezen voor jouw situatie."
+  },
+  "MatTypePage": {
+    "eyebrow": "LOGOMAT • {tagline}",
+    "heroAlt": "Detailfoto van {name}",
+    "properties": "Eigenschappen",
+    "specs": "Productspecificaties",
+    "feature": "Kenmerk",
+    "property": "Eigenschap",
+    "references": "Onze referenties",
+    "referenceAlt": "Logomat referentie {number}",
+    "ctaTitle": "Ontwerp jouw {name}",
+    "ctaText": "Upload je logo en zie direct hoe jouw logomat eruitziet."
+  },
+  "MatTypes": {
+    "go": {
+      "title": "Carpetz Go",
+      "tagline": "Instapmodel",
+      "description": "Carpetz Go is onze toegankelijke logomat voor wie een betrouwbare, scherp bedrukte mat zoekt zonder in te leveren op basiskwaliteit. Ideaal voor bedrijven die met een beperkt budget toch representatief willen binnenkomen.",
+      "whyChoose": {
+        "text": "Carpetz Go is de slimme keuze wanneer je snel en betaalbaar een professionele eerste indruk wil maken, zonder in te leveren op basiskwaliteit. Perfect voor bedrijven die hun eerste logomat testen, een beperkt budget hebben, of een mat nodig hebben voor een tijdelijke locatie of pop-up.",
+        "idealFor": [
+          "Starters & kmo’s",
+          "Pop-upstores",
+          "Tijdelijke locaties",
+          "Beperkt budget"
+        ]
+      },
+      "features": {
+        "material": {
+          "label": "Materiaal",
+          "value": "Min. 75% gerecycleerd nylon"
+        },
+        "backing": {
+          "label": "Rugmateriaal",
+          "value": "Ftalaatvrij nitrilrubber"
+        },
+        "usage": {
+          "label": "Gebruik",
+          "value": "Indoor"
+        },
+        "fire": {
+          "label": "Brandgedrag",
+          "value": "EN13501-1 / Cfl-s1"
+        },
+        "underfloorHeating": {
+          "label": "Vloerverwarming",
+          "value": "Geschikt"
+        },
+        "moisture": {
+          "label": "Vochtabsorptie",
+          "value": "2 – 3 l/m²"
+        },
+        "colorfastness": {
+          "label": "Kleurvastheid",
+          "value": "Licht- en kleurecht"
+        },
+        "origin": {
+          "label": "Herkomst",
+          "value": "Made in Europe"
+        }
+      },
+      "specs": {
+        "weight": {
+          "label": "Gewicht",
+          "value": "1,9 kg/m²"
+        },
+        "edges": {
+          "label": "Randen",
+          "value": "0 of 10 mm"
+        },
+        "backing": {
+          "label": "Rugmateriaal",
+          "value": "100% ftalaatvrij nitrilrubber"
+        },
+        "backingThickness": {
+          "label": "Rugdikte",
+          "value": "0,9 mm"
+        },
+        "edgeThickness": {
+          "label": "Randdikte",
+          "value": "1,9 mm"
+        },
+        "dirtAbsorption": {
+          "label": "Vuilabsorptie",
+          "value": "470 g/m²"
+        },
+        "moistureAbsorption": {
+          "label": "Vochtabsorptie",
+          "value": "2 – 3 l/m²"
+        },
+        "pile": {
+          "label": "Pool",
+          "value": "High-twist nylon PA 6.6 (min. 75% gerecycleerd)"
+        },
+        "pileWeight": {
+          "label": "Poolgewicht",
+          "value": "630 g/m²"
+        },
+        "pileHeight": {
+          "label": "Poolhoogte",
+          "value": "± 6 mm"
+        },
+        "matHeight": {
+          "label": "Mathoogte",
+          "value": "± 7 mm"
+        },
+        "fire": {
+          "label": "Brandgedrag",
+          "value": "EN13501-1 / Cfl-s1"
+        }
+      }
+    },
+    "green": {
+      "title": "Carpetz Green",
+      "tagline": "Duurzaam",
+      "description": "Carpetz Green combineert een lage milieu-impact met stevige prestaties. Gemaakt uit minstens 75% gerecycleerd materiaal, zonder in te leveren op slipweerstand of duurzaamheid.",
+      "whyChoose": {
+        "text": "Kiest je organisatie bewust voor duurzaamheid? Carpetz Green is gemaakt met minstens 75% gerecycleerd materiaal, zonder concessies op slipweerstand of levensduur. Zo communiceer je je merk én je waarden vanaf de allereerste stap in je zaak.",
+        "idealFor": [
+          "Bedrijven met MVO-beleid",
+          "Groene retailers",
+          "Organisaties die duurzaamheid uitstralen"
+        ]
+      },
+      "features": {
+        "material": {
+          "label": "Materiaal",
+          "value": "Min. 75% gerecycleerd nylon"
+        },
+        "backing": {
+          "label": "Rugmateriaal",
+          "value": "Ftalaatvrij nitrilrubber"
+        },
+        "slipResistance": {
+          "label": "Slipweerstand",
+          "value": "NFSI High-Traction"
+        },
+        "antistatic": {
+          "label": "Antistatisch",
+          "value": "EN14041"
+        },
+        "fire": {
+          "label": "Brandgedrag",
+          "value": "EN13501-1 / Cfl-s1"
+        },
+        "underfloorHeating": {
+          "label": "Vloerverwarming",
+          "value": "Geschikt"
+        },
+        "moisture": {
+          "label": "Vochtabsorptie",
+          "value": "3 – 4 l/m²"
+        },
+        "origin": {
+          "label": "Herkomst",
+          "value": "Made in Europe"
+        }
+      },
+      "specs": {
+        "weight": {
+          "label": "Gewicht",
+          "value": "2,43 kg/m²"
+        },
+        "edges": {
+          "label": "Randen",
+          "value": "20 mm"
+        },
+        "backing": {
+          "label": "Rugmateriaal",
+          "value": "100% ftalaatvrij nitrilrubber"
+        },
+        "backingThickness": {
+          "label": "Rugdikte",
+          "value": "1,4 mm"
+        },
+        "edgeThickness": {
+          "label": "Randdikte",
+          "value": "2,4 mm"
+        },
+        "dirtAbsorption": {
+          "label": "Vuilabsorptie",
+          "value": "600 g/m²"
+        },
+        "moistureAbsorption": {
+          "label": "Vochtabsorptie",
+          "value": "3 – 4 l/m²"
+        },
+        "pile": {
+          "label": "Pool",
+          "value": "High-twist nylon PA 6.6 (min. 75% gerecycleerd)"
+        },
+        "pileWeight": {
+          "label": "Poolgewicht",
+          "value": "730 g/m²"
+        },
+        "pileHeight": {
+          "label": "Poolhoogte",
+          "value": "± 8 mm"
+        },
+        "matHeight": {
+          "label": "Mathoogte",
+          "value": "± 9 mm"
+        },
+        "slipResistance": {
+          "label": "Slipweerstand",
+          "value": "NFSI High-Traction"
+        },
+        "fire": {
+          "label": "Brandgedrag",
+          "value": "EN13501-1 / Cfl-s1"
+        }
+      }
+    },
+    "studio": {
+      "title": "Carpetz Studio",
+      "tagline": "Mooiste printkwaliteit",
+      "description": "Carpetz Studio staat voor de scherpste, meest kleurrijke print in ons gamma. Met 100 standaardkleuren en een hoge-definitie afdruk breng je zowel fotorealistische beelden als complexe logo’s tot leven.",
+      "whyChoose": {
+        "text": "Wil je meer dan een logo — een echte blikvanger? Carpetz Studio biedt de scherpste, meest kleurrijke print in ons gamma met 100 standaardkleuren, ideaal voor fotorealistische beelden of complexe designs die er tot in het kleinste detail perfect moeten uitzien.",
+        "idealFor": [
+          "Flagshipstores",
+          "Hotels & horeca",
+          "Campagnes met veel kleur of detail"
+        ]
+      },
+      "features": {
+        "colors": {
+          "label": "Kleuren",
+          "value": "100 standaardkleuren"
+        },
+        "material": {
+          "label": "Materiaal",
+          "value": "100% gerecycleerd PET"
+        },
+        "backing": {
+          "label": "Rugmateriaal",
+          "value": "Nitrilrubber (34% gerecycleerd)"
+        },
+        "staticTested": {
+          "label": "Statisch getest",
+          "value": "ISO 6356, -0,3 kVolt"
+        },
+        "fire": {
+          "label": "Brandgedrag",
+          "value": "Cfl-s1"
+        },
+        "application": {
+          "label": "Toepassing",
+          "value": "Lobby’s, receptie, ingangen"
+        },
+        "edgeFinish": {
+          "label": "Randafwerking",
+          "value": "Versterkte rubberen rand"
+        },
+        "maxSize": {
+          "label": "Max. afmeting",
+          "value": "200 × 550 cm"
+        }
+      },
+      "specs": {
+        "yarn": {
+          "label": "Garen",
+          "value": "100% gerecycleerd, hittebestendig multifilament"
+        },
+        "yarnWeight": {
+          "label": "Garengewicht",
+          "value": "935 g/m²"
+        },
+        "underlay": {
+          "label": "Onderlaag",
+          "value": "Non-woven PET"
+        },
+        "backing": {
+          "label": "Rugmateriaal",
+          "value": "100% nitrilrubber (34% postindustrieel gerecycleerd)"
+        },
+        "backingThickness": {
+          "label": "Rugdikte",
+          "value": "1,4 mm"
+        },
+        "edgeThickness": {
+          "label": "Randdikte",
+          "value": "2,5 mm"
+        },
+        "edgeWidth": {
+          "label": "Randbreedte",
+          "value": "2 cm"
+        },
+        "pileHeight": {
+          "label": "Stapelhoogte",
+          "value": "7 mm"
+        },
+        "totalWeight": {
+          "label": "Totaalgewicht",
+          "value": "2935 g/m²"
+        },
+        "colors": {
+          "label": "Kleuren",
+          "value": "100 standaardkleuren"
+        },
+        "fire": {
+          "label": "Brandgedrag",
+          "value": "Cfl-s1 (EN13501-1)"
+        },
+        "maxSize": {
+          "label": "Max. afmeting",
+          "value": "200 × 550 cm"
+        }
+      }
+    },
+    "pro": {
+      "title": "Carpetz Pro",
+      "tagline": "Hoogste prestaties",
+      "description": "Carpetz Pro is onze premium logomat voor intensief gebruik. Zwaarder, dikker en met de langste garantie van ons gamma — gebouwd voor drukke ingangen die dag na dag representatief moeten blijven.",
+      "whyChoose": {
+        "text": "Voor ingangen die dag na dag intensief gebruikt worden, is Carpetz Pro de betrouwbare werkkracht. Zwaarder, dikker en met de langste garantie van ons gamma (5 jaar) — gebouwd om jarenlang representatief te blijven, ook bij hoge voetgangersaantallen.",
+        "idealFor": [
+          "Kantoren met veel doorstroom",
+          "Drukke retail-ingangen",
+          "Langdurige inzet"
+        ]
+      },
+      "features": {
+        "backing": {
+          "label": "Rugmateriaal",
+          "value": "100% nitrilrubber"
+        },
+        "warranty": {
+          "label": "Garantie",
+          "value": "5 jaar (2 jaar bij industriële was)"
+        },
+        "underfloorHeating": {
+          "label": "Vloerverwarming",
+          "value": "Geschikt"
+        },
+        "moisture": {
+          "label": "Vochtabsorptie",
+          "value": "4 – 5 l/m²"
+        },
+        "colorfastness": {
+          "label": "Kleurvastheid",
+          "value": "Licht- en kleurecht"
+        },
+        "origin": {
+          "label": "Herkomst",
+          "value": "Made in Europe"
+        },
+        "pile": {
+          "label": "Pool",
+          "value": "100% high-twist nylon"
+        },
+        "pileWeight": {
+          "label": "Poolgewicht",
+          "value": "1050 g/m²"
+        }
+      },
+      "specs": {
+        "weight": {
+          "label": "Gewicht",
+          "value": "2,75 kg/m²"
+        },
+        "edges": {
+          "label": "Randen",
+          "value": "0 of 20 mm"
+        },
+        "backing": {
+          "label": "Rugmateriaal",
+          "value": "100% nitrilrubber"
+        },
+        "backingThickness": {
+          "label": "Rugdikte",
+          "value": "1,4 mm"
+        },
+        "edgeThickness": {
+          "label": "Randdikte",
+          "value": "2,4 mm"
+        },
+        "dirtAbsorption": {
+          "label": "Vuilabsorptie",
+          "value": "800 g/m²"
+        },
+        "moistureAbsorption": {
+          "label": "Vochtabsorptie",
+          "value": "4 – 5 l/m²"
+        },
+        "pile": {
+          "label": "Pool",
+          "value": "100% high-twist nylon PA 6.6"
+        },
+        "pileWeight": {
+          "label": "Poolgewicht",
+          "value": "1050 g/m²"
+        },
+        "pileHeight": {
+          "label": "Poolhoogte",
+          "value": "± 9 mm"
+        },
+        "matHeight": {
+          "label": "Mathoogte",
+          "value": "± 10 mm"
+        },
+        "warranty": {
+          "label": "Garantie",
+          "value": "5 jaar (2 jaar bij industriële was)"
+        }
+      }
+    },
+    "grip": {
+      "title": "Carpetz Grip",
+      "tagline": "Weerbestendig",
+      "description": "Carpetz Grip is onze standaard buitenmat, gebouwd om jaar na jaar weerstand te bieden aan regen, wind en intensief voetgangersverkeer. Robuust monofilament materiaal zorgt voor duurzame, scherpe print ook onder extreme omstandigheden.",
+      "whyChoose": {
+        "text": "Voor ingangen, events of stands die blootstaan aan weer en wind is Carpetz Grip de betrouwbare keuze. Het monofilament materiaal is bestand tegen vocht en intensief gebruik, terwijl je logo scherp en herkenbaar blijft.",
+        "idealFor": [
+          "Buiteningangen",
+          "Events & beurzen",
+          "Terrassen",
+          "Alle weersomstandigheden"
+        ]
+      },
+      "features": {
+        "backing": {
+          "label": "Rugmateriaal",
+          "value": "Ftalaatvrij nitrilrubber"
+        },
+        "pile": {
+          "label": "Pool",
+          "value": "100% monofilament PA6"
+        },
+        "usage": {
+          "label": "Gebruik",
+          "value": "Geschikt voor buiten"
+        },
+        "fire": {
+          "label": "Brandgedrag",
+          "value": "EN13501-1 / Bfl-s1"
+        },
+        "underfloorHeating": {
+          "label": "Vloerverwarming",
+          "value": "Geschikt"
+        },
+        "colorfastness": {
+          "label": "Kleurvastheid",
+          "value": "Licht- en kleurecht"
+        },
+        "origin": {
+          "label": "Herkomst",
+          "value": "Made in Europe"
+        },
+        "weatherproof": {
+          "label": "Weerbestendig",
+          "value": "Regen & vocht"
+        }
+      },
+      "specs": {
+        "weight": {
+          "label": "Gewicht",
+          "value": "3,6 kg/m²"
+        },
+        "edges": {
+          "label": "Randen",
+          "value": "0 of 20 mm"
+        },
+        "backing": {
+          "label": "Rugmateriaal",
+          "value": "100% ftalaatvrij nitrilrubber"
+        },
+        "backingThickness": {
+          "label": "Rugdikte",
+          "value": "1,8 mm"
+        },
+        "pile": {
+          "label": "Pool",
+          "value": "100% monofilament PA6"
+        },
+        "pileWeight": {
+          "label": "Poolgewicht",
+          "value": "1420 g/m²"
+        },
+        "pileHeight": {
+          "label": "Poolhoogte",
+          "value": "± 6 mm"
+        },
+        "matHeight": {
+          "label": "Mathoogte",
+          "value": "± 8 mm"
+        },
+        "fire": {
+          "label": "Brandgedrag",
+          "value": "EN13501-1 / Bfl-s1"
+        },
+        "suitableFor": {
+          "label": "Geschikt voor",
+          "value": "Buitengebruik"
+        }
+      }
+    },
+    "scrape": {
+      "title": "Carpetz Scrape",
+      "tagline": "Superieure schrapwerking",
+      "description": "Carpetz Scrape combineert een unieke nylonvezelmix met een superieure schrapende werking tegen vuil en afval. Gemaakt uit ECONYL geregenereerd nylon, inzetbaar zowel binnen als buiten, met optionele afwateringsgaten voor extra vochtafvoer.",
+      "whyChoose": {
+        "text": "Wil je vuil en afval al bij de deur tegenhouden? Carpetz Scrape is ontworpen met een schurende vezelmix die grondig schraapt, terwijl de briljante kleurechtheid je logo of ontwerp jarenlang scherp houdt — zowel binnen als buiten inzetbaar.",
+        "idealFor": [
+          "Drukke in- en uitgangen",
+          "Horeca & retail",
+          "Binnen & buiten",
+          "Extra vuilafvoer nodig"
+        ]
+      },
+      "features": {
+        "yarn": {
+          "label": "Garen",
+          "value": "ECONYL geregenereerd nylon"
+        },
+        "backing": {
+          "label": "Rugmateriaal",
+          "value": "Nitrilrubber (34% gerecycleerd)"
+        },
+        "drainage": {
+          "label": "Afwateringsgaten",
+          "value": "Optioneel, Ø 7 mm"
+        },
+        "usage": {
+          "label": "Gebruik",
+          "value": "Binnen & buiten"
+        },
+        "colorfastness": {
+          "label": "Kleurechtheid",
+          "value": "Briljant & duurzaam"
+        },
+        "scraping": {
+          "label": "Schrapwerking",
+          "value": "Superieur tegen vuil"
+        },
+        "washable": {
+          "label": "Wasbaar",
+          "value": "Volledig wasbaar"
+        },
+        "design": {
+          "label": "Ontwerp",
+          "value": "Eigen ontwerpers, snelle doorlooptijd"
+        }
+      },
+      "specs": {
+        "yarn": {
+          "label": "Garen",
+          "value": "ECONYL geregenereerd nylon, 1/8” gesneden pool"
+        },
+        "matWeight": {
+          "label": "Matgewicht",
+          "value": "3,9 kg/m²"
+        },
+        "underlay": {
+          "label": "Onderlaag",
+          "value": "Non-woven spunbond polyester"
+        },
+        "backing": {
+          "label": "Rugmateriaal",
+          "value": "100% nitrilrubber (34% postindustrieel gerecycleerd)"
+        },
+        "pattern": {
+          "label": "Patroon",
+          "value": "Klauw"
+        },
+        "thickness": {
+          "label": "Dikte",
+          "value": "3 mm"
+        },
+        "drainage": {
+          "label": "Afwateringsgaten",
+          "value": "Ø 7 mm (optioneel, tot 130 × 200 cm)"
+        },
+        "edgeThickness": {
+          "label": "Randdikte",
+          "value": "2,5 mm"
+        },
+        "edgeWidth": {
+          "label": "Randbreedte",
+          "value": "20 mm"
+        },
+        "pileWeight": {
+          "label": "Stapelgewicht",
+          "value": "715 g/m²"
+        },
+        "pileHeight": {
+          "label": "Stapelhoogte",
+          "value": "7 mm"
+        },
+        "maxSize": {
+          "label": "Max. afmeting",
+          "value": "210 × 600 cm (zonder afwateringsgaten)"
+        }
+      }
+    }
+  },
+  "Configurator": {
+    "reset": "Opnieuw starten",
+    "panelTitle": "Stel jouw logomat samen",
+    "previewTitle": "Voorbeeld van jouw logomat",
+    "steps": {
+      "type": "Type logomat",
+      "size": "Afmetingen",
+      "logo": "Logo-upload",
+      "colors": "Kleuren"
+    },
+    "matType": "Type logomat",
+    "indoor": "Indoor",
+    "indoorText": "Voor binnengebruik",
+    "outdoor": "Outdoor",
+    "outdoorText": "Weerbestendig",
+    "indoorType": "Indoortype",
+    "outdoorType": "Outdoortype",
+    "subtypes": {
+      "go": "Instapmodel — betrouwbaar en toegankelijk",
+      "green": "Duurzaam, gerecycleerde materialen",
+      "studio": "Mooiste printkwaliteit, 100 kleuren",
+      "pro": "Hoogste prestaties, langste garantie",
+      "grip": "Weerbestendige buitenmat",
+      "scrape": "Superieure schrapwerking"
+    },
+    "placement": "Plaatsing",
+    "floor": "Op de vloer",
+    "floorText": "Standaardplaatsing",
+    "frame": "Inbouwframe",
+    "frameText": "Verzonken plaatsing",
+    "orientation": "Oriëntatie",
+    "landscape": "Liggend",
+    "portrait": "Staand",
+    "rubberBorder": "Rubberen rand",
+    "toSize": "Verder naar afmetingen",
+    "sizeLabel": "Afmetingen (cm)",
+    "customSize": "Eigen afmetingen",
+    "customSizeText": "Voer jouw afmetingen in",
+    "width": "Breedte (cm)",
+    "height": "Lengte (cm)",
+    "toLogo": "Verder naar logo-upload",
+    "logoAnalysis": "Logoanalyse",
+    "resolution": "Resolutie: {width} × {height} px",
+    "resolutionGood": "✅ Resolutie geschikt voor productie",
+    "resolutionLow": "⚠️ Resolutie mogelijk te laag",
+    "fileType": "Bestandstype: {format}",
+    "pngDetected": "✅ PNG-bestand gedetecteerd",
+    "notPng": "⚠️ JPG/WebP-bestand. Transparantie wordt mogelijk niet ondersteund.",
+    "toColors": "Volgende stap: kies je achtergrondkleur",
+    "quantity": "Aantal",
+    "volumeDiscount": "Volumekorting toegepast!",
+    "alertLowResolution": "⚠️ Dit logo heeft een lage resolutie. Voor een optimaal drukresultaat raden wij minimaal 1000 × 1000 pixels aan.",
+    "alertJpg": "⚠️ JPG-bestand gedetecteerd. Upload bij voorkeur een PNG met transparante achtergrond.",
+    "whyChoose": "Waarom {name} kiezen?",
+    "properties": "Eigenschappen",
+    "specs": "Productspecificaties",
+    "feature": "Kenmerk",
+    "property": "Eigenschap",
+    "stepOf": "Stap {current} van {total}",
+    "back": "Vorige",
+    "toSummary": "Naar overzicht en bestellen",
+    "mobileBarLabel": "Bestelbalk",
+    "mobileTotal": "Totaal incl. btw",
+    "mobileOrder": "Bestellen"
+  },
+  "MatCanvas": {
+    "center": "Centreren",
+    "delete": "Verwijderen",
+    "scale": "Schaal",
+    "rotation": "Rotatie",
+    "dragHint": "Sleep het logo op de mat om te verplaatsen"
+  },
+  "LogoUploader": {
+    "upload": "Logo uploaden",
+    "replace": "Logo vervangen",
+    "formats": "PNG, JPG of WebP (transparante PNG aanbevolen)",
+    "analyzing": "Analyseren...",
+    "tip": "Upload een PNG met transparante achtergrond voor het beste resultaat."
+  },
+  "ColorPalette": {
+    "suggested": "Voorgestelde kleuren",
+    "match": "Kleurmatch",
+    "reset": "Herstellen",
+    "choose": "Kies je achtergrondkleur"
+  },
+  "PriceCalculator": {
+    "title": "Jouw logomat",
+    "matType": "Type logomat",
+    "dimensions": "Afmetingen",
+    "custom": "Op maat",
+    "rubberBorder": "Rubberen rand",
+    "yes": "✅ Ja",
+    "logoColors": "Aantal logokleuren",
+    "unitPrice": "Prijs logomat",
+    "quantity": "Aantal",
+    "discount": "{percent}% korting",
+    "subtotal": "Subtotaal",
+    "vat": "Btw ({percent}%)",
+    "delivery": "Levering",
+    "total": "Totaal incl. btw",
+    "order": "Bestelling plaatsen"
+  },
+  "ArViewer": {
+    "button": "Bekijk in 3D & AR",
+    "error": "Het 3D-voorbeeld kon niet gemaakt worden. Probeer het opnieuw.",
+    "title": "Jouw logomat in 3D",
+    "alt": "Logomat van {width} × {depth} cm",
+    "viewInRoom": "Bekijk in jouw ruimte",
+    "trueSize": "Ware grootte:",
+    "controls": "Sleep om te draaien, knijp of scroll om te zoomen.",
+    "noAr": "AR werkt op een smartphone of tablet (iPhone/iPad met Safari, of Android met Chrome). Open deze configurator op je toestel om de mat op ware grootte in je eigen ruimte te zien.",
+    "compact": "3D / AR",
+    "loading": "3D-model laden…",
+    "arHint": "Richt je camera op de vloer en beweeg je toestel rustig heen en weer. De mat verschijnt op ware grootte.",
+    "arFailed": "AR kon niet starten op dit toestel. Je kan de mat hierboven wel in 3D bekijken."
+  },
+  "Cart": {
+    "title": "Winkelwagen",
+    "intro": "Controleer jouw configuratie voordat je afrekent.",
+    "customerDetails": "Klantgegevens",
+    "private": "Particulier",
+    "business": "Zakelijk",
+    "companyName": "Bedrijfsnaam *",
+    "vatNumber": "Btw-nummer *",
+    "firstName": "Voornaam *",
+    "lastName": "Achternaam *",
+    "email": "E-mailadres *",
+    "phone": "Telefoonnummer *",
+    "invoiceAddress": "Factuuradres",
+    "deliveryAddress": "Leveringsadres",
+    "street": "Straat en huisnummer *",
+    "postalCode": "Postcode *",
+    "city": "Gemeente *",
+    "country": "Land",
+    "countryRequired": "Land *",
+    "defaultCountry": "België",
+    "sameAddress": "Leveringsadres is hetzelfde als factuuradres",
+    "summary": "Bestelsamenvatting",
+    "previewAlt": "Voorbeeld van je logomat",
+    "yourMat": "Jouw logomat",
+    "type": "Type",
+    "dimensions": "Afmetingen",
+    "quantity": "Aantal",
+    "productPrice": "Productprijs excl. btw",
+    "shipping": "Leveringskost excl. btw",
+    "vat": "Btw (21%)",
+    "total": "Totaal incl. btw",
+    "perks": [
+      "✅ Digitale proefdruk inbegrepen",
+      "✅ Productie na goedkeuring",
+      "✅ Levering in België & Nederland"
+    ],
+    "checkout": "Doorgaan naar afrekenen",
+    "checkoutError": "Er ging iets mis bij het afrekenen."
+  },
+  "Success": {
+    "title": "Bedankt voor je bestelling",
+    "paymentReceived": "Je betaling werd succesvol ontvangen.",
+    "orderNumber": "Bestelnummer: {number}",
+    "unknown": "Onbekend",
+    "proofComing": "We bezorgen je binnenkort een digitale proefdruk ter goedkeuring.",
+    "steps": [
+      "✅ Betaling ontvangen",
+      "✅ Digitale proefdruk volgt",
+      "✅ Productie na jouw goedkeuring",
+      "✅ Levering in België & Nederland"
+    ],
+    "questions": "Heb je vragen over je bestelling?",
+    "contact": "Contacteer ons via info@carpetz.be"
+  },
+  "Legal": {
+    "terms": {
+      "title": "Algemene voorwaarden",
+      "intro": "Van toepassing op bestellingen bij Carpetz.",
+      "articles": [
+        "Artikel 1 – Definities",
+        "Artikel 2 – Identiteit van de ondernemer",
+        "Artikel 3 – Toepasselijkheid",
+        "Artikel 4 – Het aanbod",
+        "Artikel 5 – De overeenkomst",
+        "Artikel 6 – Herroepingsrecht",
+        "Artikel 7 – Verplichtingen van de consument tijdens de bedenktijd",
+        "Artikel 8 – Uitoefening van het herroepingsrecht door de consument en kosten daarvan",
+        "Artikel 9 – Verplichtingen van de ondernemer bij herroeping",
+        "Artikel 10 – Uitsluiting herroepingsrecht"
+      ],
+      "placeholder": "Tekst nog toe te voegen."
+    },
+    "privacy": {
+      "title": "Privacybeleid"
+    },
+    "returns": {
+      "title": "Retourbeleid"
+    },
+    "serviceTitle": "Klantenservice",
+    "serviceText": "Navigeer snel tussen alle gerelateerde pagina’s binnen onze klantenservice.",
+    "serviceLinks": {
+      "returns": "Aankoopinformatie",
+      "privacy": "Privacy en recht",
+      "terms": "Voorwaarden"
+    },
+    "contactTitle": "Persoonlijk contact",
+    "contactText": "Onze medewerkers staan je graag te woord voor al je vragen.",
+    "sendMessage": "Stuur een bericht",
+    "whatsapp": "Chat via WhatsApp",
+    "callUs": "Of bel onze klantenservice"
+  },
+  "CookieConsent": {
+    "title": "Wij gebruiken cookies",
+    "text": "Carpetz gebruikt cookies en vergelijkbare trackingtechnologieën om de website goed te laten werken, je een optimale ervaring te bieden, bezoekersstatistieken bij te houden en content af te stemmen op jouw interesses. Noodzakelijke cookies staan altijd aan. Voor de andere vragen we eerst je toestemming. Je kan je keuze op elk moment aanpassen via ‘Cookie-instellingen’ onderaan de pagina.",
+    "privacyLink": "Lees ons privacybeleid",
+    "acceptAll": "Accepteren",
+    "rejectAll": "Alles afwijzen",
+    "customize": "Voorkeuren",
+    "save": "Keuze opslaan",
+    "alwaysOn": "Altijd aan",
+    "settingsTitle": "Cookievoorkeuren",
+    "settingsText": "Kies welke cookies je toestaat. Je keuze geldt voor deze browser en kan je altijd wijzigen.",
+    "necessary": {
+      "title": "Noodzakelijk",
+      "text": "Nodig om de website en de webshop te laten werken, zoals je winkelmandje, beveiliging en het onthouden van deze cookiekeuze."
+    },
+    "statistics": {
+      "title": "Statistieken",
+      "text": "Helpen ons begrijpen hoe bezoekers de website gebruiken (bv. Microsoft Clarity), zodat we ze kunnen verbeteren."
+    },
+    "marketing": {
+      "title": "Marketing en gepersonaliseerde content",
+      "text": "Worden gebruikt om advertenties en content af te stemmen op jouw interesses, ook op andere websites."
+    }
+  },
+  "Checkout": {
+    "invalidConfig": "Ongeldige productconfiguratie",
+    "productName": "Logomat op maat",
+    "invoiceLine": "Logomat op maat {width} x {height} cm",
+    "shippingLine": "Leveringskost"
+  },
+  "OrderEmail": {
+    "subject": "Bedankt voor je bestelling {orderNumber}",
+    "uspBar": "✓ Hoge kwaliteit voor een scherpe prijs   |   ✓ Veilig betalen   |   ✓ Betrouwbare levering",
+    "heading": "Bedankt voor je bestelling!",
+    "greeting": "Beste {name},",
+    "greetingFallback": "Beste klant,",
+    "intro": "We hebben je bestelling in goede orde ontvangen en gaan er direct met de productie mee aan de slag.",
+    "overview": "Overzicht van je bestelling",
+    "orderNumber": "Bestelnummer:",
+    "matType": "Type logomat:",
+    "customSize": "Op maat ({width} × {height} cm)",
+    "quantity": "Aantal:",
+    "total": "Totaal (incl. btw):",
+    "designTitle": "Jouw gekozen ontwerp / proefdruk:",
+    "designAlt": "Proefdruk van je logomat",
+    "nextTitle": "Wat gebeurt er nu?",
+    "nextText": "Binnen enkele werkdagen ontvang je van ons een definitieve digitale proefdruk per e-mail.",
+    "productionText": "De fysieke productie van je mat start pas nadat jij deze proefdruk hebt goedgekeurd.",
+    "regards": "Met vriendelijke groet,",
+    "team": "Team Carpetz",
+    "website": "Website",
+    "customerService": "Klantenservice",
+    "terms": "Voorwaarden",
+    "rights": "Alle rechten voorbehouden.",
+    "attachmentName": "proefdruk-logomat.png"
   }
 }

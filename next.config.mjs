@@ -8,7 +8,9 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
+    // Afbeeldingen automatisch verkleinen tot schermformaat en als AVIF/WebP leveren (grote winst op mobiel).
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 60 * 60 * 24 * 30,
   },
   async headers() {
     return [

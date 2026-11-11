@@ -1,9 +1,11 @@
 "use client"
-import { MAT_TYPE_DATA, MAT_TYPE_DATA_OUTDOOR } from "@/lib/mat-type-data"
+import { getMatTypes } from "@/lib/mat-type-data"
+import { useMessages, useTranslations } from "next-intl"
+import { useRouter } from "@/navigation"
 import { Check as CheckIcon, Sparkles } from "lucide-react"
 import Image from "next/image"
 import { PRINTGRASS_COLORS } from "@/lib/printgrass-colors"
-import { useState, useCallback, useEffect } from "react"
+import { useState, useCallback, useEffect, useRef } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
@@ -15,6 +17,8 @@ import { ColorPalette } from "./color-palette"
 import { MatCanvas } from "./mat-canvas"
 import { LogoUploader } from "./logo-uploader"
 import { PriceCalculator } from "./price-calculator"
+import { MobileOrderBar } from "./mobile-order-bar"
+import { saveOrderAsset } from "@/lib/order-assets"
 import { STANDARD_SIZES, type MatConfig, MAT_COLORS } from "@/lib/mat-config"
 import { SIGNATURE_COLORS } from "@/lib/signature-colors"
 import { useSearchParams } from "next/navigation"
@@ -26,6 +30,7 @@ import {
   Plus,
   Minus,
   ArrowRight,
+  ArrowLeft,
   ChevronDown,
   Check,
   Palette as PaletteIcon,
@@ -69,6 +74,9 @@ type OutdoorSubtype = "grip" | "scrape"
 type VisibleTypeBlock = "indoor" | "outdoor" | null
 
 export function MatConfigurator() {
+  const t = useTranslations("Configurator")
+  const mats = getMatTypes(useMessages())
+  const router = useRouter()
   const searchParams = useSearchParams()
   const [config, setConfig] = useState<MatConfig>(DEFAULT_CONFIG)
   const [currentStep, setCurrentStep] = useState<number>(1)
@@ -124,9 +132,22 @@ export function MatConfigurator() {
     setConfig((prev) => ({ ...prev, ...updates }))
   }, [])
 
+  const stepRefs = useRef<Record<number, HTMLDivElement | null>>({})
+
   const goToStep = useCallback((step: number) => {
     setCurrentStep(step)
     setMaxStepReached((prev) => Math.max(prev, step))
+    // Op smartphone/tablet de nieuwe stap bovenaan in beeld brengen (na het openklappen).
+    if (typeof window !== "undefined" && window.innerWidth < 1024) {
+      requestAnimationFrame(() => {
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        stepRefs.current[step]?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" })
+      })
+    }
+  }, [])
+
+  const scrollToSummary = useCallback(() => {
+    document.getElementById("order-summary-mobile")?.scrollIntoView({ behavior: "smooth", block: "start" })
   }, [])
 
   const handleMatTypeChange = useCallback(
@@ -153,16 +174,14 @@ export function MatConfigurator() {
       setLogoInfo(info)
 
       if (info.width < 1000 || info.height < 1000) {
-        alert(
-          "⚠️ Dit logo heeft een lage resolutie. Voor een optimaal drukresultaat raden wij minimaal 1000 × 1000 pixels aan."
-        )
+        alert(t("alertLowResolution"))
       }
 
       if (info.format === "image/jpeg" || info.format === "image/jpg") {
-        alert("⚠️ JPG-bestand gedetecteerd. Upload bij voorkeur een PNG met transparante achtergrond.")
+        alert(t("alertJpg"))
       }
     },
-    []
+    [t]
   )
 
   const handleLogoUpload = useCallback(
@@ -207,11 +226,11 @@ export function MatConfigurator() {
     const canvas = document.getElementById("carpetz-mat-preview-canvas") as HTMLCanvasElement | null
 
     if (canvas) {
-      sessionStorage.setItem("matPreview", canvas.toDataURL("image/png"))
+      saveOrderAsset("matPreview", canvas.toDataURL("image/png"))
     }
 
     if (config.logo.dataUrl) {
-      sessionStorage.setItem("matLogo", config.logo.dataUrl)
+      saveOrderAsset("matLogo", config.logo.dataUrl)
     }
 
     // Enkel productspecificaties; de prijs wordt altijd opnieuw berekend.
@@ -228,8 +247,8 @@ export function MatConfigurator() {
       rubberBorder: String(config.rubberBorder),
     })
 
-    window.location.href = `/cart?${params.toString()}`
-  }, [config])
+    router.push(`/cart?${params.toString()}`)
+  }, [config, router])
 
   const parseEuroAmount = (value: string): number | null => {
     if (!value) return null
@@ -297,47 +316,46 @@ export function MatConfigurator() {
     ? `${visibleTypeBlock}-${visibleTypeBlock === "indoor" ? indoorSubtype : outdoorSubtype}`
     : null
 
-        const indoorInfo = {
-    go: { title: "Carpetz Go", description: "Instapmodel — betrouwbaar en toegankelijk geprijsd." },
-    green: { title: "Carpetz Green", description: "Duurzame logomat met gerecycleerde materialen." },
-    studio: { title: "Carpetz Studio", description: "Onze mooiste printkwaliteit, 100 kleuren." },
-    pro: { title: "Carpetz Pro", description: "Hoogste prestaties voor intensief gebruik." },
-  }
-
-   const outdoorInfo = {
-    grip: { title: "Carpetz Grip", description: "Weerbestendige buitenmat voor intensief gebruik." },
-    scrape: { title: "Carpetz Scrape", description: "Superieure schrapwerking tegen vuil." },
-  }
-
   const step1Complete = Boolean(config.logo.file)
   const step2Complete = maxStepReached > 2
 
   const steps = [
-    { number: 1, title: "Type logomat", icon: Layers },
-    { number: 2, title: "Afmetingen", icon: Layers },
-    { number: 3, title: "Logo Upload", icon: ImageIcon },
-    { number: 4, title: "Kleuren", icon: PaletteIcon },
+    { number: 1, title: t("steps.type"), icon: Layers },
+    { number: 2, title: t("steps.size"), icon: Layers },
+    { number: 3, title: t("steps.logo"), icon: ImageIcon },
+    { number: 4, title: t("steps.colors"), icon: PaletteIcon },
   ]
 
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-            <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-end">
+            <header className="border-b border-border bg-card/50">
+        <div className="container mx-auto px-4 py-2 sm:py-4 flex items-center justify-end">
           <Button variant="ghost" size="sm" onClick={handleReset}>
             <RotateCcw className="w-4 h-4 mr-2" />
-            Opnieuw starten
+            {t("reset")}
           </Button>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="max-w-[1800px] mx-auto px-6 py-6">
+      <main className="max-w-[1800px] mx-auto px-3 py-4 pb-28 sm:px-6 sm:py-6 lg:pb-6">
         <div className="grid grid-cols-1 lg:grid-cols-[360px_1.6fr_320px] gap-6">
           {/* Configuration Panel — verticale stappen-accordion */}
           <Card className="flex flex-col">
             <CardHeader className="pb-2">
-              <CardTitle className="text-lg">Stel jouw logomat samen</CardTitle>
+              <CardTitle className="text-lg">{t("panelTitle")}</CardTitle>
+              <div className="mt-2 space-y-1.5" aria-live="polite">
+                <p className="text-xs font-medium text-muted-foreground">
+                  {t("stepOf", { current: currentStep, total: steps.length })}
+                </p>
+                <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted" aria-hidden="true">
+                  <div
+                    className="h-full rounded-full bg-[#C69C4D] transition-[width] duration-300"
+                    style={{ width: `${(currentStep / steps.length) * 100}%` }}
+                  />
+                </div>
+              </div>
             </CardHeader>
 
             <CardContent className="p-0">
@@ -353,11 +371,18 @@ export function MatConfigurator() {
                     : false
 
                 return (
-                  <div key={step.number} className={step.number !== 4 ? "border-b border-border" : ""}>
+                  <div
+                    key={step.number}
+                    ref={(el) => {
+                      stepRefs.current[step.number] = el
+                    }}
+                    className={`scroll-mt-20 ${step.number !== 4 ? "border-b border-border" : ""}`}
+                  >
                     <button
                       type="button"
                       onClick={() => goToStep(step.number)}
-                      className="w-full flex items-center justify-between gap-3 px-4 py-4 text-left"
+                      aria-expanded={isOpen}
+                      className="w-full min-h-14 flex items-center justify-between gap-3 px-4 py-4 text-left"
                     >
                       <div className="flex items-center gap-3">
                         <span
@@ -375,9 +400,7 @@ export function MatConfigurator() {
                           <div className="font-medium text-sm">{step.title}</div>
                                                                               {!isOpen && step.number === 1 && visibleTypeBlock && (
                             <div className="text-xs text-muted-foreground">
-                              {visibleTypeBlock === "indoor"
-                                ? indoorInfo[indoorSubtype].title
-                                : outdoorInfo[outdoorSubtype].title}
+                              {mats[visibleTypeBlock === "indoor" ? indoorSubtype : outdoorSubtype].title}
                             </div>
                           )}
                           {!isOpen && step.number === 2 && (
@@ -403,7 +426,7 @@ export function MatConfigurator() {
                           <>
                             {/* Mat Type */}
                             <div className="space-y-3">
-                              <Label className="text-sm font-medium">Type logomat</Label>
+                              <Label className="text-sm font-medium">{t("matType")}</Label>
                               <div className="grid grid-cols-2 gap-2">
                                 <button
                                   type="button"
@@ -414,8 +437,8 @@ export function MatConfigurator() {
                                       : "border-border hover:border-muted-foreground"
                                   }`}
                                 >
-                                  <div className="font-medium text-sm">Indoor</div>
-                                  <div className="text-xs text-muted-foreground">Voor binnengebruik</div>
+                                  <div className="font-medium text-sm">{t("indoor")}</div>
+                                  <div className="text-xs text-muted-foreground">{t("indoorText")}</div>
                                 </button>
 
                                 <button
@@ -427,15 +450,15 @@ export function MatConfigurator() {
                                       : "border-border hover:border-muted-foreground"
                                   }`}
                                 >
-                                  <div className="font-medium text-sm">Outdoor</div>
-                                  <div className="text-xs text-muted-foreground">Weerbestendig</div>
+                                  <div className="font-medium text-sm">{t("outdoor")}</div>
+                                  <div className="text-xs text-muted-foreground">{t("outdoorText")}</div>
                                 </button>
                               </div>
                             </div>
 
                             {visibleTypeBlock === "indoor" && (
                               <div className="space-y-3">
-                                <Label className="text-sm font-medium">Indoor Type</Label>
+                                <Label className="text-sm font-medium">{t("indoorType")}</Label>
                                                                 <div className="grid grid-cols-2 gap-2">
                                     <button
                                     type="button"
@@ -453,9 +476,9 @@ export function MatConfigurator() {
                                       <Image src={TYPE_PREVIEW_IMAGES["indoor-go"]} alt="" fill sizes="180px" className="object-cover" />
                                     </div>
                                     <div className="p-3">
-                                      <div className="font-medium text-sm">Carpetz Go</div>
+                                      <div className="font-medium text-sm">{mats.go.title}</div>
                                       <div className="text-xs text-muted-foreground">
-                                        Instapmodel — betrouwbaar en toegankelijk
+                                        {t("subtypes.go")}
                                       </div>
                                     </div>
                                   </button>
@@ -476,9 +499,9 @@ export function MatConfigurator() {
                                       <Image src={TYPE_PREVIEW_IMAGES["indoor-green"]} alt="" fill sizes="180px" className="object-cover" />
                                     </div>
                                     <div className="p-3">
-                                      <div className="font-medium text-sm">Carpetz Green</div>
+                                      <div className="font-medium text-sm">{mats.green.title}</div>
                                       <div className="text-xs text-muted-foreground">
-                                        Duurzaam, gerecycleerde materialen
+                                        {t("subtypes.green")}
                                       </div>
                                     </div>
                                   </button>
@@ -499,9 +522,9 @@ export function MatConfigurator() {
                                       <Image src={TYPE_PREVIEW_IMAGES["indoor-studio"]} alt="" fill sizes="180px" className="object-cover" />
                                     </div>
                                     <div className="p-3">
-                                      <div className="font-medium text-sm">Carpetz Studio</div>
+                                      <div className="font-medium text-sm">{mats.studio.title}</div>
                                       <div className="text-xs text-muted-foreground">
-                                        Mooiste printkwaliteit, 100 kleuren
+                                        {t("subtypes.studio")}
                                       </div>
                                     </div>
                                   </button>
@@ -522,9 +545,9 @@ export function MatConfigurator() {
                                       <Image src={TYPE_PREVIEW_IMAGES["indoor-pro"]} alt="" fill sizes="180px" className="object-cover" />
                                     </div>
                                     <div className="p-3">
-                                      <div className="font-medium text-sm">Carpetz Pro</div>
+                                      <div className="font-medium text-sm">{mats.pro.title}</div>
                                       <div className="text-xs text-muted-foreground">
-                                        Hoogste prestaties, langste garantie
+                                        {t("subtypes.pro")}
                                       </div>
                                     </div>
                                   </button>
@@ -534,7 +557,7 @@ export function MatConfigurator() {
 
                             {visibleTypeBlock === "outdoor" && (
                               <div className="space-y-3">
-                                <Label className="text-sm font-medium">Outdoor Type</Label>
+                                <Label className="text-sm font-medium">{t("outdoorType")}</Label>
                                 <div className="grid grid-cols-2 gap-2">
                                                                      <button
                                     type="button"
@@ -552,8 +575,8 @@ export function MatConfigurator() {
                                       <Image src={TYPE_PREVIEW_IMAGES["outdoor-grip"]} alt="" fill sizes="180px" className="object-cover" />
                                     </div>
                                     <div className="p-3">
-                                      <div className="font-medium text-sm">Carpetz Grip</div>
-                                      <div className="text-xs text-muted-foreground">Weerbestendige buitenmat</div>
+                                      <div className="font-medium text-sm">{mats.grip.title}</div>
+                                      <div className="text-xs text-muted-foreground">{t("subtypes.grip")}</div>
                                     </div>
                                   </button>
 
@@ -573,8 +596,8 @@ export function MatConfigurator() {
                                       <Image src={TYPE_PREVIEW_IMAGES["outdoor-scrape"]} alt="" fill sizes="180px" className="object-cover" />
                                     </div>
                                     <div className="p-3">
-                                      <div className="font-medium text-sm">Carpetz Scrape</div>
-                                      <div className="text-xs text-muted-foreground">Superieure schrapwerking</div>
+                                      <div className="font-medium text-sm">{mats.scrape.title}</div>
+                                      <div className="text-xs text-muted-foreground">{t("subtypes.scrape")}</div>
                                     </div>
                                   </button>
                                 </div>
@@ -582,7 +605,7 @@ export function MatConfigurator() {
                             )}
 
                             <div className="space-y-3">
-                              <Label className="text-sm font-medium">Plaatsing</Label>
+                              <Label className="text-sm font-medium">{t("placement")}</Label>
                               <div className="grid grid-cols-2 gap-2">
                                 <button
                                   type="button"
@@ -593,8 +616,8 @@ export function MatConfigurator() {
                                       : "border-border hover:border-muted-foreground"
                                   }`}
                                 >
-                                  <div className="font-medium text-sm">Op de vloer</div>
-                                  <div className="text-xs text-muted-foreground">Standaard plaatsing</div>
+                                  <div className="font-medium text-sm">{t("floor")}</div>
+                                  <div className="text-xs text-muted-foreground">{t("floorText")}</div>
                                 </button>
 
                                 <button
@@ -606,14 +629,14 @@ export function MatConfigurator() {
                                       : "border-border hover:border-muted-foreground"
                                   }`}
                                 >
-                                  <div className="font-medium text-sm">Inbouwframe</div>
-                                  <div className="text-xs text-muted-foreground">Verzonken plaatsing</div>
+                                  <div className="font-medium text-sm">{t("frame")}</div>
+                                  <div className="text-xs text-muted-foreground">{t("frameText")}</div>
                                 </button>
                               </div>
                             </div>
 
                             <div className="space-y-3">
-                              <Label className="text-sm font-medium">Oriëntatie</Label>
+                              <Label className="text-sm font-medium">{t("orientation")}</Label>
                               <div className="grid grid-cols-2 gap-2">
                                 <button
                                   type="button"
@@ -625,7 +648,7 @@ export function MatConfigurator() {
                                   }`}
                                 >
                                   <div className="w-12 h-8 mx-auto mb-2 bg-muted-foreground/20 rounded" />
-                                  <div className="text-xs">Liggend</div>
+                                  <div className="text-xs">{t("landscape")}</div>
                                 </button>
 
                                 <button
@@ -638,7 +661,7 @@ export function MatConfigurator() {
                                   }`}
                                 >
                                   <div className="w-8 h-12 mx-auto mb-2 bg-muted-foreground/20 rounded" />
-                                  <div className="text-xs">Staand</div>
+                                  <div className="text-xs">{t("portrait")}</div>
                                 </button>
                               </div>
                             </div>
@@ -648,7 +671,7 @@ export function MatConfigurator() {
                                 <Separator />
                                 <div className="flex items-center justify-between">
                                   <div className="space-y-0.5">
-                                    <Label className="text-sm font-medium">Rubberen rand</Label>
+                                    <Label className="text-sm font-medium">{t("rubberBorder")}</Label>
                                   </div>
                                   <Switch
                                     checked={config.rubberBorder}
@@ -660,7 +683,7 @@ export function MatConfigurator() {
                             )}
 
                             <Button className="w-full" onClick={() => goToStep(2)}>
-                              Verder naar afmetingen
+                              {t("toSize")}
                               <ArrowRight className="w-4 h-4 ml-2" />
                             </Button>
                           </>
@@ -669,7 +692,7 @@ export function MatConfigurator() {
                         {step.number === 2 && (
                           <>
                             <div className="space-y-3">
-                              <Label className="text-sm font-medium">Afmetingen (cm)</Label>
+                              <Label className="text-sm font-medium">{t("sizeLabel")}</Label>
 
                               <div className="grid grid-cols-2 gap-2">
                                 {STANDARD_SIZES.map((size) => {
@@ -710,15 +733,15 @@ export function MatConfigurator() {
                                       : "border-border hover:border-muted-foreground"
                                   }`}
                                 >
-                                  <div className="font-medium text-sm">Eigen afmetingen</div>
-                                  <div className="text-xs text-muted-foreground">Voer jouw afmetingen in</div>
+                                  <div className="font-medium text-sm">{t("customSize")}</div>
+                                  <div className="text-xs text-muted-foreground">{t("customSizeText")}</div>
                                 </button>
                               </div>
 
                               {config.size.isCustom && (
                                 <div className="grid grid-cols-2 gap-3 pt-2">
                                   <div className="space-y-1.5">
-                                    <Label className="text-xs text-muted-foreground">Width (cm)</Label>
+                                    <Label className="text-xs text-muted-foreground">{t("width")}</Label>
                                     <Input
                                       type="number"
                                       min={30}
@@ -737,7 +760,7 @@ export function MatConfigurator() {
                                   </div>
 
                                   <div className="space-y-1.5">
-                                    <Label className="text-xs text-muted-foreground">Height (cm)</Label>
+                                    <Label className="text-xs text-muted-foreground">{t("height")}</Label>
                                     <Input
                                       type="number"
                                       min={30}
@@ -758,10 +781,16 @@ export function MatConfigurator() {
                               )}
                             </div>
 
-                            <Button className="w-full" onClick={() => goToStep(3)}>
-                              Verder naar logo upload
-                              <ArrowRight className="w-4 h-4 ml-2" />
-                            </Button>
+                            <div className="grid grid-cols-[auto_1fr] gap-2">
+                              <Button variant="outline" onClick={() => goToStep(1)}>
+                                <ArrowLeft className="w-4 h-4 mr-1" />
+                                {t("back")}
+                              </Button>
+                              <Button onClick={() => goToStep(3)}>
+                                {t("toLogo")}
+                                <ArrowRight className="w-4 h-4 ml-2" />
+                              </Button>
+                            </div>
                           </>
                         )}
 
@@ -776,34 +805,40 @@ export function MatConfigurator() {
 
                             {logoInfo.width > 0 && (
                               <div className="rounded-lg border p-4 bg-muted/30 space-y-2">
-                                <h4 className="font-medium">Logo analyse</h4>
+                                <h4 className="font-medium">{t("logoAnalysis")}</h4>
                                 <div className="text-sm">
-                                  Resolutie: {logoInfo.width} × {logoInfo.height} px
+                                  {t("resolution", { width: logoInfo.width, height: logoInfo.height })}
                                 </div>
                                 <div className="text-sm">
                                   {hasGoodResolution ? (
-                                    <span className="text-green-600">✅ Resolutie geschikt voor productie</span>
+                                    <span className="text-green-600">{t("resolutionGood")}</span>
                                   ) : (
-                                    <span className="text-amber-600">⚠️ Resolutie mogelijk te laag</span>
+                                    <span className="text-amber-600">{t("resolutionLow")}</span>
                                   )}
                                 </div>
-                                <div className="text-sm">Bestandstype: {logoInfo.format}</div>
+                                <div className="text-sm">{t("fileType", { format: logoInfo.format })}</div>
                                 <div className="text-sm">
                                   {isPng ? (
-                                    <span className="text-green-600">✅ PNG-bestand gedetecteerd</span>
+                                    <span className="text-green-600">{t("pngDetected")}</span>
                                   ) : (
                                     <span className="text-amber-600">
-                                      ⚠️ JPG/WebP-bestand. Transparantie wordt mogelijk niet ondersteund.
+                                      {t("notPng")}
                                     </span>
                                   )}
                                 </div>
                               </div>
                             )}
 
-                            <Button className="w-full" onClick={() => goToStep(4)}>
-                              Volgende stap: Kies je achtergrondkleur
-                              <ArrowRight className="w-4 h-4 ml-2" />
-                            </Button>
+                            <div className="grid grid-cols-[auto_1fr] gap-2">
+                              <Button variant="outline" onClick={() => goToStep(2)}>
+                                <ArrowLeft className="w-4 h-4 mr-1" />
+                                {t("back")}
+                              </Button>
+                              <Button onClick={() => goToStep(4)}>
+                                {t("toColors")}
+                                <ArrowRight className="w-4 h-4 ml-2" />
+                              </Button>
+                            </div>
                           </>
                         )}
 
@@ -837,7 +872,7 @@ export function MatConfigurator() {
                             />
 
                             <div className="space-y-3">
-                              <Label className="text-sm font-medium">Aantal</Label>
+                              <Label className="text-sm font-medium">{t("quantity")}</Label>
                               <div className="flex items-center gap-3">
                                 <Button
                                   variant="outline"
@@ -873,9 +908,20 @@ export function MatConfigurator() {
 
                               {config.quantity >= 5 && (
                                 <Badge variant="secondary" className="text-xs">
-                                  Volume discount applied!
+                                  {t("volumeDiscount")}
                                 </Badge>
                               )}
+                            </div>
+
+                            <div className="grid grid-cols-[auto_1fr] gap-2 lg:hidden">
+                              <Button variant="outline" onClick={() => goToStep(3)}>
+                                <ArrowLeft className="w-4 h-4 mr-1" />
+                                {t("back")}
+                              </Button>
+                              <Button onClick={scrollToSummary}>
+                                {t("toSummary")}
+                                <ArrowRight className="w-4 h-4 ml-2" />
+                              </Button>
                             </div>
                           </>
                         )}
@@ -887,12 +933,12 @@ export function MatConfigurator() {
             </CardContent>
           </Card>
 
-                   {/* Preview Panel */}
-          <div className="space-y-6">
+                   {/* Preview Panel — op smartphone bovenaan, zodat je het resultaat meteen ziet */}
+          <div className="order-first space-y-6 lg:order-none">
             <Card>
               <CardHeader className="pb-2">
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-lg">Voorbeeld van jouw logomat</CardTitle>
+                  <CardTitle className="text-lg">{t("previewTitle")}</CardTitle>
                 </div>
               </CardHeader>
               <CardContent>
@@ -912,20 +958,20 @@ export function MatConfigurator() {
 
         {/* Price Calculator - Mobile/Tablet */}
         <div className="lg:hidden mt-6">
-          <PriceCalculator config={config} onOrder={handleOrder} />
+          <PriceCalculator id="order-summary-mobile" config={config} onOrder={handleOrder} />
         </div>
 
+        {/* Vaste bestelbalk onderaan op smartphone/tablet */}
+        <MobileOrderBar config={config} onOrder={handleOrder} summaryId="order-summary-mobile" />
+
                         {(visibleTypeBlock === "indoor" || visibleTypeBlock === "outdoor") && (() => {
-          const typeData =
-            visibleTypeBlock === "indoor"
-              ? MAT_TYPE_DATA[indoorSubtype]
-              : MAT_TYPE_DATA_OUTDOOR[outdoorSubtype]
+          const typeData = mats[visibleTypeBlock === "indoor" ? indoorSubtype : outdoorSubtype]
           return (
             <div className="mt-6 space-y-6">
               {/* Waarom deze mat kiezen */}
               <Card className="border-2 border-[#C69C4D]/30 bg-[#FFFCF7]">
                 <CardHeader>
-                  <CardTitle className="text-xl">Waarom {typeData.title} kiezen?</CardTitle>
+                  <CardTitle className="text-xl">{t("whyChoose", { name: typeData.title })}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-sm leading-relaxed text-muted-foreground">
@@ -948,7 +994,7 @@ export function MatConfigurator() {
               {/* Eigenschappen */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-lg">Eigenschappen</CardTitle>
+                  <CardTitle className="text-lg">{t("properties")}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -973,15 +1019,15 @@ export function MatConfigurator() {
               {/* Productspecificaties */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-lg">Productspecificaties</CardTitle>
+                  <CardTitle className="text-lg">{t("specs")}</CardTitle>
                 </CardHeader>
                 <CardContent className="p-0">
                   <div className="overflow-hidden rounded-b-xl">
                     <table className="w-full text-left text-sm">
                       <thead>
                         <tr className="bg-primary text-primary-foreground">
-                          <th className="px-5 py-3 font-semibold">Kenmerk</th>
-                          <th className="px-5 py-3 font-semibold">Eigenschap</th>
+                          <th className="px-5 py-3 font-semibold">{t("feature")}</th>
+                          <th className="px-5 py-3 font-semibold">{t("property")}</th>
                         </tr>
                       </thead>
                       <tbody>

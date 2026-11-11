@@ -1,7 +1,9 @@
 import { put } from "@vercel/blob";
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
+import { getTranslations } from "next-intl/server";
 import { calculateOrderTotals, parseOrderSpec } from "@/lib/mat-config";
+import { locales, defaultLocale, type Locale } from "@/i18n";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
@@ -9,12 +11,16 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
+    // Taal van de klant (nl/fr): bepaalt Stripe-taal, terugkeer-URL's, e-mail en factuur.
+    const locale: Locale = locales.includes(body?.locale) ? body.locale : defaultLocale;
+    const t = await getTranslations({ locale, namespace: "Checkout" });
+
     // Prijzen worden NOOIT uit de body gelezen: de server berekent alles
     // opnieuw op basis van de productspecificaties.
     const spec = parseOrderSpec(body?.product ?? {});
     if (!spec) {
       return NextResponse.json(
-        { error: "Ongeldige productconfiguratie" },
+        { error: t("invalidConfig") },
         { status: 400 }
       );
     }
@@ -53,10 +59,12 @@ export async function POST(request: Request) {
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
+      locale,
 
       payment_intent_data: {
         metadata: {
           orderNumber,
+          locale,
           previewUrl: previewUrl || "",
           logoUrl: logoUrl || "",
 
@@ -76,7 +84,7 @@ export async function POST(request: Request) {
           street: body.street || "",
           postalCode: body.postalCode || "",
           city: body.city || "",
-          country: body.country || "België",
+          country: body.country || "",
 
           // Productspecificaties veilig omgezet naar strings
           matType: spec.type || "",
@@ -101,7 +109,7 @@ export async function POST(request: Request) {
           price_data: {
             currency: "eur",
             product_data: {
-              name: "Logomat op maat",
+              name: t("productName"),
             },
             unit_amount: Math.round(totals.grandTotal * 100),
           },
@@ -109,11 +117,9 @@ export async function POST(request: Request) {
         },
       ],
 
-      success_url: `${request.headers.get(
-        "origin"
-      )}/success?session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${request.headers.get("origin")}/${locale}/success?session_id={CHECKOUT_SESSION_ID}`,
 
-      cancel_url: `${request.headers.get("origin")}/cart`,
+      cancel_url: `${request.headers.get("origin")}/${locale}/cart`,
     });
 
     return NextResponse.json({
@@ -123,7 +129,7 @@ export async function POST(request: Request) {
     console.error("STRIPE ERROR:", error);
 
     return NextResponse.json(
-      { error: error?.message || "Stripe fout" },
+      { error: error?.message || "Stripe error" },
       { status: 500 }
     );
   }

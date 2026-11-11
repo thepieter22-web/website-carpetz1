@@ -3,6 +3,7 @@
 import { PRINTGRASS_COLORS } from "@/lib/printgrass-colors";
 import { SIGNATURE_COLORS } from "@/lib/signature-colors";
 import { MAT_COLORS } from "@/lib/mat-config";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
@@ -28,6 +29,7 @@ export function ColorPalette({
   onResetSuggestions,
   colorSet = "standard",
 }: ColorPaletteProps) {
+  const t = useTranslations("ColorPalette");
 
     const colors =
     colorSet === "printgrass"
@@ -46,10 +48,10 @@ export function ColorPalette({
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="text-sm font-medium text-foreground">
-                Suggested Colors
+                {t("suggested")}
               </span>
               <Badge variant="secondary" className="text-xs">
-                AI Match
+                {t("match")}
               </Badge>
             </div>
 
@@ -59,7 +61,7 @@ export function ColorPalette({
                 onClick={onResetSuggestions}
                 className="text-xs text-muted-foreground hover:text-foreground underline underline-offset-2"
               >
-                Reset
+                {t("reset")}
               </button>
             )}
           </div>
@@ -71,8 +73,9 @@ export function ColorPalette({
 
               return (
                 <Tooltip key={code}>
-                  <TooltipTrigger asChild>
-                    <button
+                  <TooltipTrigger
+                    render={
+                      <button
                       type="button"
                       onClick={() => onSelect(code)}
                       className={cn(
@@ -102,7 +105,8 @@ export function ColorPalette({
                         {code}
                       </span>
                     </button>
-                  </TooltipTrigger>
+                    }
+                  />
                   <TooltipContent>
                     <p>
                       {color.name} ({code})
@@ -116,17 +120,18 @@ export function ColorPalette({
       )}
 
       <div className="space-y-2">
-        <span className="text-sm font-medium text-foreground">Kies je achtergrondkleur</span>
+        <span className="text-sm font-medium text-foreground">{t("choose")}</span>
 
-        <div className="grid grid-cols-8 gap-2">
+        <div className="grid grid-cols-5 gap-2 sm:grid-cols-8">
          {colors.map((color) => (
             <Tooltip key={color.code}>
-              <TooltipTrigger asChild>
-                <button
+              <TooltipTrigger
+                    render={
+                      <button
                   type="button"
                   onClick={() => onSelect(color.code)}
                   className={cn(
-                    "group relative h-9 w-9 rounded-md border-2 overflow-hidden transition-all",
+                    "group relative aspect-square w-full min-h-11 rounded-md border-2 overflow-hidden transition-all sm:h-9 sm:w-9 sm:min-h-0",
                     "hover:scale-110",
                     selectedCode === color.code
                       ? "border-foreground shadow-md ring-2 ring-foreground/20"
@@ -148,7 +153,8 @@ export function ColorPalette({
                     </span>
                   )}
                 </button>
-              </TooltipTrigger>
+                    }
+                  />
 
               <TooltipContent side="top">
                 <p className="font-medium">{color.name}</p>

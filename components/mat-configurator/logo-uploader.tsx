@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { Upload, FileImage, Loader2, Sparkles } from "lucide-react";
 import { extractDominantColors, findClosestColors } from "@/lib/mat-config";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 interface LogoUploaderProps {
@@ -124,6 +125,7 @@ export function LogoUploader({
   onColorSuggestionsFound,
   onLogoInfoFound,
 }: LogoUploaderProps) {
+  const t = useTranslations("LogoUploader");
   const inputRef = useRef<HTMLInputElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -239,10 +241,10 @@ await new Promise<void>((resolve) => {
           <Upload className="w-8 h-8 text-muted-foreground" />
           <div>
             <p className="text-sm font-medium text-foreground">
-              {currentFile ? "Replace logo" : "Upload logo"}
+              {currentFile ? t("replace") : t("upload")}
             </p>
             <p className="text-xs text-muted-foreground">
-              PNG, JPG of WebP (transparante PNG aanbevolen)
+              {t("formats")}
             </p>
           </div>
         </div>
@@ -255,7 +257,7 @@ await new Promise<void>((resolve) => {
           {isAnalyzing && (
             <span className="flex items-center gap-1 text-xs text-muted-foreground">
               <Loader2 className="w-3 h-3 animate-spin" />
-              Analyzing...
+              {t("analyzing")}
             </span>
           )}
         </div>
@@ -264,7 +266,7 @@ await new Promise<void>((resolve) => {
       <div className="flex items-start gap-2 p-3 bg-amber-50 dark:bg-amber-950/30 rounded-md border border-amber-200 dark:border-amber-800">
         <Sparkles className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
         <p className="text-xs text-amber-800 dark:text-amber-200">
-          Upload een PNG met transparante achtergrond voor het beste resultaat.
+          {t("tip")}
         </p>
       </div>
     </div>

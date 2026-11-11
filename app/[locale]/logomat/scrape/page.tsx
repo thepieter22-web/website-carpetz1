@@ -1,42 +1,11 @@
-import type { Metadata } from "next";
-import { MatTypePage } from "@/components/mat-type-page";
-import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
-import { MAT_TYPE_DATA_OUTDOOR } from "@/lib/mat-type-data";
+import { MatTypeRoute, matTypeMetadata } from '@/components/mat-type-route'
 
-const data = MAT_TYPE_DATA_OUTDOOR.scrape;
+type Props = { params: { locale: string } }
 
-export const metadata: Metadata = {
-  title: `${data.title} logomat op maat`,
-  description: data.description,
-};
+export function generateMetadata({ params: { locale } }: Props) {
+  return matTypeMetadata('scrape', locale, '/logomat/scrape')
+}
 
-export default function ScrapeLogomatPage({
-  params,
-}: {
-  params: { locale: string };
-}) {
-  return (
-    <>
-      <SiteHeader />
-      <MatTypePage
-        locale={params.locale}
-        eyebrow={`LOGO MAT • ${data.tagline.toUpperCase()}`}
-        title={data.title}
-        description={data.description}
-        heroImage={data.heroImage}
-        heroAlt={`Detailfoto van ${data.title}`}
-        configuratorType="scrape"
-        features={data.features}
-        specs={data.specs}
-        references={[
-          { image: "/images/references/ref-1.jpg", alt: "Logomat referentie 1" },
-          { image: "/images/references/ref-2.jpg", alt: "Logomat referentie 2" },
-          { image: "/images/references/ref-3.jpg", alt: "Logomat referentie 3" },
-          { image: "/images/references/ref-4.jpg", alt: "Logomat referentie 4" },
-        ]}
-      />
-      <SiteFooter />
-    </>
-  );
+export default function ScrapeLogomatPage({ params: { locale } }: Props) {
+  return <MatTypeRoute subtype="scrape" locale={locale} />
 }

@@ -1,5 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/navigation";
+import { usePriceFormatter } from "@/lib/format";
 import type { LucideIcon } from "lucide-react";
 
 type Detail = {
@@ -42,6 +44,8 @@ export function CustomRunnerHighlight({
   imagePosition = "left",
   priceExample,
 }: CustomRunnerHighlightProps) {
+  const t = useTranslations("RunnerHighlight");
+  const formatPrice = usePriceFormatter();
   const examplePrice = priceExample
     ? priceExample.length * priceExample.width * priceExample.pricePerM2
     : null;
@@ -82,16 +86,16 @@ export function CustomRunnerHighlight({
       {priceExample && examplePrice !== null && (
         <div className="mt-8 rounded-sm border border-accent/30 bg-accent/5 p-6">
           <p className="text-sm text-muted-foreground">
-            Voorbeeld: {priceExample.length}m &times; {priceExample.width}m &mdash; richtprijs vanaf
+            {t("example", { length: priceExample.length, width: priceExample.width })}
           </p>
-          <p className="mt-1 text-2xl font-bold text-accent">&euro;{examplePrice.toFixed(0)}</p>
-          <p className="mt-1 text-xs text-muted-foreground">Excl. btw &mdash; op basis van standaardkwaliteit.</p>
+          <p className="mt-1 text-2xl font-bold text-accent">{formatPrice(examplePrice, 0)}</p>
+          <p className="mt-1 text-xs text-muted-foreground">{t("priceNote")}</p>
 
           <Link
             href={`/contact?product=${priceExample.productSlug}&lengte=${priceExample.length}&breedte=${priceExample.width}&richtprijs=${examplePrice.toFixed(0)}`}
             className="mt-4 inline-block rounded-sm bg-accent px-5 py-3 text-sm font-medium text-accent-foreground hover:opacity-90 transition-opacity"
           >
-            Vraag je persoonlijke offerte aan
+            {t("cta")}
           </Link>
         </div>
       )}

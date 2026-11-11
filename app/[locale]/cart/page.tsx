@@ -1,17 +1,23 @@
-
 "use client";
 
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { calculateOrderTotals, parseOrderSpec } from "@/lib/mat-config";
+import { usePriceFormatter } from "@/lib/format";
+import { readOrderAsset } from "@/lib/order-assets";
 
 export default function CartPage({
   searchParams,
 }: {
   searchParams: Record<string, string | undefined>;
 }) {
+  const t = useTranslations("Cart");
+  const tAll = useTranslations();
+  const locale = useLocale();
+  const formatPrice = usePriceFormatter();
+
   // Enkel specificaties komen uit de URL; prijzen worden hier alleen
   // voor weergave berekend. De checkout API rekent zelf opnieuw.
   const spec = parseOrderSpec(searchParams);
@@ -22,389 +28,291 @@ export default function CartPage({
   const vatAmount = totals?.vat ?? 0;
   const productExclVat = totals?.productExclVat ?? 0;
 
-  const matNames: Record<string, string> = {
-    go: "Carpetz Go",
-    green: "Carpetz Green",
-    studio: "Carpetz Studio",
-    pro: "Carpetz Pro",
-    grip: "Carpetz Grip",
-    scrape: "Carpetz Scrape",
-  };
   const matName = spec
-    ? matNames[spec.type === "outdoor" ? spec.outdoorSubtype : spec.indoorSubtype]
+    ? tAll(`MatTypes.${spec.type === "outdoor" ? spec.outdoorSubtype : spec.indoorSubtype}.title`)
     : "";
 
   const [customerType, setCustomerType] = useState("particulier");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-const [email, setEmail] = useState("");
-const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [company, setCompany] = useState("");
-const [vatNumber, setVatNumber] = useState("");
+  const [vatNumber, setVatNumber] = useState("");
   const [street, setStreet] = useState("");
-const [postalCode, setPostalCode] = useState("");
-const [city, setCity] = useState("");
-const [country, setCountry] = useState("België");
+  const [postalCode, setPostalCode] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState(t("defaultCountry"));
   const [sameAddress, setSameAddress] = useState(true);
   const [previewImage, setPreviewImage] = useState("");
-  const [logoImage, setLogoImage] = useState("");
 
-useEffect(() => {
-  const image = sessionStorage.getItem("matPreview");
-  if (image) {
-    setPreviewImage(image);
-  }
+  useEffect(() => {
+    const image = readOrderAsset("matPreview");
+    if (image) setPreviewImage(image);
+  }, []);
 
-  const logo = sessionStorage.getItem("matLogo");
-  if (logo) {
-    setLogoImage(logo);
-  }
-}, []);
+  const isBusiness = customerType === "zakelijk";
+  const perks = t.raw("perks") as string[];
 
-  return (
-    <>
-      <SiteHeader />
+  const handleCheckout = async () => {
+    if (!spec) return;
 
-      <main className="min-h-screen bg-secondary/20">
-        <div className="mx-auto max-w-7xl px-6 py-16">
-          <div className="mb-10">
-            <h1 className="font-serif text-5xl font-semibold">
-              Winkelwagen
-            </h1>
-
-            <p className="mt-3 text-muted-foreground">
-              Controleer jouw configuratie voordat je afrekent.
-            </p>
-          </div>
-
-          <div className="grid items-start gap-8 lg:grid-cols-[1fr_380px]">
-
-           {/* Linkerkolom */}
-<div className="min-w-0">
-
-  
-
-              <div className="rounded-xl border bg-card p-8 shadow-sm">
-                <h2 className="text-2xl font-semibold">
-                  Klantgegevens
-                </h2>
-
-                <div className="mt-6 flex gap-4">
-  <button
-    type="button"
-    onClick={() => setCustomerType("particulier")}
-    className={`rounded-lg border px-4 py-2 ${
-      customerType === "particulier"
-        ? "bg-[#C69C4D] text-white"
-        : ""
-    }`}
-  >
-    Particulier
-  </button>
-
-  <button
-    type="button"
-    onClick={() => setCustomerType("zakelijk")}
-    className={`rounded-lg border px-4 py-2 ${
-      customerType === "zakelijk"
-        ? "bg-[#C69C4D] text-white"
-        : ""
-    }`}
-  >
-    Zakelijk
-  </button>
-</div>
-
-                <div className="mt-6 flex flex-col gap-4">
-
-                  {customerType === "zakelijk" && (
-  <>
-    <input
-  required
-  className="rounded-lg border p-3"
-  placeholder="Bedrijfsnaam *"
-  value={company}
-  onChange={(e) => setCompany(e.target.value)}
-/>
-
-    <input
-  required
-  className="rounded-lg border p-3"
-  placeholder="BTW-nummer *"
-  value={vatNumber}
-  onChange={(e) => setVatNumber(e.target.value)}
-/>
-  </>
-)}
-
-                 <input
-  required
-  className="rounded-lg border p-3"
-  placeholder="Voornaam *"
-  value={firstName}
-  onChange={(e) => setFirstName(e.target.value)}
-/>
-
-                  <input
-  required
-  className="rounded-lg border p-3"
-  placeholder="Achternaam *"
-  value={lastName}
-  onChange={(e) => setLastName(e.target.value)}
-/>
- 
-                  <input
-  required
-  className="rounded-lg border p-3"
-  placeholder="E-mailadres *"
-  value={email}
-  onChange={(e) => setEmail(e.target.value)}
-/>
-
-                  <input
-  required
-  className="rounded-lg border p-3"
-  placeholder="Telefoonnummer *"
-  value={phone}
-  onChange={(e) => setPhone(e.target.value)}
-/>
-
-                  <h3 className="col-span-1 md:col-span-2 mt-8 text-lg font-semibold">
-  {customerType === "zakelijk"
-    ? "Factuuradres"
-    : "Leveringsadres"}
-</h3>
-
-
-                 
-                  
-
-<input
-  required
-  className="col-span-2 rounded-lg border p-3"
-  placeholder="Straat en huisnummer *"
-  value={street}
-  onChange={(e) => setStreet(e.target.value)}
-/>
-
-<input
-  required
-  className="rounded-lg border p-3"
-  placeholder="Postcode *"
-  value={postalCode}
-  onChange={(e) => setPostalCode(e.target.value)}
-/>
-
-<input
-  required
-  className="rounded-lg border p-3"
-  placeholder="Gemeente *"
-  value={city}
-  onChange={(e) => setCity(e.target.value)}
-/>
-
-<input
-  required
-  className="rounded-lg border p-3"
-  placeholder="Land"
-  value={country}
-  onChange={(e) => setCountry(e.target.value)}
-/>
-                  
-{customerType === "zakelijk" && (
-  <label className="col-span-2 flex items-center gap-2 text-sm">
-    <input
-      type="checkbox"
-      checked={sameAddress}
-      onChange={(e) => setSameAddress(e.target.checked)}
-    />
-    Leveradres is hetzelfde als factuuradres
-  </label>
-)}
-
-{customerType === "zakelijk" && !sameAddress && (
-  <>
-    <h3 className="col-span-2 mt-4 text-lg font-semibold">
-      Leveringsadres
-    </h3>
-
-    <input
-      className="col-span-2 rounded-lg border p-3"
-      placeholder="Straat en huisnummer *"
-    />
-
-    <input
-      className="rounded-lg border p-3"
-      placeholder="Postcode *"
-    />
-
-    <input
-      className="rounded-lg border p-3"
-      placeholder="Gemeente *"
-    />
-
-    <input
-      className="rounded-lg border p-3"
-      placeholder="Land *"
-      defaultValue="België"
-    />
-  </>
-)}
-                  
-                  
-
-                </div>
-              </div>
-
-            </div>
-
-            {/* Rechterkolom */}
-            <div className="rounded-xl border bg-card p-8 shadow-sm sticky top-24 self-start">
-
-              <h2 className="text-xl font-semibold mb-4">
-  Bestelsamenvatting
-</h2>
-
-              {previewImage && (
-    <img
-      src={previewImage}
-      alt="Logomat preview"
-      className="mb-6 max-h-[300px] w-full object-contain rounded-lg border"  />
-)}
- 
-
-   
-
-              <div className="rounded-lg border p-4">
- <h3 className="mb-2 text-base font-semibold">
-  Jouw logomat
-</h3>
-
-  <div className="grid grid-cols-3 gap-4">
-    <div>
-      <p className="text-sm text-muted-foreground">Type</p>
-      <p className="font-medium">
-        {matName}
-      </p>
-    </div>
-
-    <div>
-      <p className="text-sm text-muted-foreground">Afmetingen</p>
-      <p className="font-medium">
-        {spec?.width} × {spec?.height} cm
-      </p>
-    </div>
-
-    <div>
-      <p className="text-sm text-muted-foreground">Aantal</p>
-      <p className="font-medium">
-        {spec?.quantity}
-      </p>
-    </div>
-  </div>
-</div>
-
-              <div className="mt-6 space-y-4">
-
-               <div className="flex justify-between">
-  <span>Productprijs excl. btw</span>
-  <span>€{productExclVat.toFixed(2)}</span>
-</div>
-
-<div className="flex justify-between">
-  <span>Leveringskost excl. btw</span>
-  <span>€{shipping.toFixed(2)}</span>
-</div>
-
-<div className="flex justify-between">
-  <span>BTW (21%)</span>
-  <span>€{vatAmount.toFixed(2)}</span>
-</div>
-
-                <div className="border-t pt-4 flex justify-between">
-                  <span className="font-semibold">Totaal incl. btw</span>
-
-                  <span className="text-2xl font-bold text-[#C69C4D]">
-                    €{grandTotal.toFixed(2)}
-                  </span>
-                </div>
-
-              </div>
-
-              <div className="mt-6 space-y-2 text-sm text-muted-foreground">
-                <p>✅ Digitale proefdruk inbegrepen</p>
-                <p>✅ Productie na goedkeuring</p>
-                <p>✅ Levering België & Nederland</p>
-              </div>
-
-              <button
-  className="mt-8 w-full rounded-lg bg-[#C69C4D] px-6 py-4 text-white font-medium hover:bg-[#B88D3C] disabled:opacity-50"
-  disabled={!spec}
-  onClick={async () => {
-  if (!spec) return;
-
-  const previewImage =
-  sessionStorage.getItem("matPreview") || "";
-
-const logoImage =
-  sessionStorage.getItem("matLogo") || "";
-
-
-
-console.log("TEST BUTTON");
-console.log({
-  customerType,
-  firstName,
-  lastName,
-  email,
-  phone,
-  company,
-  vatNumber,
-});
-
-console.log("PREVIEW IMAGE IN CART:");
-console.log(previewImage);    
-
-const response = await fetch("/api/create-checkout-session", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    previewImage,
-    logoImage,
-
-    // Enkel productspecificaties, geen prijzen
-    product: spec,
-
-customerType,
-firstName,
-lastName,
-email,
-phone,
-company,
-vatNumber,
-street,
-postalCode,
-city,
-country,
-}),
-});
+    const response = await fetch("/api/create-checkout-session", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        previewImage: readOrderAsset("matPreview"),
+        logoImage: readOrderAsset("matLogo"),
+        // Taal van de klant: bepaalt de taal van Stripe, de bevestigingsmail en de factuur.
+        locale,
+        // Enkel productspecificaties, geen prijzen
+        product: spec,
+        customerType,
+        firstName,
+        lastName,
+        email,
+        phone,
+        company,
+        vatNumber,
+        street,
+        postalCode,
+        city,
+        country,
+      }),
+    });
 
     const data = await response.json();
 
     if (data.url) {
       window.location.href = data.url;
     } else {
-      alert(data.error || "Er ging iets mis bij het afrekenen.");
+      alert(data.error || t("checkoutError"));
     }
-  }}
->
-  Doorgaan naar afrekenen
-</button>
+  };
 
+  return (
+    <>
+      <SiteHeader />
+
+      <main className="min-h-screen bg-secondary/20">
+        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-16">
+          <div className="mb-10">
+            <h1 className="font-serif text-3xl font-semibold sm:text-5xl">{t("title")}</h1>
+            <p className="mt-3 text-muted-foreground">{t("intro")}</p>
+          </div>
+
+          <div className="grid items-start gap-8 lg:grid-cols-[1fr_380px]">
+            {/* Linkerkolom */}
+            <div className="min-w-0">
+              <div className="rounded-xl border bg-card p-5 shadow-sm sm:p-8">
+                <h2 className="text-2xl font-semibold">{t("customerDetails")}</h2>
+
+                <div className="mt-6 flex gap-3 sm:gap-4">
+                  <button
+                    type="button"
+                    onClick={() => setCustomerType("particulier")}
+                    className={`min-h-12 flex-1 rounded-lg border px-4 py-3 sm:flex-none ${!isBusiness ? "bg-[#C69C4D] text-white" : ""}`}
+                  >
+                    {t("private")}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setCustomerType("zakelijk")}
+                    className={`min-h-12 flex-1 rounded-lg border px-4 py-3 sm:flex-none ${isBusiness ? "bg-[#C69C4D] text-white" : ""}`}
+                  >
+                    {t("business")}
+                  </button>
+                </div>
+
+                <div className="mt-6 flex flex-col gap-4">
+                  {isBusiness && (
+                    <>
+                      <input
+                        required
+                        className="rounded-lg border p-3"
+                        placeholder={t("companyName")}
+                        autoComplete="organization"
+                        value={company}
+                        onChange={(e) => setCompany(e.target.value)}
+                      />
+                      <input
+                        required
+                        className="rounded-lg border p-3"
+                        placeholder={t("vatNumber")}
+                        value={vatNumber}
+                        onChange={(e) => setVatNumber(e.target.value)}
+                      />
+                    </>
+                  )}
+
+                  <input
+                    required
+                    className="rounded-lg border p-3"
+                    placeholder={t("firstName")}
+                    autoComplete="given-name"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                  <input
+                    required
+                    className="rounded-lg border p-3"
+                    placeholder={t("lastName")}
+                    autoComplete="family-name"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                  <input
+                    required
+                    type="email"
+                    className="rounded-lg border p-3"
+                    placeholder={t("email")}
+                    autoComplete="email"
+                    inputMode="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <input
+                    required
+                    type="tel"
+                    className="rounded-lg border p-3"
+                    placeholder={t("phone")}
+                    autoComplete="tel"
+                    inputMode="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
+
+                  <h3 className="mt-8 text-lg font-semibold">
+                    {isBusiness ? t("invoiceAddress") : t("deliveryAddress")}
+                  </h3>
+
+                  <input
+                    required
+                    className="rounded-lg border p-3"
+                    placeholder={t("street")}
+                    autoComplete="street-address"
+                    value={street}
+                    onChange={(e) => setStreet(e.target.value)}
+                  />
+                  <input
+                    required
+                    className="rounded-lg border p-3"
+                    placeholder={t("postalCode")}
+                    autoComplete="postal-code"
+                    inputMode="numeric"
+                    value={postalCode}
+                    onChange={(e) => setPostalCode(e.target.value)}
+                  />
+                  <input
+                    required
+                    className="rounded-lg border p-3"
+                    placeholder={t("city")}
+                    autoComplete="address-level2"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                  />
+                  <input
+                    required
+                    className="rounded-lg border p-3"
+                    placeholder={t("country")}
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)}
+                  />
+
+                  {isBusiness && (
+                    <label className="flex items-center gap-2 text-sm">
+                      <input
+                        type="checkbox"
+                        checked={sameAddress}
+                        onChange={(e) => setSameAddress(e.target.checked)}
+                      />
+                      {t("sameAddress")}
+                    </label>
+                  )}
+
+                  {isBusiness && !sameAddress && (
+                    <>
+                      <h3 className="mt-4 text-lg font-semibold">{t("deliveryAddress")}</h3>
+                      <input className="rounded-lg border p-3" placeholder={t("street")} />
+                      <input className="rounded-lg border p-3" placeholder={t("postalCode")} />
+                      <input className="rounded-lg border p-3" placeholder={t("city")} />
+                      <input
+                        className="rounded-lg border p-3"
+                        placeholder={t("countryRequired")}
+                        defaultValue={t("defaultCountry")}
+                      />
+                    </>
+                  )}
+                </div>
+              </div>
             </div>
 
+            {/* Rechterkolom */}
+            <div className="self-start rounded-xl border bg-card p-5 shadow-sm sm:p-8 lg:sticky lg:top-24">
+              <h2 className="mb-4 text-xl font-semibold">{t("summary")}</h2>
+
+              {previewImage && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={previewImage}
+                  alt={t("previewAlt")}
+                  className="mb-6 max-h-[300px] w-full rounded-lg border object-contain"
+                />
+              )}
+
+              <div className="rounded-lg border p-4">
+                <h3 className="mb-2 text-base font-semibold">{t("yourMat")}</h3>
+                <div className="grid grid-cols-3 gap-4">
+                  <div>
+                    <p className="text-sm text-muted-foreground">{t("type")}</p>
+                    <p className="font-medium">{matName}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">{t("dimensions")}</p>
+                    <p className="font-medium">
+                      {spec?.width} × {spec?.height} cm
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">{t("quantity")}</p>
+                    <p className="font-medium">{spec?.quantity}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 space-y-4">
+                <div className="flex justify-between">
+                  <span>{t("productPrice")}</span>
+                  <span>{formatPrice(productExclVat)}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>{t("shipping")}</span>
+                  <span>{formatPrice(shipping)}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>{t("vat")}</span>
+                  <span>{formatPrice(vatAmount)}</span>
+                </div>
+                <div className="flex justify-between border-t pt-4">
+                  <span className="font-semibold">{t("total")}</span>
+                  <span className="text-2xl font-bold text-[#C69C4D]">{formatPrice(grandTotal)}</span>
+                </div>
+              </div>
+
+              <div className="mt-6 space-y-2 text-sm text-muted-foreground">
+                {perks.map((perk) => (
+                  <p key={perk}>{perk}</p>
+                ))}
+              </div>
+
+              <button
+                className="mt-8 w-full rounded-lg bg-[#C69C4D] px-6 py-4 font-medium text-white hover:bg-[#B88D3C] disabled:opacity-50"
+                disabled={!spec}
+                onClick={handleCheckout}
+              >
+                {t("checkout")}
+              </button>
+            </div>
           </div>
         </div>
       </main>

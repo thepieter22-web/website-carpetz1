@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState, useCallback, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { MAT_COLORS, type MatConfig } from "@/lib/mat-config";
 import { PRINTGRASS_COLORS } from "@/lib/printgrass-colors";
 import { SIGNATURE_COLORS } from "@/lib/signature-colors";
@@ -14,10 +15,12 @@ interface MatCanvasProps {
   onLogoUpdate: (updates: Partial<MatConfig["logo"]>) => void;
 }
 
+type TextureSource = HTMLImageElement | HTMLCanvasElement;
+
 type TextureSet = {
-  base: HTMLImageElement | null;
-  soft: HTMLImageElement | null;
-  noise: HTMLImageElement | null;
+  base: TextureSource | null;
+  soft: TextureSource | null;
+  noise: TextureSource | null;
 };
 
 type CanvasLayout = {
@@ -39,14 +42,43 @@ type CanvasLayout = {
 const STANDARD_TEXTURES = {
   base: "/textures/mat-base.webp",
   soft: "/textures/mat-soft.webp",
-  noise: "/textures/noise.webp",
 };
 
 const PRINTGRASS_TEXTURES = {
   base: "/textures/printgrass-base.webp",
   soft: "/textures/printgrass-soft.webp",
-  noise: "/textures/noise.webp",
 };
+
+/**
+ * Fijne korrel voor het tapijteffect, in de browser gegenereerd.
+ * Vervangt noise.webp (2,6 MB): wordt toch maar op 3–5% doorzichtigheid gebruikt.
+ */
+let noiseTexture: HTMLCanvasElement | null = null;
+function getNoiseTexture(): HTMLCanvasElement | null {
+  if (noiseTexture) return noiseTexture;
+  const canvas = document.createElement("canvas");
+  canvas.width = 3000;
+  canvas.height = 2000;
+  // Kleine tegel genereren en uitrekken is goedkoop en geeft dezelfde schaal als de oude afbeelding.
+  const tile = document.createElement("canvas");
+  tile.width = 600;
+  tile.height = 400;
+  const tileCtx = tile.getContext("2d");
+  const ctx = canvas.getContext("2d");
+  if (!tileCtx || !ctx) return null;
+  const data = tileCtx.createImageData(tile.width, tile.height);
+  for (let i = 0; i < data.data.length; i += 4) {
+    const v = Math.random() * 255;
+    data.data[i] = v;
+    data.data[i + 1] = v;
+    data.data[i + 2] = v;
+    data.data[i + 3] = 255;
+  }
+  tileCtx.putImageData(data, 0, 0);
+  ctx.drawImage(tile, 0, 0, canvas.width, canvas.height);
+  noiseTexture = canvas;
+  return canvas;
+}
 
 function clamp(value: number, min: number, max: number) {
   return Math.max(min, Math.min(max, value));
@@ -125,21 +157,33 @@ function loadImage(src: string): Promise<HTMLImageElement> {
   });
 }
 
+const scaledTextureCache = new WeakMap<TextureSource, Map<number, HTMLCanvasElement>>();
+
 function createScaledPattern(
   ctx: CanvasRenderingContext2D,
-  image: HTMLImageElement,
+  image: TextureSource,
   scale = 1
 ) {
-  const offscreen = document.createElement("canvas");
-  offscreen.width = Math.max(8, Math.round(image.width * scale));
-  offscreen.height = Math.max(8, Math.round(image.height * scale));
+  let byScale = scaledTextureCache.get(image);
+  if (!byScale) {
+    byScale = new Map();
+    scaledTextureCache.set(image, byScale);
+  }
 
-  const offCtx = offscreen.getContext("2d");
-  if (!offCtx) return null;
+  let offscreen = byScale.get(scale);
+  if (!offscreen) {
+    offscreen = document.createElement("canvas");
+    offscreen.width = Math.max(8, Math.round(image.width * scale));
+    offscreen.height = Math.max(8, Math.round(image.height * scale));
 
-  offCtx.imageSmoothingEnabled = true;
-  offCtx.imageSmoothingQuality = "high";
-  offCtx.drawImage(image, 0, 0, offscreen.width, offscreen.height);
+    const offCtx = offscreen.getContext("2d");
+    if (!offCtx) return null;
+
+    offCtx.imageSmoothingEnabled = true;
+    offCtx.imageSmoothingQuality = "high";
+    offCtx.drawImage(image, 0, 0, offscreen.width, offscreen.height);
+    byScale.set(scale, offscreen);
+  }
 
   return ctx.createPattern(offscreen, "repeat");
 }
@@ -306,10 +350,21 @@ function softenPureWhites(
   ctx.putImageData(imageData, 0, 0);
 }
 
+const preparedLogoCache = new WeakMap<HTMLImageElement, HTMLCanvasElement | null>();
+/** Max. afmeting van het logo in het voorbeeld (de productie gebruikt altijd het originele bestand). */
+const PREVIEW_LOGO_MAX = 1600;
+
+/** Verwerkt logo (witte achtergrond weg, bijgesneden), één keer berekend per afbeelding. */
 function createPreparedLogoCanvas(image: HTMLImageElement) {
+  if (!preparedLogoCache.has(image)) preparedLogoCache.set(image, buildPreparedLogoCanvas(image));
+  return preparedLogoCache.get(image) ?? null;
+}
+
+function buildPreparedLogoCanvas(image: HTMLImageElement) {
   const offscreen = document.createElement("canvas");
-  offscreen.width = image.width;
-  offscreen.height = image.height;
+  const downscale = Math.min(1, PREVIEW_LOGO_MAX / Math.max(image.width, image.height));
+  offscreen.width = Math.max(1, Math.round(image.width * downscale));
+  offscreen.height = Math.max(1, Math.round(image.height * downscale));
 
   const ctx = offscreen.getContext("2d");
   if (!ctx) return null;
@@ -317,7 +372,7 @@ function createPreparedLogoCanvas(image: HTMLImageElement) {
   ctx.clearRect(0, 0, offscreen.width, offscreen.height);
   ctx.imageSmoothingEnabled = true;
   ctx.imageSmoothingQuality = "high";
-  ctx.drawImage(image, 0, 0);
+  ctx.drawImage(image, 0, 0, offscreen.width, offscreen.height);
 
   const removeWhiteBg = hasLikelyWhiteBackground(image);
 
@@ -376,11 +431,35 @@ function createPreparedLogoCanvas(image: HTMLImageElement) {
   return cropped;
 }
 
+type PrintedLogoCacheEntry = {
+  base: TextureSource | null;
+  soft: TextureSource | null;
+  noise: TextureSource | null;
+  result: HTMLCanvasElement;
+};
+const printedLogoCache = new WeakMap<HTMLCanvasElement, PrintedLogoCacheEntry>();
+
+/** Logo met tapijtstructuur; hergebruikt zolang logo en texturen gelijk blijven (vlot slepen op mobiel). */
 function createPrintedLogoCanvas(
   source: HTMLCanvasElement,
-  textureBase: HTMLImageElement | null,
-  textureSoft: HTMLImageElement | null,
-  textureNoise: HTMLImageElement | null
+  textureBase: TextureSource | null,
+  textureSoft: TextureSource | null,
+  textureNoise: TextureSource | null
+) {
+  const cached = printedLogoCache.get(source);
+  if (cached && cached.base === textureBase && cached.soft === textureSoft && cached.noise === textureNoise) {
+    return cached.result;
+  }
+  const result = buildPrintedLogoCanvas(source, textureBase, textureSoft, textureNoise);
+  printedLogoCache.set(source, { base: textureBase, soft: textureSoft, noise: textureNoise, result });
+  return result;
+}
+
+function buildPrintedLogoCanvas(
+  source: HTMLCanvasElement,
+  textureBase: TextureSource | null,
+  textureSoft: TextureSource | null,
+  textureNoise: TextureSource | null
 ) {
   const printed = document.createElement("canvas");
   printed.width = source.width;
@@ -583,6 +662,7 @@ function getCanvasLayout(params: {
 }
 
 export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
+  const t = useTranslations("MatCanvas");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -635,7 +715,8 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
       if (!containerRef.current) return;
 
       const containerWidth = containerRef.current.clientWidth;
-      const maxHeight = 700;
+      // Op smartphones max. ~45% van de schermhoogte, zodat de stappen in beeld blijven.
+      const maxHeight = window.innerWidth < 640 ? Math.max(220, window.innerHeight * 0.45) : 700;
       const aspectRatio = displayWidth / displayHeight;
 
       let matWidthPx = containerWidth - 32;
@@ -691,10 +772,9 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
     Promise.all([
       loadImage(activeTextures.base).catch(() => null),
       loadImage(activeTextures.soft).catch(() => null),
-      loadImage(activeTextures.noise).catch(() => null),
-    ]).then(([base, soft, noise]) => {
+    ]).then(([base, soft]) => {
       if (!mounted) return;
-      setTextures({ base, soft, noise });
+      setTextures({ base, soft, noise: getNoiseTexture() });
     });
 
     return () => {
@@ -729,6 +809,9 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
       borderThickness,
       isFramePlacement,
     });
+
+    // Voor de 3D/AR-weergave: hoe breed het inbouwframe rond de mat is (in CSS-pixels).
+    canvas.dataset.matInset = String(layout.frameThickness);
 
     const {
       frameThickness,
@@ -1079,7 +1162,7 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
     drawCanvas();
   }, [drawCanvas]);
 
-  const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  const handleMouseDown = (e: React.PointerEvent<HTMLCanvasElement>) => {
     if (!logoImage) return;
 
     const canvas = canvasRef.current;
@@ -1123,6 +1206,8 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
 
     if (!isInsideLogo) return;
 
+    // Vinger blijft "vast" aan het logo, ook als hij even buiten het canvas komt.
+    e.currentTarget.setPointerCapture?.(e.pointerId);
     setIsDragging(true);
     setDragStart({
       x: relX - config.logo.position.x,
@@ -1130,7 +1215,7 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
     });
   };
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  const handleMouseMove = (e: React.PointerEvent<HTMLCanvasElement>) => {
     if (!isDragging || !logoImage) return;
 
     const canvas = canvasRef.current;
@@ -1199,25 +1284,30 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
   id="carpetz-mat-preview-canvas"
   ref={canvasRef}
   data-mat-canvas="true"
-  className={cn("cursor-crosshair", isDragging && "cursor-grabbing")}
-  onMouseDown={handleMouseDown}
-  onMouseMove={handleMouseMove}
-  onMouseUp={handleMouseUp}
-  onMouseLeave={handleMouseUp}
+  className={cn(
+    "cursor-crosshair",
+    isDragging && "cursor-grabbing",
+    // Met logo: vinger-slepen verplaatst het logo i.p.v. de pagina te scrollen.
+    config.logo.dataUrl ? "touch-none" : "touch-pan-y"
+  )}
+  onPointerDown={handleMouseDown}
+  onPointerMove={handleMouseMove}
+  onPointerUp={handleMouseUp}
+  onPointerCancel={handleMouseUp}
 />
       </div>
 
       {config.logo.dataUrl && (
         <div className="space-y-4 p-4 bg-muted/50 rounded-lg">
-          <div className="flex items-center gap-2 flex-wrap">
+          <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
             <Button size="sm" variant="outline" onClick={handleCenterLogo}>
               <Crosshair className="w-4 h-4 mr-1" />
-              Centreren
+              {t("center")}
             </Button>
 
             <Button size="sm" variant="destructive" onClick={handleDeleteLogo}>
               <Trash2 className="w-4 h-4 mr-1" />
-              Verwijderen
+              {t("delete")}
             </Button>
           </div>
 
@@ -1226,7 +1316,7 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
               <div className="flex items-center justify-between">
                 <span className="text-sm flex items-center gap-1">
                   <ZoomIn className="w-4 h-4" />
-                  Schaal
+                  {t("scale")}
                 </span>
                 <span className="text-xs text-muted-foreground">
                   {Math.round(config.logo.scale * 100)}%
@@ -1249,7 +1339,7 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
               <div className="flex items-center justify-between">
                 <span className="text-sm flex items-center gap-1">
                   <RotateCw className="w-4 h-4" />
-                  Rotatie
+                  {t("rotation")}
                 </span>
                 <span className="text-xs text-muted-foreground">
                   {config.logo.rotation}°
@@ -1271,7 +1361,7 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
 
           <p className="text-xs text-muted-foreground flex items-center gap-1">
             <Move className="w-3 h-3" />
-            Sleep het logo op de mat om te verplaatsen
+            {t("dragHint")}
           </p>
         </div>
       )}

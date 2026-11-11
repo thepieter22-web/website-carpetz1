@@ -1,13 +1,19 @@
+import { useLocale, useTranslations } from 'next-intl'
+
 export function LocalBusinessJsonLd() {
+  const locale = useLocale()
+  const meta = useTranslations('Meta')
+  const footer = useTranslations('Footer')
+
   const data = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     '@id': 'https://carpetz.example/#business',
     name: 'Carpetz',
-    description:
-      'Carpetz is specialist in logomatten op maat, geprint tapijt, event tapijt en rode lopers op maat voor bedrijven, retail, hotels, beurzen en events.',
-    url: 'https://carpetz.example',
-    telephone: '+32 15 00 00 00',
+    description: meta('description'),
+    url: `https://carpetz.example/${locale}`,
+    inLanguage: meta('inLanguage'),
+    telephone: '+32 488 23 65 81',
     email: 'info@carpetz.be',
     image: 'https://carpetz.example/images/hero-event-carpet.png',
     priceRange: '€€',
@@ -15,12 +21,12 @@ export function LocalBusinessJsonLd() {
       '@type': 'PostalAddress',
       streetAddress: 'Berkenlaan 1D',
       postalCode: '9840',
-      addressLocality: 'de Pinte',
+      addressLocality: 'De Pinte',
       addressCountry: 'BE',
     },
     areaServed: [
-      { '@type': 'Country', name: 'België' },
-      { '@type': 'Country', name: 'Nederland' },
+      { '@type': 'Country', name: meta('countryBE') },
+      { '@type': 'Country', name: meta('countryNL') },
     ],
     openingHoursSpecification: [
       {
@@ -32,20 +38,13 @@ export function LocalBusinessJsonLd() {
     ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Tapijt op maat',
-      itemListElement: [
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Logomatten op maat' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Geprint tapijt' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Event tapijt' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Rode loper op maat' } },
-      ],
+      name: meta('catalogName'),
+      itemListElement: [footer('logomats'), footer('printedCarpet'), footer('eventCarpet')].map((name) => ({
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name },
+      })),
     },
   }
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  )
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
 }

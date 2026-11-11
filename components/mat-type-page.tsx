@@ -1,5 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/navigation";
 import { ArrowRight, type LucideIcon } from "lucide-react";
 
 export interface MatTypeFeature {
@@ -31,8 +32,6 @@ export interface MatTypePageProps {
   references: MatTypeReference[];
   /** Interne code voor de configurator query-param, bv. "eco" */
   configuratorType: string;
-  /** Huidige taal, bv. "nl" of "fr", voor de correcte link naar de configurator */
-  locale: string;
 }
 
 export function MatTypePage({
@@ -45,8 +44,9 @@ export function MatTypePage({
   specs,
   references,
   configuratorType,
-  locale,
 }: MatTypePageProps) {
+  const t = useTranslations("MatTypePage");
+  const common = useTranslations("Common");
   return (
     <main className="bg-background">
             {/* Hero + Eigenschappen naast elkaar */}
@@ -78,7 +78,7 @@ export function MatTypePage({
 
           {/* Rechterkolom: eigenschappen */}
           <div className="rounded-2xl bg-secondary/40 p-6 lg:p-8">
-            <h2 className="text-2xl font-semibold text-foreground">Eigenschappen</h2>
+            <h2 className="text-2xl font-semibold text-foreground">{t("properties")}</h2>
 
             <div className="mt-8 grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2">
               {features.map((feature) => {
@@ -103,14 +103,14 @@ export function MatTypePage({
       {/* Productspecificaties */}
       <section className="border-t border-border">
         <div className="mx-auto max-w-5xl px-6 py-16 lg:px-8">
-          <h2 className="text-2xl font-semibold text-foreground">Productspecificaties</h2>
+          <h2 className="text-2xl font-semibold text-foreground">{t("specs")}</h2>
 
           <div className="mt-8 overflow-hidden rounded-xl border border-border">
             <table className="w-full text-left text-sm">
               <thead>
                 <tr className="bg-primary text-primary-foreground">
-                  <th className="px-5 py-3 font-semibold">Kenmerk</th>
-                  <th className="px-5 py-3 font-semibold">Eigenschap</th>
+                  <th className="px-5 py-3 font-semibold">{t("feature")}</th>
+                  <th className="px-5 py-3 font-semibold">{t("property")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -137,7 +137,7 @@ export function MatTypePage({
       <section className="border-t border-border bg-secondary/40">
         <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
           <h2 className="text-center text-2xl font-bold italic text-foreground">
-            Onze referenties
+            {t("references")}
           </h2>
 
           <div className="mt-8 flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory">
@@ -163,16 +163,16 @@ export function MatTypePage({
       <section className="border-t border-border">
         <div className="mx-auto max-w-3xl px-6 py-16 text-center lg:px-8">
           <h2 className="font-serif text-3xl font-semibold text-foreground">
-            Ontwerp jouw {title.toLowerCase()}
+            {t("ctaTitle", { name: title })}
           </h2>
           <p className="mt-3 text-muted-foreground">
-            Upload je logo en zie direct hoe jouw logomat eruitziet.
+            {t("ctaText")}
           </p>
                             <Link
-            href={`/${locale}/logomat?type=${configuratorType}#configurator`}
+            href={`/logomat?type=${configuratorType}#configurator`}
             className="mt-6 inline-flex items-center gap-2 rounded-md bg-foreground px-6 py-3 text-sm font-semibold text-background transition-opacity hover:opacity-90"
           >
-            Start de configurator
+            {common("startConfigurator")}
             <ArrowRight className="size-4" />
           </Link>
         </div>

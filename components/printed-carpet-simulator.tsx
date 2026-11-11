@@ -1,16 +1,19 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/navigation";
+import { usePriceFormatter } from "@/lib/format";
 import { Upload, X } from "lucide-react";
 
 type Quality = "velvet" | "globosoft" | "pxl";
 type Shape = "rectangle" | "circle";
 
-const QUALITIES: { id: Quality; label: string; pricePerM2: number; description: string }[] = [
-  { id: "velvet", label: "Velvet", pricePerM2: 20, description: "Zacht en luxueus, ideaal voor showrooms." },
-  { id: "globosoft", label: "Globosoft", pricePerM2: 40, description: "Duurzaam en slijtvast, voor intensief gebruik." },
-  { id: "pxl", label: "Pxl", pricePerM2: 60, description: "Scherpste fotorealistische print, premium kwaliteit." },
+// Productnamen zijn merknamen; de beschrijvingen staan in messages/*.json (CarpetSimulator.qualities).
+const QUALITIES: { id: Quality; label: string; pricePerM2: number }[] = [
+  { id: "velvet", label: "Velvet", pricePerM2: 20 },
+  { id: "globosoft", label: "Globosoft", pricePerM2: 40 },
+  { id: "pxl", label: "Pxl", pricePerM2: 60 },
 ];
 
 const PRESET_WIDTHS = [1, 2];
@@ -20,6 +23,9 @@ const MAX_HEIGHT = 360;
 const MIN_HEIGHT = 60;
 
 export function PrintedCarpetSimulator() {
+  const t = useTranslations("CarpetSimulator");
+  const common = useTranslations("Common");
+  const formatPrice = usePriceFormatter();
   const [quality, setQuality] = useState<Quality>("velvet");
   const [shape, setShape] = useState<Shape>("rectangle");
   const [width, setWidth] = useState<number>(1);
@@ -60,12 +66,10 @@ export function PrintedCarpetSimulator() {
     <section className="border-t border-border bg-secondary/40">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
         <h2 className="font-serif text-3xl font-semibold leading-tight text-balance">
-          Bereken een prijsindicatie
+          {t("title")}
         </h2>
         <p className="mt-3 max-w-2xl text-sm text-muted-foreground">
-          Kies een kwaliteit, vorm en afmetingen en upload eventueel een patroon om een idee te krijgen
-          van het resultaat. Dit is een prijsindicatie &mdash; voor een defintieve offerte nemen we
-          graag persoonlijk contact met je op.
+          {t("intro")}
         </p>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_380px]">
@@ -73,7 +77,7 @@ export function PrintedCarpetSimulator() {
           <div className="order-2 min-w-0 space-y-8 lg:order-1">
             {/* Kwaliteit */}
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">Kwaliteit</h3>
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">{t("quality")}</h3>
               <div className="mt-4 grid gap-3 sm:grid-cols-3">
                 {QUALITIES.map((q) => (
                   <button
@@ -87,8 +91,8 @@ export function PrintedCarpetSimulator() {
                     }`}
                   >
                     <div className="font-semibold">{q.label}</div>
-                    <div className="mt-1 text-xs text-muted-foreground">{q.description}</div>
-                    <div className="mt-2 text-sm font-medium text-accent">&euro;{q.pricePerM2}/m&sup2;</div>
+                    <div className="mt-1 text-xs text-muted-foreground">{t(`qualities.${q.id}`)}</div>
+                    <div className="mt-2 text-sm font-medium text-accent">{formatPrice(q.pricePerM2, 0)}/m&sup2;</div>
                   </button>
                 ))}
               </div>
@@ -97,7 +101,7 @@ export function PrintedCarpetSimulator() {
             {/* Patroon upload */}
             <div>
               <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">
-                Patroon (optioneel)
+                {t("pattern")}
               </h3>
               <div className="mt-4">
                 {pattern ? (
@@ -107,12 +111,12 @@ export function PrintedCarpetSimulator() {
                     className="flex items-center gap-2 rounded-sm border border-border px-4 py-3 text-sm hover:border-accent/50"
                   >
                     <X className="size-4" />
-                    Patroon verwijderen
+                    {t("removePattern")}
                   </button>
                 ) : (
                   <label className="flex w-fit cursor-pointer items-center gap-2 rounded-sm border border-dashed border-border px-6 py-4 text-sm text-muted-foreground hover:border-accent/50">
                     <Upload className="size-4" />
-                    Upload een wederkerend patroon
+                    {t("uploadPattern")}
                     <input
                       type="file"
                       accept="image/*"
@@ -129,29 +133,29 @@ export function PrintedCarpetSimulator() {
 
             {/* Vorm */}
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">Vorm</h3>
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">{t("shape")}</h3>
               <div className="mt-4 flex flex-wrap gap-3">
                 <button
                   type="button"
                   onClick={() => setShape("rectangle")}
-                  className={`rounded-sm border px-5 py-3 text-sm font-medium transition-all ${
+                  className={`min-h-12 rounded-sm border px-5 py-3 text-sm font-medium transition-all ${
                     shape === "rectangle"
                       ? "border-accent bg-accent/10"
                       : "border-border hover:border-accent/50"
                   }`}
                 >
-                  Rechthoek
+                  {t("rectangle")}
                 </button>
                 <button
                   type="button"
                   onClick={() => setShape("circle")}
-                  className={`rounded-sm border px-5 py-3 text-sm font-medium transition-all ${
+                  className={`min-h-12 rounded-sm border px-5 py-3 text-sm font-medium transition-all ${
                     shape === "circle"
                       ? "border-accent bg-accent/10"
                       : "border-border hover:border-accent/50"
                   }`}
                 >
-                  Cirkel
+                  {t("circle")}
                 </button>
               </div>
             </div>
@@ -160,14 +164,14 @@ export function PrintedCarpetSimulator() {
               <>
                 {/* Breedte */}
                 <div>
-                  <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">Breedte</h3>
+                  <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">{t("width")}</h3>
                   <div className="mt-4 flex flex-wrap gap-3">
                     {PRESET_WIDTHS.map((w) => (
                       <button
                         key={w}
                         type="button"
                         onClick={() => setWidth(w)}
-                        className={`rounded-sm border px-5 py-3 text-sm font-medium transition-all ${
+                        className={`min-h-12 rounded-sm border px-5 py-3 text-sm font-medium transition-all ${
                           width === w
                             ? "border-accent bg-accent/10"
                             : "border-border hover:border-accent/50"
@@ -179,16 +183,16 @@ export function PrintedCarpetSimulator() {
                     <button
                       type="button"
                       onClick={() => setShowContactModal(true)}
-                      className="rounded-sm border border-border px-5 py-3 text-sm font-medium transition-all hover:border-accent/50"
+                      className="min-h-12 rounded-sm border border-border px-5 py-3 text-sm font-medium transition-all hover:border-accent/50"
                     >
-                      Eigen keuze
+                      {t("custom")}
                     </button>
                   </div>
                 </div>
 
                 {/* Lengte */}
                 <div>
-                  <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">Lengte</h3>
+                  <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">{t("length")}</h3>
                   <div className="mt-4">
                     <input
                       type="number"
@@ -196,23 +200,24 @@ export function PrintedCarpetSimulator() {
                       min={0.1}
                       value={length}
                       onChange={(e) => setLength(parseFloat(e.target.value) || 0)}
-                      className="w-48 rounded-sm border border-border p-3 text-sm"
+                      className="w-40 min-h-12 rounded-sm border border-border p-3 text-sm pointer-coarse:text-base"
+                      inputMode="decimal"
                     />
-                    <span className="ml-2 text-sm text-muted-foreground">meter</span>
+                    <span className="ml-2 text-sm text-muted-foreground">{t("meter")}</span>
                   </div>
                 </div>
               </>
             ) : (
               /* Diameter */
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">Diameter</h3>
+                <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">{t("diameter")}</h3>
                 <div className="mt-4 flex flex-wrap gap-3">
                   {PRESET_DIAMETERS.map((d) => (
                     <button
                       key={d}
                       type="button"
                       onClick={() => setDiameter(d)}
-                      className={`rounded-sm border px-5 py-3 text-sm font-medium transition-all ${
+                      className={`min-h-12 rounded-sm border px-5 py-3 text-sm font-medium transition-all ${
                         diameter === d
                           ? "border-accent bg-accent/10"
                           : "border-border hover:border-accent/50"
@@ -224,9 +229,9 @@ export function PrintedCarpetSimulator() {
                   <button
                     type="button"
                     onClick={() => setShowContactModal(true)}
-                    className="rounded-sm border border-border px-5 py-3 text-sm font-medium transition-all hover:border-accent/50"
+                    className="min-h-12 rounded-sm border border-border px-5 py-3 text-sm font-medium transition-all hover:border-accent/50"
                   >
-                    Eigen keuze
+                    {t("custom")}
                   </button>
                 </div>
               </div>
@@ -237,26 +242,26 @@ export function PrintedCarpetSimulator() {
           <div className="order-1 space-y-6 lg:order-2 lg:sticky lg:top-24 lg:self-start">
             <div className="rounded-sm border border-border bg-card p-6">
               <div className="flex justify-between text-sm text-muted-foreground">
-                <span>Kwaliteit</span>
+                <span>{t("quality")}</span>
                 <span className="font-medium text-foreground">{selectedQuality.label}</span>
               </div>
               <div className="mt-2 flex justify-between text-sm text-muted-foreground">
-                <span>Afmetingen</span>
+                <span>{t("dimensions")}</span>
                 <span className="font-medium text-foreground">
                   {shape === "circle" ? `\u00d8 ${diameter}m` : `${width}m \u00d7 ${length}m`}
                 </span>
               </div>
               <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
-                <span className="font-semibold">Prijsindicatie</span>
-                <span className="text-2xl font-bold text-accent">&euro;{price.toFixed(2)}</span>
+                <span className="font-semibold">{t("priceIndication")}</span>
+                <span className="text-2xl font-bold text-accent">{formatPrice(price)}</span>
               </div>
-              <p className="mt-1 text-xs text-muted-foreground">Excl. btw &mdash; richtprijs, geen definitieve offerte.</p>
+              <p className="mt-1 text-xs text-muted-foreground">{t("priceNote")}</p>
 
               <Link
                 href={`/contact?product=geprint-tapijt&kwaliteit=${selectedQuality.label}&vorm=${shape}&breedte=${width}&lengte=${length}&diameter=${diameter}&prijsindicatie=${price.toFixed(2)}`}
                 className="mt-6 block w-full rounded-sm bg-accent px-4 py-3 text-center text-sm font-medium text-accent-foreground hover:opacity-90 transition-opacity"
               >
-                Neem contact op voor een offerte
+                {t("contactForQuote")}
               </Link>
             </div>
 
@@ -281,24 +286,23 @@ export function PrintedCarpetSimulator() {
       {showContactModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-6">
           <div className="max-w-sm rounded-sm bg-card p-8 text-center">
-            <h3 className="text-lg font-semibold">Eigen afmeting</h3>
+            <h3 className="text-lg font-semibold">{t("customTitle")}</h3>
             <p className="mt-3 text-sm text-muted-foreground">
-              Voor afwijkende afmetingen werken we op maat. Neem contact met ons op zodat we dit voor je
-              kunnen bekijken.
+              {t("customText")}
             </p>
             <div className="mt-6 flex flex-col gap-3">
               <Link
                 href="/contact"
                 className="rounded-sm bg-accent px-4 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
               >
-                Naar contactpagina
+                {t("toContact")}
               </Link>
               <button
                 type="button"
                 onClick={() => setShowContactModal(false)}
                 className="text-sm text-muted-foreground hover:text-foreground"
               >
-                Sluiten
+                {common("close")}
               </button>
             </div>
           </div>

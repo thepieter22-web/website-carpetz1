@@ -1,57 +1,58 @@
-
-import { PrintedCarpetSimulator } from '@/components/printed-carpet-simulator'
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
 import { CheckCircle2, Printer, Layers, Maximize, Image as ImageIcon } from 'lucide-react'
+import { PrintedCarpetSimulator } from '@/components/printed-carpet-simulator'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { PageHero } from '@/components/page-hero'
 import { QuoteBand } from '@/components/quote-band'
+import { localizedAlternates } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: 'Geprint tapijt & geprint vloertapijt op maat',
-  description:
-    'Geprint tapijt op maat met fotorealistische print. Tapijt bedrukken met je logo, patroon of campagne voor retail, beurzen en showrooms. Naadloos geprint vloertapijt.',
-  alternates: { canonical: '/geprint-tapijt' },
-  openGraph: {
-    title: 'Geprint tapijt & geprint vloertapijt op maat | Carpetz',
-    description:
-      'Tapijt bedrukken met je logo, patroon of campagne. Naadloos geprint vloertapijt voor retail, beurzen en showrooms.',
-    images: [{ url: '/images/printed-carpet.png', width: 1200, height: 630, alt: 'Geprint tapijt op maat van Carpetz' }],
-  },
+type Props = { params: { locale: string } }
+
+export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: 'Meta.printedCarpet' })
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: localizedAlternates(locale, '/geprint-tapijt'),
+    openGraph: {
+      title: t('ogTitle'),
+      description: t('ogDescription'),
+      images: [{ url: '/images/printed-carpet.png', width: 1200, height: 630, alt: t('ogImageAlt') }],
+    },
+  }
 }
 
-const features = [
-  { icon: Printer, title: 'Tapijt bedrukken', text: 'Fotorealistische print van logo, beelden, patronen of volledige campagnes.' },
-  { icon: Maximize, title: 'Naadloos & groot', text: 'Geprint vloertapijt voor grote oppervlakken, naadloos gelegd.' },
-  { icon: Layers, title: 'Meerdere kwaliteiten', text: 'Van tijdelijke pop-up tot permanente showroomvloer.' },
-  { icon: ImageIcon, title: 'Drukklaar advies', text: 'Wij begeleiden je van ontwerpbestand tot afgewerkt tapijt.' },
-]
+const FEATURE_ICONS = [Printer, Maximize, Layers, ImageIcon]
 
-export default function GeprintTapijtPage() {
+export default function GeprintTapijtPage({ params: { locale } }: Props) {
+  unstable_setRequestLocale(locale)
+  const t = useTranslations('PrintedCarpet')
+  const features = t.raw('features') as { title: string; text: string }[]
+  const applications = t.raw('applications') as string[]
+
   return (
     <>
       <SiteHeader />
       <main>
-                <PageHero
-          eyebrow="Geprint tapijt"
-          title="Geprint tapijt & geprint vloertapijt"
-          intro="Geef een volledige ruimte in één keer je eigen gezicht. Met geprint tapijt op maat vertaal je je merk naar de vloer — scherp, kleurvast en naadloos."
+        <PageHero
+          eyebrow={t('eyebrow')}
+          title={t('title')}
+          intro={t('intro')}
           image="/images/printed-carpet.png"
-          imageAlt="Geprint vloertapijt met kleurrijk patroon"
+          imageAlt={t('heroImageAlt')}
         />
 
-                <section className="relative px-6 lg:px-8">
+        <section className="relative px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <div className="relative z-10 ml-auto -mt-24 max-w-2xl rounded-sm border-l-4 border-accent bg-card px-8 py-7 shadow-xl lg:-mt-28 lg:px-10 lg:py-8">
               <h2 className="font-serif text-2xl font-semibold leading-tight text-balance sm:text-3xl">
-                Van neutrale vloer naar krachtig branding tapijt
+                {t('calloutTitle')}
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty">
-                Met moderne printtechnieken bedrukken we tapijt met elk visueel element &mdash; van
-                logo tot volledige campagne &mdash; naadloos over grote oppervlakken, in verschillende
-                kwaliteiten. Bereken hieronder direct een prijsindicatie.
-              </p>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty">{t('calloutText')}</p>
             </div>
           </div>
         </section>
@@ -62,34 +63,29 @@ export default function GeprintTapijtPage() {
 
         <section className="border-t border-border bg-secondary/40">
           <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-            <h2 className="font-serif text-3xl font-semibold leading-tight text-balance">Waarom geprint tapijt?</h2>
+            <h2 className="font-serif text-3xl font-semibold leading-tight text-balance">{t('whyTitle')}</h2>
             <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {features.map((f) => (
-                <div key={f.title} className="rounded-sm border border-border bg-card p-6">
-                  <span className="inline-flex size-11 items-center justify-center rounded-sm bg-accent/15 text-accent">
-                    <f.icon className="size-5" />
-                  </span>
-                  <h3 className="mt-5 text-base font-semibold">{f.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.text}</p>
-                </div>
-              ))}
+              {features.map((f, i) => {
+                const Icon = FEATURE_ICONS[i] ?? Printer
+                return (
+                  <div key={f.title} className="rounded-sm border border-border bg-card p-6">
+                    <span className="inline-flex size-11 items-center justify-center rounded-sm bg-accent/15 text-accent">
+                      <Icon className="size-5" />
+                    </span>
+                    <h3 className="mt-5 text-base font-semibold">{f.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.text}</p>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </section>
 
         <section className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-16 lg:grid-cols-2 lg:px-8">
           <div>
-            <h2 className="font-serif text-3xl font-semibold leading-tight text-balance">
-              Toepassingen voor geprint vloertapijt
-            </h2>
+            <h2 className="font-serif text-3xl font-semibold leading-tight text-balance">{t('applicationsTitle')}</h2>
             <ul className="mt-6 space-y-4 text-sm text-muted-foreground">
-              {[
-                'Retailvloeren en flagshipstores',
-                'Beursstanden en tapijt voor beurzen',
-                'Productlanceringen en experience zones',
-                'Showrooms en pop-upstores',
-                'Seizoens- en campagne-inrichtingen',
-              ].map((item) => (
+              {applications.map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-accent" />
                   {item}
@@ -100,7 +96,7 @@ export default function GeprintTapijtPage() {
           <div className="relative aspect-[4/3] overflow-hidden rounded-sm">
             <Image
               src="/images/trade-fair.png"
-              alt="Beursstand met geprint tapijt op maat als branding tapijt"
+              alt={t('applicationsImageAlt')}
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
@@ -108,7 +104,7 @@ export default function GeprintTapijtPage() {
           </div>
         </section>
 
-        <QuoteBand title="Laat jouw geprint tapijt maken" text="Bezorg ons je ontwerp en afmetingen. Wij maken een offerte voor geprint tapijt of geprint vloertapijt op maat." />
+        <QuoteBand title={t('quoteTitle')} text={t('quoteText')} />
       </main>
       <SiteFooter />
     </>

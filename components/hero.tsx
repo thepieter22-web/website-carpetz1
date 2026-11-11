@@ -42,21 +42,6 @@ export function Hero() {
               {t('cta2')}
             </Cta>
           </div>
-
-          <dl className="mt-18 grid max-w-xl grid-cols-3 gap-6 border-t border-primary-foreground/15 pt-6">
-            <div>
-              <dt className="text-3xl font-semibold text-accent">15+</dt>
-              <dd className="mt-1 text-sm text-primary-foreground/70">jaar ervaring in tapijt op maat</dd>
-            </div>
-            <div>
-              <dt className="text-3xl font-semibold text-accent">24u</dt>
-              <dd className="mt-1 text-sm text-primary-foreground/70">reactie op elke offerte-aanvraag</dd>
-            </div>
-            <div>
-              <dt className="text-3xl font-semibold text-accent">BE &amp; NL</dt>
-              <dd className="mt-1 text-sm text-primary-foreground/70">snelle levering in de Benelux</dd>
-            </div>
-          </dl>
         </div>
       </div>
     </section>

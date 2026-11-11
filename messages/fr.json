@@ -1,19 +1,1403 @@
 {
-  "Hero": {
-    "badge": "Tapis de marque pour entreprises, retail & événements",
-    "title": "Tapis-logo, tapis imprimé & tapis événementiel sur mesure",
-    "description": "Carpetz conçoit et fabrique des tapis sur mesure qui mettent littéralement votre marque en avant. Des tapis-logo et tapis imprimés aux tapis rouges sur mesure pour votre prochain salon ou événement — avec une livraison rapide en Belgique et aux Pays-Bas.",
-    "cta1": "Concevez votre logomat",
-    "cta2": "Calculez votre tapis imprimé"
+  "Meta": {
+    "defaultTitle": "Tapis logo, tapis imprimé & tapis événementiel sur mesure | Carpetz",
+    "titleTemplate": "%s | Carpetz",
+    "description": "Carpetz fabrique des tapis logo sur mesure, des tapis imprimés, des tapis événementiels et des tapis rouges sur mesure pour le retail, l’hôtellerie, les salons et les événements. Tapis à l’image de votre marque, livrés rapidement en Belgique et aux Pays-Bas.",
+    "keywords": "tapis logo sur mesure, tapis imprimé, tapis événementiel, tapis rouge sur mesure, impression sur tapis, tapis sur mesure, tapis personnalisé, tapis pour salon professionnel",
+    "ogLocale": "fr_BE",
+    "ogDescription": "Tapis logo sur mesure, tapis imprimés, tapis événementiels et tapis rouges sur mesure pour les entreprises, le retail, l’hôtellerie, les salons et les événements.",
+    "twitterDescription": "Tapis logo sur mesure, tapis imprimés, tapis événementiels et tapis rouges sur mesure, livrés rapidement en Belgique et aux Pays-Bas.",
+    "ogImageAlt": "Tapis événementiel et tapis rouge Carpetz",
+    "contact": {
+      "title": "Contact & devis",
+      "description": "Contactez Carpetz pour vos tapis logo sur mesure, tapis imprimés, tapis événementiels et tapis rouges. Demandez votre devis et recevez une réponse sous 24 heures, en Belgique et aux Pays-Bas.",
+      "ogTitle": "Contact & devis | Carpetz",
+      "ogDescription": "Demandez votre devis pour un tapis sur mesure. Recevez une réponse de l’équipe Carpetz sous 24 heures.",
+      "ogImageAlt": "Contactez Carpetz"
+    },
+    "about": {
+      "title": "À propos",
+      "description": "Carpetz est spécialiste du tapis sur mesure : tapis logo, tapis imprimés, tapis événementiels et tapis rouges. Savoir-faire, technologie d’impression moderne et conseil personnalisé en Belgique et aux Pays-Bas.",
+      "ogTitle": "À propos de Carpetz | Spécialiste du tapis sur mesure",
+      "ogDescription": "Carpetz allie savoir-faire et technologie d’impression moderne pour des tapis logo, tapis imprimés et tapis événementiels sur mesure.",
+      "ogImageAlt": "Le savoir-faire Carpetz"
+    },
+    "printedCarpet": {
+      "title": "Tapis imprimé & moquette imprimée sur mesure",
+      "description": "Tapis imprimé sur mesure avec une impression photoréaliste. Faites imprimer votre logo, un motif ou votre campagne sur tapis pour le retail, les salons et les showrooms. Moquette imprimée sans raccord.",
+      "ogTitle": "Tapis imprimé & moquette imprimée sur mesure | Carpetz",
+      "ogDescription": "Faites imprimer votre logo, un motif ou votre campagne sur tapis. Moquette imprimée sans raccord pour le retail, les salons et les showrooms.",
+      "ogImageAlt": "Tapis imprimé sur mesure Carpetz"
+    },
+    "event": {
+      "title": "Tapis événementiel & tapis rouge sur mesure",
+      "description": "Tapis événementiels et tapis rouges sur mesure pour mariages, anniversaires, galas et événements d’entreprise. Dans toutes les couleurs et toutes les dimensions, livrés rapidement en Belgique et aux Pays-Bas.",
+      "ogTitle": "Tapis événementiel & tapis rouge sur mesure | Carpetz",
+      "ogDescription": "Tapis événementiels et tapis rouges sur mesure pour mariages, anniversaires, galas et événements. Dans toutes les couleurs et toutes les dimensions.",
+      "ogImageAlt": "Tapis rouge sur mesure Carpetz"
+    },
+    "logomat": {
+      "title": "Faire réaliser un tapis logo sur mesure",
+      "description": "Tapis logo sur mesure avec impression quadrichromie nette de votre logo. Résistant à l’usure, antidérapant et lavable. Un tapis à l’image de votre marque pour chaque entrée, livré rapidement en Belgique et aux Pays-Bas.",
+      "ogTitle": "Faire réaliser un tapis logo sur mesure | Carpetz",
+      "ogDescription": "Tapis logo sur mesure avec impression nette de votre logo. Résistant à l’usure, antidérapant et lavable, pour chaque entrée.",
+      "ogImageAlt": "Tapis logo sur mesure Carpetz"
+    },
+    "compare": {
+      "title": "Comparez nos tapis logo — Go, Green, Studio, Pro, Grip & Scrape",
+      "description": "Comparez tous les tapis logo Carpetz selon le matériau, le poids et l’usage. Trouvez rapidement la qualité adaptée à votre tapis logo intérieur ou extérieur."
+    },
+    "matType": {
+      "title": "Tapis logo {name} sur mesure"
+    },
+    "terms": {
+      "title": "Conditions générales"
+    },
+    "privacy": {
+      "title": "Politique de confidentialité"
+    },
+    "returns": {
+      "title": "Politique de retour"
+    },
+    "success": {
+      "title": "Merci pour votre commande"
+    },
+    "countryBE": "Belgique",
+    "countryNL": "Pays-Bas",
+    "catalogName": "Tapis sur mesure",
+    "inLanguage": "fr-BE"
   },
-
+  "Common": {
+    "requestQuote": "Demandez votre devis",
+    "contactUs": "Contactez-nous",
+    "replyWithin24h": "Réponse sous 24 heures",
+    "startConfigurator": "Lancer le configurateur",
+    "close": "Fermer",
+    "exclVat": "Hors TVA",
+    "inclVat": "TVA comprise"
+  },
   "Header": {
     "home": "Accueil",
-    "logomatten": "Tapis-logo",
+    "logomatten": "Tapis logo",
     "geprintTapijt": "Tapis imprimé",
     "eventTapijt": "Tapis événementiel",
     "overOns": "À propos",
     "contact": "Contact",
-    "offerte": "Demandez votre devis"
+    "offerte": "Demandez votre devis",
+    "homeAria": "Accueil Carpetz",
+    "mainNav": "Navigation principale",
+    "mobileNav": "Navigation mobile",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "language": "Choisir la langue"
+  },
+  "Footer": {
+    "tagline": "Spécialiste des tapis logo sur mesure, tapis imprimés, tapis événementiels et tapis rouges sur mesure pour les entreprises, le retail, l’hôtellerie, les salons et les événements en Belgique et aux Pays-Bas.",
+    "products": "Produits",
+    "company": "Entreprise",
+    "contact": "Contact",
+    "logomats": "Tapis logo sur mesure",
+    "printedCarpet": "Tapis imprimé",
+    "eventCarpet": "Tapis événementiel & tapis rouges",
+    "about": "À propos",
+    "contactQuote": "Contact & devis",
+    "address": "Berkenlaan 1D, 9840 De Pinte, Belgique",
+    "rights": "Tous droits réservés.",
+    "terms": "Conditions générales",
+    "privacy": "Politique de confidentialité",
+    "returns": "Politique de retour",
+    "cookieSettings": "Paramètres des cookies"
+  },
+  "Hero": {
+    "badge": "Tapis à l’image de votre marque pour entreprises, retail & événements",
+    "title": "Tapis logo, tapis imprimé & tapis événementiel sur mesure",
+    "description": "Carpetz conçoit et fabrique des tapis sur mesure qui mettent votre marque en avant, au sens propre. Des tapis logo et tapis imprimés aux tapis rouges sur mesure pour votre prochain salon ou événement — avec une livraison rapide en Belgique et aux Pays-Bas.",
+    "cta1": "Créez votre tapis logo",
+    "cta2": "Calculez votre tapis imprimé"
+  },
+  "UspTicker": {
+    "label": "Pourquoi nos clients choisissent Carpetz",
+    "items": [
+      "Livraison rapide en Belgique & aux Pays-Bas",
+      "De nombreux clients fidèles qui nous font confiance",
+      "Une production de qualité, soignée dans les moindres détails",
+      "Un large portfolio de réalisations sur mesure",
+      "Une expertise pointue en tapis imprimé"
+    ]
+  },
+  "QuoteBand": {
+    "title": "Prêt pour votre tapis sur mesure ?",
+    "text": "Parlez-nous de votre projet et recevez un devis sans engagement. Notre équipe vous conseille sur le matériau, le format, l’impression et la livraison."
+  },
+  "Guarantees": {
+    "items": [
+      {
+        "subtitle": "Toujours net",
+        "title": "Garantie dimensions & couleurs",
+        "description": "Nous garantissons que votre tapis logo a les bonnes dimensions et des couleurs fidèles — sinon, nous l’adaptons gratuitement."
+      },
+      {
+        "subtitle": "Garantie qualité de 100 jours",
+        "title": "Usure & décoloration couvertes",
+        "description": "Votre tapis logo présente une usure ou une décoloration anormale dans les 100 jours ? Nous le réparons ou le remplaçons gratuitement."
+      },
+      {
+        "subtitle": "Un aspect qui dure",
+        "title": "Garantie qualité bordure & couleur",
+        "description": "Bordure antidérapante et tenue des couleurs garanties, même après un usage intensif."
+      }
+    ]
+  },
+  "Home": {
+    "intro": {
+      "title": "Tapis logo",
+      "text": "Pour magasins, bureaux, hôtels et halls d’entrée."
+    },
+    "logomats": {
+      "eyebrow": "Tapis logo",
+      "title": "Tapis logo sur mesure",
+      "text": "Un tapis logo est la carte de visite de votre entreprise. Nos tapis logo sur mesure sont réalisés avec une impression photoréaliste ou un motif tissé, pour un logo net, aux couleurs durables et d’aspect professionnel — jour après jour. Idéal comme tapis d’entrée anti-salissures : fonctionnel et représentatif. Vous choisissez le format, la forme, le dossier antidérapant et la finition des bords.",
+      "whyTitle": "Pourquoi un tapis logo Carpetz ?",
+      "link": "Découvrir les tapis logo",
+      "imageAlt": "Tapis logo sur mesure avec logo d’entreprise tissé dans un velours dense"
+    },
+    "printed": {
+      "eyebrow": "Tapis imprimé",
+      "title": "Tapis imprimé & moquette imprimée",
+      "text": "Avec un tapis imprimé, vous donnez d’un seul coup votre propre identité à tout un espace. Grâce aux techniques d’impression modernes, nous imprimons sur tapis des images photographiques, des motifs, des aplats de couleur ou votre campagne complète. Un sol neutre devient ainsi un puissant support de marque. Notre moquette imprimée se pose sans raccord sur de grandes surfaces et convient aussi bien à un pop-up temporaire qu’à un showroom permanent.",
+      "applicationsTitle": "Applications du tapis imprimé",
+      "applicationsText": "Surfaces commerciales, stands de salon, lancements de produits, campagnes saisonnières et espaces expérientiels : partout où vous souhaitez immerger vos visiteurs dans votre marque, le tapis imprimé sur mesure est la solution. Nous vous accompagnons du fichier prêt à imprimer jusqu’au tapis fini.",
+      "link": "Découvrir le tapis imprimé",
+      "imageAlt": "Moquette imprimée à motif coloré dans un showroom moderne"
+    },
+    "event": {
+      "eyebrow": "Tapis événementiel",
+      "title": "Tapis événementiel & tapis rouges sur mesure",
+      "text": "Un événement commence à l’entrée. Avec nos tapis événementiels et tapis rouges sur mesure, vous créez d’emblée la bonne ambiance — de l’avant-première glamour au lancement d’entreprise épuré. Nous livrons des tapis pour événements dans toutes les couleurs et toutes les dimensions, avec la possibilité d’y intégrer votre logo ou votre message. Même le passage devient ainsi une partie de votre histoire.",
+      "subTitle": "Du salon au gala",
+      "subText": "Nos tapis pour salons et événements se posent rapidement, offrent une finition soignée et sont réutilisables si vous le souhaitez. Idéal pour les organisateurs qui voient grand sans rien céder sur la qualité ni sur l’image.",
+      "link": "Découvrir le tapis événementiel",
+      "imageAlt": "Tapis rouge sur mesure sous des projecteurs lors d’un événement exclusif"
+    },
+    "why": {
+      "eyebrow": "Pourquoi Carpetz ?",
+      "title": "Votre tapis, de l’idée à votre porte",
+      "text": "Vous nous envoyez votre logo ou une simple esquisse, nous vous conseillons et réalisons une maquette. Nous n’imprimons que lorsque vous êtes satisfait. Une question ou un délai serré ? Appelez-nous ou envoyez-nous un message, et nous trouverons ensemble une solution.",
+      "usps": [
+        {
+          "title": "Votre design, vos couleurs",
+          "text": "Nous imprimons votre logo dans les bonnes couleurs, pour que votre tapis s’accorde parfaitement au reste de votre identité visuelle."
+        },
+        {
+          "title": "Petit ou grand, tout est possible",
+          "text": "Un tapis pour votre porte d’entrée ou un sol complet pour votre stand : donnez-nous les dimensions, nous nous occupons du reste."
+        },
+        {
+          "title": "Livré rapidement",
+          "text": "Nous livrons dans toute la Belgique et aux Pays-Bas. Vous avez besoin de votre tapis pour une date précise ? Dites-le-nous."
+        },
+        {
+          "title": "Conçu pour durer",
+          "text": "Des fibres robustes qui résistent à un usage intensif. Un coup d’aspirateur et votre tapis retrouve son aspect neuf."
+        }
+      ]
+    },
+    "applications": {
+      "eyebrow": "Applications",
+      "title": "Un tapis sur mesure pour chaque secteur",
+      "text": "Des entreprises de secteurs très variés font confiance à Carpetz pour leurs tapis logo, tapis imprimés et tapis événementiels. Découvrez où nos tapis sur mesure font la différence.",
+      "items": [
+        {
+          "title": "Retail",
+          "text": "Attirez vos clients avec des tapis logo et des tapis imprimés dans votre magasin ou flagship store."
+        },
+        {
+          "title": "Hôtels",
+          "text": "Accueillez vos hôtes avec un tapis sur mesure élégant dans le lobby, les couloirs et les suites."
+        },
+        {
+          "title": "Salons",
+          "text": "Démarquez-vous avec un tapis de salon qui rend votre stand reconnaissable et accueillant."
+        },
+        {
+          "title": "Événements",
+          "text": "Donnez le ton avec des tapis événementiels et des tapis rouges sur mesure, pour chaque occasion."
+        },
+        {
+          "title": "Showrooms",
+          "text": "Présentez vos produits sur une moquette imprimée parfaitement assortie à votre marque."
+        },
+        {
+          "title": "Bureaux",
+          "text": "Renforcez votre identité d’entreprise avec un tapis logo sur mesure à chaque entrée."
+        }
+      ]
+    },
+    "durability": {
+      "eyebrow": "Durabilité & entretien",
+      "title": "Conçu pour durer",
+      "text": "Chez nous, la durabilité se trouve dans le matériau comme dans l’usage. Nous travaillons avec des fibres résistantes à l’usure, aux couleurs durables, et des dossiers recyclables, pour que votre tapis sur mesure reste présentable même après un usage intensif. Nos tapis logo se nettoient facilement et sont lavables ; le tapis imprimé repousse la poussière et s’entretient sans effort.",
+      "colorfastTitle": "Couleurs durables & résistant à l’usure",
+      "colorfastText": "Conserve des couleurs vives et sa forme pendant des années.",
+      "recyclableTitle": "Recyclable",
+      "recyclableText": "Des dossiers et des fibres respectueux de l’environnement.",
+      "imageAlt": "Un artisan contrôle un rouleau de tapis imprimé sur mesure en production"
+    },
+    "delivery": {
+      "title": "Livraison rapide en Belgique & aux Pays-Bas",
+      "text": "Les échéances d’un salon, d’une inauguration ou d’un événement ne se reportent pas. C’est pourquoi nous gardons des délais de production courts et livrons nos tapis sur mesure de manière fiable dans tout le Benelux. Demandez votre devis et recevez sous 24 heures une réponse de notre équipe, avec une date de livraison réaliste pour vos tapis logo, tapis imprimés ou tapis événementiels."
+    }
+  },
+  "Contact": {
+    "eyebrow": "Contact & devis",
+    "title": "Demandez votre devis",
+    "intro": "Parlez-nous de votre projet et recevez une réponse sous 24 heures. Notre équipe vous conseille sur le matériau, le format, l’impression et la livraison de votre tapis sur mesure.",
+    "imageAlt": "Contactez Carpetz pour un tapis sur mesure",
+    "contactTitle": "Contactez-nous",
+    "contactText": "Vous préférez un contact personnel ? N’hésitez pas à nous appeler ou à nous écrire. Nous vous aidons volontiers pour vos tapis logo sur mesure, tapis imprimés, tapis événementiels et tapis rouges sur mesure.",
+    "phone": "Téléphone",
+    "email": "E-mail",
+    "address": "Adresse",
+    "addressValue": "Berkenlaan 1D, 9840 De Pinte, Belgique",
+    "openingHours": "Heures d’ouverture",
+    "openingHoursValue": "Lun – Ven, 08 h 30 – 17 h 30",
+    "replyText": "Chaque demande de devis reçoit une réponse personnalisée de notre équipe dans un délai d’un jour ouvrable.",
+    "formTitle": "Demander un devis",
+    "formText": "Remplissez le formulaire et nous vous recontacterons rapidement."
+  },
+  "ContactForm": {
+    "products": {
+      "logomats": "Tapis logo sur mesure",
+      "printedCarpet": "Tapis imprimé",
+      "eventCarpet": "Tapis événementiel",
+      "redCarpet": "Tapis rouge sur mesure",
+      "other": "Autre"
+    },
+    "prefill": {
+      "productLabels": {
+        "geprint-tapijt": "un tapis imprimé",
+        "trouwloper": "un tapis de mariage",
+        "verjaardagsloper": "un tapis d’anniversaire",
+        "feestloper": "un tapis de fête"
+      },
+      "interest": "Je suis intéressé(e) par {product}",
+      "quality": " (qualité : {quality})",
+      "diameter": " d’un diamètre de {diameter} m",
+      "size": " de {length} m x {width} m",
+      "price": " (prix indicatif {price} €)",
+      "closing": ". Je souhaiterais recevoir un devis personnalisé."
+    },
+    "successTitle": "Merci pour votre demande !",
+    "successText": "Nous avons bien reçu votre demande et vous recontacterons sous 24 heures avec une réponse sur mesure.",
+    "name": "Nom",
+    "namePlaceholder": "Votre nom",
+    "company": "Entreprise",
+    "companyPlaceholder": "Votre entreprise",
+    "email": "E-mail",
+    "emailPlaceholder": "vous@entreprise.be",
+    "phone": "Téléphone",
+    "phonePlaceholder": "+32 ...",
+    "subject": "Quel est l’objet de votre demande ?",
+    "message": "Votre message",
+    "messagePlaceholder": "Parlez-nous de votre projet : format, quantité, date de livraison souhaitée...",
+    "sending": "Envoi en cours...",
+    "submit": "Demandez votre devis",
+    "privacyNote": "Nous répondons à votre demande sous 24 heures. Vos données sont traitées de manière confidentielle."
+  },
+  "About": {
+    "eyebrow": "À propos",
+    "title": "Spécialiste du tapis sur mesure",
+    "intro": "Carpetz aide les entreprises, les commerçants, les hôtels et les organisateurs à donner vie à leur marque avec des tapis logo, des tapis imprimés, des tapis événementiels et des tapis rouges sur mesure.",
+    "heroImageAlt": "Production de tapis imprimé sur mesure chez Carpetz",
+    "storyTitle": "Le savoir-faire rencontre l’impression moderne",
+    "story1": "Carpetz est né d’une conviction simple : le sol est l’un des supports de marque les plus forts, mais aussi les plus sous-estimés. Depuis plus de quinze ans, nous traduisons cette conviction en tapis sur mesure qui renforcent les marques. Nous associons une longue expérience du tapis aux technologies d’impression les plus récentes, pour livrer des tapis logo, des tapis imprimés et des tapis événementiels aussi fonctionnels que remarquables.",
+    "story2": "Nos clients apprécient avant tout notre approche personnalisée. De la première maquette à la livraison finale, vous disposez d’un interlocuteur unique qui vous conseille sur le matériau, le format, l’impression et le planning. Vous avez ainsi la certitude que votre tapis remplit parfaitement son rôle — faire forte impression.",
+    "storyImageAlt": "Tapis sur mesure élégant dans le lobby d’un hôtel de luxe",
+    "valuesTitle": "Nos valeurs",
+    "values": [
+      {
+        "title": "Orienté marque",
+        "text": "Chaque projet part de votre marque et de vos objectifs."
+      },
+      {
+        "title": "Personnel",
+        "text": "Un interlocuteur unique, de la conception à la livraison."
+      },
+      {
+        "title": "Qualité",
+        "text": "Savoir-faire et impression nette dans chaque détail."
+      },
+      {
+        "title": "Durable",
+        "text": "Des matériaux résistants et recyclables en standard."
+      }
+    ],
+    "quoteTitle": "Travaillez avec Carpetz",
+    "quoteText": "Curieux de savoir ce que nous pouvons faire pour votre marque ? Demandez sans engagement votre devis pour un tapis sur mesure."
+  },
+  "PrintedCarpet": {
+    "eyebrow": "Tapis imprimé",
+    "title": "Tapis imprimé & moquette imprimée",
+    "intro": "Donnez d’un seul coup votre identité à tout un espace. Avec un tapis imprimé sur mesure, vous transposez votre marque au sol — net, aux couleurs durables et sans raccord.",
+    "heroImageAlt": "Moquette imprimée à motif coloré",
+    "calloutTitle": "D’un sol neutre à un puissant support de marque",
+    "calloutText": "Grâce aux techniques d’impression modernes, nous imprimons sur tapis n’importe quel élément visuel — du logo à la campagne complète — sans raccord sur de grandes surfaces et en plusieurs qualités. Calculez ci-dessous une estimation de prix.",
+    "whyTitle": "Pourquoi un tapis imprimé ?",
+    "features": [
+      {
+        "title": "Impression sur tapis",
+        "text": "Impression photoréaliste de logos, images, motifs ou campagnes complètes."
+      },
+      {
+        "title": "Sans raccord & grand format",
+        "text": "Moquette imprimée pour grandes surfaces, posée sans raccord."
+      },
+      {
+        "title": "Plusieurs qualités",
+        "text": "Du pop-up temporaire au sol de showroom permanent."
+      },
+      {
+        "title": "Conseil prépresse",
+        "text": "Nous vous accompagnons du fichier de conception jusqu’au tapis fini."
+      }
+    ],
+    "applicationsTitle": "Applications de la moquette imprimée",
+    "applications": [
+      "Surfaces commerciales et flagship stores",
+      "Stands et tapis pour salons professionnels",
+      "Lancements de produits et espaces expérientiels",
+      "Showrooms et boutiques éphémères",
+      "Aménagements saisonniers et de campagne"
+    ],
+    "applicationsImageAlt": "Stand de salon avec tapis imprimé sur mesure aux couleurs de la marque",
+    "quoteTitle": "Faites réaliser votre tapis imprimé",
+    "quoteText": "Envoyez-nous votre design et vos dimensions. Nous établissons un devis pour votre tapis imprimé ou votre moquette imprimée sur mesure."
+  },
+  "CarpetSimulator": {
+    "title": "Calculez une estimation de prix",
+    "intro": "Choisissez une qualité, une forme et des dimensions, et chargez éventuellement un motif pour vous faire une idée du résultat. Il s’agit d’une estimation — pour un devis définitif, nous prenons volontiers contact avec vous personnellement.",
+    "quality": "Qualité",
+    "qualities": {
+      "velvet": "Doux et luxueux, idéal pour les showrooms.",
+      "globosoft": "Durable et résistant, pour un usage intensif.",
+      "pxl": "Impression photoréaliste la plus nette, qualité premium."
+    },
+    "pattern": "Motif (facultatif)",
+    "removePattern": "Supprimer le motif",
+    "uploadPattern": "Chargez un motif répétitif",
+    "shape": "Forme",
+    "rectangle": "Rectangle",
+    "circle": "Cercle",
+    "width": "Largeur",
+    "length": "Longueur",
+    "meter": "mètre(s)",
+    "diameter": "Diamètre",
+    "custom": "Autre dimension",
+    "dimensions": "Dimensions",
+    "priceIndication": "Estimation de prix",
+    "priceNote": "Hors TVA — prix indicatif, pas un devis définitif.",
+    "contactForQuote": "Contactez-nous pour un devis",
+    "customTitle": "Dimension sur mesure",
+    "customText": "Pour des dimensions particulières, nous travaillons sur mesure. Contactez-nous afin que nous puissions étudier votre demande.",
+    "toContact": "Vers la page contact"
+  },
+  "Event": {
+    "eyebrow": "Tapis événementiel",
+    "title": "Tapis événementiel & tapis rouges sur mesure",
+    "intro": "Un événement commence à l’entrée. D’un anniversaire ou d’un mariage à un gala ou un stand de salon — avec un tapis rouge ou un tapis événementiel sur mesure, vous créez d’emblée la bonne ambiance.",
+    "heroImageAlt": "Tapis rouge sur mesure lors d’un événement exclusif",
+    "calloutTitle": "Des tapis événementiels qui font impression",
+    "calloutText": "D’un anniversaire ou d’un mariage à une avant-première, un gala ou un stand de salon : nos tapis rouges et tapis événementiels sur mesure s’adaptent à votre occasion, avec votre logo, un nom ou un message intégré.",
+    "wedding": {
+      "eyebrow": "Tapis de mariage sur mesure",
+      "title": "Un tapis de mariage à votre image",
+      "description": "Faites imprimer vos prénoms, la date ou un message personnel sur le tapis qui rendra votre journée inoubliable.",
+      "imageAlt": "Tapis de mariage sur mesure avec prénoms et date, décoré de fleurs et de bougies",
+      "details": [
+        {
+          "title": "Vos prénoms",
+          "text": "Ou vos initiales"
+        },
+        {
+          "title": "La date",
+          "text": "Votre jour unique"
+        },
+        {
+          "title": "Votre texte",
+          "text": "Une citation, une promesse ou un message"
+        }
+      ],
+      "taglineTitle": "Votre rêve, notre impression.",
+      "taglineSubtitle": "Unique comme votre amour."
+    },
+    "birthday": {
+      "eyebrow": "Tapis d’anniversaire sur mesure",
+      "title": "Chaque fête mérite une entrée",
+      "description": "Du « Joyeux anniversaire » à l’âge du jubilaire ou à un texte personnel : le tapis d’entrée peut être entièrement imprimé sur mesure, exactement comme vous le souhaitez.",
+      "imageAlt": "Tapis d’anniversaire sur mesure avec un texte festif",
+      "details": [
+        {
+          "title": "Joyeux anniversaire",
+          "text": "Comme message d’accueil festif"
+        },
+        {
+          "title": "L’âge",
+          "text": "En grand, bien en vue"
+        },
+        {
+          "title": "Texte personnel",
+          "text": "Le message de votre choix"
+        }
+      ],
+      "freeformNote": "Ce ne sont que des exemples — tout est possible et entièrement personnalisable.",
+      "taglineTitle": "Votre fête, votre style.",
+      "taglineSubtitle": "Inoubliable dès le premier pas."
+    },
+    "party": {
+      "eyebrow": "Tapis de fête sur mesure",
+      "title": "Rendez votre fête unique",
+      "description": "Communion, gala, jubilé ou événement d’entreprise : avec un tapis sur mesure, vous donnez à chaque moment une touche unique et personnelle dès le premier pas.",
+      "imageAlt": "Tapis de fête sur mesure pour une communion, un gala ou un événement",
+      "details": [
+        {
+          "title": "Chaque occasion",
+          "text": "Communion, gala, jubilé ou événement d’entreprise"
+        },
+        {
+          "title": "Votre thème ou logo",
+          "text": "Couleur, style et message entièrement à votre goût"
+        },
+        {
+          "title": "Texte personnel",
+          "text": "Un nom, une date ou une citation qui immortalise le moment"
+        }
+      ],
+      "freeformNote": "Parlez-nous de votre occasion et nous vous aiderons à imaginer le design parfait.",
+      "taglineTitle": "Chaque fête, votre style.",
+      "taglineSubtitle": "Unique dès le tout premier pas."
+    },
+    "featuresTitle": "Les atouts de nos tapis événementiels",
+    "features": [
+      {
+        "title": "Toutes couleurs & dimensions",
+        "text": "Du rouge classique à la couleur de votre marque, dans tous les formats."
+      },
+      {
+        "title": "Logo intégré",
+        "text": "Ajoutez votre logo ou votre message à votre tapis événementiel ou à votre tapis de passage."
+      },
+      {
+        "title": "Pose rapide",
+        "text": "Une finition soignée, prête à temps pour votre événement."
+      },
+      {
+        "title": "Réutilisable",
+        "text": "Un tapis de qualité que vous pouvez utiliser plusieurs fois."
+      }
+    ],
+    "typesImageAlt": "Tapis de salon sur un stand moderne",
+    "typesTitle": "Pour tous les types d’événements",
+    "types": [
+      "Anniversaires et mariages",
+      "Avant-premières, galas et cérémonies de remise de prix",
+      "Lancements d’entreprise et conférences de presse",
+      "Inaugurations et jubilés",
+      "Salons et tapis pour stands",
+      "Festivals et événements grand public"
+    ],
+    "quoteTitle": "Réservez votre tapis rouge sur mesure",
+    "quoteText": "Parlez-nous de votre événement ou de votre grand jour, de la date et des dimensions souhaitées. Nous vous envoyons rapidement un devis pour un tapis événementiel ou un tapis rouge sur mesure."
+  },
+  "RunnerHighlight": {
+    "example": "Exemple : {length} m × {width} m — prix indicatif à partir de",
+    "priceNote": "Hors TVA — sur la base de la qualité standard.",
+    "cta": "Demandez votre devis personnalisé"
+  },
+  "Logomat": {
+    "eyebrow": "Tapis logo",
+    "title": "Tapis logo sur mesure",
+    "intro": "Accueillez vos visiteurs avec un tapis logo sur mesure qui met immédiatement votre marque en avant. Fonctionnel comme tapis anti-salissures, représentatif comme carte de visite.",
+    "heroImageAlt": "Tapis logo sur mesure avec logo d’entreprise tissé",
+    "calloutTitle": "Créez votre tapis logo sur mesure",
+    "calloutText": "Chargez votre logo, choisissez la couleur et les dimensions, et commandez directement en ligne. Nous imprimons votre logo sur tapis avec une qualité photoréaliste, pour des couleurs nettes et reconnaissables — même après des années d’usage intensif.",
+    "compareLink": "Vous hésitez ? Comparez nos qualités",
+    "quoteTitle": "Commandez votre tapis logo sur mesure",
+    "quoteText": "Envoyez-nous votre logo et le format souhaité. Nous vous faisons parvenir un devis sans engagement pour vos tapis logo sur mesure."
+  },
+  "Compare": {
+    "eyebrow": "Tapis logo",
+    "title": "Comparez nos tapis logo",
+    "intro": "Chaque type de tapis logo a ses propres atouts. Comparez le matériau, le poids et l’usage, et trouvez rapidement la qualité adaptée à votre situation.",
+    "heroImageAlt": "Aperçu des tapis logo Carpetz",
+    "indoorTitle": "Tapis logo d’intérieur",
+    "outdoorTitle": "Tapis logo d’extérieur",
+    "feature": "Caractéristique",
+    "positioning": "Positionnement",
+    "material": "Matériau",
+    "weight": "Poids",
+    "fire": "Réaction au feu",
+    "underfloorHeating": "Chauffage par le sol",
+    "usage": "Usage",
+    "idealFor": "Idéal pour",
+    "quoteTitle": "Encore des doutes ?",
+    "quoteText": "Contactez-nous et nous vous aiderons volontiers à choisir le tapis logo adapté à votre situation."
+  },
+  "MatTypePage": {
+    "eyebrow": "TAPIS LOGO • {tagline}",
+    "heroAlt": "Photo de détail du {name}",
+    "properties": "Caractéristiques",
+    "specs": "Fiche technique",
+    "feature": "Caractéristique",
+    "property": "Valeur",
+    "references": "Nos réalisations",
+    "referenceAlt": "Réalisation tapis logo {number}",
+    "ctaTitle": "Créez votre {name}",
+    "ctaText": "Chargez votre logo et visualisez immédiatement votre tapis logo."
+  },
+  "MatTypes": {
+    "go": {
+      "title": "Carpetz Go",
+      "tagline": "Modèle d’entrée de gamme",
+      "description": "Carpetz Go est notre tapis logo accessible, pour ceux qui recherchent un tapis fiable et nettement imprimé sans transiger sur la qualité de base. Idéal pour les entreprises qui veulent soigner leur entrée avec un budget limité.",
+      "whyChoose": {
+        "text": "Carpetz Go est le choix malin pour faire rapidement et à moindre coût une première impression professionnelle, sans transiger sur la qualité de base. Parfait pour les entreprises qui testent leur premier tapis logo, disposent d’un budget limité ou ont besoin d’un tapis pour un site temporaire ou un pop-up.",
+        "idealFor": [
+          "Starters & PME",
+          "Boutiques éphémères",
+          "Sites temporaires",
+          "Budget limité"
+        ]
+      },
+      "features": {
+        "material": {
+          "label": "Matériau",
+          "value": "Min. 75 % de nylon recyclé"
+        },
+        "backing": {
+          "label": "Dossier",
+          "value": "Caoutchouc nitrile sans phtalates"
+        },
+        "usage": {
+          "label": "Usage",
+          "value": "Intérieur"
+        },
+        "fire": {
+          "label": "Réaction au feu",
+          "value": "EN13501-1 / Cfl-s1"
+        },
+        "underfloorHeating": {
+          "label": "Chauffage par le sol",
+          "value": "Compatible"
+        },
+        "moisture": {
+          "label": "Absorption d’humidité",
+          "value": "2 – 3 l/m²"
+        },
+        "colorfastness": {
+          "label": "Tenue des couleurs",
+          "value": "Résistant à la lumière et à la décoloration"
+        },
+        "origin": {
+          "label": "Origine",
+          "value": "Fabriqué en Europe"
+        }
+      },
+      "specs": {
+        "weight": {
+          "label": "Poids",
+          "value": "1,9 kg/m²"
+        },
+        "edges": {
+          "label": "Bordures",
+          "value": "0 ou 10 mm"
+        },
+        "backing": {
+          "label": "Dossier",
+          "value": "100 % caoutchouc nitrile sans phtalates"
+        },
+        "backingThickness": {
+          "label": "Épaisseur du dossier",
+          "value": "0,9 mm"
+        },
+        "edgeThickness": {
+          "label": "Épaisseur de la bordure",
+          "value": "1,9 mm"
+        },
+        "dirtAbsorption": {
+          "label": "Rétention de la saleté",
+          "value": "470 g/m²"
+        },
+        "moistureAbsorption": {
+          "label": "Absorption d’humidité",
+          "value": "2 – 3 l/m²"
+        },
+        "pile": {
+          "label": "Velours",
+          "value": "Nylon PA 6.6 high-twist (min. 75 % recyclé)"
+        },
+        "pileWeight": {
+          "label": "Poids du velours",
+          "value": "630 g/m²"
+        },
+        "pileHeight": {
+          "label": "Hauteur du velours",
+          "value": "± 6 mm"
+        },
+        "matHeight": {
+          "label": "Hauteur du tapis",
+          "value": "± 7 mm"
+        },
+        "fire": {
+          "label": "Réaction au feu",
+          "value": "EN13501-1 / Cfl-s1"
+        }
+      }
+    },
+    "green": {
+      "title": "Carpetz Green",
+      "tagline": "Durable",
+      "description": "Carpetz Green allie un faible impact environnemental à de solides performances. Fabriqué à partir d’au moins 75 % de matériaux recyclés, sans compromis sur la résistance au glissement ni sur la durabilité.",
+      "whyChoose": {
+        "text": "Votre organisation fait le choix conscient de la durabilité ? Carpetz Green est fabriqué avec au moins 75 % de matériaux recyclés, sans compromis sur la résistance au glissement ni sur la longévité. Vous communiquez ainsi votre marque et vos valeurs dès le tout premier pas dans vos locaux.",
+        "idealFor": [
+          "Entreprises engagées en RSE",
+          "Commerces écoresponsables",
+          "Organisations qui affichent leur durabilité"
+        ]
+      },
+      "features": {
+        "material": {
+          "label": "Matériau",
+          "value": "Min. 75 % de nylon recyclé"
+        },
+        "backing": {
+          "label": "Dossier",
+          "value": "Caoutchouc nitrile sans phtalates"
+        },
+        "slipResistance": {
+          "label": "Résistance au glissement",
+          "value": "NFSI High-Traction"
+        },
+        "antistatic": {
+          "label": "Antistatique",
+          "value": "EN14041"
+        },
+        "fire": {
+          "label": "Réaction au feu",
+          "value": "EN13501-1 / Cfl-s1"
+        },
+        "underfloorHeating": {
+          "label": "Chauffage par le sol",
+          "value": "Compatible"
+        },
+        "moisture": {
+          "label": "Absorption d’humidité",
+          "value": "3 – 4 l/m²"
+        },
+        "origin": {
+          "label": "Origine",
+          "value": "Fabriqué en Europe"
+        }
+      },
+      "specs": {
+        "weight": {
+          "label": "Poids",
+          "value": "2,43 kg/m²"
+        },
+        "edges": {
+          "label": "Bordures",
+          "value": "20 mm"
+        },
+        "backing": {
+          "label": "Dossier",
+          "value": "100 % caoutchouc nitrile sans phtalates"
+        },
+        "backingThickness": {
+          "label": "Épaisseur du dossier",
+          "value": "1,4 mm"
+        },
+        "edgeThickness": {
+          "label": "Épaisseur de la bordure",
+          "value": "2,4 mm"
+        },
+        "dirtAbsorption": {
+          "label": "Rétention de la saleté",
+          "value": "600 g/m²"
+        },
+        "moistureAbsorption": {
+          "label": "Absorption d’humidité",
+          "value": "3 – 4 l/m²"
+        },
+        "pile": {
+          "label": "Velours",
+          "value": "Nylon PA 6.6 high-twist (min. 75 % recyclé)"
+        },
+        "pileWeight": {
+          "label": "Poids du velours",
+          "value": "730 g/m²"
+        },
+        "pileHeight": {
+          "label": "Hauteur du velours",
+          "value": "± 8 mm"
+        },
+        "matHeight": {
+          "label": "Hauteur du tapis",
+          "value": "± 9 mm"
+        },
+        "slipResistance": {
+          "label": "Résistance au glissement",
+          "value": "NFSI High-Traction"
+        },
+        "fire": {
+          "label": "Réaction au feu",
+          "value": "EN13501-1 / Cfl-s1"
+        }
+      }
+    },
+    "studio": {
+      "title": "Carpetz Studio",
+      "tagline": "La plus belle qualité d’impression",
+      "description": "Carpetz Studio offre l’impression la plus nette et la plus colorée de notre gamme. Avec 100 couleurs standard et une impression haute définition, vous donnez vie aussi bien à des images photoréalistes qu’à des logos complexes.",
+      "whyChoose": {
+        "text": "Vous voulez plus qu’un logo — un véritable accroche-regard ? Carpetz Studio offre l’impression la plus nette et la plus colorée de notre gamme, avec 100 couleurs standard. Idéal pour les images photoréalistes ou les designs complexes qui doivent être parfaits jusque dans les moindres détails.",
+        "idealFor": [
+          "Flagship stores",
+          "Hôtellerie & restauration",
+          "Campagnes riches en couleurs ou en détails"
+        ]
+      },
+      "features": {
+        "colors": {
+          "label": "Couleurs",
+          "value": "100 couleurs standard"
+        },
+        "material": {
+          "label": "Matériau",
+          "value": "100 % PET recyclé"
+        },
+        "backing": {
+          "label": "Dossier",
+          "value": "Caoutchouc nitrile (34 % recyclé)"
+        },
+        "staticTested": {
+          "label": "Testé électrostatique",
+          "value": "ISO 6356, -0,3 kV"
+        },
+        "fire": {
+          "label": "Réaction au feu",
+          "value": "Cfl-s1"
+        },
+        "application": {
+          "label": "Application",
+          "value": "Lobbys, réceptions, entrées"
+        },
+        "edgeFinish": {
+          "label": "Finition des bords",
+          "value": "Bordure en caoutchouc renforcée"
+        },
+        "maxSize": {
+          "label": "Dimensions max.",
+          "value": "200 × 550 cm"
+        }
+      },
+      "specs": {
+        "yarn": {
+          "label": "Fil",
+          "value": "Multifilament 100 % recyclé, résistant à la chaleur"
+        },
+        "yarnWeight": {
+          "label": "Poids du fil",
+          "value": "935 g/m²"
+        },
+        "underlay": {
+          "label": "Support",
+          "value": "Non-tissé PET"
+        },
+        "backing": {
+          "label": "Dossier",
+          "value": "100 % caoutchouc nitrile (34 % recyclé post-industriel)"
+        },
+        "backingThickness": {
+          "label": "Épaisseur du dossier",
+          "value": "1,4 mm"
+        },
+        "edgeThickness": {
+          "label": "Épaisseur de la bordure",
+          "value": "2,5 mm"
+        },
+        "edgeWidth": {
+          "label": "Largeur de la bordure",
+          "value": "2 cm"
+        },
+        "pileHeight": {
+          "label": "Hauteur du velours",
+          "value": "7 mm"
+        },
+        "totalWeight": {
+          "label": "Poids total",
+          "value": "2935 g/m²"
+        },
+        "colors": {
+          "label": "Couleurs",
+          "value": "100 couleurs standard"
+        },
+        "fire": {
+          "label": "Réaction au feu",
+          "value": "Cfl-s1 (EN13501-1)"
+        },
+        "maxSize": {
+          "label": "Dimensions max.",
+          "value": "200 × 550 cm"
+        }
+      }
+    },
+    "pro": {
+      "title": "Carpetz Pro",
+      "tagline": "Performances maximales",
+      "description": "Carpetz Pro est notre tapis logo premium pour un usage intensif. Plus lourd, plus épais et avec la plus longue garantie de notre gamme — conçu pour les entrées très fréquentées qui doivent rester impeccables jour après jour.",
+      "whyChoose": {
+        "text": "Pour les entrées sollicitées jour après jour, Carpetz Pro est la valeur sûre. Plus lourd, plus épais et doté de la plus longue garantie de notre gamme (5 ans) — conçu pour rester représentatif pendant des années, même en cas de fort passage.",
+        "idealFor": [
+          "Bureaux à fort passage",
+          "Entrées de magasins très fréquentées",
+          "Utilisation de longue durée"
+        ]
+      },
+      "features": {
+        "backing": {
+          "label": "Dossier",
+          "value": "100 % caoutchouc nitrile"
+        },
+        "warranty": {
+          "label": "Garantie",
+          "value": "5 ans (2 ans en lavage industriel)"
+        },
+        "underfloorHeating": {
+          "label": "Chauffage par le sol",
+          "value": "Compatible"
+        },
+        "moisture": {
+          "label": "Absorption d’humidité",
+          "value": "4 – 5 l/m²"
+        },
+        "colorfastness": {
+          "label": "Tenue des couleurs",
+          "value": "Résistant à la lumière et à la décoloration"
+        },
+        "origin": {
+          "label": "Origine",
+          "value": "Fabriqué en Europe"
+        },
+        "pile": {
+          "label": "Velours",
+          "value": "100 % nylon high-twist"
+        },
+        "pileWeight": {
+          "label": "Poids du velours",
+          "value": "1050 g/m²"
+        }
+      },
+      "specs": {
+        "weight": {
+          "label": "Poids",
+          "value": "2,75 kg/m²"
+        },
+        "edges": {
+          "label": "Bordures",
+          "value": "0 ou 20 mm"
+        },
+        "backing": {
+          "label": "Dossier",
+          "value": "100 % caoutchouc nitrile"
+        },
+        "backingThickness": {
+          "label": "Épaisseur du dossier",
+          "value": "1,4 mm"
+        },
+        "edgeThickness": {
+          "label": "Épaisseur de la bordure",
+          "value": "2,4 mm"
+        },
+        "dirtAbsorption": {
+          "label": "Rétention de la saleté",
+          "value": "800 g/m²"
+        },
+        "moistureAbsorption": {
+          "label": "Absorption d’humidité",
+          "value": "4 – 5 l/m²"
+        },
+        "pile": {
+          "label": "Velours",
+          "value": "100 % nylon PA 6.6 high-twist"
+        },
+        "pileWeight": {
+          "label": "Poids du velours",
+          "value": "1050 g/m²"
+        },
+        "pileHeight": {
+          "label": "Hauteur du velours",
+          "value": "± 9 mm"
+        },
+        "matHeight": {
+          "label": "Hauteur du tapis",
+          "value": "± 10 mm"
+        },
+        "warranty": {
+          "label": "Garantie",
+          "value": "5 ans (2 ans en lavage industriel)"
+        }
+      }
+    },
+    "grip": {
+      "title": "Carpetz Grip",
+      "tagline": "Résistant aux intempéries",
+      "description": "Carpetz Grip est notre tapis d’extérieur standard, conçu pour résister année après année à la pluie, au vent et à un passage intensif. Son matériau monofilament robuste garantit une impression nette et durable, même dans des conditions extrêmes.",
+      "whyChoose": {
+        "text": "Pour les entrées, événements ou stands exposés aux intempéries, Carpetz Grip est le choix fiable. Son matériau monofilament résiste à l’humidité et à un usage intensif, tandis que votre logo reste net et reconnaissable.",
+        "idealFor": [
+          "Entrées extérieures",
+          "Événements & salons",
+          "Terrasses",
+          "Toutes conditions météo"
+        ]
+      },
+      "features": {
+        "backing": {
+          "label": "Dossier",
+          "value": "Caoutchouc nitrile sans phtalates"
+        },
+        "pile": {
+          "label": "Velours",
+          "value": "100 % monofilament PA6"
+        },
+        "usage": {
+          "label": "Usage",
+          "value": "Convient pour l’extérieur"
+        },
+        "fire": {
+          "label": "Réaction au feu",
+          "value": "EN13501-1 / Bfl-s1"
+        },
+        "underfloorHeating": {
+          "label": "Chauffage par le sol",
+          "value": "Compatible"
+        },
+        "colorfastness": {
+          "label": "Tenue des couleurs",
+          "value": "Résistant à la lumière et à la décoloration"
+        },
+        "origin": {
+          "label": "Origine",
+          "value": "Fabriqué en Europe"
+        },
+        "weatherproof": {
+          "label": "Résistant aux intempéries",
+          "value": "Pluie & humidité"
+        }
+      },
+      "specs": {
+        "weight": {
+          "label": "Poids",
+          "value": "3,6 kg/m²"
+        },
+        "edges": {
+          "label": "Bordures",
+          "value": "0 ou 20 mm"
+        },
+        "backing": {
+          "label": "Dossier",
+          "value": "100 % caoutchouc nitrile sans phtalates"
+        },
+        "backingThickness": {
+          "label": "Épaisseur du dossier",
+          "value": "1,8 mm"
+        },
+        "pile": {
+          "label": "Velours",
+          "value": "100 % monofilament PA6"
+        },
+        "pileWeight": {
+          "label": "Poids du velours",
+          "value": "1420 g/m²"
+        },
+        "pileHeight": {
+          "label": "Hauteur du velours",
+          "value": "± 6 mm"
+        },
+        "matHeight": {
+          "label": "Hauteur du tapis",
+          "value": "± 8 mm"
+        },
+        "fire": {
+          "label": "Réaction au feu",
+          "value": "EN13501-1 / Bfl-s1"
+        },
+        "suitableFor": {
+          "label": "Convient pour",
+          "value": "Usage extérieur"
+        }
+      }
+    },
+    "scrape": {
+      "title": "Carpetz Scrape",
+      "tagline": "Effet grattant supérieur",
+      "description": "Carpetz Scrape associe un mélange unique de fibres de nylon à un effet grattant supérieur contre la saleté et les débris. Fabriqué en nylon régénéré ECONYL, utilisable à l’intérieur comme à l’extérieur, avec des trous de drainage en option pour une meilleure évacuation de l’humidité.",
+      "whyChoose": {
+        "text": "Vous voulez arrêter la saleté et les débris dès la porte ? Carpetz Scrape est conçu avec un mélange de fibres abrasives qui gratte en profondeur, tandis que la remarquable tenue des couleurs garde votre logo ou votre design net pendant des années — à l’intérieur comme à l’extérieur.",
+        "idealFor": [
+          "Entrées et sorties très fréquentées",
+          "Horeca & retail",
+          "Intérieur & extérieur",
+          "Évacuation renforcée de la saleté"
+        ]
+      },
+      "features": {
+        "yarn": {
+          "label": "Fil",
+          "value": "Nylon régénéré ECONYL"
+        },
+        "backing": {
+          "label": "Dossier",
+          "value": "Caoutchouc nitrile (34 % recyclé)"
+        },
+        "drainage": {
+          "label": "Trous de drainage",
+          "value": "En option, Ø 7 mm"
+        },
+        "usage": {
+          "label": "Usage",
+          "value": "Intérieur & extérieur"
+        },
+        "colorfastness": {
+          "label": "Tenue des couleurs",
+          "value": "Éclatante & durable"
+        },
+        "scraping": {
+          "label": "Effet grattant",
+          "value": "Supérieur contre la saleté"
+        },
+        "washable": {
+          "label": "Lavable",
+          "value": "Entièrement lavable"
+        },
+        "design": {
+          "label": "Conception",
+          "value": "Designers internes, délais courts"
+        }
+      },
+      "specs": {
+        "yarn": {
+          "label": "Fil",
+          "value": "Nylon régénéré ECONYL, velours coupé 1/8”"
+        },
+        "matWeight": {
+          "label": "Poids du tapis",
+          "value": "3,9 kg/m²"
+        },
+        "underlay": {
+          "label": "Support",
+          "value": "Polyester non-tissé filé-lié (spunbond)"
+        },
+        "backing": {
+          "label": "Dossier",
+          "value": "100 % caoutchouc nitrile (34 % recyclé post-industriel)"
+        },
+        "pattern": {
+          "label": "Motif",
+          "value": "Griffe"
+        },
+        "thickness": {
+          "label": "Épaisseur",
+          "value": "3 mm"
+        },
+        "drainage": {
+          "label": "Trous de drainage",
+          "value": "Ø 7 mm (en option, jusqu’à 130 × 200 cm)"
+        },
+        "edgeThickness": {
+          "label": "Épaisseur de la bordure",
+          "value": "2,5 mm"
+        },
+        "edgeWidth": {
+          "label": "Largeur de la bordure",
+          "value": "20 mm"
+        },
+        "pileWeight": {
+          "label": "Poids du velours",
+          "value": "715 g/m²"
+        },
+        "pileHeight": {
+          "label": "Hauteur du velours",
+          "value": "7 mm"
+        },
+        "maxSize": {
+          "label": "Dimensions max.",
+          "value": "210 × 600 cm (sans trous de drainage)"
+        }
+      }
+    }
+  },
+  "Configurator": {
+    "reset": "Recommencer",
+    "panelTitle": "Composez votre tapis logo",
+    "previewTitle": "Aperçu de votre tapis logo",
+    "steps": {
+      "type": "Type de tapis logo",
+      "size": "Dimensions",
+      "logo": "Chargement du logo",
+      "colors": "Couleurs"
+    },
+    "matType": "Type de tapis logo",
+    "indoor": "Intérieur",
+    "indoorText": "Pour un usage intérieur",
+    "outdoor": "Extérieur",
+    "outdoorText": "Résistant aux intempéries",
+    "indoorType": "Type d’intérieur",
+    "outdoorType": "Type d’extérieur",
+    "subtypes": {
+      "go": "Entrée de gamme — fiable et accessible",
+      "green": "Durable, matériaux recyclés",
+      "studio": "Meilleure qualité d’impression, 100 couleurs",
+      "pro": "Performances maximales, garantie la plus longue",
+      "grip": "Tapis d’extérieur résistant aux intempéries",
+      "scrape": "Effet grattant supérieur"
+    },
+    "placement": "Pose",
+    "floor": "Posé au sol",
+    "floorText": "Pose standard",
+    "frame": "Cadre encastré",
+    "frameText": "Pose encastrée",
+    "orientation": "Orientation",
+    "landscape": "Paysage",
+    "portrait": "Portrait",
+    "rubberBorder": "Bordure en caoutchouc",
+    "toSize": "Continuer vers les dimensions",
+    "sizeLabel": "Dimensions (cm)",
+    "customSize": "Dimensions sur mesure",
+    "customSizeText": "Saisissez vos dimensions",
+    "width": "Largeur (cm)",
+    "height": "Longueur (cm)",
+    "toLogo": "Continuer vers le chargement du logo",
+    "logoAnalysis": "Analyse du logo",
+    "resolution": "Résolution : {width} × {height} px",
+    "resolutionGood": "✅ Résolution adaptée à la production",
+    "resolutionLow": "⚠️ Résolution peut-être insuffisante",
+    "fileType": "Type de fichier : {format}",
+    "pngDetected": "✅ Fichier PNG détecté",
+    "notPng": "⚠️ Fichier JPG/WebP. La transparence n’est peut-être pas prise en charge.",
+    "toColors": "Étape suivante : choisissez votre couleur de fond",
+    "quantity": "Quantité",
+    "volumeDiscount": "Remise sur quantité appliquée !",
+    "alertLowResolution": "⚠️ Ce logo a une faible résolution. Pour un résultat d’impression optimal, nous recommandons au minimum 1000 × 1000 pixels.",
+    "alertJpg": "⚠️ Fichier JPG détecté. Chargez de préférence un PNG à fond transparent.",
+    "whyChoose": "Pourquoi choisir le {name} ?",
+    "properties": "Caractéristiques",
+    "specs": "Fiche technique",
+    "feature": "Caractéristique",
+    "property": "Valeur",
+    "stepOf": "Étape {current} sur {total}",
+    "back": "Précédent",
+    "toSummary": "Voir le récapitulatif et commander",
+    "mobileBarLabel": "Barre de commande",
+    "mobileTotal": "Total TVA comprise",
+    "mobileOrder": "Commander"
+  },
+  "MatCanvas": {
+    "center": "Centrer",
+    "delete": "Supprimer",
+    "scale": "Taille",
+    "rotation": "Rotation",
+    "dragHint": "Faites glisser le logo sur le tapis pour le déplacer"
+  },
+  "LogoUploader": {
+    "upload": "Charger votre logo",
+    "replace": "Remplacer le logo",
+    "formats": "PNG, JPG ou WebP (PNG transparent recommandé)",
+    "analyzing": "Analyse en cours...",
+    "tip": "Chargez un PNG à fond transparent pour un résultat optimal."
+  },
+  "ColorPalette": {
+    "suggested": "Couleurs suggérées",
+    "match": "Correspondance",
+    "reset": "Réinitialiser",
+    "choose": "Choisissez votre couleur de fond"
+  },
+  "PriceCalculator": {
+    "title": "Votre tapis logo",
+    "matType": "Type de tapis logo",
+    "dimensions": "Dimensions",
+    "custom": "Sur mesure",
+    "rubberBorder": "Bordure en caoutchouc",
+    "yes": "✅ Oui",
+    "logoColors": "Nombre de couleurs du logo",
+    "unitPrice": "Prix du tapis logo",
+    "quantity": "Quantité",
+    "discount": "{percent} % de remise",
+    "subtotal": "Sous-total",
+    "vat": "TVA ({percent} %)",
+    "delivery": "Livraison",
+    "total": "Total TVA comprise",
+    "order": "Passer la commande"
+  },
+  "ArViewer": {
+    "button": "Voir en 3D & AR",
+    "error": "L’aperçu 3D n’a pas pu être généré. Veuillez réessayer.",
+    "title": "Votre tapis logo en 3D",
+    "alt": "Tapis logo de {width} × {depth} cm",
+    "viewInRoom": "Voir dans votre espace",
+    "trueSize": "Taille réelle :",
+    "controls": "Faites glisser pour pivoter, pincez ou faites défiler pour zoomer.",
+    "noAr": "La réalité augmentée fonctionne sur smartphone ou tablette (iPhone/iPad avec Safari, ou Android avec Chrome). Ouvrez ce configurateur sur votre appareil pour voir le tapis en taille réelle dans votre propre espace.",
+    "compact": "3D / AR",
+    "loading": "Chargement du modèle 3D…",
+    "arHint": "Pointez votre caméra vers le sol et déplacez lentement votre appareil. Le tapis apparaît en taille réelle.",
+    "arFailed": "La réalité augmentée n’a pas pu démarrer sur cet appareil. Vous pouvez toutefois voir le tapis en 3D ci-dessus."
+  },
+  "Cart": {
+    "title": "Panier",
+    "intro": "Vérifiez votre configuration avant de passer au paiement.",
+    "customerDetails": "Vos coordonnées",
+    "private": "Particulier",
+    "business": "Professionnel",
+    "companyName": "Nom de l’entreprise *",
+    "vatNumber": "Numéro de TVA *",
+    "firstName": "Prénom *",
+    "lastName": "Nom *",
+    "email": "Adresse e-mail *",
+    "phone": "Numéro de téléphone *",
+    "invoiceAddress": "Adresse de facturation",
+    "deliveryAddress": "Adresse de livraison",
+    "street": "Rue et numéro *",
+    "postalCode": "Code postal *",
+    "city": "Localité *",
+    "country": "Pays",
+    "countryRequired": "Pays *",
+    "defaultCountry": "Belgique",
+    "sameAddress": "L’adresse de livraison est identique à l’adresse de facturation",
+    "summary": "Récapitulatif de la commande",
+    "previewAlt": "Aperçu de votre tapis logo",
+    "yourMat": "Votre tapis logo",
+    "type": "Type",
+    "dimensions": "Dimensions",
+    "quantity": "Quantité",
+    "productPrice": "Prix du produit hors TVA",
+    "shipping": "Frais de livraison hors TVA",
+    "vat": "TVA (21 %)",
+    "total": "Total TVA comprise",
+    "perks": [
+      "✅ Épreuve numérique (BAT) incluse",
+      "✅ Production après votre validation",
+      "✅ Livraison en Belgique & aux Pays-Bas"
+    ],
+    "checkout": "Passer au paiement",
+    "checkoutError": "Une erreur s’est produite lors du paiement."
+  },
+  "Success": {
+    "title": "Merci pour votre commande",
+    "paymentReceived": "Votre paiement a bien été reçu.",
+    "orderNumber": "Numéro de commande : {number}",
+    "unknown": "Inconnu",
+    "proofComing": "Nous vous enverrons prochainement une épreuve numérique (BAT) pour validation.",
+    "steps": [
+      "✅ Paiement reçu",
+      "✅ Épreuve numérique à suivre",
+      "✅ Production après votre validation",
+      "✅ Livraison en Belgique & aux Pays-Bas"
+    ],
+    "questions": "Une question sur votre commande ?",
+    "contact": "Contactez-nous à info@carpetz.be"
+  },
+  "Legal": {
+    "terms": {
+      "title": "Conditions générales",
+      "intro": "Applicables aux commandes passées chez Carpetz.",
+      "articles": [
+        "Article 1 – Définitions",
+        "Article 2 – Identité de l’entreprise",
+        "Article 3 – Champ d’application",
+        "Article 4 – L’offre",
+        "Article 5 – Le contrat",
+        "Article 6 – Droit de rétractation",
+        "Article 7 – Obligations du consommateur pendant le délai de réflexion",
+        "Article 8 – Exercice du droit de rétractation par le consommateur et frais y afférents",
+        "Article 9 – Obligations de l’entreprise en cas de rétractation",
+        "Article 10 – Exclusion du droit de rétractation"
+      ],
+      "placeholder": "Texte à compléter."
+    },
+    "privacy": {
+      "title": "Politique de confidentialité"
+    },
+    "returns": {
+      "title": "Politique de retour"
+    },
+    "serviceTitle": "Service clientèle",
+    "serviceText": "Naviguez rapidement entre toutes les pages de notre service clientèle.",
+    "serviceLinks": {
+      "returns": "Informations d’achat",
+      "privacy": "Vie privée et droits",
+      "terms": "Conditions"
+    },
+    "contactTitle": "Contact personnel",
+    "contactText": "Nos collaborateurs répondent volontiers à toutes vos questions.",
+    "sendMessage": "Envoyer un message",
+    "whatsapp": "Discuter sur WhatsApp",
+    "callUs": "Ou appelez notre service clientèle"
+  },
+  "CookieConsent": {
+    "title": "Nous utilisons des cookies",
+    "text": "Carpetz utilise des cookies et des technologies de suivi similaires pour assurer le bon fonctionnement du site, vous offrir une expérience optimale, établir des statistiques de visite et adapter le contenu à vos centres d’intérêt. Les cookies nécessaires sont toujours actifs. Pour les autres, nous demandons d’abord votre consentement. Vous pouvez modifier votre choix à tout moment via « Paramètres des cookies » en bas de page.",
+    "privacyLink": "Lire notre politique de confidentialité",
+    "acceptAll": "Accepter",
+    "rejectAll": "Tout refuser",
+    "customize": "Préférences",
+    "save": "Enregistrer mon choix",
+    "alwaysOn": "Toujours actif",
+    "settingsTitle": "Préférences en matière de cookies",
+    "settingsText": "Choisissez les cookies que vous autorisez. Votre choix s’applique à ce navigateur et peut être modifié à tout moment.",
+    "necessary": {
+      "title": "Nécessaires",
+      "text": "Indispensables au fonctionnement du site et de la boutique en ligne, comme votre panier, la sécurité et la mémorisation de ce choix."
+    },
+    "statistics": {
+      "title": "Statistiques",
+      "text": "Nous aident à comprendre comment les visiteurs utilisent le site (p. ex. Microsoft Clarity), afin de l’améliorer."
+    },
+    "marketing": {
+      "title": "Marketing et contenu personnalisé",
+      "text": "Servent à adapter les publicités et le contenu à vos centres d’intérêt, y compris sur d’autres sites."
+    }
+  },
+  "Checkout": {
+    "invalidConfig": "Configuration de produit non valide",
+    "productName": "Tapis logo sur mesure",
+    "invoiceLine": "Tapis logo sur mesure {width} x {height} cm",
+    "shippingLine": "Frais de livraison"
+  },
+  "OrderEmail": {
+    "subject": "Merci pour votre commande {orderNumber}",
+    "uspBar": "✓ Haute qualité à prix juste   |   ✓ Paiement sécurisé   |   ✓ Livraison fiable",
+    "heading": "Merci pour votre commande !",
+    "greeting": "Bonjour {name},",
+    "greetingFallback": "Bonjour,",
+    "intro": "Nous avons bien reçu votre commande et lançons immédiatement la production.",
+    "overview": "Récapitulatif de votre commande",
+    "orderNumber": "Numéro de commande :",
+    "matType": "Type de tapis logo :",
+    "customSize": "Sur mesure ({width} × {height} cm)",
+    "quantity": "Quantité :",
+    "total": "Total (TVA comprise) :",
+    "designTitle": "Votre design / épreuve choisi(e) :",
+    "designAlt": "Épreuve de votre tapis logo",
+    "nextTitle": "Et maintenant ?",
+    "nextText": "Dans les prochains jours ouvrables, vous recevrez par e-mail une épreuve numérique définitive (BAT).",
+    "productionText": "La production de votre tapis ne démarre qu’après votre validation de cette épreuve.",
+    "regards": "Bien cordialement,",
+    "team": "L’équipe Carpetz",
+    "website": "Site web",
+    "customerService": "Service clientèle",
+    "terms": "Conditions",
+    "rights": "Tous droits réservés.",
+    "attachmentName": "epreuve-tapis-logo.png"
   }
 }

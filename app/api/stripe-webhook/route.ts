@@ -1,6 +1,8 @@
 import { Resend } from "resend";
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
+import { getTranslations } from "next-intl/server";
+import { locales, defaultLocale, type Locale } from "@/i18n";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 const resend = new Resend(
@@ -8,25 +10,54 @@ const resend = new Resend(
 );
 
 export async function POST(request: Request) {
+  // Ruwe body nodig: de handtekening wordt over de exacte bytes berekend.
   const body = await request.text();
+  const signature = request.headers.get("stripe-signature");
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+
+  if (!webhookSecret) {
+    console.error("STRIPE_WEBHOOK_SECRET ontbreekt: webhook geweigerd.");
+    return NextResponse.json({ error: "Webhook niet geconfigureerd" }, { status: 500 });
+  }
+  if (!signature) {
+    return NextResponse.json({ error: "Handtekening ontbreekt" }, { status: 400 });
+  }
+
+  // Enkel berichten die echt van Stripe komen (geldige handtekening) worden verwerkt.
+  let event: Stripe.Event;
+  try {
+    event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
+  } catch (error) {
+    console.error("Ongeldige Stripe-handtekening:", error);
+    return NextResponse.json({ error: "Ongeldige handtekening" }, { status: 400 });
+  }
 
   try {
-    const event = JSON.parse(body);
-
     if (event.type === "checkout.session.completed") {
-      console.log("WEBHOOK VERSION 999");
-      
-      const session = event.data.object;
+      const session = event.data.object as Stripe.Checkout.Session;
 
-      const paymentIntent =
-  await stripe.paymentIntents.retrieve(
-    session.payment_intent
-  );
+      // Enkel effectief betaalde bestellingen afhandelen.
+      if (session.payment_status !== "paid" || typeof session.payment_intent !== "string") {
+        return NextResponse.json({ received: true });
+      }
+
+      const paymentIntent = await stripe.paymentIntents.retrieve(session.payment_intent);
+
+      // Stripe kan een event meermaals sturen: geen dubbele factuur of mails.
+      if (paymentIntent.metadata.fulfilledAt) {
+        return NextResponse.json({ received: true, duplicate: true });
+      }
 
   const data = {
     ...session.metadata,
     ...paymentIntent.metadata,
   };
+
+      // Taal van de klant, meegegeven door de checkout (oudere bestellingen: Nederlands).
+      const locale: Locale = locales.includes(data.locale as Locale) ? (data.locale as Locale) : defaultLocale;
+      const tCheckout = await getTranslations({ locale, namespace: "Checkout" });
+      const t = await getTranslations({ locale, namespace: "OrderEmail" });
+      const site = `https://www.carpetz.be/${locale}`;
 
       const today = new Date();
       const orderDate = today.toISOString().split("T")[0];
@@ -72,13 +103,13 @@ export async function POST(request: Request) {
         {
           Quantity: 1,
           UnitPriceExcl: Number(data.subtotal),
-          Description: `Logomat op maat ${data.width} x ${data.height} cm`,
+          Description: tCheckout("invoiceLine", { width: data.width, height: data.height }),
           VATPercentage: 21,
         },
         {
           Quantity: 1,
           UnitPriceExcl: Number(data.shipping),
-          Description: "Leveringskost",
+          Description: tCheckout("shippingLine"),
           VATPercentage: 21,
         },
       ],
@@ -107,6 +138,7 @@ export async function POST(request: Request) {
         html: `
           <h2>Nieuwe bestelling ontvangen</h2>
           <p><strong>Bestelnummer:</strong> ${data.orderNumber}</p>
+          <p><strong>Taal klant:</strong> ${locale.toUpperCase()}</p>
           <p><strong>Preview:</strong></p>
           <p><a href="${data.previewUrl}">Bekijk ontwerp</a></p>
           <p><strong>E-mail:</strong> ${data.email}</p>
@@ -115,25 +147,26 @@ export async function POST(request: Request) {
           <p><strong>Totaal:</strong> €${data.grandTotal}</p>
         `,
         attachments: [
-          ...(imageBuffer ? [{ filename: "preview.png", content: imageBuffer, cid: "preview-admin" }] : []),
+          ...(imageBuffer ? [{ filename: "preview.png", content: imageBuffer, contentId: "preview-admin" }] : []),
           ...(logoBuffer ? [{ filename: "logo-origineel.png", content: logoBuffer }] : []),
         ],
       });
 
       // --- Klantmail (Geoptimaliseerd en strak opgemaakt) ---
-      const customerFirstName = data.firstName ? data.firstName.charAt(0).toUpperCase() + data.firstName.slice(1) : "Beste";
+      const customerFirstName = data.firstName ? data.firstName.charAt(0).toUpperCase() + data.firstName.slice(1) : "";
+      const greeting = customerFirstName ? t("greeting", { name: customerFirstName }) : t("greetingFallback");
 
       await resend.emails.send({
         from: "Carpetz <noreply@carpetz.be>",
         to: data.email,
-        subject: `Bedankt voor je bestelling ${data.orderNumber}`,
+        subject: t("subject", { orderNumber: data.orderNumber }),
         html: `
           <!DOCTYPE html>
-          <html>
+          <html lang="${locale}">
           <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Bedankt voor je bestelling</title>
+            <title>${t("heading")}</title>
           </head>
           <body style="margin: 0; padding: 0; background-color: #f4f4f4; font-family: Arial, sans-serif; color: #333333;">
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; background-color: #f4f4f4; padding: 20px 0;">
@@ -144,44 +177,44 @@ export async function POST(request: Request) {
                     <!-- USP Header Bar -->
                     <tr>
                       <td style="background-color: #C69C4D; color: #ffffff; padding: 10px 20px; font-size: 11px; font-weight: bold; text-align: center;">
-                        ✓ Hoge kwaliteit voor scherpe prijs &nbsp;&nbsp;|&nbsp;&nbsp; ✓ Veilig betalen &nbsp;&nbsp;|&nbsp;&nbsp; ✓ Betrouwbare levering
+                        ${t("uspBar").replace(/ {3}/g, " &nbsp;&nbsp;")}
                       </td>
                     </tr>
 
                     <!-- Sfeervolle Header Banner -->
                     <tr>
                       <td style="background-color: #1a1a1a; padding: 35px 20px; text-align: center; color: #ffffff;">
-                        <h1 style="margin: 0; font-size: 22px; font-family: Georgia, serif; font-weight: normal; letter-spacing: 0.5px; color: #ffffff;">Bedankt voor je bestelling!</h1>
+                        <h1 style="margin: 0; font-size: 22px; font-family: Georgia, serif; font-weight: normal; letter-spacing: 0.5px; color: #ffffff;">${t("heading")}</h1>
                       </td>
                     </tr>
 
                     <!-- Hoofdinhoud -->
                     <tr>
                       <td style="padding: 30px 40px;">
-                        <p style="margin: 0 0 15px 0; font-size: 15px; line-height: 1.5;">Beste ${customerFirstName},</p>
-                        <p style="margin: 0 0 25px 0; font-size: 15px; line-height: 1.5; color: #555555;">We hebben je bestelling in goede orde ontvangen en gaan er direct met de productie mee aan de slag.</p>
+                        <p style="margin: 0 0 15px 0; font-size: 15px; line-height: 1.5;">${greeting}</p>
+                        <p style="margin: 0 0 25px 0; font-size: 15px; line-height: 1.5; color: #555555;">${t("intro")}</p>
 
                         <!-- Overzichtstabel van de bestelling -->
                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #fafafa; border: 1px solid #eeeeee; border-radius: 6px; padding: 15px; margin-bottom: 25px;">
                           <tr>
                             <td colspan="2" style="padding-bottom: 12px; border-bottom: 1px solid #e0e0e0; font-weight: bold; font-size: 13px; color: #C69C4D; text-transform: uppercase; letter-spacing: 0.5px;">
-                              Besteloverzichtsdetails
+                              ${t("overview")}
                             </td>
                           </tr>
                           <tr>
-                            <td style="padding: 10px 0; font-size: 14px; color: #666666; width: 40%;">Bestelnummer:</td>
+                            <td style="padding: 10px 0; font-size: 14px; color: #666666; width: 40%;">${t("orderNumber")}</td>
                             <td style="padding: 10px 0; font-size: 14px; font-weight: bold; color: #333333; text-align: right; width: 60%;">${data.orderNumber}</td>
                           </tr>
                           <tr>
-                            <td style="padding: 10px 0; font-size: 14px; color: #666666; border-top: 1px solid #f0f0f0;">Type logomat:</td>
-                            <td style="padding: 10px 0; font-size: 14px; font-weight: bold; color: #333333; text-align: right; border-top: 1px solid #f0f0f0;">Op maat (${data.width} × ${data.height} cm)</td>
+                            <td style="padding: 10px 0; font-size: 14px; color: #666666; border-top: 1px solid #f0f0f0;">${t("matType")}</td>
+                            <td style="padding: 10px 0; font-size: 14px; font-weight: bold; color: #333333; text-align: right; border-top: 1px solid #f0f0f0;">${t("customSize", { width: data.width, height: data.height })}</td>
                           </tr>
                           <tr>
-                            <td style="padding: 10px 0; font-size: 14px; color: #666666; border-top: 1px solid #f0f0f0;">Aantal:</td>
+                            <td style="padding: 10px 0; font-size: 14px; color: #666666; border-top: 1px solid #f0f0f0;">${t("quantity")}</td>
                             <td style="padding: 10px 0; font-size: 14px; font-weight: bold; color: #333333; text-align: right; border-top: 1px solid #f0f0f0;">${data.quantity}</td>
                           </tr>
                           <tr>
-                            <td style="padding: 12px 0 5px 0; font-size: 15px; font-weight: bold; color: #333333; border-top: 2px solid #e0e0e0;">Totaal (incl. btw):</td>
+                            <td style="padding: 12px 0 5px 0; font-size: 15px; font-weight: bold; color: #333333; border-top: 2px solid #e0e0e0;">${t("total")}</td>
                             <td style="padding: 12px 0 5px 0; font-size: 16px; font-weight: bold; color: #C69C4D; text-align: right; border-top: 2px solid #e0e0e0;">€${data.grandTotal}</td>
                           </tr>
                         </table>
@@ -190,11 +223,11 @@ export async function POST(request: Request) {
                         ${data.previewUrl ? `
                           <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 25px;">
                             <tr>
-                              <td style="font-size: 14px; font-weight: bold; padding-bottom: 8px; color: #333333;">Jouw gekozen ontwerp / proefdruk:</td>
+                              <td style="font-size: 14px; font-weight: bold; padding-bottom: 8px; color: #333333;">${t("designTitle")}</td>
                             </tr>
                             <tr>
                               <td align="center" style="background-color: #f0f0f0; border: 1px dashed #cccccc; border-radius: 6px; padding: 15px;">
-                                <img src="${data.previewUrl}" alt="Logomat Proefdruk" style="max-width: 100%; height: auto; max-height: 220px; display: block; border-radius: 4px;" />
+                                <img src="${data.previewUrl}" alt="${t("designAlt")}" style="max-width: 100%; height: auto; max-height: 220px; display: block; border-radius: 4px;" />
                               </td>
                             </tr>
                           </table>
@@ -204,14 +237,14 @@ export async function POST(request: Request) {
                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #fcf8f0; border-left: 4px solid #C69C4D; border-radius: 0 4px 4px 0; margin-bottom: 25px;">
                           <tr>
                             <td style="padding: 15px; font-size: 13px; line-height: 1.5; color: #555555;">
-                              <p style="margin: 0 0 8px 0;"><strong>✅ Wat gebeurt er nu?</strong> Binnen enkele werkdagen ontvang je van ons een definitieve digitale proefdruk per e-mail.</p>
-                              <p style="margin: 0;"><strong>✅</strong> De fysieke productie van je mat start pas nadat jij deze proefdruk hebt goedgekeurd.</p>
+                              <p style="margin: 0 0 8px 0;"><strong>✅ ${t("nextTitle")}</strong> ${t("nextText")}</p>
+                              <p style="margin: 0;"><strong>✅</strong> ${t("productionText")}</p>
                             </td>
                           </tr>
                         </table>
 
-                        <p style="margin: 0 0 5px 0; font-size: 15px; line-height: 1.5;">Met vriendelijke groet,</p>
-                        <p style="margin: 0; font-size: 15px; font-weight: bold; color: #1a1a1a;">Team Carpetz</p>
+                        <p style="margin: 0 0 5px 0; font-size: 15px; line-height: 1.5;">${t("regards")}</p>
+                        <p style="margin: 0; font-size: 15px; font-weight: bold; color: #1a1a1a;">${t("team")}</p>
                       </td>
                     </tr>
 
@@ -221,14 +254,14 @@ export async function POST(request: Request) {
                         <table border="0" cellpadding="0" cellspacing="0" width="100%">
                           <tr>
                             <td align="center" style="padding-bottom: 15px; border-bottom: 1px solid #333333;">
-                              <a href="https://www.carpetz.be" style="color: #ffffff; text-decoration: none; font-weight: bold; margin: 0 15px;">Website</a>
-                              <a href="https://www.carpetz.be/contact" style="color: #cccccc; text-decoration: none; margin: 0 15px;">Klantenservice</a>
-                              <a href="https://www.carpetz.be/algemene-voorwaarden" style="color: #cccccc; text-decoration: none; margin: 0 15px;">Voorwaarden</a>
+                              <a href="${site}" style="color: #ffffff; text-decoration: none; font-weight: bold; margin: 0 15px;">${t("website")}</a>
+                              <a href="${site}/contact" style="color: #cccccc; text-decoration: none; margin: 0 15px;">${t("customerService")}</a>
+                              <a href="${site}/algemene-voorwaarden" style="color: #cccccc; text-decoration: none; margin: 0 15px;">${t("terms")}</a>
                             </td>
                           </tr>
                           <tr>
                             <td align="center" style="padding-top: 20px; color: #777777;">
-                              &copy; ${new Date().getFullYear()} Carpetz. Alle rechten voorbehouden.
+                              &copy; ${new Date().getFullYear()} Carpetz. ${t("rights")}
                             </td>
                           </tr>
                         </table>
@@ -243,10 +276,14 @@ export async function POST(request: Request) {
           </html>
         `,
         attachments: imageBuffer
-          ? [{ filename: "proefdruk-logomat.png", content: imageBuffer }]
+          ? [{ filename: t("attachmentName"), content: imageBuffer }]
           : [],
       });
 
+      // Markeer als afgehandeld, zodat een herhaald event niets opnieuw verstuurt.
+      await stripe.paymentIntents.update(paymentIntent.id, {
+        metadata: { fulfilledAt: new Date().toISOString() },
+      });
     }
 
     return NextResponse.json({

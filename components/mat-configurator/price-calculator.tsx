@@ -6,26 +6,39 @@ import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { Calculator, Tag, Percent, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
+import { usePriceFormatter } from "@/lib/format";
+import { MatArViewer } from "./mat-ar-viewer";
 
+
+const SHIPPING = 15;
+const SHIPPING_VAT_RATE = 0.21;
+
+/** Prijsoverzicht zoals getoond in de configurator (ook gebruikt door de mobiele bestelbalk). */
+export function getPriceSummary(config: MatConfig) {
+  const pricing = calculatePrice(config);
+  const shippingVat = SHIPPING * SHIPPING_VAT_RATE;
+  return {
+    pricing,
+    shipping: SHIPPING,
+    finalTotal: pricing.total + SHIPPING + shippingVat,
+    totalVat: pricing.vat + shippingVat,
+  };
+}
 
 interface PriceCalculatorProps {
   config: MatConfig;
   onOrder: () => void;
+  /** Anker-id, bv. voor de mobiele "naar overzicht"-knop. */
+  id?: string;
 }
 
-export function PriceCalculator({ config, onOrder }: PriceCalculatorProps) {
-  const pricing = calculatePrice(config);
-  const shipping = 15;
-const shippingVat = shipping * 0.21;
-
-const finalTotal =
-  pricing.total +
-  shipping +
-  shippingVat;
-
-  const totalVat =
-  pricing.vat +
-  shippingVat;
+export function PriceCalculator({ config, onOrder, id }: PriceCalculatorProps) {
+  const t = useTranslations("PriceCalculator");
+  const tAll = useTranslations();
+  const formatPrice = usePriceFormatter();
+  const subtype = config.type === "outdoor" ? config.outdoorSubtype : config.indoorSubtype;
+  const { pricing, shipping, finalTotal, totalVat } = getPriceSummary(config);
 
 
   // Find current discount tier
@@ -35,53 +48,43 @@ const finalTotal =
   const discountPercent = (tier?.discount ?? 0) * 100;
 
   return (
-    <Card className="border-[#E6D5B8] shadow-md bg-[#FFFCF7]">
+    <Card id={id} className="scroll-mt-24 border-[#E6D5B8] shadow-md bg-[#FFFCF7]">
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-lg text-[#3B2A1A]">
   <Calculator className="w-5 h-5 text-[#C69C4D]" />
-  Jouw logomat
+  {t("title")}
 </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="space-y-2 text-sm">
           <div className="flex justify-between">
-            <span className="text-muted-foreground">Type logomat</span>
+            <span className="text-muted-foreground">{t("matType")}</span>
                                   <span className="font-medium">
-  {config.type === "outdoor"
-    ? config.outdoorSubtype === "grip"
-      ? "Carpetz Grip"
-      : "Carpetz Scrape"
-    : config.indoorSubtype === "go"
-    ? "Carpetz Go"
-    : config.indoorSubtype === "green"
-    ? "Carpetz Green"
-    : config.indoorSubtype === "studio"
-    ? "Carpetz Studio"
-    : "Carpetz Pro"}
+  {tAll(`MatTypes.${subtype}.title`)}
 </span>
           </div>
           <div className="flex justify-between">
-            <span className="text-muted-foreground">Afmetingen</span>
+            <span className="text-muted-foreground">{t("dimensions")}</span>
             <span className="font-medium">
               {config.size.width} × {config.size.height} cm
               {config.size.isCustom && (
-                <Badge variant="secondary" className="ml-1 text-xs">Custom</Badge>
+                <Badge variant="secondary" className="ml-1 text-xs">{t("custom")}</Badge>
               )}
             </span>
           </div>
          {config.rubberBorder && (
   <div className="flex justify-between">
-    <span className="text-muted-foreground">Rubberen rand</span>
+    <span className="text-muted-foreground">{t("rubberBorder")}</span>
     <span className="font-medium">
-      ✅ Ja
+      {t("yes")}
     </span>
   </div>
 )}
           {config.logoColors > 1 && (
             <div className="flex justify-between">
-              <span className="text-muted-foreground">Aantal logokleuren</span>
+              <span className="text-muted-foreground">{t("logoColors")}</span>
               <span className="font-medium">
-                {config.logoColors} (+€{((config.logoColors - 1) * PRICING.logoColors.extraPerColor).toFixed(2)})
+                {config.logoColors} (+{formatPrice((config.logoColors - 1) * PRICING.logoColors.extraPerColor)})
               </span>
             </div>
           )}
@@ -91,16 +94,16 @@ const finalTotal =
 
         <div className="space-y-2">
           <div className="flex justify-between text-sm">
-            <span className="text-muted-foreground">Prijs logomat</span>
-            <span className="font-medium">€{pricing.unitPrice.toFixed(2)}</span>
+            <span className="text-muted-foreground">{t("unitPrice")}</span>
+            <span className="font-medium">{formatPrice(pricing.unitPrice)}</span>
           </div>
           <div className="flex justify-between text-sm">
             <span className="text-muted-foreground flex items-center gap-1">
-              Aantal
+              {t("quantity")}
               {discountPercent > 0 && (
                 <Badge variant="secondary" className="text-xs gap-0.5">
                   <Percent className="w-3 h-3" />
-                  {discountPercent}% off
+                  {t("discount", { percent: discountPercent })}
                 </Badge>
               )}
             </span>
@@ -112,17 +115,17 @@ const finalTotal =
 
         <div className="space-y-2">
           <div className="flex justify-between text-sm">
-            <span className="text-muted-foreground">Subtotaal</span>
-            <span className="font-medium">€{pricing.subtotal.toFixed(2)}</span>
+            <span className="text-muted-foreground">{t("subtotal")}</span>
+            <span className="font-medium">{formatPrice(pricing.subtotal)}</span>
           </div>
           <div className="flex justify-between text-sm">
-            <span className="text-muted-foreground">BTW ({PRICING.vat * 100}%)</span>
-            <span className="font-medium">€{totalVat.toFixed(2)}</span>
+            <span className="text-muted-foreground">{t("vat", { percent: PRICING.vat * 100 })}</span>
+            <span className="font-medium">{formatPrice(totalVat)}</span>
           </div>
 
           <div className="flex justify-between text-sm">
-  <span className="text-muted-foreground">Levering</span>
-  <span className="font-medium">€15.00</span>
+  <span className="text-muted-foreground">{t("delivery")}</span>
+  <span className="font-medium">{formatPrice(shipping)}</span>
 </div>
 
           
@@ -134,20 +137,22 @@ const finalTotal =
   <div className="flex justify-between items-center">
     <span className="text-sm font-semibold flex items-center gap-1.5">
       <Tag className="w-3.5 h-3.5" />
-      Totaal incl. btw
+      {t("total")}
     </span>
 
     <span className="text-xl font-bold text-primary">
-      €{finalTotal.toFixed(2)}
+      {formatPrice(finalTotal)}
     </span>
   </div>
 </div>
 
+<MatArViewer config={config} />
+
 <Button
-  className="w-full bg-[#C69C4D] hover:bg-[#B88D3C] text-white"
+  className="w-full h-11 text-base bg-[#C69C4D] hover:bg-[#B88D3C] text-white"
   onClick={onOrder}
 >
-  Bestelling plaatsen
+  {t("order")}
   <ArrowRight className="w-4 h-4 ml-2" />
 </Button>
 
