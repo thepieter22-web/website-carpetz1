@@ -179,7 +179,20 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    /* Hoogte van de vaste header (4.5rem) + marge: ankers en scrollIntoView vallen nooit achter de header. */
+    scroll-padding-top: 5.5rem;
+  }
   body {
     @apply bg-background text-foreground;
+    /* Nooit horizontaal scrollen door een te breed element op smartphone. */
+    overflow-x: clip;
+  }
+  /* Lange woorden (vaak in het Frans) breken af i.p.v. buiten het scherm te lopen. */
+  h1,
+  h2,
+  h3 {
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 }

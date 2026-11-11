@@ -57,7 +57,7 @@ export function MatTypePage({
             <p className="text-sm font-semibold uppercase tracking-[0.25em] text-accent">
               {eyebrow}
             </p>
-            <h1 className="mt-3 font-serif text-4xl font-semibold leading-tight text-balance sm:text-5xl">
+            <h1 className="mt-3 font-serif text-3xl font-semibold leading-tight text-balance sm:text-5xl">
               {title}
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">

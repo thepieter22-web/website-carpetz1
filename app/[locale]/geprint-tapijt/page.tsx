@@ -46,9 +46,9 @@ export default function GeprintTapijtPage({ params: { locale } }: Props) {
           imageAlt={t('heroImageAlt')}
         />
 
-        <section className="relative px-6 lg:px-8">
+        <section className="relative px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
-            <div className="relative z-10 ml-auto -mt-24 max-w-2xl rounded-sm border-l-4 border-accent bg-card px-8 py-7 shadow-xl lg:-mt-28 lg:px-10 lg:py-8">
+            <div className="relative z-10 ml-auto mt-6 max-w-2xl rounded-sm border-l-4 border-accent bg-card px-5 py-6 shadow-xl sm:-mt-24 sm:px-8 sm:py-7 lg:-mt-28 lg:px-10 lg:py-8">
               <h2 className="font-serif text-2xl font-semibold leading-tight text-balance sm:text-3xl">
                 {t('calloutTitle')}
               </h2>

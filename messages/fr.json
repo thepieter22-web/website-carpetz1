@@ -1299,10 +1299,10 @@
     "unknown": "Inconnu",
     "proofComing": "Nous vous enverrons prochainement une épreuve numérique (BAT) pour validation.",
     "steps": [
-      "✅ Paiement reçu",
-      "✅ Épreuve numérique à suivre",
-      "✅ Production après votre validation",
-      "✅ Livraison en Belgique & aux Pays-Bas"
+      "Paiement reçu",
+      "Épreuve numérique à suivre",
+      "Production après votre validation",
+      "Livraison en Belgique & aux Pays-Bas"
     ],
     "questions": "Une question sur votre commande ?",
     "contact": "Contactez-nous à info@carpetz.be"

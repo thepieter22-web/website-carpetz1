@@ -51,28 +51,28 @@ export function CustomRunnerHighlight({
     : null;
 
     const imageBlock = (
-    <div className="relative h-full min-h-[420px]">
+    <div className="relative h-full min-h-[260px] sm:min-h-[420px]">
       <Image src={image} alt={imageAlt} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
     </div>
   );
 
   const textBlock = (
-    <div className="flex flex-col justify-center bg-card px-8 py-14 lg:px-14">
+    <div className="flex flex-col justify-center bg-card px-5 py-10 sm:px-8 sm:py-14 lg:px-14">
       <p className="text-sm font-semibold uppercase tracking-[0.25em] text-accent">{eyebrow}</p>
-      <h2 className="mt-3 font-serif text-4xl font-semibold leading-tight text-balance">{title}</h2>
+      <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight text-balance sm:text-4xl">{title}</h2>
       <p className="mt-5 text-base leading-relaxed text-muted-foreground text-pretty">{description}</p>
 
       {freeformNote && (
         <p className="mt-3 text-sm font-medium text-accent">{freeformNote}</p>
       )}
 
-      <div className="mt-10 grid grid-cols-3 gap-6">
+      <div className="mt-8 grid grid-cols-1 gap-5 sm:mt-10 sm:grid-cols-3 sm:gap-6">
         {details.map((d) => (
-          <div key={d.title}>
-            <span className="inline-flex size-12 items-center justify-center rounded-full bg-accent/10 text-accent">
+          <div key={d.title} className="flex items-start gap-3 sm:block">
+            <span className="inline-flex size-12 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent">
               <d.icon className="size-5" />
             </span>
-            <h3 className="mt-3 text-sm font-semibold">{d.title}</h3>
+            <h3 className="text-sm font-semibold sm:mt-3">{d.title}</h3>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{d.text}</p>
           </div>
         ))}
@@ -103,7 +103,7 @@ export function CustomRunnerHighlight({
   );
 
   return (
-    <section className="border-t border-border bg-secondary/40 py-16">
+    <section className="border-t border-border bg-secondary/40 px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
       <div className="mx-auto grid max-w-7xl items-stretch gap-0 overflow-hidden rounded-sm border border-border lg:grid-cols-2">
         {imagePosition === "left" ? (
           <>

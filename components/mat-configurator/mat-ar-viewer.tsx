@@ -180,7 +180,7 @@ export function MatArViewer({ config, variant = "full" }: MatArViewerProps) {
           <Button
             type="button"
             variant="outline"
-            className="h-11 w-full gap-2 border-[#C69C4D] text-base text-[#3B2A1A] hover:bg-[#FFF8EB]"
+            className="min-h-11 w-full gap-2 border-[#C69C4D] text-base text-[#3B2A1A] hover:bg-[#FFF8EB]"
             onClick={handleOpen}
             disabled={isBuilding}
           >

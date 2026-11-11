@@ -1299,10 +1299,10 @@
     "unknown": "Onbekend",
     "proofComing": "We bezorgen je binnenkort een digitale proefdruk ter goedkeuring.",
     "steps": [
-      "✅ Betaling ontvangen",
-      "✅ Digitale proefdruk volgt",
-      "✅ Productie na jouw goedkeuring",
-      "✅ Levering in België & Nederland"
+      "Betaling ontvangen",
+      "Digitale proefdruk volgt",
+      "Productie na jouw goedkeuring",
+      "Levering in België & Nederland"
     ],
     "questions": "Heb je vragen over je bestelling?",
     "contact": "Contacteer ons via info@carpetz.be"

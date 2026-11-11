@@ -41,16 +41,14 @@ export default async function SuccessPage({
       <SiteHeader />
 
       <main className="min-h-screen bg-secondary/20">
-        <div className="mx-auto max-w-4xl px-6 py-20">
-          <div className="rounded-2xl border bg-card p-10 text-center shadow-sm">
-            <div className="mb-6 text-6xl">✅</div>
-
-            <h1 className="font-serif text-4xl font-semibold">{t("title")}</h1>
+        <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 sm:py-20">
+          <div className="rounded-2xl border bg-card p-6 text-center shadow-sm sm:p-10">
+            <h1 className="font-serif text-3xl font-semibold sm:text-4xl">{t("title")}</h1>
             <p className="mt-4 text-muted-foreground">{t("paymentReceived")}</p>
             <p className="mt-4 font-medium text-[#C69C4D]">{t("orderNumber", { number: orderNumber })}</p>
             <p className="mt-2 text-muted-foreground">{t("proofComing")}</p>
 
-            <div className="mt-8 rounded-lg bg-muted p-6 text-left">
+            <div className="mt-8 space-y-1 rounded-lg bg-muted p-6 text-center">
               {steps.map((step) => (
                 <p key={step}>{step}</p>
               ))}

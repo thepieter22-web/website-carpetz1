@@ -26,7 +26,7 @@ export function Hero() {
             {t('badge')}
           </div>
 
-          <h1 className="mt-6 font-serif text-4xl font-semibold leading-[1.05] text-balance sm:text-5xl lg:text-6xl">
+          <h1 className="mt-6 font-serif text-3xl font-semibold leading-[1.1] text-balance sm:text-5xl sm:leading-[1.05] lg:text-6xl">
             {t('title')}
           </h1>
 

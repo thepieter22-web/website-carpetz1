@@ -262,7 +262,7 @@ export default function CartPage({
 
               <div className="rounded-lg border p-4">
                 <h3 className="mb-2 text-base font-semibold">{t("yourMat")}</h3>
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
                   <div>
                     <p className="text-sm text-muted-foreground">{t("type")}</p>
                     <p className="font-medium">{matName}</p>

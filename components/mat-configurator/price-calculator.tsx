@@ -149,7 +149,7 @@ export function PriceCalculator({ config, onOrder, id }: PriceCalculatorProps) {
 <MatArViewer config={config} />
 
 <Button
-  className="w-full h-11 text-base bg-[#C69C4D] hover:bg-[#B88D3C] text-white"
+  className="w-full min-h-11 text-base bg-[#C69C4D] hover:bg-[#B88D3C] text-white"
   onClick={onOrder}
 >
   {t("order")}

@@ -31,4 +31,10 @@ Mobiele bezoekers hebben prioriteit. Bij elke wijziging:
 - Invoervelden op touch minimaal 16px tekst (anders zoomt iOS in), met passende `inputMode`/`autoComplete`.
 - Afbeeldingen altijd via `next/image` met een passende `sizes`; geen grote bestanden rechtstreeks laden.
 - Zware berekeningen (canvas, pixelbewerkingen) niet bij elke beweging herhalen: resultaten bewaren.
+- **Grids**: meerdere kolommen enkel vanaf een breakpoint (`grid-cols-1 sm:grid-cols-3`), behalve bewuste mini-layouts (kleurstalen, keuzeknoppen, productkaartjes 2 per rij).
+- **Zijmarge**: elke sectie/container minstens `px-4` op smartphone (`px-4 sm:px-6 lg:px-8`); niets tegen de schermrand.
+- **Koppen** schalen mee: `text-3xl sm:text-4xl`, `text-3xl sm:text-5xl lg:text-6xl`; nooit `text-4xl`+ zonder kleinere basismaat.
+- **Geen negatieve marges op smartphone** om blokken over een titelbalk te laten hangen (`mt-6 sm:-mt-24`).
+- **Header**: is `sticky` (4.5rem hoog); `scroll-padding-top` in `globals.css` zorgt dat ankers er niet achter vallen. Nieuwe vaste (`fixed`) elementen houden rekening met `env(safe-area-inset-bottom)`.
+- **Knoppen** mogen op smartphone afbreken (zit in `components/ui/button.tsx`): geef ze geen vaste `h-*` maar `min-h-*`.
 - Testen op een smal scherm (360 px breed) in beide talen; Franse teksten zijn vaak langer.

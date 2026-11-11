@@ -20,7 +20,7 @@ export default function PrivacybeleidPage({ params: { locale } }: Props) {
     <>
       <SiteHeader />
       <main className="mx-auto max-w-3xl px-6 py-16">
-        <h1 className="mb-8 font-serif text-4xl font-semibold">{t('title')}</h1>
+        <h1 className="mb-8 font-serif text-3xl font-semibold sm:text-4xl">{t('title')}</h1>
         <div className="prose prose-neutral max-w-none">
           {/* Plak hier de tekst, in beide talen via messages/nl.json en messages/fr.json (Legal.privacy). */}
         </div>

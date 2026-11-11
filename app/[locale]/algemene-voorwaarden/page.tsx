@@ -24,7 +24,7 @@ export default function AlgemeneVoorwaardenPage({ params: { locale } }: Props) {
       <main className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_320px]">
           <div className="min-w-0">
-            <h1 className="mb-2 font-serif text-4xl font-semibold">{t('title')}</h1>
+            <h1 className="mb-2 font-serif text-3xl font-semibold sm:text-4xl">{t('title')}</h1>
             <p className="mb-8 text-muted-foreground">{t('intro')}</p>
             <TermsAccordion />
           </div>
