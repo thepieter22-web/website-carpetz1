@@ -120,7 +120,7 @@ export async function POST(request: Request) {
         ],
       });
 
-      // --- Klantmail (Luxueus HTML Template in Wovar/Carpetz stijl) ---
+      // --- Klantmail (Geoptimaliseerd en strak opgemaakt) ---
       const customerFirstName = data.firstName ? data.firstName.charAt(0).toUpperCase() + data.firstName.slice(1) : "Beste";
 
       await resend.emails.send({
@@ -132,136 +132,118 @@ export async function POST(request: Request) {
           <html>
           <head>
             <meta charset="utf-8">
-            <style>
-              body { font-family: Arial, sans-serif; background-color: #f7f7f7; margin: 0; padding: 0; color: #333333; }
-              .email-wrapper { max-width: 600px; margin: 0 auto; background-color: #ffffff; }
-              
-              /* USP Header Bar */
-              .usp-bar { background-color: #C69C4D; color: #ffffff; padding: 10px 15px; font-size: 11px; font-weight: bold; text-align: center; }
-              .usp-item { display: inline-block; margin: 0 8px; }
-
-              /* Banner */
-              .banner { background-color: #222222; padding: 40px 20px; text-align: center; color: #ffffff; }
-              .banner h1 { margin: 0; font-size: 24px; color: #ffffff; font-family: 'Georgia', serif; }
-
-              /* Content */
-              .content { padding: 30px; background-color: #ffffff; }
-              .divider { border: none; border-top: 1px solid #C69C4D; margin: 20px 0; }
-              
-              /* Preview image inside email */
-              .preview-container { text-align: center; margin: 20px 0; background: #f0f0f0; padding: 15px; border-radius: 8px; }
-              .preview-container img { max-width: 100%; height: auto; max-height: 250px; border-radius: 4px; }
-
-              /* Order details table */
-              .details-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
-              .details-table td { padding: 8px 0; border-bottom: 1px solid #eeeeee; }
-              .details-table td.label { color: #666666; font-weight: bold; }
-              .details-table td.value { text-align: right; }
-
-              /* Footer */
-              .footer { background-color: #222222; color: #cccccc; padding: 30px 20px; text-align: font-size: 13px; }
-              .footer-columns { width: 100%; margin-bottom: 20px; }
-              .footer-col { width: 33.33%; vertical-align: top; padding: 0 10px; box-sizing: border-box; }
-              .footer-col h4 { color: #ffffff; font-size: 14px; margin-bottom: 10px; border-bottom: 1px solid #444; padding-bottom: 5px; }
-              .footer-col a { color: #cccccc; text-decoration: none; display: block; margin-bottom: 5px; font-size: 12px; }
-              .footer-col a:hover { color: #C69C4D; }
-              .social-links { text-align: center; margin: 20px 0; }
-              .social-links img { width: 24px; height: 24px; margin: 0 5px; }
-              .copyright { text-align: center; font-size: 12px; color: #888888; border-top: 1px solid #333; padding-top: 15px; margin-top: 20px; }
-            </style>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Bedankt voor je bestelling</title>
           </head>
-          <body>
-            <div class="email-wrapper">
-              
-              <!-- USP Header -->
-              <div class="usp-bar">
-                <span class="usp-item">✓ Hoge kwaliteit voor scherpe prijs</span>
-                <span class="usp-item">✓ Veilig betalen</span>
-                <span class="usp-item">✓ Betrouwbare levering</span>
-              </div>
+          <body style="margin: 0; padding: 0; background-color: #f4f4f4; font-family: Arial, sans-serif; color: #333333;">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; background-color: #f4f4f4; padding: 20px 0;">
+              <tr>
+                <td align="center">
+                  <table border="0" cellpadding="0" cellspacing="0" width="600" style="background-color: #ffffff; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                    
+                    <!-- USP Header Bar -->
+                    <tr>
+                      <td style="background-color: #C69C4D; color: #ffffff; padding: 10px 20px; font-size: 11px; font-weight: bold; text-align: center;">
+                        ✓ Hoge kwaliteit voor scherpe prijs &nbsp;&nbsp;|&nbsp;&nbsp; ✓ Veilig betalen &nbsp;&nbsp;|&nbsp;&nbsp; ✓ Betrouwbare levering
+                      </td>
+                    </tr>
 
-              <!-- Sfeervolle Banner -->
-              <div class="banner">
-                <h1>Bedankt voor je bestelling!</h1>
-              </div>
+                    <!-- Sfeervolle Header Banner -->
+                    <tr>
+                      <td style="background-color: #1a1a1a; padding: 35px 20px; text-align: center; color: #ffffff;">
+                        <h1 style="margin: 0; font-size: 22px; font-family: Georgia, serif; font-weight: normal; letter-spacing: 0.5px; color: #ffffff;">Bedankt voor je bestelling!</h1>
+                      </td>
+                    </tr>
 
-              <!-- Body Inhoud -->
-              <div class="content">
-                <p>Beste ${customerFirstName},</p>
-                <p>We hebben je bestelling in goede orde ontvangen en gaan er direct mee aan de slag.</p>
+                    <!-- Hoofdinhoud -->
+                    <tr>
+                      <td style="padding: 30px 40px;">
+                        <p style="margin: 0 0 15px 0; font-size: 15px; line-height: 1.5;">Beste ${customerFirstName},</p>
+                        <p style="margin: 0 0 25px 0; font-size: 15px; line-height: 1.5; color: #555555;">We hebben je bestelling in goede orde ontvangen en gaan er direct met de productie mee aan de slag.</p>
 
-                <hr class="divider">
+                        <!-- Overzichtstabel van de bestelling -->
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #fafafa; border: 1px solid #eeeeee; border-radius: 6px; padding: 15px; margin-bottom: 25px;">
+                          <tr>
+                            <td colspan="2" style="padding-bottom: 12px; border-bottom: 1px solid #e0e0e0; font-weight: bold; font-size: 13px; color: #C69C4D; text-transform: uppercase; letter-spacing: 0.5px;">
+                              Besteloverzichtsdetails
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="padding: 10px 0; font-size: 14px; color: #666666; width: 40%;">Bestelnummer:</td>
+                            <td style="padding: 10px 0; font-size: 14px; font-weight: bold; color: #333333; text-align: right; width: 60%;">${data.orderNumber}</td>
+                          </tr>
+                          <tr>
+                            <td style="padding: 10px 0; font-size: 14px; color: #666666; border-top: 1px solid #f0f0f0;">Type logomat:</td>
+                            <td style="padding: 10px 0; font-size: 14px; font-weight: bold; color: #333333; text-align: right; border-top: 1px solid #f0f0f0;">Op maat (${data.width} × ${data.height} cm)</td>
+                          </tr>
+                          <tr>
+                            <td style="padding: 10px 0; font-size: 14px; color: #666666; border-top: 1px solid #f0f0f0;">Aantal:</td>
+                            <td style="padding: 10px 0; font-size: 14px; font-weight: bold; color: #333333; text-align: right; border-top: 1px solid #f0f0f0;">${data.quantity}</td>
+                          </tr>
+                          <tr>
+                            <td style="padding: 12px 0 5px 0; font-size: 15px; font-weight: bold; color: #333333; border-top: 2px solid #e0e0e0;">Totaal (incl. btw):</td>
+                            <td style="padding: 12px 0 5px 0; font-size: 16px; font-weight: bold; color: #C69C4D; text-align: right; border-top: 2px solid #e0e0e0;">€${data.grandTotal}</td>
+                          </tr>
+                        </table>
 
-                <p><strong>Gegevens van je bestelling:</strong></p>
-                <table class="details-table">
-                  <tr>
-                    <td class="label">Bestelnummer:</td>
-                    <td class="value">${data.orderNumber}</td>
-                  </tr>
-                  <tr>
-                    <td class="label">Type logomat:</td>
-                    <td class="value">Op maat (${data.width} × ${data.height} cm)</td>
-                  </tr>
-                  <tr>
-                    <td class="label">Aantal:</td>
-                    <td class="value">${data.quantity}</td>
-                  </tr>
-                  <tr>
-                    <td class="label">Totaal (incl. btw):</td>
-                    <td class="value" style="font-weight: bold; color: #C69C4D;">€${data.grandTotal}</td>
-                  </tr>
-                </table>
+                        <!-- Visuele Proefdruk Sectie -->
+                        ${data.previewUrl ? `
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 25px;">
+                            <tr>
+                              <td style="font-size: 14px; font-weight: bold; padding-bottom: 8px; color: #333333;">Jouw gekozen ontwerp / proefdruk:</td>
+                            </tr>
+                            <tr>
+                              <td align="center" style="background-color: #f0f0f0; border: 1px dashed #cccccc; border-radius: 6px; padding: 15px;">
+                                <img src="${data.previewUrl}" alt="Logomat Proefdruk" style="max-width: 100%; height: auto; max-height: 220px; display: block; border-radius: 4px;" />
+                              </td>
+                            </tr>
+                          </table>
+                        ` : ''}
 
-                ${imageBuffer ? `
-                  <p style="margin-top: 20px; font-weight: bold;">Jouw gekozen ontwerp / proefdruk:</p>
-                  <div class="preview-container">
-                    <img src="cid:preview-customer" alt="Logomat Proefdruk">
-                  </div>
-                ` : ''}
+                        <!-- Info Box over volgende stappen -->
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #fcf8f0; border-left: 4px solid #C69C4D; border-radius: 0 4px 4px 0; margin-bottom: 25px;">
+                          <tr>
+                            <td style="padding: 15px; font-size: 13px; line-height: 1.5; color: #555555;">
+                              <p style="margin: 0 0 8px 0;"><strong>✅ Wat gebeurt er nu?</strong> Binnen enkele werkdagen ontvang je van ons een definitieve digitale proefdruk per e-mail.</p>
+                              <p style="margin: 0;"><strong>✅</strong> De fysieke productie van je mat start pas nadat jij deze proefdruk hebt goedgekeurd.</p>
+                            </td>
+                          </tr>
+                        </table>
 
-                <div style="background-color: #fcf8f0; border-left: 4px solid #C69C4D; padding: 12px; margin: 20px 0; font-size: 13px;">
-                  <p style="margin: 0 0 8px 0;">✅ <strong>Wat gebeurt er nu?</strong> Binnen enkele werkdagen ontvang je van ons een definitieve digitale proefdruk per e-mail.</p>
-                  <p style="margin: 0;">✅ De fysieke productie van je mat start pas nadat jij deze proefdruk hebt goedgekeurd.</p>
-                </div>
+                        <p style="margin: 0 0 5px 0; font-size: 15px; line-height: 1.5;">Met vriendelijke groet,</p>
+                        <p style="margin: 0; font-size: 15px; font-weight: bold; color: #1a1a1a;">Team Carpetz</p>
+                      </td>
+                    </tr>
 
-                <p>Met vriendelijke groet,</p>
-                <p><strong>Team Carpetz</strong></p>
-              </div>
+                    <!-- Donkere Footer -->
+                    <tr>
+                      <td style="background-color: #1a1a1a; color: #aaaaaa; padding: 30px 40px; font-size: 12px; text-align: center;">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                          <tr>
+                            <td align="center" style="padding-bottom: 15px; border-bottom: 1px solid #333333;">
+                              <a href="https://www.carpetz.be" style="color: #ffffff; text-decoration: none; font-weight: bold; margin: 0 15px;">Website</a>
+                              <a href="https://www.carpetz.be/contact" style="color: #cccccc; text-decoration: none; margin: 0 15px;">Klantenservice</a>
+                              <a href="https://www.carpetz.be/algemene-voorwaarden" style="color: #cccccc; text-decoration: none; margin: 0 15px;">Voorwaarden</a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td align="center" style="padding-top: 20px; color: #777777;">
+                              &copy; ${new Date().getFullYear()} Carpetz. Alle rechten voorbehouden.
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
 
-              <!-- Donkere Footer -->
-              <div class="footer">
-                <table class="footer-columns">
-                  <tr>
-                    <td class="footer-col">
-                      <h4>Klantenservice</h4>
-                      <a href="https://carpetz.be/contact">Contact</a>
-                      <a href="https://carpetz.be/faq">Veelgestelde vragen</a>
-                      <a href="https://carpetz.be/levering">Leveringsinformatie</a>
-                    </td>
-                    <td class="footer-col">
-                      <h4>Carpetz</h4>
-                      <p style="font-size: 12px; color: #cccccc; margin: 0 0 5px 0;">Professionele logomats & evenementenlopers op maat.</p>
-                      <a href="https://www.carpetz.be">www.carpetz.be</a>
-                    </td>
-                    <td class="footer-col">
-                      <h4>Meer</h4>
-                      <a href="https://carpetz.be/zakelijk">Zakelijk bestellen</a>
-                      <a href="https://carpetz.be/algemene-voorwaarden">Algemene voorwaarden</a>
-                    </td>
-                  </tr>
-                </table>
-
-                <div class="copyright">
-                  &copy; ${new Date().getFullYear()} Carpetz. Alle rechten voorbehouden.
-                </div>
-              </div>
-
-            </div>
+                  </table>
+                </td>
+              </tr>
+            </table>
           </body>
           </html>
         `,
         attachments: imageBuffer
-          ? [{ filename: "proefdruk-logomat.png", content: imageBuffer, cid: "preview-customer" }]
+          ? [{ filename: "proefdruk-logomat.png", content: imageBuffer }]
           : [],
       });
 
