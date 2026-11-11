@@ -109,7 +109,6 @@
     "cookieSettings": "Cookie-instellingen"
   },
   "Hero": {
-    "badge": "Branding tapijt voor bedrijven, retail & events",
     "title": "Logomatten, geprint tapijt & event tapijt op maat",
     "description": "Carpetz ontwerpt en produceert tapijt op maat dat je merk letterlijk op de kaart zet. Van logomatten op maat en geprint tapijt tot rode lopers op maat voor je volgende beurs of event — met snelle levering in België en Nederland.",
     "cta1": "Ontwerp je logomat",
@@ -149,10 +148,6 @@
     ]
   },
   "Home": {
-    "intro": {
-      "title": "Logomatten",
-      "text": "Voor winkels, kantoren, hotels en inkomhallen."
-    },
     "logomats": {
       "eyebrow": "Logomatten",
       "title": "Logomatten op maat",

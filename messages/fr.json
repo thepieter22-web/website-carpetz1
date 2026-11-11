@@ -109,7 +109,6 @@
     "cookieSettings": "Paramètres des cookies"
   },
   "Hero": {
-    "badge": "Tapis à l’image de votre marque pour entreprises, retail & événements",
     "title": "Tapis logo, tapis imprimé & tapis événementiel sur mesure",
     "description": "Carpetz conçoit et fabrique des tapis sur mesure qui mettent votre marque en avant, au sens propre. Des tapis logo et tapis imprimés aux tapis rouges sur mesure pour votre prochain salon ou événement — avec une livraison rapide en Belgique et aux Pays-Bas.",
     "cta1": "Créez votre tapis logo",
@@ -149,10 +148,6 @@
     ]
   },
   "Home": {
-    "intro": {
-      "title": "Tapis logo",
-      "text": "Pour magasins, bureaux, hôtels et halls d’entrée."
-    },
     "logomats": {
       "eyebrow": "Tapis logo",
       "title": "Tapis logo sur mesure",

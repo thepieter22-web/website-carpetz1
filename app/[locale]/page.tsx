@@ -24,6 +24,7 @@ import { UspTicker } from '@/components/UspTicker'
 import { QuoteBand } from '@/components/quote-band'
 import { Cta } from '@/components/cta'
 import { LocalBusinessJsonLd } from '@/components/local-business-jsonld'
+import { AmbientVideo } from '@/components/ambient-video'
 
 type TitleText = { title: string; text: string }
 
@@ -45,17 +46,6 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
       <main>
         <Hero />
         <UspTicker />
-
-        <section className="py-12">
-          <div className="mx-auto max-w-7xl px-6">
-            <div className="grid gap-6 lg:grid-cols-3">
-              <div className="rounded-sm border p-8">
-                <h3 className="text-2xl font-semibold">{t('intro.title')}</h3>
-                <p className="mt-4">{t('intro.text')}</p>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Logomatten op maat */}
         <section id="logomatten" className="border-t border-border bg-secondary/40">
@@ -114,12 +104,11 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
               </div>
             </div>
             <div className="relative order-1 aspect-[4/3] overflow-hidden rounded-sm lg:order-2">
-              <Image
-                src="/images/geprint-tapijt.webp"
+              <AmbientVideo
+                src="/videos/geprint-tapijt"
+                poster="/images/geprint-tapijt.webp"
                 alt={t('printed.imageAlt')}
-                fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
               />
             </div>
           </div>

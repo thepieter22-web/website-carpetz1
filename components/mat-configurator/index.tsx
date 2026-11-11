@@ -340,7 +340,7 @@ export function MatConfigurator() {
 
       {/* Main Content */}
       <main className="max-w-[1800px] mx-auto px-3 py-4 pb-28 sm:px-6 sm:py-6 lg:pb-6">
-        <div className="grid grid-cols-1 lg:grid-cols-[360px_1.6fr_320px] gap-6">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)] xl:grid-cols-[340px_minmax(0,1fr)_300px]">
           {/* Configuration Panel — verticale stappen-accordion */}
           <Card className="flex flex-col">
             <CardHeader className="pb-2">
@@ -934,7 +934,7 @@ export function MatConfigurator() {
           </Card>
 
                    {/* Preview Panel — op smartphone bovenaan, zodat je het resultaat meteen ziet */}
-          <div className="order-first space-y-6 lg:order-none">
+          <div className="order-first min-w-0 space-y-6 lg:order-none">
             <Card>
               <CardHeader className="pb-2">
                 <div className="flex items-center justify-between">
@@ -949,7 +949,7 @@ export function MatConfigurator() {
                      </div>
 
           {/* Price Calculator - Desktop */}
-          <div className="hidden lg:block">
+          <div className="hidden min-w-0 xl:block">
             <div className="sticky top-24">
               <PriceCalculator config={config} onOrder={handleOrder} />
             </div>
@@ -957,7 +957,7 @@ export function MatConfigurator() {
         </div>
 
         {/* Price Calculator - Mobile/Tablet */}
-        <div className="lg:hidden mt-6">
+        <div className="mt-6 xl:hidden">
           <PriceCalculator id="order-summary-mobile" config={config} onOrder={handleOrder} />
         </div>
 

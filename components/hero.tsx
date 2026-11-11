@@ -1,7 +1,6 @@
 import { useTranslations } from 'next-intl';
 import Image from 'next/image'
 import { Cta } from '@/components/cta'
-import { Star } from 'lucide-react'
 
 export function Hero() {
   const t = useTranslations('Hero');
@@ -21,12 +20,8 @@ export function Hero() {
 
      <div className="relative mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-16">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-accent">
-            <Star className="size-3.5 fill-accent" />
-            {t('badge')}
-          </div>
 
-          <h1 className="mt-6 font-serif text-3xl font-semibold leading-[1.1] text-balance sm:text-5xl sm:leading-[1.05] lg:text-6xl">
+          <h1 className="font-serif text-3xl font-semibold leading-[1.1] text-balance sm:text-5xl sm:leading-[1.05] lg:text-6xl">
             {t('title')}
           </h1>
 
