@@ -8,7 +8,7 @@
  */
 const memory = new Map<string, string>()
 
-export type OrderAssetKey = "matPreview" | "matLogo"
+export type OrderAssetKey = "matPreview" | "matLogo" | "matTexts"
 
 export function saveOrderAsset(key: OrderAssetKey, value: string) {
   memory.set(key, value)

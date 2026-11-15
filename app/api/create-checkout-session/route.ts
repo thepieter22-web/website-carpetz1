@@ -93,6 +93,20 @@ export async function POST(request: Request) {
     const totals = calculateOrderTotals(spec, vatDecision.rate);
     const isIntraCommunity = vatDecision.treatment === "intra_community";
 
+    // Eigen teksten op de mat, samengevat voor productie (Stripe-metadata: max. 500 tekens).
+    const customTexts = (Array.isArray(body.customTexts) ? body.customTexts : [])
+      .slice(0, 5)
+      .map((item: Record<string, unknown>) => {
+        const content = str(item?.content).replace(/\s*\n\s*/g, " / ").slice(0, 60);
+        if (!content) return "";
+        const font = str(item?.font).slice(0, 30);
+        const colorCode = str(item?.colorCode).slice(0, 10);
+        return `«${content}» ${font}${item?.bold === true ? " vet" : ""}, kleur ${colorCode}`;
+      })
+      .filter(Boolean)
+      .join(" | ")
+      .slice(0, 500);
+
     const previewImage = body.previewImage || "";
     let previewUrl = "";
     if (previewImage) {
@@ -167,6 +181,7 @@ export async function POST(request: Request) {
           quantity: String(spec.quantity || ""),
           logoColors: String(spec.logoColors ?? ""),
           colorCode: spec.colorCode || "",
+          customTexts,
           placement: spec.placement || "",
           rubberBorder: String(spec.rubberBorder ?? ""),
           unitPrice: totals.unitPrice.toFixed(2),

@@ -2,9 +2,10 @@
 
 import { useRef, useEffect, useState, useCallback, useMemo } from "react";
 import { useTranslations } from "next-intl";
-import { MAT_COLORS, type MatConfig } from "@/lib/mat-config";
+import { MAT_COLORS, type MatConfig, type MatText } from "@/lib/mat-config";
 import { PRINTGRASS_COLORS } from "@/lib/printgrass-colors";
 import { SIGNATURE_COLORS } from "@/lib/signature-colors";
+import { canvasFont, getMatFont } from "@/lib/mat-fonts";
 import { Button } from "@/components/ui/button";
 import { RotateCw, ZoomIn, Move, Trash2, Crosshair } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
@@ -13,7 +14,143 @@ import { cn } from "@/lib/utils";
 interface MatCanvasProps {
   config: MatConfig;
   onLogoUpdate: (updates: Partial<MatConfig["logo"]>) => void;
+  onTextUpdate?: (id: string, updates: Partial<MatText>) => void;
+  selectedTextId?: string | null;
+  onSelectText?: (id: string) => void;
 }
+
+// -----------------------------
+// Eigen tekst: als afbeelding getekend (zelfde tapijtstructuur als het logo)
+// -----------------------------
+
+/** Tekst wordt eenmalig op deze letterhoogte getekend en daarna geschaald. */
+const TEXT_BASE_PX = 160;
+const TEXT_LINE_HEIGHT = 1.2;
+const textCanvasCache = new Map<string, HTMLCanvasElement>();
+
+export function getTextColorHex(colorCode: string) {
+  return (
+    MAT_COLORS.find((c) => c.code === colorCode)?.hex ??
+    PRINTGRASS_COLORS.find((c) => c.code === colorCode)?.hex ??
+    SIGNATURE_COLORS.find((c) => c.code === colorCode)?.hex ??
+    "#f5f5f5"
+  );
+}
+
+function getTextLines(content: string) {
+  return content.split("\n").slice(0, 3);
+}
+
+/** Tekst als canvas; bewaard zodra het lettertype geladen is (vlot slepen op mobiel). */
+function getTextCanvas(text: MatText): HTMLCanvasElement | null {
+  const lines = getTextLines(text.content);
+  if (!lines.some((line) => line.trim())) return null;
+
+  const hex = getTextColorHex(text.colorCode);
+  const fontString = canvasFont(text.fontId, text.bold, TEXT_BASE_PX);
+  const key = `${text.content}|${text.fontId}|${text.bold}|${hex}`;
+  const cached = textCanvasCache.get(key);
+  if (cached) return cached;
+
+  const measure = document.createElement("canvas").getContext("2d");
+  if (!measure) return null;
+  measure.font = fontString;
+  const maxWidth = Math.max(...lines.map((line) => measure.measureText(line).width), TEXT_BASE_PX * 0.3);
+
+  const pad = Math.round(TEXT_BASE_PX * 0.12);
+  const lineHeight = TEXT_BASE_PX * TEXT_LINE_HEIGHT;
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.ceil(maxWidth + pad * 2);
+  canvas.height = Math.ceil(lines.length * lineHeight + pad * 2);
+
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return null;
+  ctx.font = fontString;
+  ctx.fillStyle = hex;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  lines.forEach((line, i) => {
+    ctx.fillText(line, canvas.width / 2, pad + lineHeight * (i + 0.5));
+  });
+
+  // Pas bewaren als het echte lettertype geladen is (anders tijdelijk een standaardletter).
+  if (typeof document !== "undefined" && document.fonts?.check(fontString)) {
+    textCanvasCache.set(key, canvas);
+    if (textCanvasCache.size > 40) {
+      const oldest = textCanvasCache.keys().next().value;
+      if (oldest !== undefined) textCanvasCache.delete(oldest);
+    }
+  }
+  return canvas;
+}
+
+/** Veiligheidsmarge: logo en tekst blijven minstens zoveel cm van de rand van het bedrukte vlak. */
+export const SAFE_MARGIN_CM = 2;
+
+/** Bedrukbaar vlak (CSS-pixels) + marge in pixels. */
+type PrintArea = { innerX: number; innerY: number; innerW: number; innerH: number; inset: number };
+
+/**
+ * Plaatst een (gedraaid) element binnen de veilige zone: te groot wordt verkleind,
+ * de positie wordt begrensd. Zelfde regel voor tekenen, aanraken en slepen.
+ */
+function placeBox(
+  width: number,
+  height: number,
+  rotationDeg: number,
+  position: { x: number; y: number },
+  area: PrintArea
+) {
+  const rotation = (rotationDeg * Math.PI) / 180;
+  const cos = Math.abs(Math.cos(rotation));
+  const sin = Math.abs(Math.sin(rotation));
+  const safeW = Math.max(1, area.innerW - area.inset * 2);
+  const safeH = Math.max(1, area.innerH - area.inset * 2);
+  const shrink = Math.min(1, safeW / (width * cos + height * sin), safeH / (width * sin + height * cos));
+  const w = width * shrink;
+  const h = height * shrink;
+
+  // Grenzen voor het middelpunt (0–1 van het bedrukbare vlak).
+  const limX = ((w * cos + h * sin) / 2 + area.inset) / area.innerW;
+  const limY = ((w * sin + h * cos) / 2 + area.inset) / area.innerH;
+  const relX = limX >= 0.5 ? 0.5 : clamp(position.x, limX, 1 - limX);
+  const relY = limY >= 0.5 ? 0.5 : clamp(position.y, limY, 1 - limY);
+
+  return {
+    width: w,
+    height: h,
+    cx: area.innerX + area.innerW * relX,
+    cy: area.innerY + area.innerH * relY,
+    rotation,
+    limX,
+    limY,
+  };
+}
+
+/** Afmetingen en plaats van een tekstblok op het canvas (CSS-pixels). */
+function getTextBox(text: MatText, area: PrintArea) {
+  const source = getTextCanvas(text);
+  if (!source) return null;
+  const scale = (area.innerH * text.size) / (TEXT_BASE_PX * TEXT_LINE_HEIGHT);
+  return { source, ...placeBox(source.width * scale, source.height * scale, text.rotation, text.position, area) };
+}
+
+function isPointInBox(
+  px: number,
+  py: number,
+  box: { cx: number; cy: number; width: number; height: number; rotation: number }
+) {
+  const dx = px - box.cx;
+  const dy = py - box.cy;
+  const cos = Math.cos(-box.rotation);
+  const sin = Math.sin(-box.rotation);
+  const lx = dx * cos - dy * sin;
+  const ly = dx * sin + dy * cos;
+  // Iets ruimer dan de letters zelf: makkelijker te raken met een vinger.
+  return Math.abs(lx) <= box.width / 2 + 8 && Math.abs(ly) <= box.height / 2 + 8;
+}
+
+type DragTarget = { kind: "logo" } | { kind: "text"; id: string };
 
 type TextureSource = HTMLImageElement | HTMLCanvasElement;
 
@@ -661,15 +798,25 @@ function getCanvasLayout(params: {
   };
 }
 
-export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
+export function MatCanvas({
+  config,
+  onLogoUpdate,
+  onTextUpdate,
+  selectedTextId = null,
+  onSelectText,
+}: MatCanvasProps) {
   const t = useTranslations("MatCanvas");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [canvasSize, setCanvasSize] = useState({ width: 600, height: 400 });
   const [pixelRatio, setPixelRatio] = useState(1);
-  const [isDragging, setIsDragging] = useState(false);
+  const [dragTarget, setDragTarget] = useState<DragTarget | null>(null);
+  const isDragging = dragTarget !== null;
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  // Verhoogt zodra een lettertype geladen is: dan opnieuw tekenen met de echte letter.
+  const [fontsVersion, setFontsVersion] = useState(0);
+  const texts = config.texts;
   const [logoImage, setLogoImage] = useState<HTMLImageElement | null>(null);
   const [textures, setTextures] = useState<TextureSet>({
     base: null,
@@ -765,6 +912,22 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
     };
   }, [config.logo.dataUrl]);
 
+  // Lettertypes van de teksten laden (pas wanneer ze gebruikt worden).
+  const fontKeys = texts.map((text) => canvasFont(text.fontId, text.bold, TEXT_BASE_PX)).join("|");
+  useEffect(() => {
+    if (!fontKeys || typeof document === "undefined" || !document.fonts) return;
+    let mounted = true;
+    const pending = Array.from(new Set(fontKeys.split("|"))).filter((f) => !document.fonts.check(f));
+    if (!pending.length) return;
+    Promise.all(pending.map((f) => document.fonts.load(f).catch(() => [])))
+      .then(() => {
+        if (mounted) setFontsVersion((v) => v + 1);
+      });
+    return () => {
+      mounted = false;
+    };
+  }, [fontKeys]);
+
    useEffect(() => {
     let mounted = true;
     const activeTextures = isPrintGrass ? PRINTGRASS_TEXTURES : STANDARD_TEXTURES;
@@ -781,6 +944,27 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
       mounted = false;
     };
   }, [isPrintGrass]);
+
+  /** Bedrukbaar vlak + 2 cm marge, omgerekend naar pixels van dit voorbeeld. */
+  const toPrintArea = useCallback(
+    (layout: CanvasLayout): PrintArea => ({
+      innerX: layout.innerX,
+      innerY: layout.innerY,
+      innerW: layout.innerW,
+      innerH: layout.innerH,
+      inset: (SAFE_MARGIN_CM * layout.outerW) / displayWidth,
+    }),
+    [displayWidth]
+  );
+
+  /** Logo-vak (grootte volgens schaal, binnen de veilige zone). */
+  const getLogoBox = useCallback(
+    (logoCanvas: HTMLCanvasElement, area: PrintArea) => {
+      const { width, height } = getRenderedLogoSize(logoCanvas, config.logo.scale, area.innerW, area.innerH);
+      return placeBox(width, height, config.logo.rotation, config.logo.position, area);
+    },
+    [config.logo.scale, config.logo.rotation, config.logo.position]
+  );
 
   const drawCanvas = useCallback(() => {
     const canvas = canvasRef.current;
@@ -827,6 +1011,7 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
       innerW,
       innerH,
     } = layout;
+    const printArea = toPrintArea(layout);
 
     const baseColor = muteHex(selectedMatColor);
     const topColor = lightenHex(baseColor, 0.14);
@@ -1050,19 +1235,13 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
           textures.noise
         );
 
-        const { width: logoWidth, height: logoHeight } = getRenderedLogoSize(
-          printedLogo,
-          config.logo.scale,
-          innerW,
-          innerH
-        );
-
-        const logoCenterX = innerX + innerW * config.logo.position.x;
-        const logoCenterY = innerY + innerH * config.logo.position.y;
+        const logoBox = getLogoBox(printedLogo, printArea);
+        const logoWidth = logoBox.width;
+        const logoHeight = logoBox.height;
 
         ctx.save();
-        ctx.translate(logoCenterX, logoCenterY);
-        ctx.rotate((config.logo.rotation * Math.PI) / 180);
+        ctx.translate(logoBox.cx, logoBox.cy);
+        ctx.rotate(logoBox.rotation);
         ctx.globalAlpha = 0.96;
         ctx.filter = "none";
         ctx.globalCompositeOperation = "source-over";
@@ -1079,6 +1258,19 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
 
         ctx.restore();
       }
+    }
+
+    // Eigen teksten (boven het logo), met dezelfde tapijtstructuur.
+    for (const text of texts) {
+      const box = getTextBox(text, printArea);
+      if (!box) continue;
+      const printedText = createPrintedLogoCanvas(box.source, textures.base, textures.soft, textures.noise);
+      ctx.save();
+      ctx.translate(box.cx, box.cy);
+      ctx.rotate(box.rotation);
+      ctx.globalAlpha = 0.96;
+      ctx.drawImage(printedText, -box.width / 2, -box.height / 2, box.width, box.height);
+      ctx.restore();
     }
 
     ctx.restore();
@@ -1155,24 +1347,19 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
     textures,
     logoImage,
     config,
+    texts,
+    fontsVersion,
     isFramePlacement,
+    toPrintArea,
+    getLogoBox,
   ]);
 
   useEffect(() => {
     drawCanvas();
   }, [drawCanvas]);
 
-  const handleMouseDown = (e: React.PointerEvent<HTMLCanvasElement>) => {
-    if (!logoImage) return;
-
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const rect = canvas.getBoundingClientRect();
-    const localX = e.clientX - rect.left;
-    const localY = e.clientY - rect.top;
-
-    const layout = getCanvasLayout({
+  const getLayout = () =>
+    getCanvasLayout({
       canvasWidth: canvasSize.width,
       canvasHeight: canvasSize.height,
       displayWidth,
@@ -1180,88 +1367,123 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
       isFramePlacement,
     });
 
-    const { innerX, innerY, innerW, innerH } = layout;
+  const getPointer = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+  };
 
-    const relX = (localX - innerX) / innerW;
-    const relY = (localY - innerY) / innerH;
+  const getCurrentLogoBox = (area: PrintArea) => {
+    if (!logoImage || !config.logo.dataUrl) return null;
+    const preparedLogo = createPreparedLogoCanvas(logoImage);
+    return preparedLogo ? getLogoBox(preparedLogo, area) : null;
+  };
 
+  const handleMouseDown = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    const { x: localX, y: localY } = getPointer(e);
+    const area = toPrintArea(getLayout());
+
+    const relX = (localX - area.innerX) / area.innerW;
+    const relY = (localY - area.innerY) / area.innerH;
     if (relX < 0 || relX > 1 || relY < 0 || relY > 1) return;
 
-    const preparedLogo = createPreparedLogoCanvas(logoImage);
-    if (!preparedLogo) return;
+    // Eerst de teksten (bovenste eerst), daarna het logo.
+    let target: DragTarget | null = null;
+    let origin = { x: 0, y: 0 };
+    for (let i = texts.length - 1; i >= 0; i--) {
+      const box = getTextBox(texts[i], area);
+      if (box && isPointInBox(localX, localY, box)) {
+        target = { kind: "text", id: texts[i].id };
+        origin = { x: (box.cx - area.innerX) / area.innerW, y: (box.cy - area.innerY) / area.innerH };
+        break;
+      }
+    }
 
-    const { width: logoWidth, height: logoHeight } = getRenderedLogoSize(
-      preparedLogo,
-      config.logo.scale,
-      innerW,
-      innerH
-    );
+    if (!target) {
+      const box = getCurrentLogoBox(area);
+      if (box && isPointInBox(localX, localY, box)) {
+        target = { kind: "logo" };
+        origin = { x: (box.cx - area.innerX) / area.innerW, y: (box.cy - area.innerY) / area.innerH };
+      }
+    }
 
-    const logoNormW = logoWidth / innerW;
-    const logoNormH = logoHeight / innerH;
+    if (!target) return;
+    if (target.kind === "text") onSelectText?.(target.id);
 
-    const isInsideLogo =
-      Math.abs(relX - config.logo.position.x) <= logoNormW / 2 &&
-      Math.abs(relY - config.logo.position.y) <= logoNormH / 2;
-
-    if (!isInsideLogo) return;
-
-    // Vinger blijft "vast" aan het logo, ook als hij even buiten het canvas komt.
+    // Vinger blijft "vast" aan het element, ook als hij even buiten het canvas komt.
     e.currentTarget.setPointerCapture?.(e.pointerId);
-    setIsDragging(true);
-    setDragStart({
-      x: relX - config.logo.position.x,
-      y: relY - config.logo.position.y,
-    });
+    setDragTarget(target);
+    setDragStart({ x: relX - origin.x, y: relY - origin.y });
   };
 
   const handleMouseMove = (e: React.PointerEvent<HTMLCanvasElement>) => {
-    if (!isDragging || !logoImage) return;
+    if (!dragTarget) return;
 
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const { x: localX, y: localY } = getPointer(e);
+    const area = toPrintArea(getLayout());
+    const relX = (localX - area.innerX) / area.innerW;
+    const relY = (localY - area.innerY) / area.innerH;
 
-    const rect = canvas.getBoundingClientRect();
-    const localX = e.clientX - rect.left;
-    const localY = e.clientY - rect.top;
+    const box =
+      dragTarget.kind === "logo"
+        ? getCurrentLogoBox(area)
+        : (() => {
+            const text = texts.find((item) => item.id === dragTarget.id);
+            return text ? getTextBox(text, area) : null;
+          })();
+    if (!box) return;
 
-    const layout = getCanvasLayout({
-      canvasWidth: canvasSize.width,
-      canvasHeight: canvasSize.height,
-      displayWidth,
-      borderThickness,
-      isFramePlacement,
-    });
+    // Binnen de veilige zone (2 cm van de rand) houden.
+    const position = {
+      x: box.limX >= 0.5 ? 0.5 : clamp(relX - dragStart.x, box.limX, 1 - box.limX),
+      y: box.limY >= 0.5 ? 0.5 : clamp(relY - dragStart.y, box.limY, 1 - box.limY),
+    };
 
-    const { innerX, innerY, innerW, innerH } = layout;
-
-    const relX = (localX - innerX) / innerW;
-    const relY = (localY - innerY) / innerH;
-
-    const preparedLogo = createPreparedLogoCanvas(logoImage);
-    if (!preparedLogo) return;
-
-    const { width: logoWidth, height: logoHeight } = getRenderedLogoSize(
-      preparedLogo,
-      config.logo.scale,
-      innerW,
-      innerH
-    );
-
-    const halfNormW = logoWidth / innerW / 2;
-    const halfNormH = logoHeight / innerH / 2;
-
-    const newX = clamp(relX - dragStart.x, halfNormW, 1 - halfNormW);
-    const newY = clamp(relY - dragStart.y, halfNormH, 1 - halfNormH);
-
-    onLogoUpdate({
-      position: { x: newX, y: newY },
-    });
+    if (dragTarget.kind === "logo") onLogoUpdate({ position });
+    else onTextUpdate?.(dragTarget.id, { position });
   };
 
   const handleMouseUp = () => {
-    setIsDragging(false);
+    setDragTarget(null);
   };
+
+  // Stippelkader rond de geselecteerde tekst (los van het canvas: komt niet in de preview-afbeelding).
+  const selectedText = texts.find((text) => text.id === selectedTextId) ?? null;
+  const selectionBox = useMemo(() => {
+    if (!selectedText || typeof document === "undefined") return null;
+    const area = toPrintArea(
+      getCanvasLayout({
+        canvasWidth: canvasSize.width,
+        canvasHeight: canvasSize.height,
+        displayWidth,
+        borderThickness,
+        isFramePlacement,
+      })
+    );
+    const box = getTextBox(selectedText, area);
+    return box ? { cx: box.cx, cy: box.cy, width: box.width, height: box.height, rotation: selectedText.rotation } : null;
+    // fontsVersion: na het laden van het lettertype kan de breedte veranderen.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedText, canvasSize, displayWidth, borderThickness, isFramePlacement, fontsVersion, toPrintArea]);
+
+  // Veilige zone zichtbaar maken zolang de klant iets versleept.
+  const safeZone = useMemo(() => {
+    if (!isDragging) return null;
+    const area = toPrintArea(
+      getCanvasLayout({
+        canvasWidth: canvasSize.width,
+        canvasHeight: canvasSize.height,
+        displayWidth,
+        borderThickness,
+        isFramePlacement,
+      })
+    );
+    return {
+      left: area.innerX + area.inset,
+      top: area.innerY + area.inset,
+      width: area.innerW - area.inset * 2,
+      height: area.innerH - area.inset * 2,
+    };
+  }, [isDragging, canvasSize, displayWidth, borderThickness, isFramePlacement, toPrintArea]);
 
   const handleCenterLogo = () => {
     onLogoUpdate({ position: { x: 0.5, y: 0.5 } });
@@ -1279,7 +1501,8 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
 
   return (
     <div ref={containerRef} className="space-y-4">
-      <div className="relative flex items-center justify-center">
+      <div className="flex items-center justify-center">
+        <div className="relative">
         <canvas
   id="carpetz-mat-preview-canvas"
   ref={canvasRef}
@@ -1287,14 +1510,35 @@ export function MatCanvas({ config, onLogoUpdate }: MatCanvasProps) {
   className={cn(
     "cursor-crosshair",
     isDragging && "cursor-grabbing",
-    // Met logo: vinger-slepen verplaatst het logo i.p.v. de pagina te scrollen.
-    config.logo.dataUrl ? "touch-none" : "touch-pan-y"
+    // Met logo of tekst: vinger-slepen verplaatst het element i.p.v. de pagina te scrollen.
+    config.logo.dataUrl || texts.length > 0 ? "touch-none" : "touch-pan-y"
   )}
   onPointerDown={handleMouseDown}
   onPointerMove={handleMouseMove}
   onPointerUp={handleMouseUp}
   onPointerCancel={handleMouseUp}
 />
+          {safeZone && (
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute border border-dashed border-white/60"
+              style={safeZone}
+            />
+          )}
+          {selectionBox && (
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute rounded-sm border-2 border-dashed border-[#C69C4D]"
+              style={{
+                left: selectionBox.cx - selectionBox.width / 2 - 4,
+                top: selectionBox.cy - selectionBox.height / 2 - 4,
+                width: selectionBox.width + 8,
+                height: selectionBox.height + 8,
+                transform: `rotate(${selectionBox.rotation}deg)`,
+              }}
+            />
+          )}
+        </div>
       </div>
 
       {config.logo.dataUrl && (

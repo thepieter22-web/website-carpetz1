@@ -119,11 +119,11 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
           <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-2 lg:px-8 lg:py-28">
             <div className="relative aspect-[4/3] overflow-hidden rounded-sm">
               <Image
-                src="/images/red-carpet.png"
+                src="/images/event-tapijt-zonder-achtergrond.webp"
                 alt={t('event.imageAlt')}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
+                className="object-contain"
               />
             </div>
             <div>

@@ -187,6 +187,7 @@ export async function POST(request: Request) {
           ${data.deliveryStreet ? `<p><strong>Leveringsadres:</strong> ${esc(data.deliveryStreet)}, ${esc(data.deliveryPostalCode)} ${esc(data.deliveryCity)}, ${esc(data.deliveryCountry)}</p>` : ""}
           <p><strong>Afmeting:</strong> ${data.width} × ${data.height} cm</p>
           <p><strong>Aantal:</strong> ${data.quantity}</p>
+          ${data.customTexts ? `<p><strong>Eigen tekst:</strong> ${esc(data.customTexts)}</p>` : ""}
           <p><strong>Totaal excl. btw:</strong> €${(productExcl + shippingExcl).toFixed(2)}</p>
           <p><strong>Btw (${vatPercent}%):</strong> €${vatAmount.toFixed(2)}</p>
           <p><strong>Totaal betaald:</strong> €${data.grandTotal}</p>

@@ -211,6 +211,14 @@ export default function CartPage({
         body: JSON.stringify({
           previewImage: readOrderAsset("matPreview"),
           logoImage: readOrderAsset("matLogo"),
+          // Eigen teksten op de mat (inhoud, lettertype, kleur) voor de productie.
+          customTexts: (() => {
+            try {
+              return JSON.parse(readOrderAsset("matTexts") || "[]");
+            } catch {
+              return [];
+            }
+          })(),
           // Taal van de klant: bepaalt de taal van Stripe, de bevestigingsmail en de factuur.
           locale,
           // Enkel productspecificaties, geen prijzen of btw-tarief: de server beslist zelf.
@@ -383,10 +391,6 @@ export default function CartPage({
                     {t("business")}
                   </button>
                 </div>
-
-                {!isBusiness && effectiveDeliveryCountry === "NL" && (
-                  <p className="mt-4 rounded-lg bg-muted p-3 text-sm text-muted-foreground">{t("vatHintNL")}</p>
-                )}
 
                 <div className="mt-6 flex flex-col gap-4">
                   {isBusiness && (

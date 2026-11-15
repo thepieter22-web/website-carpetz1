@@ -159,7 +159,31 @@ export interface MatConfig {
   };
   quantity: number;
   logoColors: number;
+  /** Eigen teksten van de klant (stap 5), los van het logo te verplaatsen. */
+  texts: MatText[];
 }
+
+/** Eén tekstblok op de mat. Posities zijn relatief (0–1) t.o.v. het bedrukbare vlak. */
+export interface MatText {
+  id: string;
+  content: string;
+  /** Sleutel uit MAT_FONTS (lib/mat-fonts.ts). */
+  fontId: string;
+  bold: boolean;
+  /** Kleurcode uit het kleurenpalet van het mattype (bv. "C7"): enkel produceerbare kleuren. */
+  colorCode: string;
+  /** Letterhoogte als deel van de hoogte van het bedrukbare vlak. */
+  size: number;
+  position: { x: number; y: number };
+  rotation: number;
+}
+
+export const TEXT_LIMITS = {
+  maxTexts: 5,
+  maxLength: 60,
+  maxLines: 3,
+  size: { min: 0.04, max: 0.4, default: 0.12 },
+} as const;
 
 export interface CartItem {
   type: MatType;
@@ -324,6 +348,7 @@ export function calculateOrderTotals(spec: OrderSpec, vatRate: number = PRICING.
     logo: { file: null, dataUrl: null, position: { x: 0.5, y: 0.5 }, scale: 1, rotation: 0 },
     quantity: spec.quantity,
     logoColors: spec.logoColors,
+    texts: [],
   });
 
   const round = (n: number) => Math.round(n * 100) / 100;

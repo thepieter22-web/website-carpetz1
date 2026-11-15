@@ -76,6 +76,7 @@ const CLIENT_NAMESPACES = [
   'CarpetSimulator',
   'Configurator',
   'MatCanvas',
+  'TextEditor',
   'LogoUploader',
   'ColorPalette',
   'PriceCalculator',

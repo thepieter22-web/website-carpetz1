@@ -18,8 +18,10 @@ import { MatCanvas } from "./mat-canvas"
 import { LogoUploader } from "./logo-uploader"
 import { PriceCalculator } from "./price-calculator"
 import { MobileOrderBar } from "./mobile-order-bar"
+import { TextEditor } from "./text-editor"
+import { DEFAULT_FONT_ID, getMatFont } from "@/lib/mat-fonts"
 import { saveOrderAsset } from "@/lib/order-assets"
-import { STANDARD_SIZES, type MatConfig, MAT_COLORS } from "@/lib/mat-config"
+import { STANDARD_SIZES, type MatConfig, type MatText, MAT_COLORS, TEXT_LIMITS } from "@/lib/mat-config"
 import { SIGNATURE_COLORS } from "@/lib/signature-colors"
 import { useSearchParams } from "next/navigation"
 import {
@@ -34,6 +36,7 @@ import {
   ChevronDown,
   Check,
   Palette as PaletteIcon,
+  Type as TypeIcon,
 } from "lucide-react"
 
 const TYPE_PREVIEW_IMAGES: Record<string, string> = {
@@ -67,6 +70,7 @@ const DEFAULT_CONFIG: MatConfig = {
   },
   quantity: 1,
   logoColors: 1,
+  texts: [],
 }
 
 type IndoorSubtype = "go" | "green" | "studio" | "pro"
@@ -75,6 +79,7 @@ type VisibleTypeBlock = "indoor" | "outdoor" | null
 
 export function MatConfigurator() {
   const t = useTranslations("Configurator")
+  const tText = useTranslations("TextEditor")
   const mats = getMatTypes(useMessages())
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -93,6 +98,7 @@ export function MatConfigurator() {
   const [indoorSubtype, setIndoorSubtype] = useState<IndoorSubtype>(DEFAULT_CONFIG.indoorSubtype)
     const [outdoorSubtype, setOutdoorSubtype] = useState<OutdoorSubtype>("grip")
   const [visibleTypeBlock, setVisibleTypeBlock] = useState<VisibleTypeBlock>(null)
+  const [selectedTextId, setSelectedTextId] = useState<string | null>(null)
 
     useEffect(() => {
     if (config.logo.dataUrl) {
@@ -220,6 +226,7 @@ export function MatConfigurator() {
     setVisibleTypeBlock(null)
     setCurrentStep(1)
     setMaxStepReached(1)
+    setSelectedTextId(null)
   }, [])
 
     const handleOrder = useCallback(() => {
@@ -232,6 +239,21 @@ export function MatConfigurator() {
     if (config.logo.dataUrl) {
       saveOrderAsset("matLogo", config.logo.dataUrl)
     }
+
+    // Eigen teksten (inhoud, lettertype, kleur) voor de productie en de proefdruk.
+    saveOrderAsset(
+      "matTexts",
+      JSON.stringify(
+        config.texts
+          .filter((text) => text.content.trim())
+          .map((text) => ({
+            content: text.content.trim(),
+            font: getMatFont(text.fontId).label,
+            bold: text.bold && getMatFont(text.fontId).hasBold,
+            colorCode: text.colorCode,
+          }))
+      )
+    )
 
     // Enkel productspecificaties; de prijs wordt altijd opnieuw berekend.
     const params = new URLSearchParams({
@@ -319,11 +341,53 @@ export function MatConfigurator() {
   const step1Complete = Boolean(config.logo.file)
   const step2Complete = maxStepReached > 2
 
+  // Eigen tekst (stap 5)
+  const handleAddText = () => {
+    if (config.texts.length >= TEXT_LIMITS.maxTexts) return
+    // Standaard een leesbare kleur: licht op een donkere mat, donker op een lichte mat.
+    const luminance = (hex: string) => {
+      const value = parseInt(hex.replace("#", ""), 16)
+      return (0.299 * ((value >> 16) & 255) + 0.587 * ((value >> 8) & 255) + 0.114 * (value & 255)) / 255
+    }
+    const sorted = [...activeColors].sort((a, b) => luminance(a.hex) - luminance(b.hex))
+    const matIsDark = luminance(selectedColor?.hex ?? "#4a4a4a") < 0.5
+    const colorCode = (matIsDark ? sorted[sorted.length - 1] : sorted[0])?.code ?? config.colorCode
+
+    // Elke nieuwe tekst op een andere hoogte, zodat ze niet over elkaar vallen.
+    const START_Y = [0.8, 0.2, 0.5, 0.65, 0.35]
+    const text: MatText = {
+      id: `text-${Date.now()}`,
+      content: tText("defaultText"),
+      fontId: DEFAULT_FONT_ID,
+      bold: true,
+      colorCode,
+      size: TEXT_LIMITS.size.default,
+      position: { x: 0.5, y: START_Y[config.texts.length] ?? 0.5 },
+      rotation: 0,
+    }
+    updateConfig({ texts: [...config.texts, text] })
+    setSelectedTextId(text.id)
+  }
+
+  const handleUpdateText = useCallback((id: string, updates: Partial<MatText>) => {
+    setConfig((prev) => ({
+      ...prev,
+      texts: prev.texts.map((text) => (text.id === id ? { ...text, ...updates } : text)),
+    }))
+  }, [])
+
+  const handleRemoveText = (id: string) => {
+    const remaining = config.texts.filter((text) => text.id !== id)
+    updateConfig({ texts: remaining })
+    setSelectedTextId(remaining.length ? remaining[remaining.length - 1].id : null)
+  }
+
   const steps = [
     { number: 1, title: t("steps.type"), icon: Layers },
     { number: 2, title: t("steps.size"), icon: Layers },
     { number: 3, title: t("steps.logo"), icon: ImageIcon },
     { number: 4, title: t("steps.colors"), icon: PaletteIcon },
+    { number: 5, title: t("steps.text"), icon: TypeIcon },
   ]
 
   return (
@@ -368,6 +432,8 @@ export function MatConfigurator() {
                     ? true
                     : step.number === 3
                     ? Boolean(config.logo.file)
+                    : step.number === 5
+                    ? config.texts.length > 0
                     : false
 
                 return (
@@ -376,7 +442,7 @@ export function MatConfigurator() {
                     ref={(el) => {
                       stepRefs.current[step.number] = el
                     }}
-                    className={`scroll-mt-20 ${step.number !== 4 ? "border-b border-border" : ""}`}
+                    className={`scroll-mt-20 ${step.number !== steps.length ? "border-b border-border" : ""}`}
                   >
                     <button
                       type="button"
@@ -913,12 +979,37 @@ export function MatConfigurator() {
                               )}
                             </div>
 
-                            <div className="grid grid-cols-[auto_1fr] gap-2 lg:hidden">
+                            <div className="grid grid-cols-[auto_1fr] gap-2">
                               <Button variant="outline" onClick={() => goToStep(3)}>
                                 <ArrowLeft className="w-4 h-4 mr-1" />
                                 {t("back")}
                               </Button>
-                              <Button onClick={scrollToSummary}>
+                              <Button onClick={() => goToStep(5)}>
+                                {t("toText")}
+                                <ArrowRight className="w-4 h-4 ml-2" />
+                              </Button>
+                            </div>
+                          </>
+                        )}
+
+                        {step.number === 5 && (
+                          <>
+                            <TextEditor
+                              texts={config.texts}
+                              selectedId={selectedTextId}
+                              colors={activeColors}
+                              onSelect={setSelectedTextId}
+                              onAdd={handleAddText}
+                              onUpdate={handleUpdateText}
+                              onRemove={handleRemoveText}
+                            />
+
+                            <div className="grid grid-cols-[auto_1fr] gap-2">
+                              <Button variant="outline" onClick={() => goToStep(4)}>
+                                <ArrowLeft className="w-4 h-4 mr-1" />
+                                {t("back")}
+                              </Button>
+                              <Button className="xl:hidden" onClick={scrollToSummary}>
                                 {t("toSummary")}
                                 <ArrowRight className="w-4 h-4 ml-2" />
                               </Button>
@@ -934,7 +1025,7 @@ export function MatConfigurator() {
           </Card>
 
                    {/* Preview Panel — op smartphone bovenaan, zodat je het resultaat meteen ziet */}
-          <div className="order-first min-w-0 space-y-6 lg:order-none">
+          <div className="order-first min-w-0 space-y-6 lg:order-none lg:sticky lg:top-24 lg:self-start">
             <Card>
               <CardHeader className="pb-2">
                 <div className="flex items-center justify-between">
@@ -942,7 +1033,13 @@ export function MatConfigurator() {
                 </div>
               </CardHeader>
               <CardContent>
-                <MatCanvas config={config} onLogoUpdate={handleLogoUpdate} />
+                <MatCanvas
+                  config={config}
+                  onLogoUpdate={handleLogoUpdate}
+                  onTextUpdate={handleUpdateText}
+                  selectedTextId={currentStep === 5 ? selectedTextId : null}
+                  onSelectText={setSelectedTextId}
+                />
               </CardContent>
             </Card>
 

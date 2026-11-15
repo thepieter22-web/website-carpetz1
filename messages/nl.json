@@ -172,7 +172,7 @@
       "subTitle": "Van beurs tot gala",
       "subText": "Ons tapijt voor beurzen en events is snel te leggen, netjes af te werken en indien gewenst herbruikbaar. Ideaal voor organisatoren die op grote schaal willen uitpakken zonder in te boeten op kwaliteit of uitstraling.",
       "link": "Ontdek event tapijt",
-      "imageAlt": "Rode loper op maat met warme spots bij een exclusief event"
+      "imageAlt": "Event tapijt op maat met rood-crème patroon, deels opgerold"
     },
     "why": {
       "eyebrow": "Waarom Carpetz?",
@@ -1140,7 +1140,8 @@
       "type": "Type logomat",
       "size": "Afmetingen",
       "logo": "Logo-upload",
-      "colors": "Kleuren"
+      "colors": "Kleuren",
+      "text": "Eigen tekst"
     },
     "matType": "Type logomat",
     "indoor": "Indoor",
@@ -1195,7 +1196,8 @@
     "toSummary": "Naar overzicht en bestellen",
     "mobileBarLabel": "Bestelbalk",
     "mobileTotal": "Totaal incl. btw",
-    "mobileOrder": "Bestellen"
+    "mobileOrder": "Bestellen",
+    "toText": "Volgende: eigen tekst (optioneel)"
   },
   "MatCanvas": {
     "center": "Centreren",
@@ -1295,7 +1297,6 @@
       "BE": "België",
       "NL": "Nederland"
     },
-    "vatHintNL": "Bedrijf in Nederland? Met een geldig Nederlands btw-nummer betaal je 0% btw (intracommunautaire levering).",
     "vies": {
       "checking": "Btw-nummer wordt gecontroleerd bij VIES…",
       "valid": "Geldig btw-nummer: {name}",
@@ -1421,5 +1422,31 @@
     "totalPaid": "Totaal betaald:",
     "vatExemptNote": "Vrijgesteld van btw op grond van art. 39bis WBTW – intracommunautaire levering",
     "vatNumber": "Btw-nummer:"
+  },
+  "TextEditor": {
+    "intro": "Voeg een naam, slogan of boodschap toe aan je mat. Sleep de tekst op het voorbeeld naar de plek die jij wilt.",
+    "listLabel": "Jouw teksten",
+    "textNumber": "Tekst {number}",
+    "add": "Tekst toevoegen",
+    "addAnother": "Nog een tekst toevoegen",
+    "maxReached": "Je kunt maximaal {max} teksten toevoegen.",
+    "textLabel": "Tekst",
+    "placeholder": "Bv. Welkom",
+    "textHint": "Maximaal {max} tekens en {lines} regels.",
+    "fontLabel": "Lettertype",
+    "categories": {
+      "sans": "Strak",
+      "serif": "Klassiek",
+      "script": "Handschrift",
+      "display": "Opvallend"
+    },
+    "bold": "Vet",
+    "colorLabel": "Kleur",
+    "size": "Grootte",
+    "rotation": "Rotatie",
+    "center": "Centreren",
+    "delete": "Verwijderen",
+    "dragHint": "Sleep de tekst op de mat om hem te verplaatsen",
+    "defaultText": "Welkom"
   }
 }

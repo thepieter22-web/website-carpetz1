@@ -172,7 +172,7 @@
       "subTitle": "Du salon au gala",
       "subText": "Nos tapis pour salons et événements se posent rapidement, offrent une finition soignée et sont réutilisables si vous le souhaitez. Idéal pour les organisateurs qui voient grand sans rien céder sur la qualité ni sur l’image.",
       "link": "Découvrir le tapis événementiel",
-      "imageAlt": "Tapis rouge sur mesure sous des projecteurs lors d’un événement exclusif"
+      "imageAlt": "Tapis événementiel sur mesure à motif rouge et crème, partiellement enroulé"
     },
     "why": {
       "eyebrow": "Pourquoi Carpetz ?",
@@ -1140,7 +1140,8 @@
       "type": "Type de tapis logo",
       "size": "Dimensions",
       "logo": "Chargement du logo",
-      "colors": "Couleurs"
+      "colors": "Couleurs",
+      "text": "Texte personnalisé"
     },
     "matType": "Type de tapis logo",
     "indoor": "Intérieur",
@@ -1195,7 +1196,8 @@
     "toSummary": "Voir le récapitulatif et commander",
     "mobileBarLabel": "Barre de commande",
     "mobileTotal": "Total TVA comprise",
-    "mobileOrder": "Commander"
+    "mobileOrder": "Commander",
+    "toText": "Suivant : texte personnalisé (facultatif)"
   },
   "MatCanvas": {
     "center": "Centrer",
@@ -1295,7 +1297,6 @@
       "BE": "Belgique",
       "NL": "Pays-Bas"
     },
-    "vatHintNL": "Entreprise aux Pays-Bas ? Avec un numéro de TVA néerlandais valide, vous payez 0 % de TVA (livraison intracommunautaire).",
     "vies": {
       "checking": "Vérification du numéro de TVA auprès de VIES…",
       "valid": "Numéro de TVA valide : {name}",
@@ -1421,5 +1422,31 @@
     "totalPaid": "Total payé :",
     "vatExemptNote": "Exonération de TVA en vertu de l’article 39bis du Code de la TVA – livraison intracommunautaire",
     "vatNumber": "Numéro de TVA :"
+  },
+  "TextEditor": {
+    "intro": "Ajoutez un nom, un slogan ou un message à votre tapis. Faites glisser le texte sur l’aperçu jusqu’à l’emplacement souhaité.",
+    "listLabel": "Vos textes",
+    "textNumber": "Texte {number}",
+    "add": "Ajouter un texte",
+    "addAnother": "Ajouter un autre texte",
+    "maxReached": "Vous pouvez ajouter {max} textes au maximum.",
+    "textLabel": "Texte",
+    "placeholder": "P. ex. Bienvenue",
+    "textHint": "{max} caractères et {lines} lignes au maximum.",
+    "fontLabel": "Police",
+    "categories": {
+      "sans": "Épurée",
+      "serif": "Classique",
+      "script": "Manuscrite",
+      "display": "Fantaisie"
+    },
+    "bold": "Gras",
+    "colorLabel": "Couleur",
+    "size": "Taille",
+    "rotation": "Rotation",
+    "center": "Centrer",
+    "delete": "Supprimer",
+    "dragHint": "Faites glisser le texte sur le tapis pour le déplacer",
+    "defaultText": "Bienvenue"
   }
 }
