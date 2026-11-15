@@ -53,8 +53,8 @@ const DEFAULT_CONFIG: MatConfig = {
   orientation: "landscape",
   rubberBorder: true,
   size: {
-    width: 85,
-    height: 115,
+    width: 40,
+    height: 60,
     isCustom: false,
   },
   colorCode: "C1",

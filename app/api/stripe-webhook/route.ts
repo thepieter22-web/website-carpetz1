@@ -9,6 +9,12 @@ const resend = new Resend(
   process.env.RESEND_API_KEY
 );
 
+/** Klantinvoer veilig in HTML-mails zetten. */
+const esc = (value: string | undefined | null) =>
+  String(value ?? "").replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!
+  );
+
 export async function POST(request: Request) {
   // Ruwe body nodig: de handtekening wordt over de exacte bytes berekend.
   const body = await request.text();
@@ -96,6 +102,17 @@ export async function POST(request: Request) {
             Zipcode: data.postalCode,
             CountryCode: "BE",
           },
+          ...(data.deliveryStreet
+            ? [
+                {
+                  AddressType: "DeliveryAddress",
+                  Street: data.deliveryStreet,
+                  City: data.deliveryCity,
+                  Zipcode: data.deliveryPostalCode,
+                  CountryCode: "BE",
+                },
+              ]
+            : []),
         ],
       },
 
@@ -141,7 +158,13 @@ export async function POST(request: Request) {
           <p><strong>Taal klant:</strong> ${locale.toUpperCase()}</p>
           <p><strong>Preview:</strong></p>
           <p><a href="${data.previewUrl}">Bekijk ontwerp</a></p>
-          <p><strong>E-mail:</strong> ${data.email}</p>
+          <p><strong>Klant:</strong> ${esc(data.customerType === "zakelijk" ? "Zakelijk" : "Particulier")}</p>
+          ${data.company ? `<p><strong>Bedrijf:</strong> ${esc(data.company)} — btw ${esc(data.vatNumber)}</p>` : ""}
+          <p><strong>Naam:</strong> ${esc(`${data.firstName ?? ""} ${data.lastName ?? ""}`)}</p>
+          <p><strong>E-mail:</strong> ${esc(data.email)}</p>
+          <p><strong>Telefoon:</strong> ${esc(data.phone)}</p>
+          <p><strong>${data.company ? "Factuuradres" : "Leveringsadres"}:</strong> ${esc(data.street)}, ${esc(data.postalCode)} ${esc(data.city)}, ${esc(data.country)}</p>
+          ${data.deliveryStreet ? `<p><strong>Leveringsadres:</strong> ${esc(data.deliveryStreet)}, ${esc(data.deliveryPostalCode)} ${esc(data.deliveryCity)}, ${esc(data.deliveryCountry)}</p>` : ""}
           <p><strong>Afmeting:</strong> ${data.width} × ${data.height} cm</p>
           <p><strong>Aantal:</strong> ${data.quantity}</p>
           <p><strong>Totaal:</strong> €${data.grandTotal}</p>

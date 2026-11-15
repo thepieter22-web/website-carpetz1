@@ -1265,7 +1265,7 @@
     "street": "Rue et numéro *",
     "postalCode": "Code postal *",
     "city": "Localité *",
-    "country": "Pays",
+    "country": "Pays *",
     "countryRequired": "Pays *",
     "defaultCountry": "Belgique",
     "sameAddress": "L’adresse de livraison est identique à l’adresse de facturation",
@@ -1285,7 +1285,13 @@
       "✅ Livraison en Belgique & aux Pays-Bas"
     ],
     "checkout": "Passer au paiement",
-    "checkoutError": "Une erreur s’est produite lors du paiement."
+    "checkoutError": "Une erreur s’est produite lors du paiement.",
+    "errors": {
+      "required": "Veuillez remplir ce champ.",
+      "invalidEmail": "Veuillez saisir une adresse e-mail valide (p. ex. nom@entreprise.be).",
+      "invalidPhone": "Veuillez saisir un numéro de téléphone valide.",
+      "formIncomplete": "Veuillez remplir tous les champs obligatoires pour continuer."
+    }
   },
   "Success": {
     "title": "Merci pour votre commande",
@@ -1367,7 +1373,8 @@
     "invalidConfig": "Configuration de produit non valide",
     "productName": "Tapis logo sur mesure",
     "invoiceLine": "Tapis logo sur mesure {width} x {height} cm",
-    "shippingLine": "Frais de livraison"
+    "shippingLine": "Frais de livraison",
+    "missingFields": "Toutes les coordonnées obligatoires n’ont pas été complétées."
   },
   "OrderEmail": {
     "subject": "Merci pour votre commande {orderNumber}",

@@ -26,6 +26,47 @@ export async function POST(request: Request) {
     }
     const totals = calculateOrderTotals(spec);
 
+    // Klantgegevens: alles verplicht (ook als iemand de controle in de browser omzeilt).
+    const str = (value: unknown) => (typeof value === "string" ? value.trim().slice(0, 200) : "");
+    const customerType = body.customerType === "zakelijk" ? "zakelijk" : "particulier";
+    const customer = {
+      firstName: str(body.firstName),
+      lastName: str(body.lastName),
+      email: str(body.email),
+      phone: str(body.phone),
+      company: customerType === "zakelijk" ? str(body.company) : "",
+      vatNumber: customerType === "zakelijk" ? str(body.vatNumber) : "",
+      street: str(body.street),
+      postalCode: str(body.postalCode),
+      city: str(body.city),
+      country: str(body.country),
+      deliveryStreet: str(body.deliveryStreet),
+      deliveryPostalCode: str(body.deliveryPostalCode),
+      deliveryCity: str(body.deliveryCity),
+      deliveryCountry: str(body.deliveryCountry),
+    };
+    const hasSeparateDelivery = customerType === "zakelijk" && Boolean(
+      customer.deliveryStreet || customer.deliveryPostalCode || customer.deliveryCity
+    );
+    const requiredFields: (keyof typeof customer)[] = [
+      "firstName", "lastName", "email", "phone", "street", "postalCode", "city", "country",
+      ...(customerType === "zakelijk" ? (["company", "vatNumber"] as const) : []),
+      ...(hasSeparateDelivery
+        ? (["deliveryStreet", "deliveryPostalCode", "deliveryCity", "deliveryCountry"] as const)
+        : []),
+    ];
+    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(customer.email);
+    const phoneValid = customer.phone.replace(/\D/g, "").length >= 8;
+    if (requiredFields.some((key) => !customer[key]) || !emailValid || !phoneValid) {
+      return NextResponse.json({ error: t("missingFields") }, { status: 400 });
+    }
+    if (!hasSeparateDelivery) {
+      customer.deliveryStreet = "";
+      customer.deliveryPostalCode = "";
+      customer.deliveryCity = "";
+      customer.deliveryCountry = "";
+    }
+
     const previewImage = body.previewImage || "";
     let previewUrl = "";
     if (previewImage) {
@@ -60,6 +101,8 @@ export async function POST(request: Request) {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       locale,
+      // Klant hoeft zijn e-mailadres niet opnieuw te typen bij Stripe.
+      customer_email: customer.email,
 
       payment_intent_data: {
         metadata: {
@@ -74,17 +117,8 @@ export async function POST(request: Request) {
           grandTotal: totals.grandTotal.toFixed(2),
 
           // Klant- en adresgegevens veilig omgezet naarstrings (voor Billit)
-          customerType: body.customerType || "particulier",
-          firstName: body.firstName || "",
-          lastName: body.lastName || "",
-          email: body.email || "",
-          phone: body.phone || "",
-          company: body.company || "",
-          vatNumber: body.vatNumber || "",
-          street: body.street || "",
-          postalCode: body.postalCode || "",
-          city: body.city || "",
-          country: body.country || "",
+          customerType,
+          ...customer,
 
           // Productspecificaties veilig omgezet naar strings
           matType: spec.type || "",

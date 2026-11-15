@@ -1265,7 +1265,7 @@
     "street": "Straat en huisnummer *",
     "postalCode": "Postcode *",
     "city": "Gemeente *",
-    "country": "Land",
+    "country": "Land *",
     "countryRequired": "Land *",
     "defaultCountry": "België",
     "sameAddress": "Leveringsadres is hetzelfde als factuuradres",
@@ -1285,7 +1285,13 @@
       "✅ Levering in België & Nederland"
     ],
     "checkout": "Doorgaan naar afrekenen",
-    "checkoutError": "Er ging iets mis bij het afrekenen."
+    "checkoutError": "Er ging iets mis bij het afrekenen.",
+    "errors": {
+      "required": "Vul dit veld in.",
+      "invalidEmail": "Vul een geldig e-mailadres in (bv. naam@bedrijf.be).",
+      "invalidPhone": "Vul een geldig telefoonnummer in.",
+      "formIncomplete": "Vul alle verplichte velden in om verder te gaan."
+    }
   },
   "Success": {
     "title": "Bedankt voor je bestelling",
@@ -1367,7 +1373,8 @@
     "invalidConfig": "Ongeldige productconfiguratie",
     "productName": "Logomat op maat",
     "invoiceLine": "Logomat op maat {width} x {height} cm",
-    "shippingLine": "Leveringskost"
+    "shippingLine": "Leveringskost",
+    "missingFields": "Niet alle verplichte klantgegevens zijn ingevuld."
   },
   "OrderEmail": {
     "subject": "Bedankt voor je bestelling {orderNumber}",
