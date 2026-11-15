@@ -6,9 +6,11 @@ type QuoteBandProps = {
   /** Al vertaalde titel; standaard de algemene tekst uit QuoteBand.title. */
   title?: string
   text?: string
+  /** Link van de offerteknop, bv. "/contact?product=eventvloer" om het formulier voor te vullen. */
+  quoteHref?: string
 }
 
-export function QuoteBand({ title, text }: QuoteBandProps) {
+export function QuoteBand({ title, text, quoteHref = '/contact' }: QuoteBandProps) {
   const t = useTranslations('QuoteBand')
   const common = useTranslations('Common')
 
@@ -24,7 +26,7 @@ export function QuoteBand({ title, text }: QuoteBandProps) {
           <p className="mt-3 text-base leading-relaxed text-accent-foreground/80 text-pretty">{text ?? t('text')}</p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row">
-          <Cta href="/contact" variant="primary">
+          <Cta href={quoteHref} variant="primary">
             {common('requestQuote')}
           </Cta>
           <Cta href="/contact" variant="outline" withArrow={false}>

@@ -1,21 +1,39 @@
 import type { MetadataRoute } from 'next'
 import { locales } from '@/i18n'
+import { absoluteUrl } from '@/routing'
 
-const baseUrl = 'https://carpetz.example'
+/** Publieke pagina's (interne paden; Franse vertaalde paden worden automatisch ingevuld). */
+const routes = [
+  '',
+  '/logomat',
+  '/logomat/go',
+  '/logomat/green',
+  '/logomat/studio',
+  '/logomat/studio/pro',
+  '/logomat/grip',
+  '/logomat/scrape',
+  '/logomat/vergelijk',
+  '/geprint-tapijt',
+  '/event-tapijt',
+  '/event-tapijt/loper',
+  '/event-tapijt/eventvloer',
+  '/event-tapijt/beurstapijt',
+  '/over-ons',
+  '/contact',
+]
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ['', '/logomat', '/geprint-tapijt', '/event-tapijt', '/over-ons', '/contact']
   const lastModified = new Date()
 
   // Elke pagina bestaat in het Nederlands en het Frans.
   return routes.flatMap((route) =>
     locales.map((locale) => ({
-      url: `${baseUrl}/${locale}${route}`,
+      url: absoluteUrl(locale, route),
       lastModified,
       changeFrequency: 'monthly' as const,
       priority: route === '' ? 1 : 0.8,
       alternates: {
-        languages: Object.fromEntries(locales.map((l) => [`${l}-BE`, `${baseUrl}/${l}${route}`])),
+        languages: Object.fromEntries(locales.map((l) => [`${l}-BE`, absoluteUrl(l, route)])),
       },
     }))
   )

@@ -1,8 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
-import { Menu, X } from 'lucide-react'
+import { ChevronDown, Menu, X } from 'lucide-react'
 import { Link, usePathname } from '@/navigation'
 import { cn } from '@/lib/utils'
 import { Cta } from '@/components/cta'
@@ -15,16 +15,31 @@ export function SiteHeader() {
   // Pad zonder taalprefix, bv. "/logomat".
   const pathname = usePathname()
 
-  const navItems = [
+  const [submenuOpen, setSubmenuOpen] = useState(false)
+
+  type NavItem = { href: string; label: string; children?: { href: string; label: string }[] }
+  const navItems: NavItem[] = [
     { href: '/', label: t('home') },
     { href: '/logomat', label: t('logomatten') },
     { href: '/geprint-tapijt', label: t('geprintTapijt') },
-    { href: '/event-tapijt', label: t('eventTapijt') },
+    {
+      href: '/event-tapijt',
+      label: t('eventTapijt'),
+      children: [
+        { href: '/event-tapijt', label: t('eventOverview') },
+        { href: '/event-tapijt/loper', label: t('eventRunner') },
+        { href: '/event-tapijt/eventvloer', label: t('eventFloor') },
+        { href: '/event-tapijt/beurstapijt', label: t('eventStand') },
+      ],
+    },
     { href: '/over-ons', label: t('overOns') },
     { href: '/contact', label: t('contact') },
   ]
 
   const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href))
+
+  // Submenu sluiten bij het wisselen van pagina.
+  useEffect(() => setSubmenuOpen(false), [pathname])
 
   const languageSwitch = (
     <div className="flex items-center gap-2 text-sm font-medium" aria-label={t('language')}>
@@ -59,6 +74,61 @@ export function SiteHeader() {
         <nav className="hidden items-center gap-8 lg:flex" aria-label={t('mainNav')}>
           {navItems.map((item) => {
             const active = isActive(item.href)
+            if (item.children) {
+              return (
+                <div
+                  key={item.href}
+                  className="group relative flex items-center gap-1"
+                  onMouseLeave={() => setSubmenuOpen(false)}
+                  onKeyDown={(e) => e.key === 'Escape' && setSubmenuOpen(false)}
+                >
+                  <Link
+                    href={item.href}
+                    className={cn(
+                      'relative text-sm font-medium tracking-wide transition-colors hover:text-foreground',
+                      active ? 'text-foreground' : 'text-muted-foreground',
+                    )}
+                  >
+                    {item.label}
+                    {active && <span className="absolute -bottom-1.5 left-0 h-px w-full bg-accent" aria-hidden="true" />}
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => setSubmenuOpen((v) => !v)}
+                    aria-expanded={submenuOpen}
+                    aria-label={t('submenu', { item: item.label })}
+                    className="inline-flex size-6 items-center justify-center rounded-sm text-muted-foreground hover:text-foreground"
+                  >
+                    <ChevronDown className={cn('size-4 transition-transform', submenuOpen && 'rotate-180')} />
+                  </button>
+                  <div
+                    className={cn(
+                      'absolute left-0 top-full pt-3 transition-opacity',
+                      submenuOpen
+                        ? 'visible opacity-100'
+                        : 'invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100',
+                    )}
+                  >
+                    <ul className="w-64 rounded-sm border border-border bg-background p-2 shadow-xl">
+                      {item.children.map((child) => (
+                        <li key={child.href}>
+                          <Link
+                            href={child.href}
+                            aria-current={pathname === child.href ? 'page' : undefined}
+                            className={cn(
+                              'flex min-h-11 items-center rounded-sm px-3 text-sm transition-colors hover:bg-muted',
+                              pathname === child.href ? 'font-semibold text-foreground' : 'text-muted-foreground',
+                            )}
+                          >
+                            {child.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )
+            }
             return (
               <Link
                 key={item.href}
@@ -97,14 +167,30 @@ export function SiteHeader() {
         <div className="border-t border-border/70 bg-background lg:hidden">
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-4" aria-label={t('mobileNav')}>
             {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="flex min-h-12 items-center rounded-sm px-2 text-base font-medium text-foreground hover:bg-muted"
-              >
-                {item.label}
-              </Link>
+              <div key={item.href}>
+                <Link
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="flex min-h-12 items-center rounded-sm px-2 text-base font-medium text-foreground hover:bg-muted"
+                >
+                  {item.label}
+                </Link>
+                {item.children && (
+                  <ul className="mb-1 ml-2 border-l border-border pl-2">
+                    {item.children.slice(1).map((child) => (
+                      <li key={child.href}>
+                        <Link
+                          href={child.href}
+                          onClick={() => setOpen(false)}
+                          className="flex min-h-12 items-center rounded-sm px-2 text-base text-muted-foreground hover:bg-muted"
+                        >
+                          {child.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             ))}
             <div className="px-2 pt-3">{languageSwitch}</div>
             <div className="pt-3">

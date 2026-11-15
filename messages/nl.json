@@ -31,10 +31,10 @@
     },
     "event": {
       "title": "Event tapijt & rode loper op maat",
-      "description": "Event tapijt en rode lopers op maat voor huwelijken, verjaardagen, gala’s en corporate events. Tapijt voor events in elke kleur en afmeting, met snelle levering in België & Nederland.",
+      "description": "Geprint tapijt voor één gelegenheid: een rode loper met naam of logo, een volledige eventvloer of standtapijt voor je beurs. Op maat gemaakt en geleverd in België en Nederland.",
       "ogTitle": "Event tapijt & rode loper op maat | Carpetz",
-      "ogDescription": "Event tapijt en rode lopers op maat voor huwelijken, verjaardagen, gala’s en events. Tapijt voor events in elke kleur en afmeting.",
-      "ogImageAlt": "Rode loper op maat van Carpetz"
+      "ogDescription": "Een loper met naam of logo, een volledige eventvloer of beurstapijt: geprint tapijt op maat voor je event.",
+      "ogImageAlt": "Rode loper aan de ingang van een gala"
     },
     "logomat": {
       "title": "Logomatten op maat laten maken",
@@ -65,7 +65,22 @@
     "countryBE": "België",
     "countryNL": "Nederland",
     "catalogName": "Tapijt op maat",
-    "inLanguage": "nl-BE"
+    "inLanguage": "nl-BE",
+    "eventRunner": {
+      "title": "Rode loper met naam of logo op maat",
+      "description": "Gepersonaliseerde geprinte loper met jullie namen, je logo of een boodschap. Voor huwelijken, verjaardagen, gala’s en bedrijfsevents, in elke lengte, breedte en kleur.",
+      "ogImageAlt": "Geprinte loper met goudkleurig pluimenpatroon aan de ingang van een gala"
+    },
+    "eventFloor": {
+      "title": "Eventvloer op maat: een volledige ruimte in print",
+      "description": "Bekleed een volledige zaal, tent of podium met geprint tapijt in je eigen ontwerp. Een eventvloer op maat voor gala’s, lanceringen en bedrijfsfeesten in België en Nederland.",
+      "ogImageAlt": "Close-up van geprint tapijt met kleurrijk bladmotief"
+    },
+    "eventStand": {
+      "title": "Beurstapijt & standtapijt op maat met print",
+      "description": "Standtapijt in de exacte maat van je beursstand, bedrukt met je logo, huisstijl of campagnebeeld. Beurstapijt dat opvalt, voor beurzen in België en Nederland.",
+      "ogImageAlt": "Opgerold geprint tapijt met rood-crème patroon"
+    }
   },
   "Common": {
     "requestQuote": "Vraag je offerte aan",
@@ -89,7 +104,12 @@
     "mobileNav": "Mobiele navigatie",
     "openMenu": "Menu openen",
     "closeMenu": "Menu sluiten",
-    "language": "Taal kiezen"
+    "language": "Taal kiezen",
+    "eventOverview": "Alle event tapijt",
+    "eventRunner": "Event loper",
+    "eventFloor": "Volledige eventvloer",
+    "eventStand": "Beurs- & standtapijt",
+    "submenu": "Submenu {item} openen of sluiten"
   },
   "Footer": {
     "tagline": "Specialist in logomatten op maat, geprint tapijt, event tapijt en rode lopers op maat voor bedrijven, retail, hotels, beurzen en events in België & Nederland.",
@@ -273,7 +293,11 @@
         "geprint-tapijt": "geprint tapijt",
         "trouwloper": "een trouwloper",
         "verjaardagsloper": "een verjaardagsloper",
-        "feestloper": "een feestloper"
+        "feestloper": "een feestloper",
+        "event-tapijt": "event tapijt",
+        "loper": "een event loper",
+        "eventvloer": "een eventvloer",
+        "beurstapijt": "beurstapijt voor mijn stand"
       },
       "interest": "Ik heb interesse in {product}",
       "quality": " (kwaliteit: {quality})",
@@ -297,7 +321,10 @@
     "messagePlaceholder": "Vertel ons over je project: formaat, aantal, gewenste leverdatum ...",
     "sending": "Versturen ...",
     "submit": "Vraag je offerte aan",
-    "privacyNote": "We reageren binnen 24 uur op je aanvraag. Je gegevens worden vertrouwelijk behandeld."
+    "privacyNote": "We reageren binnen 24 uur op je aanvraag. Je gegevens worden vertrouwelijk behandeld.",
+    "honeypot": "Laat dit veld leeg",
+    "errorText": "Je aanvraag kon niet verstuurd worden. Probeer het opnieuw, of mail ons op",
+    "errorOr": "of bel"
   },
   "About": {
     "eyebrow": "Over ons",
@@ -398,110 +425,83 @@
   },
   "Event": {
     "eyebrow": "Event tapijt",
-    "title": "Event tapijt & rode lopers op maat",
-    "intro": "Een event begint bij de entree. Van een verjaardagsfeest of huwelijk tot een gala of beursstand — met een rode loper of event tapijt op maat creëer je meteen de juiste sfeer.",
-    "heroImageAlt": "Rode loper op maat bij een exclusief event",
-    "calloutTitle": "Tapijt voor events dat indruk maakt",
-    "calloutText": "Van een verjaardagsfeest en huwelijk tot filmpremière, gala of beursstand: onze rode loper en event tapijt op maat passen zich aan jouw gelegenheid aan, met je eigen logo, naam of boodschap erin verwerkt.",
-    "wedding": {
-      "eyebrow": "Trouwloper op maat",
-      "title": "Maak jullie trouwloper uniek",
-      "description": "Laat jullie namen, datum of een persoonlijke boodschap printen op de loper die jullie dag compleet maakt.",
-      "imageAlt": "Trouwloper op maat met namen en datum, versierd met bloemen en kaarsen",
-      "details": [
-        {
-          "title": "Jullie namen",
-          "text": "Of initialen"
-        },
-        {
-          "title": "Datum",
-          "text": "Jullie speciale dag"
-        },
-        {
-          "title": "Eigen tekst",
-          "text": "Een quote, belofte of boodschap"
-        }
-      ],
-      "taglineTitle": "Jullie droom, onze print.",
-      "taglineSubtitle": "Uniek zoals jullie liefde."
-    },
-    "birthday": {
-      "eyebrow": "Verjaardagsloper op maat",
-      "title": "Elk feest verdient een entree",
-      "description": "Van ‘Gelukkige verjaardag’ tot de leeftijd van de jarige of een persoonlijke tekst: de entreemat kan volledig op maat geprint worden, precies zoals jij het wil.",
-      "imageAlt": "Verjaardagsloper op maat met feestelijke tekst",
-      "details": [
-        {
-          "title": "Gelukkige verjaardag",
-          "text": "Als feestelijke openingstekst"
-        },
-        {
-          "title": "De leeftijd",
-          "text": "Groot en trots in beeld"
-        },
-        {
-          "title": "Persoonlijke tekst",
-          "text": "Een boodschap naar keuze"
-        }
-      ],
-      "freeformNote": "Bovenstaande zijn slechts voorbeelden — alles is bespreekbaar en volledig aanpasbaar.",
-      "taglineTitle": "Jouw feest, jouw stijl.",
-      "taglineSubtitle": "Onvergetelijk vanaf de eerste stap."
-    },
-    "party": {
-      "eyebrow": "Feestloper op maat",
-      "title": "Maak jouw feest uniek",
-      "description": "Communie, gala, jubileum of bedrijfsevent: met een loper op maat geef je elk moment een unieke, persoonlijke touch vanaf de eerste stap.",
-      "imageAlt": "Feestloper op maat voor communie, gala of event",
-      "details": [
-        {
-          "title": "Elke gelegenheid",
-          "text": "Communie, gala, jubileum of bedrijfsevent"
-        },
-        {
-          "title": "Jouw thema of logo",
-          "text": "Kleur, stijl en boodschap volledig naar wens"
-        },
-        {
-          "title": "Persoonlijke tekst",
-          "text": "Naam, datum of quote die het moment vastlegt"
-        }
-      ],
-      "freeformNote": "Vertel ons je gelegenheid en wij denken mee over het perfecte ontwerp.",
-      "taglineTitle": "Elk feest, jouw stijl.",
-      "taglineSubtitle": "Uniek vanaf de allereerste stap."
-    },
-    "featuresTitle": "Kenmerken van ons event tapijt",
-    "features": [
-      {
-        "title": "Elke kleur & afmeting",
-        "text": "Van klassiek rood tot je eigen huisstijlkleur, in elk formaat."
+    "title": "Event tapijt & rode loper",
+    "intro": "Tapijt voor één moment dat blijft hangen. We printen je ontwerp op tapijt op maat: van een loper met jullie namen tot een volledige zaal of beursstand in je huisstijl.",
+    "heroImageAlt": "Rode loper aan de ingang van een gala",
+    "breadcrumb": "Event tapijt",
+    "backToOverview": "Alle event tapijt",
+    "cardsTitle": "Kies je event tapijt",
+    "cardsText": "Alles wat we maken is geprint tapijt. Voor een event kiezen de meeste klanten een van deze drie toepassingen.",
+    "cards": {
+      "runner": {
+        "title": "Event loper",
+        "text": "Een rode loper, of een loper in elke andere kleur, met naam, logo of boodschap. Voor de entree van je huwelijk, feest of gala.",
+        "link": "Ontdek de event loper",
+        "imageAlt": "Geprinte loper met goudkleurig pluimenpatroon aan de ingang van een gala"
       },
-      {
-        "title": "Logo geïntegreerd",
-        "text": "Voeg je logo of boodschap toe aan je event tapijt of loper."
+      "floor": {
+        "title": "Volledige eventvloer",
+        "text": "Een hele zaal, tent of podium in jouw ontwerp. De vloer wordt zelf een deel van de aankleding.",
+        "link": "Ontdek de eventvloer",
+        "imageAlt": "Close-up van geprint tapijt met kleurrijk bladmotief"
       },
-      {
-        "title": "Snel te leggen",
-        "text": "Netjes af te werken en klaar op tijd voor je event."
-      },
-      {
-        "title": "Herbruikbaar",
-        "text": "Kwaliteitstapijt dat je meermaals kan inzetten."
+      "stand": {
+        "title": "Beurs- & standtapijt",
+        "text": "Tapijt in de exacte maat van je stand, met je logo of campagnebeeld. Zo valt je stand al op vanaf het gangpad.",
+        "link": "Ontdek beurstapijt",
+        "imageAlt": "Opgerold geprint tapijt met rood-crème patroon"
       }
-    ],
-    "typesImageAlt": "Tapijt voor beurzen op een moderne beursstand",
-    "typesTitle": "Voor elk soort event",
-    "types": [
-      "Verjaardagsfeesten en huwelijken",
-      "Premières, gala’s en awardshows",
-      "Corporate launches en persmomenten",
-      "Openingen en jubilea",
-      "Beurzen en tapijt voor beursstanden",
-      "Festivals en publieksevenementen"
-    ],
-    "quoteTitle": "Reserveer jouw rode loper op maat",
-    "quoteText": "Vertel ons over je event of je grote dag, de datum en de gewenste afmetingen. Wij bezorgen je snel een offerte voor event tapijt of een rode loper op maat."
+    },
+    "occasionsTitle": "Voor elke gelegenheid",
+    "occasionsText": "Elk event vraagt een eigen ontwerp. Bekijk voorbeelden per gelegenheid.",
+    "occasions": {
+      "wedding": {
+        "title": "Huwelijk",
+        "text": "Jullie namen, de datum of een persoonlijke boodschap op de loper naar het altaar of de feestzaal."
+      },
+      "birthday": {
+        "title": "Verjaardag & feest",
+        "text": "Van ‘Gelukkige verjaardag’ aan de ingang tot een grote leeftijd in het midden: een feestelijke entree."
+      },
+      "corporate": {
+        "title": "Bedrijfsevent",
+        "text": "Gala, jubileum, opening of productlancering: je logo en huisstijl vanaf de eerste stap."
+      }
+    },
+    "occasionLink": "Bekijk voorbeelden",
+    "gallery": {
+      "title": "Event tapijt in de praktijk",
+      "text": "Een greep uit de events waarvoor we tapijt printten.",
+      "photos": []
+    },
+    "faqTitle": "Veelgestelde vragen over event tapijt",
+    "faq": {
+      "delivery": {
+        "q": "Hoe snel wordt mijn event tapijt geleverd?",
+        "a": "Reken op [INVULLEN: levertijd in werkdagen] na je akkoord op de digitale proefdruk. Heb je een vaste datum voor je event? Vermeld die in je aanvraag, dan laten we meteen weten of dat haalbaar is."
+      },
+      "material": {
+        "q": "Van welk materiaal is event tapijt?",
+        "a": "We printen op tapijt in verschillende kwaliteiten: Velvet (zacht en luxueus), Globosoft (duurzaam en slijtvast) en Pxl (de scherpste, fotorealistische print). Voor lopers werken we standaard met [INVULLEN: standaardkwaliteit]. We helpen je graag kiezen wat bij je event past."
+      },
+      "reuse": {
+        "q": "Kan ik het tapijt maar één keer gebruiken?",
+        "a": "Nee. Event tapijt is ontworpen voor één gelegenheid, maar het blijft kwaliteitstapijt: je kan het na afloop oprollen en later opnieuw gebruiken. Wil je het nog inzetten? Laat dan een datum of jaartal weg uit het ontwerp."
+      },
+      "price": {
+        "q": "Wat kost event tapijt?",
+        "a": "Dat hangt af van de afmetingen, de kwaliteit en het ontwerp. Als richtprijs: een geprinte loper in standaardkwaliteit kost vanaf {perM2} per m² excl. btw. Een loper van 5 × 1 m komt zo op ongeveer {example} excl. btw. Voor een volledige vloer of beursstand maken we een offerte op maat."
+      }
+    },
+    "quoteTitle": "Plan je event tapijt",
+    "quoteText": "Vertel ons wat je organiseert, de datum en de gewenste afmetingen. Je krijgt snel een vrijblijvende offerte.",
+    "permanent": {
+      "title": "Iets blijvends nodig?",
+      "text": "Event tapijt is gemaakt voor één gelegenheid. Zoek je tapijt dat jaren meegaat in je winkel, kantoor, horecazaak of thuis? Kijk dan bij ons geprint tapijt. Voor een inloopmat met logo kies je een logomat.",
+      "printedLink": "Bekijk geprint tapijt",
+      "logomatLink": "Bekijk logomatten"
+    },
+    "relatedTitle": "Meer event tapijt"
   },
   "RunnerHighlight": {
     "example": "Voorbeeld: {length} m × {width} m — richtprijs vanaf",
@@ -1448,5 +1448,309 @@
     "delete": "Verwijderen",
     "dragHint": "Sleep de tekst op de mat om hem te verplaatsen",
     "defaultText": "Welkom"
+  },
+  "Breadcrumbs": {
+    "home": "Home",
+    "ariaLabel": "Kruimelpad"
+  },
+  "EventRunner": {
+    "eyebrow": "Event loper",
+    "title": "Rode loper met naam of logo",
+    "intro": "Een geprinte loper die helemaal van jou is: met jullie namen, je logo of een boodschap. In elke lengte, breedte en kleur, ook gewoon klassiek rood.",
+    "heroImageAlt": "Geprinte loper met goudkleurig pluimenpatroon aan de ingang van een gala",
+    "breadcrumb": "Event loper",
+    "introTitle": "Meer dan een rode loper",
+    "introText": [
+      "Een gewone rode loper huur je overal. Bij Carpetz printen we je loper volledig op maat: je ontwerp loopt over de hele lengte, scherp en in kleur.",
+      "Zo heet je je gasten welkom op een manier die ze onthouden, en die mooi op de foto’s staat."
+    ],
+    "personalTitle": "Wat kan er op je loper?",
+    "personal": [
+      "Namen of initialen",
+      "Een datum of jaartal",
+      "Je logo of huisstijl",
+      "Een quote, welkomstwoord of hashtag",
+      "Een patroon of foto over de volledige lengte"
+    ],
+    "occasionsTitle": "Voorbeelden per gelegenheid",
+    "wedding": {
+      "eyebrow": "Trouwloper op maat",
+      "title": "Maak jullie trouwloper uniek",
+      "description": "Laat jullie namen, datum of een persoonlijke boodschap printen op de loper die jullie dag compleet maakt.",
+      "imageAlt": "Trouwloper op maat met namen en datum, versierd met bloemen en kaarsen",
+      "details": [
+        {
+          "title": "Jullie namen",
+          "text": "Of initialen"
+        },
+        {
+          "title": "Datum",
+          "text": "Jullie speciale dag"
+        },
+        {
+          "title": "Eigen tekst",
+          "text": "Een quote, belofte of boodschap"
+        }
+      ],
+      "taglineTitle": "Jullie droom, onze print.",
+      "taglineSubtitle": "Uniek zoals jullie liefde."
+    },
+    "birthday": {
+      "eyebrow": "Verjaardagsloper op maat",
+      "title": "Elk feest verdient een entree",
+      "description": "Van ‘Gelukkige verjaardag’ tot de leeftijd van de jarige of een persoonlijke tekst: de entreemat kan volledig op maat geprint worden, precies zoals jij het wil.",
+      "imageAlt": "Verjaardagsloper op maat met feestelijke tekst",
+      "details": [
+        {
+          "title": "Gelukkige verjaardag",
+          "text": "Als feestelijke openingstekst"
+        },
+        {
+          "title": "De leeftijd",
+          "text": "Groot en trots in beeld"
+        },
+        {
+          "title": "Persoonlijke tekst",
+          "text": "Een boodschap naar keuze"
+        }
+      ],
+      "freeformNote": "Bovenstaande zijn slechts voorbeelden — alles is bespreekbaar en volledig aanpasbaar.",
+      "taglineTitle": "Jouw feest, jouw stijl.",
+      "taglineSubtitle": "Onvergetelijk vanaf de eerste stap."
+    },
+    "party": {
+      "eyebrow": "Feestloper op maat",
+      "title": "Maak jouw feest uniek",
+      "description": "Communie, gala, jubileum of bedrijfsevent: met een loper op maat geef je elk moment een unieke, persoonlijke touch vanaf de eerste stap.",
+      "imageAlt": "Feestloper op maat voor communie, gala of event",
+      "details": [
+        {
+          "title": "Elke gelegenheid",
+          "text": "Communie, gala, jubileum of bedrijfsevent"
+        },
+        {
+          "title": "Jouw thema of logo",
+          "text": "Kleur, stijl en boodschap volledig naar wens"
+        },
+        {
+          "title": "Persoonlijke tekst",
+          "text": "Naam, datum of quote die het moment vastlegt"
+        }
+      ],
+      "freeformNote": "Vertel ons je gelegenheid en wij denken mee over het perfecte ontwerp.",
+      "taglineTitle": "Elk feest, jouw stijl.",
+      "taglineSubtitle": "Uniek vanaf de allereerste stap."
+    },
+    "featuresTitle": "Kenmerken van ons event tapijt",
+    "features": [
+      {
+        "title": "Elke kleur & afmeting",
+        "text": "Van klassiek rood tot je eigen huisstijlkleur, in elk formaat."
+      },
+      {
+        "title": "Logo geïntegreerd",
+        "text": "Voeg je logo of boodschap toe aan je event tapijt of loper."
+      },
+      {
+        "title": "Snel te leggen",
+        "text": "Netjes af te werken en klaar op tijd voor je event."
+      },
+      {
+        "title": "Herbruikbaar",
+        "text": "Kwaliteitstapijt dat je meermaals kan inzetten."
+      }
+    ],
+    "sizesTitle": "Afmetingen en afwerking",
+    "sizesText": "Lengte en breedte kies je zelf: een smalle loper voor een gang of een brede loper voor een grote entree. We printen in één stuk tot [INVULLEN: maximale breedte] breed. [INVULLEN: afwerking van de randen].",
+    "stepsTitle": "Zo werkt het",
+    "steps": [
+      {
+        "title": "Vertel ons je idee",
+        "text": "Stuur je tekst, logo of ontwerp, de afmetingen en de datum van je event."
+      },
+      {
+        "title": "Digitale proefdruk",
+        "text": "Je ontvangt een digitale proefdruk. We passen aan tot alles klopt."
+      },
+      {
+        "title": "Printen",
+        "text": "Na je akkoord printen we je loper op maat."
+      },
+      {
+        "title": "Levering",
+        "text": "We leveren je loper in België of Nederland, op tijd voor je event."
+      }
+    ],
+    "faqTitle": "Vragen over de event loper",
+    "faq": {
+      "color": {
+        "q": "Moet een rode loper altijd rood zijn?",
+        "a": "Helemaal niet. Klassiek rood blijft populair, maar je loper kan elke kleur of print krijgen: wit of ivoor voor een huwelijk, je huisstijlkleur voor een bedrijfsevent of een volledig patroon."
+      },
+      "size": {
+        "q": "Hoe lang en hoe breed kan mijn loper zijn?",
+        "a": "Je kiest zelf de lengte en de breedte. We printen in één stuk tot [INVULLEN: maximale breedte] breed en [INVULLEN: maximale lengte] lang."
+      },
+      "price": {
+        "q": "Wat kost een loper van 10 meter?",
+        "a": "Een loper van 10 × 1 m in standaardkwaliteit kost ongeveer {example} excl. btw (richtprijs, {perM2} per m²). De exacte prijs hangt af van de kwaliteit en het ontwerp."
+      }
+    },
+    "quoteTitle": "Reserveer je loper op maat",
+    "quoteText": "Vertel ons over je event of je grote dag, de datum en de gewenste afmetingen. Je krijgt snel een offerte voor je gepersonaliseerde loper."
+  },
+  "EventFloor": {
+    "eyebrow": "Eventvloer",
+    "title": "Eventvloer op maat",
+    "intro": "Bekleed een volledige ruimte met geprint tapijt in jouw ontwerp. Zo wordt de vloer een deel van de aankleding van je event.",
+    "heroImageAlt": "Close-up van geprint tapijt met kleurrijk bladmotief",
+    "breadcrumb": "Eventvloer",
+    "whatTitle": "Wat is een eventvloer?",
+    "whatText": [
+      "Een eventvloer is geprint tapijt dat een volledige zaal, tent, podium of lounge bedekt. In plaats van een neutrale vloer kies je zelf wat er op de grond komt: je huisstijl, een patroon, een campagnebeeld of een thema dat bij je event past.",
+      "We printen naadloos over grote oppervlakken, zodat je ontwerp doorloopt over de hele ruimte. Dat geeft een sterk geheel, zeker op de foto’s en video’s van je event."
+    ],
+    "usesTitle": "Waar zet je een eventvloer in?",
+    "uses": [
+      "Gala’s, prijsuitreikingen en recepties",
+      "Productlanceringen en persmomenten",
+      "Bedrijfsfeesten en jubilea",
+      "Trouwfeesten en privéfeesten in een zaal of tent",
+      "Pop-ups, lounges en vip-zones",
+      "Podia en presentatieruimtes"
+    ],
+    "qualitiesTitle": "Welke kwaliteit kies je?",
+    "qualitiesText": "Afhankelijk van het gebruik en het ontwerp raden we een van deze kwaliteiten aan.",
+    "qualities": [
+      {
+        "title": "Velvet",
+        "text": "Zacht en luxueus, voor gala’s, lounges en vip-zones."
+      },
+      {
+        "title": "Globosoft",
+        "text": "Duurzaam en slijtvast, voor events met veel bezoekers."
+      },
+      {
+        "title": "Pxl",
+        "text": "De scherpste, fotorealistische print, als je ontwerp de hoofdrol speelt."
+      }
+    ],
+    "stepsTitle": "Van ontwerp tot vloer",
+    "steps": [
+      {
+        "title": "Plan en afmetingen",
+        "text": "Bezorg ons een grondplan of de afmetingen van de ruimte, met eventuele uitsparingen."
+      },
+      {
+        "title": "Ontwerp",
+        "text": "Stuur je eigen ontwerp of laat ons meedenken. Wij maken het drukklaar."
+      },
+      {
+        "title": "Digitale proefdruk",
+        "text": "Je ziet vooraf precies hoe je vloer eruit zal zien."
+      },
+      {
+        "title": "Printen en plaatsen",
+        "text": "We printen je vloer op maat. [INVULLEN: wie plaatst de vloer?]"
+      }
+    ],
+    "calculatorTitle": "Eerst een prijsindicatie?",
+    "calculatorText": "Met de prijscalculator op onze pagina over geprint tapijt bereken je meteen een richtprijs voor je oppervlakte en kwaliteit.",
+    "calculatorLink": "Naar de prijscalculator",
+    "faqTitle": "Vragen over een eventvloer",
+    "faq": {
+      "size": {
+        "q": "Hoe groot kan een eventvloer zijn?",
+        "a": "We printen naadloos over grote oppervlakken. [INVULLEN: maximale breedte per baan en hoe banen verbonden worden]."
+      },
+      "price": {
+        "q": "Wat kost een eventvloer?",
+        "a": "Dat hangt af van de oppervlakte, de kwaliteit en het ontwerp. Met de prijscalculator op onze pagina over geprint tapijt krijg je meteen een indicatie. Voor een volledige eventvloer maken we een offerte op maat."
+      },
+      "install": {
+        "q": "Leggen jullie de vloer ook?",
+        "a": "[INVULLEN: plaatsing door Carpetz of niet, en in welke regio]."
+      },
+      "after": {
+        "q": "Wat gebeurt er na het event met de vloer?",
+        "a": "Je kan het tapijt oprollen en bewaren voor een volgende editie. Laat dan een datum of jaartal weg uit het ontwerp."
+      }
+    },
+    "quoteTitle": "Vraag een offerte voor je eventvloer",
+    "quoteText": "Stuur ons de afmetingen of het grondplan van de ruimte, je ontwerp of idee en de datum van je event."
+  },
+  "EventStand": {
+    "eyebrow": "Beurstapijt",
+    "title": "Beurstapijt & standtapijt op maat",
+    "intro": "Tapijt in de exacte maat van je beursstand, bedrukt met je logo, huisstijl of campagnebeeld. Zo valt je stand al op vanaf het gangpad.",
+    "heroImageAlt": "Opgerold geprint tapijt met rood-crème patroon",
+    "breadcrumb": "Beurstapijt",
+    "whyTitle": "Waarom geprint standtapijt?",
+    "why": [
+      {
+        "title": "Opvallen in het gangpad",
+        "text": "Wie over een beurs wandelt, kijkt ook naar beneden. Een geprinte vloer trekt de aandacht naar je stand."
+      },
+      {
+        "title": "Je merk van muur tot vloer",
+        "text": "Logo, huisstijlkleuren of een volledig campagnebeeld: je standtapijt sluit aan bij je wanden en banners."
+      },
+      {
+        "title": "Exact op maat",
+        "text": "We printen in de afmetingen van je stand, ook voor een hoekstand of eilandstand."
+      },
+      {
+        "title": "Herbruikbaar",
+        "text": "Sta je meerdere keren per jaar op een beurs? Rol je standtapijt op en neem het mee naar de volgende."
+      }
+    ],
+    "sizeTitle": "Afmetingen en vorm",
+    "sizeText": "Geef ons de afmetingen van je stand of het standplan van de beursorganisatie. [INVULLEN: zijn uitsparingen voor kolommen of afwijkende vormen mogelijk?]",
+    "fireTitle": "Brandveiligheid",
+    "fireText": "Veel beurzen vragen de brandklasse van je vloerbekleding volgens EN 13501-1. Ons standtapijt heeft brandklasse [INVULLEN: brandklasse en of er een attest beschikbaar is].",
+    "stepsTitle": "Zo werkt het",
+    "steps": [
+      {
+        "title": "Standplan",
+        "text": "Stuur ons de afmetingen of het standplan en de datum van de beurs."
+      },
+      {
+        "title": "Ontwerp",
+        "text": "Bezorg je logo of beeld, of laat ons meedenken over een ontwerp dat bij je stand past."
+      },
+      {
+        "title": "Digitale proefdruk",
+        "text": "Je keurt het ontwerp goed op een digitale proefdruk."
+      },
+      {
+        "title": "Levering",
+        "text": "We leveren je standtapijt in België of Nederland, op tijd voor de opbouw. [INVULLEN: levering op de beursvloer of bij de standbouwer mogelijk?]"
+      }
+    ],
+    "faqTitle": "Vragen over beurstapijt",
+    "faq": {
+      "timing": {
+        "q": "Hoe ver vooraf bestel ik mijn beurstapijt?",
+        "a": "Reken op [INVULLEN: levertijd in werkdagen] na je akkoord op de digitale proefdruk, en plan ook de opbouwdagen van de beurs in."
+      },
+      "reuse": {
+        "q": "Kan ik hetzelfde standtapijt op meerdere beurzen gebruiken?",
+        "a": "Ja. Rol het na de beurs op en bewaar het droog. Kies dan een ontwerp zonder datum, zodat je het meerdere keren kan inzetten."
+      },
+      "price": {
+        "q": "Wat kost beurstapijt?",
+        "a": "Dat hangt af van de oppervlakte van je stand, de kwaliteit en het ontwerp. Met de prijscalculator op onze pagina over geprint tapijt krijg je meteen een indicatie. Voor je stand maken we een offerte op maat."
+      }
+    },
+    "quoteTitle": "Vraag een offerte voor je standtapijt",
+    "quoteText": "Stuur ons de afmetingen van je stand, de naam en datum van de beurs en je logo of ontwerp."
+  },
+  "ContactEmail": {
+    "subject": "We hebben je aanvraag ontvangen – Carpetz",
+    "greeting": "Beste {name},",
+    "intro": "Bedankt voor je aanvraag. We hebben ze goed ontvangen en nemen binnen 24 uur contact met je op.",
+    "yourMessage": "Je bericht:",
+    "questions": "Wil je nog iets toevoegen, zoals een ontwerp of extra afmetingen? Antwoord gewoon op deze mail.",
+    "signature": "Met vriendelijke groeten,"
   }
 }

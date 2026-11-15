@@ -1,9 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
-import { useMessages, useTranslations } from 'next-intl'
-import { CheckCircle2, Loader2 } from 'lucide-react'
+import { useLocale, useMessages, useTranslations } from 'next-intl'
+import { AlertCircle, CheckCircle2, Loader2 } from 'lucide-react'
 
 const PRODUCT_KEYS = ['logomats', 'printedCarpet', 'eventCarpet', 'redCarpet', 'other'] as const
 type ProductKey = (typeof PRODUCT_KEYS)[number]
@@ -15,7 +15,12 @@ function mapProductSlug(slug: string | null): ProductKey {
     case 'trouwloper':
     case 'verjaardagsloper':
     case 'feestloper':
+    case 'loper':
       return 'redCarpet'
+    case 'event-tapijt':
+    case 'eventvloer':
+    case 'beurstapijt':
+      return 'eventCarpet'
     default:
       return 'logomats'
   }
@@ -24,7 +29,10 @@ function mapProductSlug(slug: string | null): ProductKey {
 export function ContactForm() {
   const t = useTranslations('ContactForm')
   const messages = useMessages()
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle')
+  const locale = useLocale()
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  // Moment waarop het formulier verscheen (bots versturen meteen).
+  const startedAt = useRef(Date.now())
   const searchParams = useSearchParams()
 
   const productLabel = (key: ProductKey) => t(`products.${key}`)
@@ -50,11 +58,25 @@ export function ContactForm() {
     return sentence + t('prefill.closing')
   }
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setStatus('submitting')
-    // Simuleer verzending; koppel hier je eigen e-mail-/CRM-integratie.
-    setTimeout(() => setStatus('success'), 900)
+    const form = Object.fromEntries(new FormData(e.currentTarget))
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...form,
+          locale,
+          page: window.location.pathname + window.location.search,
+          startedAt: startedAt.current,
+        }),
+      })
+      setStatus(response.ok ? 'success' : 'error')
+    } catch {
+      setStatus('error')
+    }
   }
 
   if (status === 'success') {
@@ -72,6 +94,11 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
+      <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+        <label htmlFor="website">{t('honeypot')}</label>
+        <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="mb-2 block text-sm font-medium">
@@ -144,6 +171,23 @@ export function ContactForm() {
           defaultValue={buildPrefilledMessage()}
         />
       </div>
+
+      {status === 'error' && (
+        <div role="alert" className="flex items-start gap-3 rounded-sm border border-brand-red/40 bg-brand-red/10 p-4 text-sm">
+          <AlertCircle className="mt-0.5 size-5 shrink-0 text-brand-red" />
+          <p>
+            {t('errorText')}{' '}
+            <a href="mailto:info@carpetz.be" className="font-medium underline">
+              info@carpetz.be
+            </a>{' '}
+            {t('errorOr')}{' '}
+            <a href="tel:+32488236581" className="font-medium whitespace-nowrap underline">
+              +32 488 23 65 81
+            </a>
+            .
+          </p>
+        </div>
+      )}
 
       <button
         type="submit"

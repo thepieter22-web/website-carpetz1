@@ -31,10 +31,10 @@
     },
     "event": {
       "title": "Tapis événementiel & tapis rouge sur mesure",
-      "description": "Tapis événementiels et tapis rouges sur mesure pour mariages, anniversaires, galas et événements d’entreprise. Dans toutes les couleurs et toutes les dimensions, livrés rapidement en Belgique et aux Pays-Bas.",
+      "description": "Du tapis imprimé pour une occasion unique : un tapis rouge avec nom ou logo, un sol événementiel complet ou un tapis pour votre stand de salon. Fabriqué sur mesure, livré en Belgique et aux Pays-Bas.",
       "ogTitle": "Tapis événementiel & tapis rouge sur mesure | Carpetz",
-      "ogDescription": "Tapis événementiels et tapis rouges sur mesure pour mariages, anniversaires, galas et événements. Dans toutes les couleurs et toutes les dimensions.",
-      "ogImageAlt": "Tapis rouge sur mesure Carpetz"
+      "ogDescription": "Un tapis rouge avec nom ou logo, un sol événementiel complet ou un tapis de stand : du tapis imprimé sur mesure pour votre événement.",
+      "ogImageAlt": "Tapis rouge à l’entrée d’un gala"
     },
     "logomat": {
       "title": "Faire réaliser un tapis logo sur mesure",
@@ -65,7 +65,22 @@
     "countryBE": "Belgique",
     "countryNL": "Pays-Bas",
     "catalogName": "Tapis sur mesure",
-    "inLanguage": "fr-BE"
+    "inLanguage": "fr-BE",
+    "eventRunner": {
+      "title": "Tapis rouge personnalisé avec nom ou logo",
+      "description": "Tapis rouge imprimé à vos prénoms, à votre logo ou avec un message. Pour mariages, anniversaires, galas et événements d’entreprise, dans toutes les longueurs, largeurs et couleurs.",
+      "ogImageAlt": "Tapis imprimé à motif de plumes dorées à l’entrée d’un gala"
+    },
+    "eventFloor": {
+      "title": "Sol événementiel sur mesure : tout l’espace imprimé",
+      "description": "Recouvrez une salle, une tente ou une scène entière de tapis imprimé à votre design. Un sol événementiel sur mesure pour galas, lancements et fêtes d’entreprise en Belgique et aux Pays-Bas.",
+      "ogImageAlt": "Gros plan d’un tapis imprimé à motif de feuilles colorées"
+    },
+    "eventStand": {
+      "title": "Tapis de stand & de salon imprimé sur mesure",
+      "description": "Un tapis aux dimensions exactes de votre stand, imprimé avec votre logo, votre identité visuelle ou votre visuel de campagne. Pour les salons en Belgique et aux Pays-Bas.",
+      "ogImageAlt": "Tapis imprimé à motif rouge et crème, enroulé"
+    }
   },
   "Common": {
     "requestQuote": "Demandez votre devis",
@@ -89,7 +104,12 @@
     "mobileNav": "Navigation mobile",
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu",
-    "language": "Choisir la langue"
+    "language": "Choisir la langue",
+    "eventOverview": "Tous les tapis événementiels",
+    "eventRunner": "Tapis rouge",
+    "eventFloor": "Sol événementiel complet",
+    "eventStand": "Tapis de stand & salon",
+    "submenu": "Ouvrir ou fermer le sous-menu {item}"
   },
   "Footer": {
     "tagline": "Spécialiste des tapis logo sur mesure, tapis imprimés, tapis événementiels et tapis rouges sur mesure pour les entreprises, le retail, l’hôtellerie, les salons et les événements en Belgique et aux Pays-Bas.",
@@ -273,7 +293,11 @@
         "geprint-tapijt": "un tapis imprimé",
         "trouwloper": "un tapis de mariage",
         "verjaardagsloper": "un tapis d’anniversaire",
-        "feestloper": "un tapis de fête"
+        "feestloper": "un tapis de fête",
+        "event-tapijt": "un tapis événementiel",
+        "loper": "un tapis rouge personnalisé",
+        "eventvloer": "un sol événementiel",
+        "beurstapijt": "un tapis pour mon stand"
       },
       "interest": "Je suis intéressé(e) par {product}",
       "quality": " (qualité : {quality})",
@@ -297,7 +321,10 @@
     "messagePlaceholder": "Parlez-nous de votre projet : format, quantité, date de livraison souhaitée...",
     "sending": "Envoi en cours...",
     "submit": "Demandez votre devis",
-    "privacyNote": "Nous répondons à votre demande sous 24 heures. Vos données sont traitées de manière confidentielle."
+    "privacyNote": "Nous répondons à votre demande sous 24 heures. Vos données sont traitées de manière confidentielle.",
+    "honeypot": "Laissez ce champ vide",
+    "errorText": "Votre demande n’a pas pu être envoyée. Veuillez réessayer, ou écrivez-nous à",
+    "errorOr": "ou appelez le"
   },
   "About": {
     "eyebrow": "À propos",
@@ -398,110 +425,83 @@
   },
   "Event": {
     "eyebrow": "Tapis événementiel",
-    "title": "Tapis événementiel & tapis rouges sur mesure",
-    "intro": "Un événement commence à l’entrée. D’un anniversaire ou d’un mariage à un gala ou un stand de salon — avec un tapis rouge ou un tapis événementiel sur mesure, vous créez d’emblée la bonne ambiance.",
-    "heroImageAlt": "Tapis rouge sur mesure lors d’un événement exclusif",
-    "calloutTitle": "Des tapis événementiels qui font impression",
-    "calloutText": "D’un anniversaire ou d’un mariage à une avant-première, un gala ou un stand de salon : nos tapis rouges et tapis événementiels sur mesure s’adaptent à votre occasion, avec votre logo, un nom ou un message intégré.",
-    "wedding": {
-      "eyebrow": "Tapis de mariage sur mesure",
-      "title": "Un tapis de mariage à votre image",
-      "description": "Faites imprimer vos prénoms, la date ou un message personnel sur le tapis qui rendra votre journée inoubliable.",
-      "imageAlt": "Tapis de mariage sur mesure avec prénoms et date, décoré de fleurs et de bougies",
-      "details": [
-        {
-          "title": "Vos prénoms",
-          "text": "Ou vos initiales"
-        },
-        {
-          "title": "La date",
-          "text": "Votre jour unique"
-        },
-        {
-          "title": "Votre texte",
-          "text": "Une citation, une promesse ou un message"
-        }
-      ],
-      "taglineTitle": "Votre rêve, notre impression.",
-      "taglineSubtitle": "Unique comme votre amour."
-    },
-    "birthday": {
-      "eyebrow": "Tapis d’anniversaire sur mesure",
-      "title": "Chaque fête mérite une entrée",
-      "description": "Du « Joyeux anniversaire » à l’âge du jubilaire ou à un texte personnel : le tapis d’entrée peut être entièrement imprimé sur mesure, exactement comme vous le souhaitez.",
-      "imageAlt": "Tapis d’anniversaire sur mesure avec un texte festif",
-      "details": [
-        {
-          "title": "Joyeux anniversaire",
-          "text": "Comme message d’accueil festif"
-        },
-        {
-          "title": "L’âge",
-          "text": "En grand, bien en vue"
-        },
-        {
-          "title": "Texte personnel",
-          "text": "Le message de votre choix"
-        }
-      ],
-      "freeformNote": "Ce ne sont que des exemples — tout est possible et entièrement personnalisable.",
-      "taglineTitle": "Votre fête, votre style.",
-      "taglineSubtitle": "Inoubliable dès le premier pas."
-    },
-    "party": {
-      "eyebrow": "Tapis de fête sur mesure",
-      "title": "Rendez votre fête unique",
-      "description": "Communion, gala, jubilé ou événement d’entreprise : avec un tapis sur mesure, vous donnez à chaque moment une touche unique et personnelle dès le premier pas.",
-      "imageAlt": "Tapis de fête sur mesure pour une communion, un gala ou un événement",
-      "details": [
-        {
-          "title": "Chaque occasion",
-          "text": "Communion, gala, jubilé ou événement d’entreprise"
-        },
-        {
-          "title": "Votre thème ou logo",
-          "text": "Couleur, style et message entièrement à votre goût"
-        },
-        {
-          "title": "Texte personnel",
-          "text": "Un nom, une date ou une citation qui immortalise le moment"
-        }
-      ],
-      "freeformNote": "Parlez-nous de votre occasion et nous vous aiderons à imaginer le design parfait.",
-      "taglineTitle": "Chaque fête, votre style.",
-      "taglineSubtitle": "Unique dès le tout premier pas."
-    },
-    "featuresTitle": "Les atouts de nos tapis événementiels",
-    "features": [
-      {
-        "title": "Toutes couleurs & dimensions",
-        "text": "Du rouge classique à la couleur de votre marque, dans tous les formats."
+    "title": "Tapis événementiel & tapis rouge",
+    "intro": "Du tapis pour un moment qui marque les esprits. Nous imprimons votre design sur un tapis sur mesure : d’un tapis rouge à vos prénoms jusqu’à une salle entière ou un stand de salon aux couleurs de votre marque.",
+    "heroImageAlt": "Tapis rouge à l’entrée d’un gala",
+    "breadcrumb": "Tapis événementiel",
+    "backToOverview": "Tous les tapis événementiels",
+    "cardsTitle": "Choisissez votre tapis événementiel",
+    "cardsText": "Tout ce que nous fabriquons est du tapis imprimé. Pour un événement, la plupart de nos clients choisissent l’une de ces trois solutions.",
+    "cards": {
+      "runner": {
+        "title": "Tapis rouge",
+        "text": "Un tapis rouge, ou de la couleur de votre choix, avec un nom, un logo ou un message. Pour l’entrée de votre mariage, de votre fête ou de votre gala.",
+        "link": "Découvrir le tapis rouge",
+        "imageAlt": "Tapis imprimé à motif de plumes dorées à l’entrée d’un gala"
       },
-      {
-        "title": "Logo intégré",
-        "text": "Ajoutez votre logo ou votre message à votre tapis événementiel ou à votre tapis de passage."
+      "floor": {
+        "title": "Sol événementiel complet",
+        "text": "Une salle, une tente ou une scène entière à votre design. Le sol devient un élément de la décoration.",
+        "link": "Découvrir le sol événementiel",
+        "imageAlt": "Gros plan d’un tapis imprimé à motif de feuilles colorées"
       },
-      {
-        "title": "Pose rapide",
-        "text": "Une finition soignée, prête à temps pour votre événement."
-      },
-      {
-        "title": "Réutilisable",
-        "text": "Un tapis de qualité que vous pouvez utiliser plusieurs fois."
+      "stand": {
+        "title": "Tapis de stand & salon",
+        "text": "Un tapis aux dimensions exactes de votre stand, avec votre logo ou votre visuel de campagne. Votre stand se remarque dès l’allée.",
+        "link": "Découvrir le tapis de stand",
+        "imageAlt": "Tapis imprimé à motif rouge et crème, enroulé"
       }
-    ],
-    "typesImageAlt": "Tapis de salon sur un stand moderne",
-    "typesTitle": "Pour tous les types d’événements",
-    "types": [
-      "Anniversaires et mariages",
-      "Avant-premières, galas et cérémonies de remise de prix",
-      "Lancements d’entreprise et conférences de presse",
-      "Inaugurations et jubilés",
-      "Salons et tapis pour stands",
-      "Festivals et événements grand public"
-    ],
-    "quoteTitle": "Réservez votre tapis rouge sur mesure",
-    "quoteText": "Parlez-nous de votre événement ou de votre grand jour, de la date et des dimensions souhaitées. Nous vous envoyons rapidement un devis pour un tapis événementiel ou un tapis rouge sur mesure."
+    },
+    "occasionsTitle": "Pour chaque occasion",
+    "occasionsText": "Chaque événement mérite son propre design. Découvrez des exemples par occasion.",
+    "occasions": {
+      "wedding": {
+        "title": "Mariage",
+        "text": "Vos prénoms, la date ou un message personnel sur le tapis qui mène à l’autel ou à la salle de réception."
+      },
+      "birthday": {
+        "title": "Anniversaire & fête",
+        "text": "Du « Joyeux anniversaire » à l’entrée jusqu’à l’âge en grand au centre : une entrée festive."
+      },
+      "corporate": {
+        "title": "Événement d’entreprise",
+        "text": "Gala, jubilé, inauguration ou lancement de produit : votre logo et votre identité visuelle dès le premier pas."
+      }
+    },
+    "occasionLink": "Voir des exemples",
+    "gallery": {
+      "title": "Nos tapis événementiels en situation",
+      "text": "Une sélection d’événements pour lesquels nous avons imprimé du tapis.",
+      "photos": []
+    },
+    "faqTitle": "Questions fréquentes sur le tapis événementiel",
+    "faq": {
+      "delivery": {
+        "q": "Quel est le délai de livraison d’un tapis événementiel ?",
+        "a": "Comptez [À COMPLÉTER : délai en jours ouvrables] après votre validation de l’épreuve numérique (BAT). Votre événement a une date fixe ? Indiquez-la dans votre demande : nous vous dirons tout de suite si c’est faisable."
+      },
+      "material": {
+        "q": "En quelle matière est le tapis événementiel ?",
+        "a": "Nous imprimons sur du tapis de différentes qualités : Velvet (doux et luxueux), Globosoft (durable et résistant) et Pxl (l’impression photoréaliste la plus nette). Pour les tapis rouges, nous utilisons par défaut [À COMPLÉTER : qualité standard]. Nous vous aidons volontiers à choisir la qualité adaptée à votre événement."
+      },
+      "reuse": {
+        "q": "Le tapis ne peut-il servir qu’une seule fois ?",
+        "a": "Non. Le tapis événementiel est conçu pour une occasion, mais il reste un tapis de qualité : vous pouvez l’enrouler après l’événement et le réutiliser plus tard. Vous comptez le réutiliser ? Évitez alors d’y faire figurer une date ou une année."
+      },
+      "price": {
+        "q": "Combien coûte un tapis événementiel ?",
+        "a": "Le prix dépend des dimensions, de la qualité et du design. À titre indicatif : un tapis rouge imprimé en qualité standard coûte à partir de {perM2} par m² hors TVA. Un tapis de 5 × 1 m revient ainsi à environ {example} hors TVA. Pour un sol complet ou un stand de salon, nous établissons un devis sur mesure."
+      }
+    },
+    "quoteTitle": "Planifiez votre tapis événementiel",
+    "quoteText": "Parlez-nous de votre événement, de la date et des dimensions souhaitées. Vous recevez rapidement un devis sans engagement.",
+    "permanent": {
+      "title": "Besoin d’une solution durable ?",
+      "text": "Le tapis événementiel est conçu pour une occasion. Vous cherchez un tapis qui dure des années dans votre magasin, votre bureau, votre établissement horeca ou chez vous ? Découvrez notre tapis imprimé. Pour un tapis d’entrée avec logo, choisissez un tapis logo.",
+      "printedLink": "Découvrir le tapis imprimé",
+      "logomatLink": "Découvrir les tapis logo"
+    },
+    "relatedTitle": "Autres tapis événementiels"
   },
   "RunnerHighlight": {
     "example": "Exemple : {length} m × {width} m — prix indicatif à partir de",
@@ -1448,5 +1448,309 @@
     "delete": "Supprimer",
     "dragHint": "Faites glisser le texte sur le tapis pour le déplacer",
     "defaultText": "Bienvenue"
+  },
+  "Breadcrumbs": {
+    "home": "Accueil",
+    "ariaLabel": "Fil d’Ariane"
+  },
+  "EventRunner": {
+    "eyebrow": "Tapis rouge",
+    "title": "Tapis rouge personnalisé avec nom ou logo",
+    "intro": "Un tapis rouge imprimé qui vous ressemble : avec vos prénoms, votre logo ou un message. Dans toutes les longueurs, largeurs et couleurs, y compris le rouge classique.",
+    "heroImageAlt": "Tapis imprimé à motif de plumes dorées à l’entrée d’un gala",
+    "breadcrumb": "Tapis rouge",
+    "introTitle": "Bien plus qu’un tapis rouge",
+    "introText": [
+      "Un tapis rouge classique se loue partout. Chez Carpetz, nous imprimons votre tapis entièrement sur mesure : votre design s’étend sur toute la longueur, net et en couleurs.",
+      "Vous accueillez ainsi vos invités d’une manière dont ils se souviendront, et qui rend superbement en photo."
+    ],
+    "personalTitle": "Que peut-on imprimer sur votre tapis ?",
+    "personal": [
+      "Des prénoms ou des initiales",
+      "Une date ou une année",
+      "Votre logo ou votre identité visuelle",
+      "Une citation, un mot de bienvenue ou un hashtag",
+      "Un motif ou une photo sur toute la longueur"
+    ],
+    "occasionsTitle": "Des exemples par occasion",
+    "wedding": {
+      "eyebrow": "Tapis de mariage sur mesure",
+      "title": "Un tapis de mariage à votre image",
+      "description": "Faites imprimer vos prénoms, la date ou un message personnel sur le tapis qui rendra votre journée inoubliable.",
+      "imageAlt": "Tapis de mariage sur mesure avec prénoms et date, décoré de fleurs et de bougies",
+      "details": [
+        {
+          "title": "Vos prénoms",
+          "text": "Ou vos initiales"
+        },
+        {
+          "title": "La date",
+          "text": "Votre jour unique"
+        },
+        {
+          "title": "Votre texte",
+          "text": "Une citation, une promesse ou un message"
+        }
+      ],
+      "taglineTitle": "Votre rêve, notre impression.",
+      "taglineSubtitle": "Unique comme votre amour."
+    },
+    "birthday": {
+      "eyebrow": "Tapis d’anniversaire sur mesure",
+      "title": "Chaque fête mérite une entrée",
+      "description": "Du « Joyeux anniversaire » à l’âge du jubilaire ou à un texte personnel : le tapis d’entrée peut être entièrement imprimé sur mesure, exactement comme vous le souhaitez.",
+      "imageAlt": "Tapis d’anniversaire sur mesure avec un texte festif",
+      "details": [
+        {
+          "title": "Joyeux anniversaire",
+          "text": "Comme message d’accueil festif"
+        },
+        {
+          "title": "L’âge",
+          "text": "En grand, bien en vue"
+        },
+        {
+          "title": "Texte personnel",
+          "text": "Le message de votre choix"
+        }
+      ],
+      "freeformNote": "Ce ne sont que des exemples — tout est possible et entièrement personnalisable.",
+      "taglineTitle": "Votre fête, votre style.",
+      "taglineSubtitle": "Inoubliable dès le premier pas."
+    },
+    "party": {
+      "eyebrow": "Tapis de fête sur mesure",
+      "title": "Rendez votre fête unique",
+      "description": "Communion, gala, jubilé ou événement d’entreprise : avec un tapis sur mesure, vous donnez à chaque moment une touche unique et personnelle dès le premier pas.",
+      "imageAlt": "Tapis de fête sur mesure pour une communion, un gala ou un événement",
+      "details": [
+        {
+          "title": "Chaque occasion",
+          "text": "Communion, gala, jubilé ou événement d’entreprise"
+        },
+        {
+          "title": "Votre thème ou logo",
+          "text": "Couleur, style et message entièrement à votre goût"
+        },
+        {
+          "title": "Texte personnel",
+          "text": "Un nom, une date ou une citation qui immortalise le moment"
+        }
+      ],
+      "freeformNote": "Parlez-nous de votre occasion et nous vous aiderons à imaginer le design parfait.",
+      "taglineTitle": "Chaque fête, votre style.",
+      "taglineSubtitle": "Unique dès le tout premier pas."
+    },
+    "featuresTitle": "Les atouts de nos tapis événementiels",
+    "features": [
+      {
+        "title": "Toutes couleurs & dimensions",
+        "text": "Du rouge classique à la couleur de votre marque, dans tous les formats."
+      },
+      {
+        "title": "Logo intégré",
+        "text": "Ajoutez votre logo ou votre message à votre tapis événementiel ou à votre tapis de passage."
+      },
+      {
+        "title": "Pose rapide",
+        "text": "Une finition soignée, prête à temps pour votre événement."
+      },
+      {
+        "title": "Réutilisable",
+        "text": "Un tapis de qualité que vous pouvez utiliser plusieurs fois."
+      }
+    ],
+    "sizesTitle": "Dimensions et finition",
+    "sizesText": "Vous choisissez la longueur et la largeur : un tapis étroit pour un couloir ou un tapis large pour une grande entrée. Nous imprimons d’une seule pièce jusqu’à [À COMPLÉTER : largeur maximale] de large. [À COMPLÉTER : finition des bords].",
+    "stepsTitle": "Comment ça marche",
+    "steps": [
+      {
+        "title": "Partagez votre idée",
+        "text": "Envoyez votre texte, votre logo ou votre design, les dimensions et la date de votre événement."
+      },
+      {
+        "title": "Épreuve numérique (BAT)",
+        "text": "Vous recevez une épreuve numérique. Nous l’ajustons jusqu’à ce que tout soit parfait."
+      },
+      {
+        "title": "Impression",
+        "text": "Après votre accord, nous imprimons votre tapis sur mesure."
+      },
+      {
+        "title": "Livraison",
+        "text": "Nous livrons votre tapis en Belgique ou aux Pays-Bas, à temps pour votre événement."
+      }
+    ],
+    "faqTitle": "Questions sur le tapis rouge",
+    "faq": {
+      "color": {
+        "q": "Un tapis rouge doit-il toujours être rouge ?",
+        "a": "Pas du tout. Le rouge classique reste populaire, mais votre tapis peut avoir n’importe quelle couleur ou impression : blanc ou ivoire pour un mariage, la couleur de votre marque pour un événement d’entreprise ou un motif complet."
+      },
+      "size": {
+        "q": "Quelle longueur et quelle largeur pour mon tapis ?",
+        "a": "Vous choisissez vous-même la longueur et la largeur. Nous imprimons d’une seule pièce jusqu’à [À COMPLÉTER : largeur maximale] de large et [À COMPLÉTER : longueur maximale] de long."
+      },
+      "price": {
+        "q": "Combien coûte un tapis de 10 mètres ?",
+        "a": "Un tapis de 10 × 1 m en qualité standard coûte environ {example} hors TVA (prix indicatif, {perM2} par m²). Le prix exact dépend de la qualité et du design."
+      }
+    },
+    "quoteTitle": "Réservez votre tapis rouge sur mesure",
+    "quoteText": "Parlez-nous de votre événement ou de votre grand jour, de la date et des dimensions souhaitées. Vous recevez rapidement un devis pour votre tapis personnalisé."
+  },
+  "EventFloor": {
+    "eyebrow": "Sol événementiel",
+    "title": "Sol événementiel sur mesure",
+    "intro": "Recouvrez tout un espace de tapis imprimé à votre design. Le sol devient ainsi un élément à part entière de la décoration de votre événement.",
+    "heroImageAlt": "Gros plan d’un tapis imprimé à motif de feuilles colorées",
+    "breadcrumb": "Sol événementiel",
+    "whatTitle": "Qu’est-ce qu’un sol événementiel ?",
+    "whatText": [
+      "Un sol événementiel est un tapis imprimé qui recouvre toute une salle, une tente, une scène ou un lounge. Au lieu d’un sol neutre, vous choisissez ce qui apparaît au sol : votre identité visuelle, un motif, un visuel de campagne ou un thème adapté à votre événement.",
+      "Nous imprimons sans raccord visible sur de grandes surfaces, pour que votre design se prolonge dans tout l’espace. Le résultat est cohérent et percutant, surtout sur les photos et vidéos de votre événement."
+    ],
+    "usesTitle": "Pour quels événements ?",
+    "uses": [
+      "Galas, remises de prix et réceptions",
+      "Lancements de produits et conférences de presse",
+      "Fêtes d’entreprise et jubilés",
+      "Mariages et fêtes privées en salle ou sous tente",
+      "Pop-up stores, lounges et espaces VIP",
+      "Scènes et espaces de présentation"
+    ],
+    "qualitiesTitle": "Quelle qualité choisir ?",
+    "qualitiesText": "Selon l’usage et le design, nous vous conseillons l’une de ces qualités.",
+    "qualities": [
+      {
+        "title": "Velvet",
+        "text": "Doux et luxueux, pour les galas, lounges et espaces VIP."
+      },
+      {
+        "title": "Globosoft",
+        "text": "Durable et résistant, pour les événements très fréquentés."
+      },
+      {
+        "title": "Pxl",
+        "text": "L’impression photoréaliste la plus nette, quand votre design est la vedette."
+      }
+    ],
+    "stepsTitle": "Du design au sol",
+    "steps": [
+      {
+        "title": "Plan et dimensions",
+        "text": "Envoyez-nous un plan ou les dimensions de l’espace, avec les éventuelles découpes."
+      },
+      {
+        "title": "Design",
+        "text": "Envoyez votre propre design ou laissez-nous vous conseiller. Nous le préparons pour l’impression."
+      },
+      {
+        "title": "Épreuve numérique (BAT)",
+        "text": "Vous voyez à l’avance le rendu exact de votre sol."
+      },
+      {
+        "title": "Impression et pose",
+        "text": "Nous imprimons votre sol sur mesure. [À COMPLÉTER : qui pose le sol ?]"
+      }
+    ],
+    "calculatorTitle": "D’abord une estimation de prix ?",
+    "calculatorText": "Avec le calculateur de prix de notre page sur le tapis imprimé, vous obtenez immédiatement un prix indicatif pour votre surface et votre qualité.",
+    "calculatorLink": "Vers le calculateur de prix",
+    "faqTitle": "Questions sur le sol événementiel",
+    "faq": {
+      "size": {
+        "q": "Quelle surface peut couvrir un sol événementiel ?",
+        "a": "Nous imprimons sans raccord visible sur de grandes surfaces. [À COMPLÉTER : largeur maximale par lé et mode d’assemblage des lés]."
+      },
+      "price": {
+        "q": "Combien coûte un sol événementiel ?",
+        "a": "Le prix dépend de la surface, de la qualité et du design. Le calculateur de prix de notre page sur le tapis imprimé vous donne immédiatement une estimation. Pour un sol événementiel complet, nous établissons un devis sur mesure."
+      },
+      "install": {
+        "q": "Posez-vous également le sol ?",
+        "a": "[À COMPLÉTER : pose par Carpetz ou non, et dans quelle région]."
+      },
+      "after": {
+        "q": "Que devient le sol après l’événement ?",
+        "a": "Vous pouvez enrouler le tapis et le conserver pour une prochaine édition. Évitez alors d’y faire figurer une date ou une année."
+      }
+    },
+    "quoteTitle": "Demandez un devis pour votre sol événementiel",
+    "quoteText": "Envoyez-nous les dimensions ou le plan de l’espace, votre design ou votre idée et la date de votre événement."
+  },
+  "EventStand": {
+    "eyebrow": "Tapis de stand",
+    "title": "Tapis de stand & de salon sur mesure",
+    "intro": "Un tapis aux dimensions exactes de votre stand, imprimé avec votre logo, votre identité visuelle ou votre visuel de campagne. Votre stand se remarque dès l’allée.",
+    "heroImageAlt": "Tapis imprimé à motif rouge et crème, enroulé",
+    "breadcrumb": "Tapis de stand",
+    "whyTitle": "Pourquoi un tapis de stand imprimé ?",
+    "why": [
+      {
+        "title": "Se démarquer dans l’allée",
+        "text": "Les visiteurs d’un salon regardent aussi vers le sol. Un sol imprimé attire leur attention vers votre stand."
+      },
+      {
+        "title": "Votre marque du mur au sol",
+        "text": "Logo, couleurs de votre marque ou visuel de campagne complet : votre tapis s’accorde avec vos cloisons et vos bannières."
+      },
+      {
+        "title": "Aux dimensions exactes",
+        "text": "Nous imprimons aux dimensions de votre stand, y compris pour un stand d’angle ou un stand îlot."
+      },
+      {
+        "title": "Réutilisable",
+        "text": "Vous participez à plusieurs salons par an ? Enroulez votre tapis de stand et emportez-le au suivant."
+      }
+    ],
+    "sizeTitle": "Dimensions et forme",
+    "sizeText": "Communiquez-nous les dimensions de votre stand ou le plan fourni par l’organisateur du salon. [À COMPLÉTER : découpes pour colonnes ou formes particulières possibles ?]",
+    "fireTitle": "Sécurité incendie",
+    "fireText": "De nombreux salons exigent la classe de réaction au feu de votre revêtement de sol selon la norme EN 13501-1. Notre tapis de stand a la classe [À COMPLÉTER : classe de réaction au feu et disponibilité d’une attestation].",
+    "stepsTitle": "Comment ça marche",
+    "steps": [
+      {
+        "title": "Plan du stand",
+        "text": "Envoyez-nous les dimensions ou le plan du stand et la date du salon."
+      },
+      {
+        "title": "Design",
+        "text": "Envoyez votre logo ou votre visuel, ou laissez-nous imaginer un design adapté à votre stand."
+      },
+      {
+        "title": "Épreuve numérique (BAT)",
+        "text": "Vous validez le design sur une épreuve numérique."
+      },
+      {
+        "title": "Livraison",
+        "text": "Nous livrons votre tapis de stand en Belgique ou aux Pays-Bas, à temps pour le montage. [À COMPLÉTER : livraison sur le salon ou chez le standiste possible ?]"
+      }
+    ],
+    "faqTitle": "Questions sur le tapis de stand",
+    "faq": {
+      "timing": {
+        "q": "Combien de temps à l’avance commander mon tapis de stand ?",
+        "a": "Comptez [À COMPLÉTER : délai en jours ouvrables] après votre validation de l’épreuve numérique (BAT), et tenez compte des jours de montage du salon."
+      },
+      "reuse": {
+        "q": "Puis-je utiliser le même tapis sur plusieurs salons ?",
+        "a": "Oui. Enroulez-le après le salon et conservez-le au sec. Choisissez alors un design sans date, pour pouvoir le réutiliser plusieurs fois."
+      },
+      "price": {
+        "q": "Combien coûte un tapis de stand ?",
+        "a": "Le prix dépend de la surface de votre stand, de la qualité et du design. Le calculateur de prix de notre page sur le tapis imprimé vous donne immédiatement une estimation. Pour votre stand, nous établissons un devis sur mesure."
+      }
+    },
+    "quoteTitle": "Demandez un devis pour votre tapis de stand",
+    "quoteText": "Envoyez-nous les dimensions de votre stand, le nom et la date du salon ainsi que votre logo ou votre design."
+  },
+  "ContactEmail": {
+    "subject": "Nous avons bien reçu votre demande – Carpetz",
+    "greeting": "Bonjour {name},",
+    "intro": "Merci pour votre demande. Nous l’avons bien reçue et nous vous recontactons dans les 24 heures.",
+    "yourMessage": "Votre message :",
+    "questions": "Vous souhaitez ajouter quelque chose, comme un design ou des dimensions supplémentaires ? Répondez simplement à cet e-mail.",
+    "signature": "Bien cordialement,"
   }
 }

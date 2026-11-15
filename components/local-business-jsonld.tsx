@@ -1,4 +1,5 @@
 import { useLocale, useTranslations } from 'next-intl'
+import { SITE_URL } from '@/routing'
 
 export function LocalBusinessJsonLd() {
   const locale = useLocale()
@@ -8,14 +9,14 @@ export function LocalBusinessJsonLd() {
   const data = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    '@id': 'https://carpetz.example/#business',
+    '@id': `${SITE_URL}/#business`,
     name: 'Carpetz',
     description: meta('description'),
-    url: `https://carpetz.example/${locale}`,
+    url: `${SITE_URL}/${locale}`,
     inLanguage: meta('inLanguage'),
     telephone: '+32 488 23 65 81',
     email: 'info@carpetz.be',
-    image: 'https://carpetz.example/images/hero-event-carpet.png',
+    image: `${SITE_URL}/images/hero-event-carpet.png`,
     priceRange: '€€',
     address: {
       '@type': 'PostalAddress',

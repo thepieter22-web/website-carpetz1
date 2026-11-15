@@ -12,6 +12,15 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 60 * 60 * 24 * 30,
   },
+  async redirects() {
+    // Franse event-pagina's kregen een Franse URL: oude adressen blijvend (301) doorsturen.
+    return [
+      ['/fr/event-tapijt', '/fr/tapis-evenementiel'],
+      ['/fr/event-tapijt/loper', '/fr/tapis-evenementiel/tapis-rouge'],
+      ['/fr/event-tapijt/eventvloer', '/fr/tapis-evenementiel/sol-evenementiel'],
+      ['/fr/event-tapijt/beurstapijt', '/fr/tapis-evenementiel/stand-salon'],
+    ].map(([source, destination]) => ({ source, destination, statusCode: 301 }));
+  },
   async headers() {
     return [
       {

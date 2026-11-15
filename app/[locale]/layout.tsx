@@ -6,6 +6,7 @@ import { Inter, Playfair_Display } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations, unstable_setRequestLocale } from 'next-intl/server'
 import { localizedAlternates } from '@/lib/seo'
+import { SITE_URL } from '@/routing'
 import { notFound } from 'next/navigation'
 import { locales } from '../../i18n'
 import '../globals.css'
@@ -29,7 +30,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'Meta' })
 
   return {
-    metadataBase: new URL('https://carpetz.example'),
+    metadataBase: new URL(SITE_URL),
     title: {
       default: t('defaultTitle'),
       template: t('titleTemplate'),

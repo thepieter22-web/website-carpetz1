@@ -2,58 +2,63 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
-import {
-  CheckCircle2,
-  Sparkles,
-  Zap,
-  Repeat,
-  Palette,
-  PartyPopper,
-  Heart,
-  Gem,
-  Type,
-  CalendarHeart,
-  type LucideIcon,
-} from 'lucide-react'
+import { ArrowRight, Briefcase, Heart, PartyPopper, type LucideIcon } from 'lucide-react'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { PageHero } from '@/components/page-hero'
 import { QuoteBand } from '@/components/quote-band'
-import { CustomRunnerHighlight } from '@/components/custom-runner-highlight'
+import { Breadcrumbs } from '@/components/breadcrumbs'
+import { Faq } from '@/components/faq'
+import { Cta } from '@/components/cta'
+import { EventCards } from '@/components/event-sections'
+import { Link } from '@/navigation'
 import { localizedAlternates } from '@/lib/seo'
+import { getLocalizedPath } from '@/routing'
+import { usePriceFormatter } from '@/lib/format'
+import { RUNNER_PRICE_PER_M2 } from '@/lib/event-pricing'
 
 type Props = { params: { locale: string } }
-type TitleText = { title: string; text: string }
+type GalleryPhoto = { src: string; alt: string }
+
+const PATH = '/event-tapijt'
 
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'Meta.event' })
   return {
     title: t('title'),
     description: t('description'),
-    alternates: localizedAlternates(locale, '/event-tapijt'),
+    alternates: localizedAlternates(locale, PATH),
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
-      images: [{ url: '/images/red-carpet.png', width: 1200, height: 630, alt: t('ogImageAlt') }],
+      images: [{ url: '/images/hero-event-carpet.webp', alt: t('ogImageAlt') }],
     },
   }
 }
 
-const FEATURE_ICONS = [Palette, Sparkles, Zap, Repeat]
-const DETAIL_ICONS: Record<'wedding' | 'birthday' | 'party', LucideIcon[]> = {
-  wedding: [Type, CalendarHeart, Heart],
-  birthday: [PartyPopper, Type, Heart],
-  party: [Gem, Sparkles, Heart],
-}
+/** Gelegenheden → voorbeeldblok op de loperpagina (anker). */
+const OCCASIONS: { key: 'wedding' | 'birthday' | 'corporate'; anchor: string; icon: LucideIcon }[] = [
+  { key: 'wedding', anchor: 'huwelijk', icon: Heart },
+  { key: 'birthday', anchor: 'verjaardag', icon: PartyPopper },
+  { key: 'corporate', anchor: 'bedrijfsevent', icon: Briefcase },
+]
+// TODO: eigen pagina's per gelegenheid (huwelijk, verjaardag & feest, bedrijfsevent)
+// zodra er genoeg eigen inhoud en foto's zijn. Tot dan linken ze naar de voorbeelden op de loperpagina.
 
 export default function EventTapijtPage({ params: { locale } }: Props) {
   unstable_setRequestLocale(locale)
   const t = useTranslations('Event')
-  const features = t.raw('features') as TitleText[]
-  const types = t.raw('types') as string[]
+  const price = usePriceFormatter()
+  // Foto's van echte events: toevoegen in messages/*.json onder Event.gallery.photos ({ src, alt }).
+  const photos = t.raw('gallery.photos') as GalleryPhoto[]
 
-  const withIcons = (runner: 'wedding' | 'birthday' | 'party') =>
-    (t.raw(`${runner}.details`) as TitleText[]).map((d, i) => ({ ...d, icon: DETAIL_ICONS[runner][i] ?? Heart }))
+  const faq = (['delivery', 'material', 'reuse', 'price'] as const).map((key) => ({
+    q: t(`faq.${key}.q`),
+    a: t(`faq.${key}.a`, {
+      perM2: price(RUNNER_PRICE_PER_M2),
+      example: price(RUNNER_PRICE_PER_M2 * 5),
+    }),
+  }))
 
   return (
     <>
@@ -63,106 +68,115 @@ export default function EventTapijtPage({ params: { locale } }: Props) {
           eyebrow={t('eyebrow')}
           title={t('title')}
           intro={t('intro')}
-          image="/images/red-carpet.png"
+          image="/images/hero-event-carpet.webp"
           imageAlt={t('heroImageAlt')}
+          breadcrumbs={<Breadcrumbs items={[{ label: t('breadcrumb') }]} currentPath={PATH} />}
         />
 
-        <section className="relative px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-7xl">
-            <div className="relative z-10 ml-auto mt-6 max-w-2xl rounded-sm border-l-4 border-accent bg-card px-5 py-6 shadow-xl sm:-mt-24 sm:px-8 sm:py-7 lg:-mt-28 lg:px-10 lg:py-8">
-              <h2 className="font-serif text-2xl font-semibold leading-tight text-balance sm:text-3xl">
-                {t('calloutTitle')}
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty">{t('calloutText')}</p>
+        {/* Drie soorten event tapijt */}
+        <section>
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+              <div className="max-w-2xl">
+                <h2 className="font-serif text-3xl font-semibold leading-tight text-balance sm:text-4xl">
+                  {t('cardsTitle')}
+                </h2>
+                <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty">{t('cardsText')}</p>
+              </div>
+              <Cta href="/contact?product=event-tapijt" variant="accent" className="self-start lg:self-auto">
+                {t('quoteTitle')}
+              </Cta>
+            </div>
+            <div className="mt-10">
+              <EventCards />
             </div>
           </div>
         </section>
 
-        <div className="pt-10" />
-
-        <CustomRunnerHighlight
-          eyebrow={t('wedding.eyebrow')}
-          title={t('wedding.title')}
-          description={t('wedding.description')}
-          image="/images/trouwloper.webp"
-          imageAlt={t('wedding.imageAlt')}
-          details={withIcons('wedding')}
-          taglineTitle={t('wedding.taglineTitle')}
-          taglineSubtitle={t('wedding.taglineSubtitle')}
-          priceExample={{ length: 10, width: 1, pricePerM2: 17.5, productSlug: 'trouwloper' }}
-        />
-
-        <CustomRunnerHighlight
-          eyebrow={t('birthday.eyebrow')}
-          title={t('birthday.title')}
-          description={t('birthday.description')}
-          image="/images/verjaardagsloper-op-maat.webp"
-          imageAlt={t('birthday.imageAlt')}
-          details={withIcons('birthday')}
-          freeformNote={t('birthday.freeformNote')}
-          taglineTitle={t('birthday.taglineTitle')}
-          taglineSubtitle={t('birthday.taglineSubtitle')}
-          imagePosition="right"
-          priceExample={{ length: 5, width: 1, pricePerM2: 17.5, productSlug: 'verjaardagsloper' }}
-        />
-
-        <CustomRunnerHighlight
-          eyebrow={t('party.eyebrow')}
-          title={t('party.title')}
-          description={t('party.description')}
-          image="/images/feestloper.png"
-          imageAlt={t('party.imageAlt')}
-          details={withIcons('party')}
-          freeformNote={t('party.freeformNote')}
-          taglineTitle={t('party.taglineTitle')}
-          taglineSubtitle={t('party.taglineSubtitle')}
-          priceExample={{ length: 5, width: 1, pricePerM2: 17.5, productSlug: 'feestloper' }}
-        />
-
+        {/* Voor elke gelegenheid */}
         <section className="border-t border-border bg-secondary/40">
-          <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-            <h2 className="font-serif text-3xl font-semibold leading-tight text-balance">{t('featuresTitle')}</h2>
-            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {features.map((f, i) => {
-                const Icon = FEATURE_ICONS[i] ?? Sparkles
-                return (
-                  <div key={f.title} className="rounded-sm border border-border bg-card p-6">
-                    <span className="inline-flex size-11 items-center justify-center rounded-sm bg-accent/15 text-accent">
-                      <Icon className="size-5" />
-                    </span>
-                    <h3 className="mt-5 text-base font-semibold">{f.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.text}</p>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-        </section>
-
-        <section className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-16 lg:grid-cols-2 lg:px-8">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-sm">
-            <Image
-              src="/images/trade-fair.png"
-              alt={t('typesImageAlt')}
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
-            />
-          </div>
-          <div>
-            <h2 className="font-serif text-3xl font-semibold leading-tight text-balance">{t('typesTitle')}</h2>
-            <ul className="mt-6 space-y-4 text-sm text-muted-foreground">
-              {types.map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-accent" />
-                  {item}
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+            <h2 className="font-serif text-3xl font-semibold leading-tight text-balance sm:text-4xl">
+              {t('occasionsTitle')}
+            </h2>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground text-pretty">
+              {t('occasionsText')}
+            </p>
+            <ul className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+              {OCCASIONS.map(({ key, anchor, icon: Icon }) => (
+                <li key={key} className="flex flex-col rounded-sm border border-border bg-card p-6">
+                  <span className="inline-flex size-11 items-center justify-center rounded-sm bg-accent/15 text-accent">
+                    <Icon className="size-5" />
+                  </span>
+                  <h3 className="mt-5 text-lg font-semibold">{t(`occasions.${key}.title`)}</h3>
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+                    {t(`occasions.${key}.text`)}
+                  </p>
+                  <Link
+                    // Ankerlinks zelf vertalen: next-intl herkent een pad met # niet.
+                    href={`${getLocalizedPath(locale, '/event-tapijt/loper')}#${anchor}`}
+                    className="group mt-4 inline-flex min-h-12 items-center gap-2 text-sm font-semibold uppercase tracking-widest text-foreground"
+                  >
+                    {t('occasionLink')}
+                    <span className="sr-only">: {t(`occasions.${key}.title`)}</span>
+                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
         </section>
 
-        <QuoteBand title={t('quoteTitle')} text={t('quoteText')} />
+        {/* Fotogalerij: verschijnt zodra er foto's zijn */}
+        {photos.length > 0 && (
+          <section className="border-t border-border">
+            <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+              <h2 className="font-serif text-3xl font-semibold leading-tight text-balance sm:text-4xl">
+                {t('gallery.title')}
+              </h2>
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">{t('gallery.text')}</p>
+              <ul className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
+                {photos.map((photo) => (
+                  <li key={photo.src} className="relative aspect-[4/3] overflow-hidden rounded-sm bg-muted">
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      fill
+                      sizes="(max-width: 1024px) 50vw, 33vw"
+                      className="object-cover"
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
+
+        <Faq title={t('faqTitle')} items={faq} />
+
+        {/* Iets blijvends nodig? */}
+        <section className="border-t border-border bg-primary text-primary-foreground">
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+            <div className="max-w-3xl">
+              <h2 className="font-serif text-3xl font-semibold leading-tight text-balance sm:text-4xl">
+                {t('permanent.title')}
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-primary-foreground/80 text-pretty">
+                {t('permanent.text')}
+              </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Cta href="/geprint-tapijt" variant="accent">
+                  {t('permanent.printedLink')}
+                </Cta>
+                <Cta href="/logomat" variant="outlineLight">
+                  {t('permanent.logomatLink')}
+                </Cta>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <QuoteBand title={t('quoteTitle')} text={t('quoteText')} quoteHref="/contact?product=event-tapijt" />
       </main>
       <SiteFooter />
     </>
