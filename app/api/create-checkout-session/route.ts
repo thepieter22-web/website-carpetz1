@@ -3,6 +3,16 @@ import Stripe from "stripe";
 import { NextResponse } from "next/server";
 import { getTranslations } from "next-intl/server";
 import { calculateOrderTotals, parseOrderSpec } from "@/lib/mat-config";
+import {
+  INTRA_COMMUNITY_NOTE,
+  determineVat,
+  isCountryCode,
+  needsViesCheck,
+  normalizeVatNumber,
+  type CountryCode,
+  type ViesResult,
+} from "@/lib/vat";
+import { checkVies } from "@/lib/vies";
 import { locales, defaultLocale, type Locale } from "@/i18n";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
@@ -24,8 +34,6 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
-    const totals = calculateOrderTotals(spec);
-
     // Klantgegevens: alles verplicht (ook als iemand de controle in de browser omzeilt).
     const str = (value: unknown) => (typeof value === "string" ? value.trim().slice(0, 200) : "");
     const customerType = body.customerType === "zakelijk" ? "zakelijk" : "particulier";
@@ -57,7 +65,9 @@ export async function POST(request: Request) {
     ];
     const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(customer.email);
     const phoneValid = customer.phone.replace(/\D/g, "").length >= 8;
-    if (requiredFields.some((key) => !customer[key]) || !emailValid || !phoneValid) {
+    const countriesValid =
+      isCountryCode(customer.country) && (!hasSeparateDelivery || isCountryCode(customer.deliveryCountry));
+    if (requiredFields.some((key) => !customer[key]) || !emailValid || !phoneValid || !countriesValid) {
       return NextResponse.json({ error: t("missingFields") }, { status: 400 });
     }
     if (!hasSeparateDelivery) {
@@ -66,6 +76,22 @@ export async function POST(request: Request) {
       customer.deliveryCity = "";
       customer.deliveryCountry = "";
     }
+
+    // Btw: het leveringsland beslist. Het btw-nummer wordt hier ZELF opnieuw bij VIES
+    // gecontroleerd; een tarief of status uit de browser wordt nooit vertrouwd.
+    const invoiceCountry = customer.country as CountryCode;
+    const deliveryCountry = (hasSeparateDelivery ? customer.deliveryCountry : customer.country) as CountryCode;
+    let vies: ViesResult | null = null;
+    if (customer.vatNumber) {
+      const normalized = normalizeVatNumber(customer.vatNumber, invoiceCountry);
+      customer.vatNumber = normalized.full;
+      if (needsViesCheck(deliveryCountry, customerType === "zakelijk")) {
+        vies = await checkVies(normalized.country, normalized.number);
+      }
+    }
+    const vatDecision = determineVat({ deliveryCountry, isBusiness: customerType === "zakelijk", vies });
+    const totals = calculateOrderTotals(spec, vatDecision.rate);
+    const isIntraCommunity = vatDecision.treatment === "intra_community";
 
     const previewImage = body.previewImage || "";
     let previewUrl = "";
@@ -119,6 +145,16 @@ export async function POST(request: Request) {
           // Klant- en adresgegevens veilig omgezet naarstrings (voor Billit)
           customerType,
           ...customer,
+
+          // Btw-behandeling (voor boekhouding, factuur en mails)
+          vatTreatment: isIntraCommunity ? "reverse_charge" : "domestic",
+          vatRate: String(Math.round(vatDecision.rate * 100)),
+          vatDeliveryCountry: deliveryCountry,
+          vatExemptionNote: isIntraCommunity ? INTRA_COMMUNITY_NOTE : "",
+          viesStatus: vies?.status ?? "not_checked",
+          viesRequestId: vies?.requestId ?? "",
+          viesCheckedAt: vies?.checkedAt ?? "",
+          viesName: (vies?.name ?? "").slice(0, 200),
 
           // Productspecificaties veilig omgezet naar strings
           matType: spec.type || "",

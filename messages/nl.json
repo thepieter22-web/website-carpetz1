@@ -1232,7 +1232,8 @@
     "vat": "Btw ({percent}%)",
     "delivery": "Levering",
     "total": "Totaal incl. btw",
-    "order": "Bestelling plaatsen"
+    "order": "Bestelling plaatsen",
+    "euBusinessNote": "Bedrijf in Nederland? Met een geldig btw-nummer betaal je 0% btw."
   },
   "ArViewer": {
     "button": "Bekijk in 3D & AR",
@@ -1266,8 +1267,6 @@
     "postalCode": "Postcode *",
     "city": "Gemeente *",
     "country": "Land *",
-    "countryRequired": "Land *",
-    "defaultCountry": "België",
     "sameAddress": "Leveringsadres is hetzelfde als factuuradres",
     "summary": "Bestelsamenvatting",
     "previewAlt": "Voorbeeld van je logomat",
@@ -1277,8 +1276,8 @@
     "quantity": "Aantal",
     "productPrice": "Productprijs excl. btw",
     "shipping": "Leveringskost excl. btw",
-    "vat": "Btw (21%)",
-    "total": "Totaal incl. btw",
+    "vat": "Btw ({percent}%)",
+    "total": "Totaal",
     "perks": [
       "✅ Digitale proefdruk inbegrepen",
       "✅ Productie na goedkeuring",
@@ -1291,7 +1290,22 @@
       "invalidEmail": "Vul een geldig e-mailadres in (bv. naam@bedrijf.be).",
       "invalidPhone": "Vul een geldig telefoonnummer in.",
       "formIncomplete": "Vul alle verplichte velden in om verder te gaan."
-    }
+    },
+    "countries": {
+      "BE": "België",
+      "NL": "Nederland"
+    },
+    "vatHintNL": "Bedrijf in Nederland? Met een geldig Nederlands btw-nummer betaal je 0% btw (intracommunautaire levering).",
+    "vies": {
+      "checking": "Btw-nummer wordt gecontroleerd bij VIES…",
+      "valid": "Geldig btw-nummer: {name}",
+      "validNoName": "Geldig btw-nummer",
+      "zeroRate": "Btw 0% – intracommunautaire levering (btw verlegd).",
+      "wrongCountry": "Dit btw-nummer is niet uit het leveringsland: er wordt 21% btw aangerekend.",
+      "invalid": "Dit btw-nummer is niet geldig volgens VIES: er wordt 21% btw aangerekend.",
+      "unavailable": "Het btw-nummer kan nu niet gecontroleerd worden (VIES is onbereikbaar): er wordt 21% btw aangerekend."
+    },
+    "vatExemptNote": "Vrijgesteld van btw op grond van art. 39bis WBTW – intracommunautaire levering"
   },
   "Success": {
     "title": "Bedankt voor je bestelling",
@@ -1374,7 +1388,8 @@
     "productName": "Logomat op maat",
     "invoiceLine": "Logomat op maat {width} x {height} cm",
     "shippingLine": "Leveringskost",
-    "missingFields": "Niet alle verplichte klantgegevens zijn ingevuld."
+    "missingFields": "Niet alle verplichte klantgegevens zijn ingevuld.",
+    "vatExemptNote": "Vrijgesteld van btw op grond van art. 39bis WBTW – intracommunautaire levering"
   },
   "OrderEmail": {
     "subject": "Bedankt voor je bestelling {orderNumber}",
@@ -1400,6 +1415,11 @@
     "customerService": "Klantenservice",
     "terms": "Voorwaarden",
     "rights": "Alle rechten voorbehouden.",
-    "attachmentName": "proefdruk-logomat.png"
+    "attachmentName": "proefdruk-logomat.png",
+    "subtotalExcl": "Totaal excl. btw:",
+    "vat": "Btw ({percent}%):",
+    "totalPaid": "Totaal betaald:",
+    "vatExemptNote": "Vrijgesteld van btw op grond van art. 39bis WBTW – intracommunautaire levering",
+    "vatNumber": "Btw-nummer:"
   }
 }

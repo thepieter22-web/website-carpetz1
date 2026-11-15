@@ -1,14 +1,23 @@
 "use client";
 
-import { useEffect, useRef, useState, type InputHTMLAttributes } from "react";
+import { useEffect, useRef, useState, type InputHTMLAttributes, type ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { calculateOrderTotals, parseOrderSpec } from "@/lib/mat-config";
 import { usePriceFormatter } from "@/lib/format";
 import { readOrderAsset } from "@/lib/order-assets";
+import {
+  DELIVERY_COUNTRIES,
+  determineVat,
+  hasValidVatFormat,
+  needsViesCheck,
+  normalizeVatNumber,
+  type CountryCode,
+  type ViesStatus,
+} from "@/lib/vat";
 
-type FieldName =
+type TextField =
   | "company"
   | "vatNumber"
   | "firstName"
@@ -18,18 +27,20 @@ type FieldName =
   | "street"
   | "postalCode"
   | "city"
-  | "country"
   | "deliveryStreet"
   | "deliveryPostalCode"
-  | "deliveryCity"
-  | "deliveryCountry";
+  | "deliveryCity";
 
 type FieldErrorKey = "required" | "invalidEmail" | "invalidPhone";
+
+type ViesState =
+  | { status: "idle" | "checking" }
+  | { status: ViesStatus; vatNumber: string; name: string | null; key: string };
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 // Volgorde = volgorde op het scherm (eerste fout krijgt de focus).
-const FIELD_ORDER: FieldName[] = [
+const FIELD_ORDER: TextField[] = [
   "company",
   "vatNumber",
   "firstName",
@@ -39,11 +50,9 @@ const FIELD_ORDER: FieldName[] = [
   "street",
   "postalCode",
   "city",
-  "country",
   "deliveryStreet",
   "deliveryPostalCode",
   "deliveryCity",
-  "deliveryCountry",
 ];
 
 export default function CartPage({
@@ -59,12 +68,6 @@ export default function CartPage({
   // Enkel specificaties komen uit de URL; prijzen worden hier alleen
   // voor weergave berekend. De checkout API rekent zelf opnieuw.
   const spec = parseOrderSpec(searchParams);
-  const totals = spec ? calculateOrderTotals(spec) : null;
-
-  const grandTotal = totals?.grandTotal ?? 0;
-  const shipping = totals?.shipping ?? 0;
-  const vatAmount = totals?.vat ?? 0;
-  const productExclVat = totals?.productExclVat ?? 0;
 
   const matName = spec
     ? tAll(`MatTypes.${spec.type === "outdoor" ? spec.outdoorSubtype : spec.indoorSubtype}.title`)
@@ -72,7 +75,9 @@ export default function CartPage({
 
   const [customerType, setCustomerType] = useState("particulier");
   const [sameAddress, setSameAddress] = useState(true);
-  const [values, setValues] = useState<Record<FieldName, string>>({
+  const [country, setCountry] = useState<CountryCode>("BE");
+  const [deliveryCountry, setDeliveryCountry] = useState<CountryCode>("BE");
+  const [values, setValues] = useState<Record<TextField, string>>({
     company: "",
     vatNumber: "",
     firstName: "",
@@ -82,16 +87,16 @@ export default function CartPage({
     street: "",
     postalCode: "",
     city: "",
-    country: t("defaultCountry"),
     deliveryStreet: "",
     deliveryPostalCode: "",
     deliveryCity: "",
-    deliveryCountry: t("defaultCountry"),
   });
-  const [errors, setErrors] = useState<Partial<Record<FieldName, FieldErrorKey>>>({});
+  const [errors, setErrors] = useState<Partial<Record<TextField, FieldErrorKey>>>({});
+  const [vatTouched, setVatTouched] = useState(false);
+  const [vies, setVies] = useState<ViesState>({ status: "idle" });
   const [submitting, setSubmitting] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
-  const fieldRefs = useRef<Partial<Record<FieldName, HTMLInputElement | null>>>({});
+  const fieldRefs = useRef<Partial<Record<TextField, HTMLInputElement | null>>>({});
 
   useEffect(() => {
     const image = readOrderAsset("matPreview");
@@ -100,6 +105,58 @@ export default function CartPage({
 
   const isBusiness = customerType === "zakelijk";
   const hasSeparateDelivery = isBusiness && !sameAddress;
+  // Het leveringsland bepaalt de btw.
+  const effectiveDeliveryCountry = hasSeparateDelivery ? deliveryCountry : country;
+  const checkVat = needsViesCheck(effectiveDeliveryCountry, isBusiness);
+  const normalizedVat = normalizeVatNumber(values.vatNumber, country);
+  const vatFormatOk = hasValidVatFormat(normalizedVat.country, normalizedVat.number);
+  const viesKey = `${normalizedVat.full}|${effectiveDeliveryCountry}`;
+
+  // Live controle bij VIES (enkel als het btw-nummer tot 0% kan leiden).
+  useEffect(() => {
+    if (!checkVat || !vatFormatOk) {
+      setVies({ status: "idle" });
+      return;
+    }
+    const controller = new AbortController();
+    const timer = setTimeout(async () => {
+      setVies({ status: "checking" });
+      try {
+        const response = await fetch("/api/vat/validate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            vatNumber: normalizedVat.full,
+            country,
+            deliveryCountry: effectiveDeliveryCountry,
+          }),
+          signal: controller.signal,
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data?.error);
+        setVies({ status: data.status, vatNumber: data.vatNumber, name: data.name, key: viesKey });
+      } catch (error) {
+        if (controller.signal.aborted) return;
+        setVies({ status: "unavailable", vatNumber: normalizedVat.full, name: null, key: viesKey });
+      }
+    }, 600);
+    return () => {
+      clearTimeout(timer);
+      controller.abort();
+    };
+    // viesKey bevat nummer + leveringsland; country enkel als prefix-terugval.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [checkVat, vatFormatOk, viesKey, country]);
+
+  const currentVies = "key" in vies && vies.key === viesKey ? vies : null;
+  const vatDecision = determineVat({
+    deliveryCountry: effectiveDeliveryCountry,
+    isBusiness,
+    vies: currentVies,
+  });
+  const totals = spec ? calculateOrderTotals(spec, vatDecision.rate) : null;
+  const isZeroRate = vatDecision.treatment === "intra_community";
+
   const perks = t.raw("perks") as string[];
 
   const activeFields = FIELD_ORDER.filter((name) => {
@@ -108,7 +165,7 @@ export default function CartPage({
     return true;
   });
 
-  const validateField = (name: FieldName, value: string): FieldErrorKey | undefined => {
+  const validateField = (name: TextField, value: string): FieldErrorKey | undefined => {
     const trimmed = value.trim();
     if (!trimmed) return "required";
     if (name === "email" && !EMAIL_PATTERN.test(trimmed)) return "invalidEmail";
@@ -116,7 +173,7 @@ export default function CartPage({
     return undefined;
   };
 
-  const setValue = (name: FieldName, value: string) => {
+  const setValue = (name: TextField, value: string) => {
     setValues((prev) => ({ ...prev, [name]: value }));
     // Een getoonde fout verdwijnt zodra het veld correct is.
     if (errors[name]) {
@@ -127,7 +184,7 @@ export default function CartPage({
   const handleCheckout = async () => {
     if (!spec || submitting) return;
 
-    const newErrors: Partial<Record<FieldName, FieldErrorKey>> = {};
+    const newErrors: Partial<Record<TextField, FieldErrorKey>> = {};
     for (const name of activeFields) {
       const error = validateField(name, values[name]);
       if (error) newErrors[name] = error;
@@ -146,7 +203,7 @@ export default function CartPage({
     try {
       const trimmed = Object.fromEntries(
         activeFields.map((name) => [name, values[name].trim()])
-      ) as Partial<Record<FieldName, string>>;
+      ) as Partial<Record<TextField, string>>;
 
       const response = await fetch("/api/create-checkout-session", {
         method: "POST",
@@ -156,10 +213,12 @@ export default function CartPage({
           logoImage: readOrderAsset("matLogo"),
           // Taal van de klant: bepaalt de taal van Stripe, de bevestigingsmail en de factuur.
           locale,
-          // Enkel productspecificaties, geen prijzen
+          // Enkel productspecificaties, geen prijzen of btw-tarief: de server beslist zelf.
           product: spec,
           customerType,
           ...trimmed,
+          country,
+          ...(hasSeparateDelivery ? { deliveryCountry } : {}),
         }),
       });
 
@@ -177,9 +236,10 @@ export default function CartPage({
   };
 
   const field = (
-    name: FieldName,
+    name: TextField,
     placeholder: string,
-    extra: InputHTMLAttributes<HTMLInputElement> = {}
+    extra: InputHTMLAttributes<HTMLInputElement> = {},
+    after?: ReactNode
   ) => {
     const error = errors[name];
     const errorId = `${name}-error`;
@@ -194,7 +254,7 @@ export default function CartPage({
           required
           aria-required="true"
           aria-invalid={error ? true : undefined}
-          aria-describedby={error ? errorId : undefined}
+          aria-describedby={error ? errorId : after ? `${name}-status` : undefined}
           aria-label={placeholder}
           className={`min-h-12 rounded-lg border p-3 text-base sm:text-sm ${
             error ? "border-destructive ring-1 ring-destructive" : ""
@@ -203,6 +263,7 @@ export default function CartPage({
           value={values[name]}
           onChange={(e) => setValue(name, e.target.value)}
           onBlur={(e) => {
+            if (name === "vatNumber") setVatTouched(true);
             // Na een eerste poging tot afrekenen: meteen terugkoppeling bij elk veld.
             if (Object.keys(errors).length > 0) {
               setErrors((prev) => ({ ...prev, [name]: validateField(name, e.target.value) }));
@@ -215,9 +276,70 @@ export default function CartPage({
             {t(`errors.${error}`)}
           </p>
         )}
+        {!error && after}
       </div>
     );
   };
+
+  const countrySelect = (
+    id: string,
+    value: CountryCode,
+    onChange: (value: CountryCode) => void,
+    autoComplete: string
+  ) => (
+    <select
+      id={id}
+      name={id}
+      required
+      aria-label={t("country")}
+      autoComplete={autoComplete}
+      className="min-h-12 rounded-lg border bg-card p-3 text-base sm:text-sm"
+      value={value}
+      onChange={(e) => onChange(e.target.value as CountryCode)}
+    >
+      {DELIVERY_COUNTRIES.map((code) => (
+        <option key={code} value={code}>
+          {t(`countries.${code}`)}
+        </option>
+      ))}
+    </select>
+  );
+
+  // Status van de btw-controle onder het btw-nummer.
+  let vatStatus: ReactNode = null;
+  if (isBusiness && checkVat && values.vatNumber.trim()) {
+    let tone = "text-muted-foreground";
+    let lines: string[] = [];
+    if (vies.status === "checking") {
+      lines = [t("vies.checking")];
+    } else if (currentVies?.status === "valid") {
+      const validLine = currentVies.name
+        ? t("vies.valid", { name: currentVies.name })
+        : t("vies.validNoName");
+      if (isZeroRate) {
+        tone = "text-emerald-700";
+        lines = [validLine, t("vies.zeroRate")];
+      } else {
+        tone = "text-amber-700";
+        lines = [validLine, t("vies.wrongCountry")];
+      }
+    } else if (currentVies?.status === "unavailable") {
+      tone = "text-amber-700";
+      lines = [t("vies.unavailable")];
+    } else if (currentVies?.status === "invalid" || (!vatFormatOk && vatTouched)) {
+      tone = "text-amber-700";
+      lines = [t("vies.invalid")];
+    }
+    if (lines.length) {
+      vatStatus = (
+        <div id="vatNumber-status" role="status" aria-live="polite" className={`text-sm ${tone}`}>
+          {lines.map((line) => (
+            <p key={line}>{line}</p>
+          ))}
+        </div>
+      );
+    }
+  }
 
   const hasErrors = Object.values(errors).some(Boolean);
 
@@ -262,11 +384,15 @@ export default function CartPage({
                   </button>
                 </div>
 
+                {!isBusiness && effectiveDeliveryCountry === "NL" && (
+                  <p className="mt-4 rounded-lg bg-muted p-3 text-sm text-muted-foreground">{t("vatHintNL")}</p>
+                )}
+
                 <div className="mt-6 flex flex-col gap-4">
                   {isBusiness && (
                     <>
                       {field("company", t("companyName"), { autoComplete: "organization" })}
-                      {field("vatNumber", t("vatNumber"))}
+                      {field("vatNumber", t("vatNumber"), { autoCapitalize: "characters", spellCheck: false }, vatStatus)}
                     </>
                   )}
 
@@ -282,7 +408,7 @@ export default function CartPage({
                   {field("street", t("street"), { autoComplete: "street-address" })}
                   {field("postalCode", t("postalCode"), { autoComplete: "postal-code" })}
                   {field("city", t("city"), { autoComplete: "address-level2" })}
-                  {field("country", t("country"), { autoComplete: "country-name" })}
+                  {countrySelect("country", country, setCountry, "country")}
 
                   {isBusiness && (
                     <label className="flex min-h-12 items-center gap-3 text-sm">
@@ -302,7 +428,7 @@ export default function CartPage({
                       {field("deliveryStreet", t("street"), { autoComplete: "shipping street-address" })}
                       {field("deliveryPostalCode", t("postalCode"), { autoComplete: "shipping postal-code" })}
                       {field("deliveryCity", t("city"), { autoComplete: "shipping address-level2" })}
-                      {field("deliveryCountry", t("countryRequired"), { autoComplete: "shipping country-name" })}
+                      {countrySelect("deliveryCountry", deliveryCountry, setDeliveryCountry, "shipping country")}
                     </>
                   )}
                 </div>
@@ -346,21 +472,24 @@ export default function CartPage({
               </div>
 
               <div className="mt-6 space-y-4">
-                <div className="flex justify-between">
+                <div className="flex justify-between gap-4">
                   <span>{t("productPrice")}</span>
-                  <span>{formatPrice(productExclVat)}</span>
+                  <span>{formatPrice(totals?.productExclVat ?? 0)}</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between gap-4">
                   <span>{t("shipping")}</span>
-                  <span>{formatPrice(shipping)}</span>
+                  <span>{formatPrice(totals?.shipping ?? 0)}</span>
                 </div>
-                <div className="flex justify-between">
-                  <span>{t("vat")}</span>
-                  <span>{formatPrice(vatAmount)}</span>
+                <div className="flex justify-between gap-4">
+                  <span>{t("vat", { percent: Math.round(vatDecision.rate * 100) })}</span>
+                  <span>{formatPrice(totals?.vat ?? 0)}</span>
                 </div>
-                <div className="flex justify-between border-t pt-4">
+                {isZeroRate && (
+                  <p className="text-xs leading-relaxed text-muted-foreground">{t("vatExemptNote")}</p>
+                )}
+                <div className="flex justify-between gap-4 border-t pt-4">
                   <span className="font-semibold">{t("total")}</span>
-                  <span className="text-2xl font-bold text-[#C69C4D]">{formatPrice(grandTotal)}</span>
+                  <span className="text-2xl font-bold text-[#C69C4D]">{formatPrice(totals?.grandTotal ?? 0)}</span>
                 </div>
               </div>
 
@@ -379,7 +508,7 @@ export default function CartPage({
               <button
                 type="button"
                 className="mt-4 min-h-12 w-full rounded-lg bg-[#C69C4D] px-6 py-4 font-medium text-white hover:bg-[#B88D3C] disabled:opacity-50"
-                disabled={!spec || submitting}
+                disabled={!spec || submitting || vies.status === "checking"}
                 onClick={handleCheckout}
               >
                 {t("checkout")}
@@ -393,3 +522,4 @@ export default function CartPage({
     </>
   );
 }
+

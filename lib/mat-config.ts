@@ -310,7 +310,8 @@ export function parseOrderSpec(input: Record<string, unknown>): OrderSpec | null
 }
 
 // Berekent alle bedragen op basis van de specificaties, via calculatePrice.
-export function calculateOrderTotals(spec: OrderSpec) {
+// vatRate: 0.21 (standaard) of 0 bij intracommunautaire levering (zie lib/vat.ts).
+export function calculateOrderTotals(spec: OrderSpec, vatRate: number = PRICING.vat) {
   const product = calculatePrice({
     type: spec.type,
     indoorSubtype: spec.indoorSubtype,
@@ -327,14 +328,16 @@ export function calculateOrderTotals(spec: OrderSpec) {
 
   const round = (n: number) => Math.round(n * 100) / 100;
   const shipping = SHIPPING_EXCL_VAT;
-  const shippingVat = round(shipping * PRICING.vat);
-  const vat = round(product.vat + shippingVat);
-  const grandTotal = round(product.total + shipping + shippingVat);
+  const productVat = round(product.subtotal * vatRate);
+  const shippingVat = round(shipping * vatRate);
+  const vat = round(productVat + shippingVat);
+  const grandTotal = round(product.subtotal + shipping + vat);
 
   return {
     unitPrice: product.unitPrice,
     productExclVat: product.subtotal,
     shipping,
+    vatRate,
     vat,
     grandTotal,
   };

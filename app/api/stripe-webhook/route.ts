@@ -3,6 +3,7 @@ import Stripe from "stripe";
 import { NextResponse } from "next/server";
 import { getTranslations } from "next-intl/server";
 import { locales, defaultLocale, type Locale } from "@/i18n";
+import { BILLIT_VENTILATION_INTRA_COMMUNITY, isCountryCode } from "@/lib/vat";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 const resend = new Resend(
@@ -65,6 +66,16 @@ export async function POST(request: Request) {
       const t = await getTranslations({ locale, namespace: "OrderEmail" });
       const site = `https://www.carpetz.be/${locale}`;
 
+      // Btw-behandeling zoals bepaald (en via VIES gecontroleerd) bij de checkout.
+      const isIntraCommunity = data.vatTreatment === "reverse_charge";
+      const vatPercent = isIntraCommunity ? 0 : 21;
+      const isBusiness = data.customerType === "zakelijk";
+      const invoiceCountry = isCountryCode(data.country) ? data.country : "BE";
+      const deliveryCountry = isCountryCode(data.deliveryCountry) ? data.deliveryCountry : invoiceCountry;
+      const productExcl = Number(data.subtotal);
+      const shippingExcl = Number(data.shipping);
+      const vatAmount = Number(data.vat ?? 0);
+
       const today = new Date();
       const orderDate = today.toISOString().split("T")[0];
       const expiryDate = new Date(
@@ -90,8 +101,17 @@ export async function POST(request: Request) {
       DeliveryDate: orderDate,
       ExpiryDate: expiryDate,
 
+      // Intracommunautaire levering: ventilatiecode 51 + wettelijke vermelding op de factuur.
+      ...(isIntraCommunity
+        ? {
+            VentilationCode: BILLIT_VENTILATION_INTRA_COMMUNITY,
+            CustomFields: { TaxExemptionReason: tCheckout("vatExemptNote") },
+          }
+        : {}),
+
       Customer: {
-        Name: `${data.firstName} ${data.lastName}`.trim(),
+        Name: isBusiness && data.company ? data.company : `${data.firstName} ${data.lastName}`.trim(),
+        ...(isBusiness && data.vatNumber ? { VATNumber: data.vatNumber } : {}),
         PartyType: "Customer",
         Email: data.email,
         Addresses: [
@@ -100,7 +120,7 @@ export async function POST(request: Request) {
             Street: data.street,
             City: data.city,
             Zipcode: data.postalCode,
-            CountryCode: "BE",
+            CountryCode: invoiceCountry,
           },
           ...(data.deliveryStreet
             ? [
@@ -109,7 +129,7 @@ export async function POST(request: Request) {
                   Street: data.deliveryStreet,
                   City: data.deliveryCity,
                   Zipcode: data.deliveryPostalCode,
-                  CountryCode: "BE",
+                  CountryCode: deliveryCountry,
                 },
               ]
             : []),
@@ -119,15 +139,15 @@ export async function POST(request: Request) {
       OrderLines: [
         {
           Quantity: 1,
-          UnitPriceExcl: Number(data.subtotal),
+          UnitPriceExcl: productExcl,
           Description: tCheckout("invoiceLine", { width: data.width, height: data.height }),
-          VATPercentage: 21,
+          VATPercentage: vatPercent,
         },
         {
           Quantity: 1,
-          UnitPriceExcl: Number(data.shipping),
+          UnitPriceExcl: shippingExcl,
           Description: tCheckout("shippingLine"),
-          VATPercentage: 21,
+          VATPercentage: vatPercent,
         },
       ],
     }),
@@ -167,7 +187,11 @@ export async function POST(request: Request) {
           ${data.deliveryStreet ? `<p><strong>Leveringsadres:</strong> ${esc(data.deliveryStreet)}, ${esc(data.deliveryPostalCode)} ${esc(data.deliveryCity)}, ${esc(data.deliveryCountry)}</p>` : ""}
           <p><strong>Afmeting:</strong> ${data.width} × ${data.height} cm</p>
           <p><strong>Aantal:</strong> ${data.quantity}</p>
-          <p><strong>Totaal:</strong> €${data.grandTotal}</p>
+          <p><strong>Totaal excl. btw:</strong> €${(productExcl + shippingExcl).toFixed(2)}</p>
+          <p><strong>Btw (${vatPercent}%):</strong> €${vatAmount.toFixed(2)}</p>
+          <p><strong>Totaal betaald:</strong> €${data.grandTotal}</p>
+          <p><strong>Btw-behandeling:</strong> ${isIntraCommunity ? "0% – intracommunautaire levering (art. 39bis WBTW)" : "21% Belgische btw"} — leveringsland ${esc(deliveryCountry)}</p>
+          ${data.vatNumber ? `<p><strong>VIES:</strong> ${esc(data.viesStatus)}${data.viesName ? ` — ${esc(data.viesName)}` : ""}${data.viesRequestId ? ` — raadplegingsnummer ${esc(data.viesRequestId)}` : ""}${data.viesCheckedAt ? ` — ${esc(data.viesCheckedAt)}` : ""}</p>` : ""}
         `,
         attachments: [
           ...(imageBuffer ? [{ filename: "preview.png", content: imageBuffer, contentId: "preview-admin" }] : []),
@@ -236,10 +260,27 @@ export async function POST(request: Request) {
                             <td style="padding: 10px 0; font-size: 14px; color: #666666; border-top: 1px solid #f0f0f0;">${t("quantity")}</td>
                             <td style="padding: 10px 0; font-size: 14px; font-weight: bold; color: #333333; text-align: right; border-top: 1px solid #f0f0f0;">${data.quantity}</td>
                           </tr>
+                          ${isBusiness && data.vatNumber ? `
                           <tr>
-                            <td style="padding: 12px 0 5px 0; font-size: 15px; font-weight: bold; color: #333333; border-top: 2px solid #e0e0e0;">${t("total")}</td>
+                            <td style="padding: 10px 0; font-size: 14px; color: #666666; border-top: 1px solid #f0f0f0;">${t("vatNumber")}</td>
+                            <td style="padding: 10px 0; font-size: 14px; color: #333333; text-align: right; border-top: 1px solid #f0f0f0;">${esc(data.vatNumber)}</td>
+                          </tr>` : ""}
+                          <tr>
+                            <td style="padding: 10px 0; font-size: 14px; color: #666666; border-top: 1px solid #f0f0f0;">${t("subtotalExcl")}</td>
+                            <td style="padding: 10px 0; font-size: 14px; color: #333333; text-align: right; border-top: 1px solid #f0f0f0;">€${(productExcl + shippingExcl).toFixed(2)}</td>
+                          </tr>
+                          <tr>
+                            <td style="padding: 10px 0; font-size: 14px; color: #666666; border-top: 1px solid #f0f0f0;">${t("vat", { percent: vatPercent })}</td>
+                            <td style="padding: 10px 0; font-size: 14px; color: #333333; text-align: right; border-top: 1px solid #f0f0f0;">€${vatAmount.toFixed(2)}</td>
+                          </tr>
+                          <tr>
+                            <td style="padding: 12px 0 5px 0; font-size: 15px; font-weight: bold; color: #333333; border-top: 2px solid #e0e0e0;">${t("totalPaid")}</td>
                             <td style="padding: 12px 0 5px 0; font-size: 16px; font-weight: bold; color: #C69C4D; text-align: right; border-top: 2px solid #e0e0e0;">€${data.grandTotal}</td>
                           </tr>
+                          ${isIntraCommunity ? `
+                          <tr>
+                            <td colspan="2" style="padding: 8px 0 0 0; font-size: 12px; line-height: 1.4; color: #777777;">${t("vatExemptNote")}</td>
+                          </tr>` : ""}
                         </table>
 
                         <!-- Visuele Proefdruk Sectie -->

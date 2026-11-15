@@ -146,6 +146,8 @@ export function PriceCalculator({ config, onOrder, id }: PriceCalculatorProps) {
   </div>
 </div>
 
+<p className="text-xs leading-relaxed text-muted-foreground">{t("euBusinessNote")}</p>
+
 <MatArViewer config={config} />
 
 <Button

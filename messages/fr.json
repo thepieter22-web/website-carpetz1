@@ -1232,7 +1232,8 @@
     "vat": "TVA ({percent} %)",
     "delivery": "Livraison",
     "total": "Total TVA comprise",
-    "order": "Passer la commande"
+    "order": "Passer la commande",
+    "euBusinessNote": "Entreprise aux Pays-Bas ? Avec un numéro de TVA valide, vous payez 0 % de TVA."
   },
   "ArViewer": {
     "button": "Voir en 3D & AR",
@@ -1266,8 +1267,6 @@
     "postalCode": "Code postal *",
     "city": "Localité *",
     "country": "Pays *",
-    "countryRequired": "Pays *",
-    "defaultCountry": "Belgique",
     "sameAddress": "L’adresse de livraison est identique à l’adresse de facturation",
     "summary": "Récapitulatif de la commande",
     "previewAlt": "Aperçu de votre tapis logo",
@@ -1277,8 +1276,8 @@
     "quantity": "Quantité",
     "productPrice": "Prix du produit hors TVA",
     "shipping": "Frais de livraison hors TVA",
-    "vat": "TVA (21 %)",
-    "total": "Total TVA comprise",
+    "vat": "TVA ({percent} %)",
+    "total": "Total",
     "perks": [
       "✅ Épreuve numérique (BAT) incluse",
       "✅ Production après votre validation",
@@ -1291,7 +1290,22 @@
       "invalidEmail": "Veuillez saisir une adresse e-mail valide (p. ex. nom@entreprise.be).",
       "invalidPhone": "Veuillez saisir un numéro de téléphone valide.",
       "formIncomplete": "Veuillez remplir tous les champs obligatoires pour continuer."
-    }
+    },
+    "countries": {
+      "BE": "Belgique",
+      "NL": "Pays-Bas"
+    },
+    "vatHintNL": "Entreprise aux Pays-Bas ? Avec un numéro de TVA néerlandais valide, vous payez 0 % de TVA (livraison intracommunautaire).",
+    "vies": {
+      "checking": "Vérification du numéro de TVA auprès de VIES…",
+      "valid": "Numéro de TVA valide : {name}",
+      "validNoName": "Numéro de TVA valide",
+      "zeroRate": "TVA 0 % – livraison intracommunautaire (autoliquidation).",
+      "wrongCountry": "Ce numéro de TVA ne correspond pas au pays de livraison : la TVA de 21 % est appliquée.",
+      "invalid": "Ce numéro de TVA n’est pas valide selon VIES : la TVA de 21 % est appliquée.",
+      "unavailable": "Le numéro de TVA ne peut pas être vérifié pour le moment (VIES indisponible) : la TVA de 21 % est appliquée."
+    },
+    "vatExemptNote": "Exonération de TVA en vertu de l’article 39bis du Code de la TVA – livraison intracommunautaire"
   },
   "Success": {
     "title": "Merci pour votre commande",
@@ -1374,7 +1388,8 @@
     "productName": "Tapis logo sur mesure",
     "invoiceLine": "Tapis logo sur mesure {width} x {height} cm",
     "shippingLine": "Frais de livraison",
-    "missingFields": "Toutes les coordonnées obligatoires n’ont pas été complétées."
+    "missingFields": "Toutes les coordonnées obligatoires n’ont pas été complétées.",
+    "vatExemptNote": "Exonération de TVA en vertu de l’article 39bis du Code de la TVA – livraison intracommunautaire"
   },
   "OrderEmail": {
     "subject": "Merci pour votre commande {orderNumber}",
@@ -1400,6 +1415,11 @@
     "customerService": "Service clientèle",
     "terms": "Conditions",
     "rights": "Tous droits réservés.",
-    "attachmentName": "epreuve-tapis-logo.png"
+    "attachmentName": "epreuve-tapis-logo.png",
+    "subtotalExcl": "Total hors TVA :",
+    "vat": "TVA ({percent} %) :",
+    "totalPaid": "Total payé :",
+    "vatExemptNote": "Exonération de TVA en vertu de l’article 39bis du Code de la TVA – livraison intracommunautaire",
+    "vatNumber": "Numéro de TVA :"
   }
 }
