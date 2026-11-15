@@ -1752,5 +1752,10 @@
     "yourMessage": "Votre message :",
     "questions": "Vous souhaitez ajouter quelque chose, comme un design ou des dimensions supplémentaires ? Répondez simplement à cet e-mail.",
     "signature": "Bien cordialement,"
+  },
+  "Payment": {
+    "methods": "Moyens de paiement acceptés",
+    "secure": "Paiement sécurisé",
+    "checkoutNote": "Paiement sécurisé via Stripe avec"
   }
 }

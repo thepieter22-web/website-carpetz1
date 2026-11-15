@@ -20,7 +20,7 @@ export function SiteHeader() {
   type NavItem = { href: string; label: string; children?: { href: string; label: string }[] }
   const navItems: NavItem[] = [
     { href: '/', label: t('home') },
-    { href: '/logomat', label: t('logomatten') },
+    { href: '/logomat#configurator', label: t('logomatten') },
     { href: '/geprint-tapijt', label: t('geprintTapijt') },
     {
       href: '/event-tapijt',
@@ -36,7 +36,10 @@ export function SiteHeader() {
     { href: '/contact', label: t('contact') },
   ]
 
-  const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href))
+  const isActive = (href: string) => {
+    const path = href.split('#')[0]
+    return path === '/' ? pathname === '/' : pathname.startsWith(path)
+  }
 
   // Submenu sluiten bij het wisselen van pagina.
   useEffect(() => setSubmenuOpen(false), [pathname])

@@ -168,7 +168,7 @@ export default function EventTapijtPage({ params: { locale } }: Props) {
                 <Cta href="/geprint-tapijt" variant="accent">
                   {t('permanent.printedLink')}
                 </Cta>
-                <Cta href="/logomat" variant="outlineLight">
+                <Cta href="/logomat#configurator" variant="outlineLight">
                   {t('permanent.logomatLink')}
                 </Cta>
               </div>

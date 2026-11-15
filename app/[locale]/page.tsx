@@ -69,7 +69,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
               <LogomatGuarantees />
               <div className="mt-6">
                 <Link
-                  href="/logomat"
+                  href="/logomat#configurator"
                   className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-foreground"
                 >
                   {t('logomats.link')}

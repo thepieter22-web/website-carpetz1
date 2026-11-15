@@ -53,7 +53,7 @@ export default function LogomatPage({ params: { locale } }: Props) {
           </div>
         </section>
 
-        <section id="configurator" className="scroll-mt-24 border-t border-border bg-white">
+        <section id="configurator" className="border-t border-border bg-white">
           <div className="mx-auto max-w-7xl px-6 pt-6 lg:px-8">
             <div className="flex justify-end">
               <Link

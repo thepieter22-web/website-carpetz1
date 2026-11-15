@@ -72,6 +72,7 @@ const CLIENT_NAMESPACES = [
   'Common',
   'Header',
   'Footer',
+  'Payment',
   'CookieConsent',
   'ContactForm',
   'CarpetSimulator',

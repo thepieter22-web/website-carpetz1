@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type InputHTMLAttributes, type ReactNode }
 import { useLocale, useTranslations } from "next-intl";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { PaymentIcons } from "@/components/payment-icons";
 import { calculateOrderTotals, parseOrderSpec } from "@/lib/mat-config";
 import { usePriceFormatter } from "@/lib/format";
 import { readOrderAsset } from "@/lib/order-assets";
@@ -61,6 +62,7 @@ export default function CartPage({
   searchParams: Record<string, string | undefined>;
 }) {
   const t = useTranslations("Cart");
+  const tPayment = useTranslations("Payment");
   const tAll = useTranslations();
   const locale = useLocale();
   const formatPrice = usePriceFormatter();
@@ -517,6 +519,12 @@ export default function CartPage({
               >
                 {t("checkout")}
               </button>
+
+              {/* Betaalmethoden (Stripe) */}
+              <div className="mt-4 flex flex-col items-center gap-2.5">
+                <p className="text-xs text-muted-foreground">{tPayment("checkoutNote")}</p>
+                <PaymentIcons className="justify-center" />
+              </div>
             </div>
           </div>
         </div>

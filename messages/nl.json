@@ -1752,5 +1752,10 @@
     "yourMessage": "Je bericht:",
     "questions": "Wil je nog iets toevoegen, zoals een ontwerp of extra afmetingen? Antwoord gewoon op deze mail.",
     "signature": "Met vriendelijke groeten,"
+  },
+  "Payment": {
+    "methods": "Aanvaarde betaalmethoden",
+    "secure": "Veilig betalen",
+    "checkoutNote": "Je betaalt veilig via Stripe met"
   }
 }

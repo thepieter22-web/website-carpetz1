@@ -2,12 +2,14 @@ import { useTranslations } from 'next-intl'
 import { Mail, Phone, MapPin } from 'lucide-react'
 import { Link } from '@/navigation'
 import { CookieSettingsLink } from '@/components/cookie-consent/cookie-settings-link'
+import { PaymentIcons } from '@/components/payment-icons'
 
 export function SiteFooter() {
   const t = useTranslations('Footer')
+  const payment = useTranslations('Payment')
 
   const productLinks = [
-    { href: '/logomat', label: t('logomats') },
+    { href: '/logomat#configurator', label: t('logomats') },
     { href: '/geprint-tapijt', label: t('printedCarpet') },
     { href: '/event-tapijt', label: t('eventCarpet') },
   ]
@@ -80,6 +82,14 @@ export function SiteFooter() {
               </a>
             </li>
           </ul>
+        </div>
+      </div>
+
+      {/* Betaalmethoden */}
+      <div className="border-t border-primary-foreground/10">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-3 px-6 py-6 sm:flex-row sm:justify-between lg:px-8">
+          <p className="text-xs font-semibold uppercase tracking-widest text-primary-foreground/60">{payment('secure')}</p>
+          <PaymentIcons tone="dark" className="justify-center" />
         </div>
       </div>
 
