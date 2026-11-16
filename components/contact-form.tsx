@@ -4,12 +4,15 @@ import { useRef, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { useLocale, useMessages, useTranslations } from 'next-intl'
 import { AlertCircle, CheckCircle2, Loader2 } from 'lucide-react'
+import { usePriceFormatter } from '@/lib/format'
 
 const PRODUCT_KEYS = ['logomats', 'printedCarpet', 'eventCarpet', 'redCarpet', 'other'] as const
 type ProductKey = (typeof PRODUCT_KEYS)[number]
 
 function mapProductSlug(slug: string | null): ProductKey {
   switch (slug) {
+    case 'logomat':
+      return 'logomats'
     case 'geprint-tapijt':
       return 'printedCarpet'
     case 'trouwloper':
@@ -30,6 +33,7 @@ export function ContactForm() {
   const t = useTranslations('ContactForm')
   const messages = useMessages()
   const locale = useLocale()
+  const formatPrice = usePriceFormatter()
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
   // Moment waarop het formulier verscheen (bots versturen meteen).
   const startedAt = useRef(Date.now())
@@ -48,13 +52,21 @@ export function ContactForm() {
     const diameter = searchParams.get('diameter')
     const quality = searchParams.get('kwaliteit')
     const price = searchParams.get('prijsindicatie') || searchParams.get('richtprijs')
+    const model = searchParams.get('type')
+    const size = searchParams.get('maat')
+    const quantity = Number(searchParams.get('aantal'))
+    const colors = Number(searchParams.get('kleuren'))
 
     const labels = (messages.ContactForm as { prefill: { productLabels: Record<string, string> } }).prefill.productLabels
     let sentence = t('prefill.interest', { product: labels[product] ?? product })
+    if (model) sentence += t('prefill.model', { model })
     if (quality) sentence += t('prefill.quality', { quality })
+    if (size) sentence += t('prefill.dimensions', { size })
+    if (quantity > 0) sentence += t('prefill.quantity', { quantity })
+    if (colors > 0) sentence += t('prefill.colors', { colors })
     if (diameter) sentence += t('prefill.diameter', { diameter })
     else if (length && width) sentence += t('prefill.size', { length, width })
-    if (price) sentence += t('prefill.price', { price })
+    if (price && Number.isFinite(Number(price))) sentence += t('prefill.price', { price: formatPrice(Number(price)) })
     return sentence + t('prefill.closing')
   }
 

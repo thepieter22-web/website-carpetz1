@@ -13,6 +13,11 @@ export const pathnames: Pathnames<typeof locales> = {
   '/event-tapijt/loper': { nl: '/event-tapijt/loper', fr: '/tapis-evenementiel/tapis-rouge' },
   '/event-tapijt/eventvloer': { nl: '/event-tapijt/eventvloer', fr: '/tapis-evenementiel/sol-evenementiel' },
   '/event-tapijt/beurstapijt': { nl: '/event-tapijt/beurstapijt', fr: '/tapis-evenementiel/stand-salon' },
+  '/geprint-tapijt': { nl: '/geprint-tapijt', fr: '/tapis-imprime' },
+  '/geprint-tapijt/winkel': { nl: '/geprint-tapijt/winkel', fr: '/tapis-imprime/commerce' },
+  '/geprint-tapijt/kantoor': { nl: '/geprint-tapijt/kantoor', fr: '/tapis-imprime/bureau' },
+  '/geprint-tapijt/horeca': { nl: '/geprint-tapijt/horeca', fr: '/tapis-imprime/horeca' },
+  '/prijs-berekenen': { nl: '/prijs-berekenen', fr: '/calculer-prix' },
 }
 
 export const routing = defineRouting({ locales, defaultLocale, pathnames })

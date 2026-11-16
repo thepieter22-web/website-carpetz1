@@ -15,13 +15,23 @@ export function SiteHeader() {
   // Pad zonder taalprefix, bv. "/logomat".
   const pathname = usePathname()
 
-  const [submenuOpen, setSubmenuOpen] = useState(false)
+  // Welk submenu (href van het hoofditem) open staat.
+  const [openSubmenu, setOpenSubmenu] = useState<string | null>(null)
 
   type NavItem = { href: string; label: string; children?: { href: string; label: string }[] }
   const navItems: NavItem[] = [
     { href: '/', label: t('home') },
     { href: '/logomat#configurator', label: t('logomatten') },
-    { href: '/geprint-tapijt', label: t('geprintTapijt') },
+    {
+      href: '/geprint-tapijt',
+      label: t('geprintTapijt'),
+      children: [
+        { href: '/geprint-tapijt', label: t('printedOverview') },
+        { href: '/geprint-tapijt/winkel', label: t('printedShop') },
+        { href: '/geprint-tapijt/kantoor', label: t('printedOffice') },
+        { href: '/geprint-tapijt/horeca', label: t('printedHoreca') },
+      ],
+    },
     {
       href: '/event-tapijt',
       label: t('eventTapijt'),
@@ -42,7 +52,7 @@ export function SiteHeader() {
   }
 
   // Submenu sluiten bij het wisselen van pagina.
-  useEffect(() => setSubmenuOpen(false), [pathname])
+  useEffect(() => setOpenSubmenu(null), [pathname])
 
   const languageSwitch = (
     <div className="flex items-center gap-2 text-sm font-medium" aria-label={t('language')}>
@@ -82,8 +92,8 @@ export function SiteHeader() {
                 <div
                   key={item.href}
                   className="group relative flex items-center gap-1"
-                  onMouseLeave={() => setSubmenuOpen(false)}
-                  onKeyDown={(e) => e.key === 'Escape' && setSubmenuOpen(false)}
+                  onMouseLeave={() => setOpenSubmenu(null)}
+                  onKeyDown={(e) => e.key === 'Escape' && setOpenSubmenu(null)}
                 >
                   <Link
                     href={item.href}
@@ -97,17 +107,17 @@ export function SiteHeader() {
                   </Link>
                   <button
                     type="button"
-                    onClick={() => setSubmenuOpen((v) => !v)}
-                    aria-expanded={submenuOpen}
+                    onClick={() => setOpenSubmenu((v) => (v === item.href ? null : item.href))}
+                    aria-expanded={openSubmenu === item.href}
                     aria-label={t('submenu', { item: item.label })}
                     className="inline-flex size-6 items-center justify-center rounded-sm text-muted-foreground hover:text-foreground"
                   >
-                    <ChevronDown className={cn('size-4 transition-transform', submenuOpen && 'rotate-180')} />
+                    <ChevronDown className={cn('size-4 transition-transform', openSubmenu === item.href && 'rotate-180')} />
                   </button>
                   <div
                     className={cn(
                       'absolute left-0 top-full pt-3 transition-opacity',
-                      submenuOpen
+                      openSubmenu === item.href
                         ? 'visible opacity-100'
                         : 'invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100',
                     )}

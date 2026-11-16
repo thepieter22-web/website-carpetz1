@@ -8,6 +8,7 @@ import { SiteFooter } from '@/components/site-footer'
 import { PageHero } from '@/components/page-hero'
 import { QuoteBand } from '@/components/quote-band'
 import { MatConfigurator } from '@/components/mat-configurator'
+import { ProductBar } from '@/components/product-bar'
 import { localizedAlternates } from '@/lib/seo'
 
 type Props = { params: { locale: string } }
@@ -52,6 +53,8 @@ export default function LogomatPage({ params: { locale } }: Props) {
             </div>
           </div>
         </section>
+
+        <ProductBar scope="logomat" />
 
         <section id="configurator" className="border-t border-border bg-white">
           <div className="mx-auto max-w-7xl px-6 pt-6 lg:px-8">

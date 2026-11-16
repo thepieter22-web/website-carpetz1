@@ -11,6 +11,7 @@ import { Faq } from '@/components/faq'
 import { Cta } from '@/components/cta'
 import { FeatureGrid, RelatedEventPages, StepsSection, type TitleText } from '@/components/event-sections'
 import { localizedAlternates } from '@/lib/seo'
+import { ProductBar } from '@/components/product-bar'
 
 type Props = { params: { locale: string } }
 
@@ -59,6 +60,8 @@ export default function BeurstapijtPage({ params: { locale } }: Props) {
             />
           }
         />
+
+        <ProductBar priceProduct="beurstapijt" />
 
         <FeatureGrid title={t('whyTitle')} items={t.raw('why') as TitleText[]} icons={[Eye, Palette, Ruler, Repeat]} />
 

@@ -3,7 +3,8 @@ import { ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 type CtaProps = {
-  href: string
+  /** Intern pad, of { pathname, query } voor een pad met parameters dat ook in het Frans vertaald moet worden. */
+  href: React.ComponentProps<typeof Link>['href']
   children: React.ReactNode
   variant?: 'primary' | 'accent' | 'outline' | 'outlineLight'
   className?: string

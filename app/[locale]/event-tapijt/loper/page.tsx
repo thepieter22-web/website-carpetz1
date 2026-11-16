@@ -22,6 +22,7 @@ import { Faq } from '@/components/faq'
 import { CustomRunnerHighlight } from '@/components/custom-runner-highlight'
 import { CheckList, FeatureGrid, RelatedEventPages, StepsSection, type TitleText } from '@/components/event-sections'
 import { localizedAlternates } from '@/lib/seo'
+import { ProductBar } from '@/components/product-bar'
 import { usePriceFormatter } from '@/lib/format'
 import { RUNNER_PRICE_PER_M2 } from '@/lib/event-pricing'
 
@@ -82,6 +83,8 @@ export default function EventLoperPage({ params: { locale } }: Props) {
             />
           }
         />
+
+        <ProductBar priceProduct="loper" />
 
         {/* Intro + wat kan erop */}
         <section>

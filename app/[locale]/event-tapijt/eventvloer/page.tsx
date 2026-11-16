@@ -11,6 +11,7 @@ import { Faq } from '@/components/faq'
 import { Cta } from '@/components/cta'
 import { CheckList, FeatureGrid, RelatedEventPages, StepsSection, type TitleText } from '@/components/event-sections'
 import { localizedAlternates } from '@/lib/seo'
+import { ProductBar } from '@/components/product-bar'
 
 type Props = { params: { locale: string } }
 
@@ -59,6 +60,8 @@ export default function EventvloerPage({ params: { locale } }: Props) {
           }
         />
 
+        <ProductBar priceProduct="eventvloer" />
+
         {/* Wat is een eventvloer + toepassingen */}
         <section>
           <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-20">
@@ -100,7 +103,7 @@ export default function EventvloerPage({ params: { locale } }: Props) {
                 {t('calculatorText')}
               </p>
             </div>
-            <Cta href="/geprint-tapijt" variant="accent">
+            <Cta href={{ pathname: '/prijs-berekenen', query: { product: 'geprint-tapijt' } }} variant="accent">
               {t('calculatorLink')}
             </Cta>
           </div>

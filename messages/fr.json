@@ -23,11 +23,11 @@
       "ogImageAlt": "Le savoir-faire Carpetz"
     },
     "printedCarpet": {
-      "title": "Tapis imprimé & moquette imprimée sur mesure",
-      "description": "Tapis imprimé sur mesure avec une impression photoréaliste. Faites imprimer votre logo, un motif ou votre campagne sur tapis pour le retail, les salons et les showrooms. Moquette imprimée sans raccord.",
-      "ogTitle": "Tapis imprimé & moquette imprimée sur mesure | Carpetz",
-      "ogDescription": "Faites imprimer votre logo, un motif ou votre campagne sur tapis. Moquette imprimée sans raccord pour le retail, les salons et les showrooms.",
-      "ogImageAlt": "Tapis imprimé sur mesure Carpetz"
+      "title": "Tapis imprimé sur mesure avec votre propre design",
+      "description": "Tapis imprimé sur mesure avec votre logo, une photo ou votre propre design. Un tapis durable pour votre commerce, vos bureaux ou votre établissement horeca, dans la forme, les dimensions et la qualité de votre choix.",
+      "ogTitle": "Tapis imprimé sur mesure | Carpetz",
+      "ogDescription": "Votre logo, une photo ou votre design en tapis durable sur mesure, pour commerces, bureaux et horeca.",
+      "ogImageAlt": "Gros plan d’un tapis imprimé à motif de feuilles colorées"
     },
     "event": {
       "title": "Tapis événementiel & tapis rouge sur mesure",
@@ -80,6 +80,25 @@
       "title": "Tapis de stand & de salon imprimé sur mesure",
       "description": "Un tapis aux dimensions exactes de votre stand, imprimé avec votre logo, votre identité visuelle ou votre visuel de campagne. Pour les salons en Belgique et aux Pays-Bas.",
       "ogImageAlt": "Tapis imprimé à motif rouge et crème, enroulé"
+    },
+    "printedShop": {
+      "title": "Tapis imprimé pour commerces et magasins",
+      "description": "Tapis imprimé pour commerces : votre logo ou votre identité visuelle au sol, un tapis qui guide le parcours client et délimite des zones. Sur mesure pour votre magasin.",
+      "ogImageAlt": "Gros plan d’un tapis imprimé à motif de feuilles colorées"
+    },
+    "printedOffice": {
+      "title": "Tapis avec logo pour bureaux et accueil",
+      "description": "Tapis imprimé avec votre logo pour l’accueil, la salle de réunion ou le lounge. Votre identité visuelle aussi à l’intérieur de vos bureaux, sur mesure.",
+      "ogImageAlt": "Gros plan d’un tapis imprimé à motif de feuilles colorées"
+    },
+    "printedHoreca": {
+      "title": "Tapis imprimé pour hôtels, restaurants et bars",
+      "description": "Tapis imprimé pour l’horeca : votre logo dans le hall de l’hôtel, un motif au restaurant ou un design original au bar. Avec une attention particulière à la réaction au feu et à l’usure.",
+      "ogImageAlt": "Gros plan d’un tapis imprimé à motif de feuilles colorées"
+    },
+    "priceTool": {
+      "title": "Calculer le prix : tapis imprimé et tapis rouge",
+      "description": "Calculez immédiatement un prix indicatif pour votre tapis imprimé ou votre tapis rouge. Indiquez vos dimensions et demandez votre devis avec les mêmes données."
     }
   },
   "Common": {
@@ -109,7 +128,11 @@
     "eventRunner": "Tapis rouge",
     "eventFloor": "Sol événementiel complet",
     "eventStand": "Tapis de stand & salon",
-    "submenu": "Ouvrir ou fermer le sous-menu {item}"
+    "submenu": "Ouvrir ou fermer le sous-menu {item}",
+    "printedOverview": "Tous les tapis imprimés",
+    "printedShop": "Pour les commerces",
+    "printedOffice": "Pour les bureaux",
+    "printedHoreca": "Pour l’horeca"
   },
   "Footer": {
     "tagline": "Spécialiste des tapis logo sur mesure, tapis imprimés, tapis événementiels et tapis rouges sur mesure pour les entreprises, le retail, l’hôtellerie, les salons et les événements en Belgique et aux Pays-Bas.",
@@ -126,7 +149,8 @@
     "terms": "Conditions générales",
     "privacy": "Politique de confidentialité",
     "returns": "Politique de retour",
-    "cookieSettings": "Paramètres des cookies"
+    "cookieSettings": "Paramètres des cookies",
+    "priceCalculator": "Calculer le prix"
   },
   "Hero": {
     "title": "Tapis logo, tapis imprimé & tapis événementiel sur mesure",
@@ -297,14 +321,19 @@
         "event-tapijt": "un tapis événementiel",
         "loper": "un tapis rouge personnalisé",
         "eventvloer": "un sol événementiel",
-        "beurstapijt": "un tapis pour mon stand"
+        "beurstapijt": "un tapis pour mon stand",
+        "logomat": "un tapis logo"
       },
       "interest": "Je suis intéressé(e) par {product}",
       "quality": " (qualité : {quality})",
       "diameter": " d’un diamètre de {diameter} m",
       "size": " de {length} m x {width} m",
-      "price": " (prix indicatif {price} €)",
-      "closing": ". Je souhaiterais recevoir un devis personnalisé."
+      "price": " (prix indicatif : {price} hors TVA)",
+      "closing": ". Je souhaiterais recevoir un devis personnalisé.",
+      "model": " ({model})",
+      "dimensions": " de {size}",
+      "quantity": ", quantité : {quantity}",
+      "colors": ", {colors, plural, one {# couleur de logo} other {# couleurs de logo}}"
     },
     "successTitle": "Merci pour votre demande !",
     "successText": "Nous avons bien reçu votre demande et vous recontacterons sous 24 heures avec une réponse sur mesure.",
@@ -359,45 +388,121 @@
   },
   "PrintedCarpet": {
     "eyebrow": "Tapis imprimé",
-    "title": "Tapis imprimé & moquette imprimée",
-    "intro": "Donnez d’un seul coup votre identité à tout un espace. Avec un tapis imprimé sur mesure, vous transposez votre marque au sol — net, aux couleurs durables et sans raccord.",
-    "heroImageAlt": "Moquette imprimée à motif coloré",
-    "calloutTitle": "D’un sol neutre à un puissant support de marque",
-    "calloutText": "Grâce aux techniques d’impression modernes, nous imprimons sur tapis n’importe quel élément visuel — du logo à la campagne complète — sans raccord sur de grandes surfaces et en plusieurs qualités. Calculez ci-dessous une estimation de prix.",
-    "whyTitle": "Pourquoi un tapis imprimé ?",
-    "features": [
+    "title": "Tapis imprimé sur mesure",
+    "intro": "Votre design, votre logo ou une photo en tapis durable. Fabriqué sur mesure pour votre commerce, vos bureaux ou votre établissement horeca, imprimé avec précision dans la qualité adaptée à l’espace.",
+    "heroImageAlt": "Gros plan d’un tapis imprimé à motif de feuilles colorées",
+    "breadcrumb": "Tapis imprimé",
+    "backToOverview": "Tous les tapis imprimés",
+    "aboutTitle": "Votre propre design, durablement au sol",
+    "aboutText": [
+      "Avec un tapis imprimé sur mesure, vous transposez votre identité visuelle, un motif ou une photo au sol. Ce n’est ni une moquette, ni des dalles, mais un seul tapis dans la forme et les dimensions de votre choix.",
+      "Comme le tapis reste en place, vous choisissez une qualité adaptée à l’intensité d’utilisation de l’espace. Nous vous conseillons volontiers et préparons votre design pour l’impression."
+    ],
+    "quoteButton": "Demandez votre devis",
+    "videoAlt": "Tapis imprimé sur mesure en images",
+    "choicesTitle": "Ce que vous choisissez",
+    "choicesText": "Votre tapis est entièrement fabriqué sur mesure. Vous choisissez :",
+    "choices": [
       {
-        "title": "Impression sur tapis",
-        "text": "Impression photoréaliste de logos, images, motifs ou campagnes complètes."
+        "title": "Dimensions",
+        "text": "Vous choisissez la largeur et la longueur. [À COMPLÉTER : dimensions minimales et maximales]."
       },
       {
-        "title": "Sans raccord & grand format",
-        "text": "Moquette imprimée pour grandes surfaces, posée sans raccord."
+        "title": "Forme",
+        "text": "Rectangulaire ou rond. [À COMPLÉTER : autres formes possibles, p. ex. ovale ou découpé ?]"
       },
       {
-        "title": "Plusieurs qualités",
-        "text": "Du pop-up temporaire au sol de showroom permanent."
+        "title": "Matière",
+        "text": "Velvet (doux et luxueux), Globosoft (durable et résistant) ou Pxl (l’impression photoréaliste la plus nette)."
       },
       {
-        "title": "Conseil prépresse",
-        "text": "Nous vous accompagnons du fichier de conception jusqu’au tapis fini."
+        "title": "Finition",
+        "text": "[À COMPLÉTER : finition des bords et dossier]."
       }
     ],
-    "applicationsTitle": "Applications de la moquette imprimée",
-    "applications": [
-      "Surfaces commerciales et flagship stores",
-      "Stands et tapis pour salons professionnels",
-      "Lancements de produits et espaces expérientiels",
-      "Showrooms et boutiques éphémères",
-      "Aménagements saisonniers et de campagne"
+    "spacesTitle": "Pour chaque espace",
+    "spacesText": "Chaque espace a ses propres exigences. Découvrez ce que le tapis imprimé peut apporter à votre établissement.",
+    "spaces": {
+      "shop": {
+        "title": "Commerce",
+        "text": "Votre marque au sol : un tapis avec logo, un tapis qui guide le parcours client ou qui délimite des zones.",
+        "link": "Tapis imprimé pour commerces"
+      },
+      "office": {
+        "title": "Bureaux & accueil",
+        "text": "Accueillez vos visiteurs sur un tapis à votre logo, ou apportez votre identité visuelle en salle de réunion.",
+        "link": "Tapis imprimé pour bureaux"
+      },
+      "horeca": {
+        "title": "Hôtel, restaurant & bar",
+        "text": "L’ambiance dès le sol, du hall de l’hôtel jusqu’au bar, en tenant compte de la réaction au feu et de l’usure.",
+        "link": "Tapis imprimé pour l’horeca"
+      }
+    },
+    "otherSpacesTitle": "Autres espaces",
+    "gallery": {
+      "title": "Réalisations",
+      "text": "Une sélection de tapis que nous avons imprimés.",
+      "photos": []
+    },
+    "stepsTitle": "Comment ça marche ?",
+    "steps": [
+      {
+        "title": "Design",
+        "text": "Envoyez votre logo, votre photo ou votre design. Nous le préparons pour l’impression et vous conseillons sur les couleurs et le format."
+      },
+      {
+        "title": "Épreuve numérique (BAT)",
+        "text": "Vous recevez une épreuve numérique. Nous ne poursuivons qu’après votre accord."
+      },
+      {
+        "title": "Production",
+        "text": "Nous imprimons votre tapis sur mesure dans la qualité choisie."
+      },
+      {
+        "title": "Livraison",
+        "text": "Nous livrons votre tapis en Belgique ou aux Pays-Bas. [À COMPLÉTER : délai de livraison]."
+      }
     ],
-    "applicationsImageAlt": "Stand de salon avec tapis imprimé sur mesure aux couleurs de la marque",
+    "faqTitle": "Questions fréquentes sur le tapis imprimé",
+    "faq": {
+      "care": {
+        "q": "Comment entretenir un tapis imprimé ?",
+        "a": "[À COMPLÉTER : conseils d’entretien, p. ex. aspiration et traitement des taches]."
+      },
+      "durability": {
+        "q": "Le tapis imprimé résiste-t-il à l’usure ?",
+        "a": "Cela dépend de la qualité. Pour les zones de passage intensif, nous recommandons Globosoft : durable et résistant, pour un usage intensif. [À COMPLÉTER : durée de vie attendue ou classe d’usage]."
+      },
+      "fire": {
+        "q": "Quelle est la réaction au feu du tapis imprimé ?",
+        "a": "[À COMPLÉTER : classe de réaction au feu par qualité selon la norme EN 13501-1]."
+      },
+      "delivery": {
+        "q": "Quel est le délai de livraison ?",
+        "a": "Comptez [À COMPLÉTER : délai en jours ouvrables] après votre validation de l’épreuve numérique (BAT)."
+      },
+      "sizes": {
+        "q": "Quelles dimensions sont possibles ?",
+        "a": "Vous choisissez la largeur et la longueur, en rectangle ou en rond. [À COMPLÉTER : dimensions minimales et maximales]. Nous étudions volontiers avec vous les grands formats ou les formats particuliers."
+      }
+    },
+    "elsewhere": {
+      "event": {
+        "title": "Pour un seul événement ?",
+        "text": "Un tapis pour une occasion unique, comme un tapis rouge, un sol événementiel ou un stand de salon ? C’est notre tapis événementiel.",
+        "link": "Découvrir le tapis événementiel"
+      },
+      "logomat": {
+        "title": "Un tapis pour l’entrée ?",
+        "text": "Un tapis d’entrée à votre logo qui retient la saleté et l’humidité devant la porte ? Choisissez un tapis logo.",
+        "link": "Découvrir les tapis logo"
+      }
+    },
     "quoteTitle": "Faites réaliser votre tapis imprimé",
-    "quoteText": "Envoyez-nous votre design et vos dimensions. Nous établissons un devis pour votre tapis imprimé ou votre moquette imprimée sur mesure."
+    "quoteText": "Envoyez-nous votre design et les dimensions souhaitées. Vous recevez un devis pour votre tapis imprimé sur mesure."
   },
   "CarpetSimulator": {
-    "title": "Calculez une estimation de prix",
-    "intro": "Choisissez une qualité, une forme et des dimensions, et chargez éventuellement un motif pour vous faire une idée du résultat. Il s’agit d’une estimation — pour un devis définitif, nous prenons volontiers contact avec vous personnellement.",
     "quality": "Qualité",
     "qualities": {
       "velvet": "Doux et luxueux, idéal pour les showrooms.",
@@ -416,12 +521,12 @@
     "diameter": "Diamètre",
     "custom": "Autre dimension",
     "dimensions": "Dimensions",
-    "priceIndication": "Estimation de prix",
-    "priceNote": "Hors TVA — prix indicatif, pas un devis définitif.",
-    "contactForQuote": "Contactez-nous pour un devis",
+    "priceIndication": "Prix indicatif",
+    "priceNote": "Hors TVA, livraison [À COMPLÉTER]. Prix indicatif, sans valeur de devis.",
     "customTitle": "Dimension sur mesure",
     "customText": "Pour des dimensions particulières, nous travaillons sur mesure. Contactez-nous afin que nous puissions étudier votre demande.",
-    "toContact": "Vers la page contact"
+    "toContact": "Vers la page contact",
+    "quoteWithData": "Demandez votre devis avec ces données"
   },
   "Event": {
     "eyebrow": "Tapis événementiel",
@@ -1655,7 +1760,7 @@
       }
     ],
     "calculatorTitle": "D’abord une estimation de prix ?",
-    "calculatorText": "Avec le calculateur de prix de notre page sur le tapis imprimé, vous obtenez immédiatement un prix indicatif pour votre surface et votre qualité.",
+    "calculatorText": "Avec notre calculateur de prix, vous obtenez immédiatement un prix indicatif de tapis imprimé pour votre surface et votre qualité.",
     "calculatorLink": "Vers le calculateur de prix",
     "faqTitle": "Questions sur le sol événementiel",
     "faq": {
@@ -1665,7 +1770,7 @@
       },
       "price": {
         "q": "Combien coûte un sol événementiel ?",
-        "a": "Le prix dépend de la surface, de la qualité et du design. Le calculateur de prix de notre page sur le tapis imprimé vous donne immédiatement une estimation. Pour un sol événementiel complet, nous établissons un devis sur mesure."
+        "a": "Le prix dépend de la surface, de la qualité et du design. Notre calculateur de prix pour le tapis imprimé vous donne immédiatement une estimation. Pour un sol événementiel complet, nous établissons un devis sur mesure."
       },
       "install": {
         "q": "Posez-vous également le sol ?",
@@ -1739,7 +1844,7 @@
       },
       "price": {
         "q": "Combien coûte un tapis de stand ?",
-        "a": "Le prix dépend de la surface de votre stand, de la qualité et du design. Le calculateur de prix de notre page sur le tapis imprimé vous donne immédiatement une estimation. Pour votre stand, nous établissons un devis sur mesure."
+        "a": "Le prix dépend de la surface de votre stand, de la qualité et du design. Notre calculateur de prix pour le tapis imprimé vous donne immédiatement une estimation. Pour votre stand, nous établissons un devis sur mesure."
       }
     },
     "quoteTitle": "Demandez un devis pour votre tapis de stand",
@@ -1757,5 +1862,257 @@
     "methods": "Moyens de paiement acceptés",
     "secure": "Paiement sécurisé",
     "checkoutNote": "Paiement sécurisé via Stripe avec"
+  },
+  "ProductBar": {
+    "scope": {
+      "logomat": "Un tapis logo est un tapis d’entrée, à placer devant la porte. Vous cherchez un tapis plus grand pour l’espace lui-même ? Découvrez le <printed>tapis imprimé</printed>. Pour une occasion unique, il y a le <event>tapis événementiel</event>.",
+      "printed": "Le tapis imprimé est un tapis durable pour l’espace lui-même. Pour l’entrée, choisissez un <logomat>tapis logo</logomat> ; pour une occasion unique, un <event>tapis événementiel</event>.",
+      "event": "Le tapis événementiel est conçu pour une occasion unique. Besoin d’une solution durable pour votre espace ? C’est le <printed>tapis imprimé</printed>. Un tapis pour l’entrée ? Choisissez un <logomat>tapis logo</logomat>."
+    },
+    "from": "À partir de [À COMPLÉTER] €",
+    "calculate": "Calculez votre prix"
+  },
+  "PrintedSector": {
+    "shop": {
+      "eyebrow": "Tapis imprimé pour commerces",
+      "title": "Tapis de magasin à votre image",
+      "intro": "Un tapis imprimé fait de votre sol un élément de votre marque. D’un tapis avec logo près de la caisse à un tapis remarquable dans votre vitrine.",
+      "heroImageAlt": "Gros plan d’un tapis imprimé à motif de feuilles colorées",
+      "breadcrumb": "Commerce",
+      "introTitle": "Votre marque au sol",
+      "introText": [
+        "Dans un magasin, les clients ne regardent pas que les rayons. Un tapis imprimé aux couleurs de votre marque attire l’œil, renforce votre identité et donne du caractère à votre commerce.",
+        "Un tapis peut aussi guider vos clients : un tapis qui marque le parcours vers une nouvelle collection, ou un tapis qui délimite une zone."
+      ],
+      "examplesTitle": "Exemples en magasin",
+      "examples": [
+        "Un tapis à votre logo près de la caisse ou des cabines d’essayage",
+        "Un tapis qui marque le parcours vers votre nouvelle collection",
+        "Un tapis remarquable dans la vitrine",
+        "Un tapis à vos couleurs dans un flagship store ou un showroom",
+        "Un tapis qui délimite une zone de marque ou un shop-in-shop"
+      ],
+      "benefitsTitle": "Pourquoi un tapis imprimé dans votre magasin ?",
+      "benefits": [
+        {
+          "title": "Image de marque",
+          "text": "Votre logo, vos couleurs ou votre visuel de campagne, imprimés avec précision."
+        },
+        {
+          "title": "Parcours client",
+          "text": "Guidez vos clients avec un tapis vers l’endroit où vous voulez les amener."
+        },
+        {
+          "title": "Adapté à votre commerce",
+          "text": "Dimensions et forme adaptées à l’aménagement de votre magasin."
+        },
+        {
+          "title": "Pour un passage intensif",
+          "text": "Choisissez Globosoft pour les zones très fréquentées."
+        }
+      ],
+      "focusTitle": "Parcours et zones",
+      "focusText": [
+        "Le tapis est l’un des rares éléments de votre magasin sur lequel chaque client marche. Profitez-en : un tapis au début d’un parcours attire les clients plus loin dans le magasin, et un tapis devant un présentoir en fait une zone à part entière.",
+        "Expliquez-nous l’aménagement de votre magasin : nous vous conseillons sur le format et l’emplacement de votre tapis."
+      ],
+      "faqTitle": "Questions sur le tapis de magasin",
+      "faq": [
+        {
+          "q": "Puis-je adapter mon tapis à une nouvelle collection ou une promotion ?",
+          "a": "Le tapis imprimé est durable. Si vous changez souvent de campagne, choisissez un design à votre identité visuelle permanente, et faites réaliser un tapis séparé pour une action temporaire."
+        },
+        {
+          "q": "Quelle qualité choisir pour un magasin très fréquenté ?",
+          "a": "Pour les zones de passage intensif, nous recommandons Globosoft : durable et résistant. [À COMPLÉTER : conseils supplémentaires pour les commerces]."
+        }
+      ],
+      "quoteTitle": "Demandez un devis pour votre tapis de magasin",
+      "quoteText": "Envoyez-nous votre logo ou votre design, les dimensions souhaitées et l’emplacement du tapis."
+    },
+    "office": {
+      "eyebrow": "Tapis imprimé pour bureaux",
+      "title": "Tapis avec logo pour bureaux et accueil",
+      "intro": "Accueillez vos visiteurs sur un tapis à votre logo. Un tapis imprimé à l’accueil ou en salle de réunion rend votre identité visuelle visible à l’intérieur aussi.",
+      "heroImageAlt": "Gros plan d’un tapis imprimé à motif de feuilles colorées",
+      "breadcrumb": "Bureaux",
+      "introTitle": "Une première impression qui marque",
+      "introText": [
+        "L’accueil est l’endroit où les visiteurs découvrent votre entreprise. Un tapis à votre logo ou à vos couleurs leur montre immédiatement où ils se trouvent.",
+        "Ailleurs dans le bâtiment aussi, un tapis imprimé a sa place : en salle de réunion, dans un lounge ou dans le couloir vers la direction."
+      ],
+      "examplesTitle": "Exemples au bureau",
+      "examples": [
+        "Un tapis avec logo à l’accueil ou à la réception",
+        "Un tapis aux couleurs de votre marque en salle de réunion",
+        "Un tapis avec un motif ou une image dans le lounge ou la cafétéria",
+        "Un tapis dans le couloir vers la direction ou le showroom"
+      ],
+      "benefitsTitle": "Pourquoi un tapis imprimé au bureau ?",
+      "benefits": [
+        {
+          "title": "Votre identité à l’intérieur",
+          "text": "Un logo et des couleurs assortis à votre signalétique et à votre aménagement."
+        },
+        {
+          "title": "Une image soignée",
+          "text": "Un accueil soigné pour vos clients, candidats et partenaires."
+        },
+        {
+          "title": "Sur mesure",
+          "text": "Dimensions et forme adaptées à votre accueil ou votre salle de réunion."
+        },
+        {
+          "title": "Durable",
+          "text": "Un tapis de qualité qui fait partie de votre aménagement permanent."
+        }
+      ],
+      "focusTitle": "À l’accueil ou en salle de réunion",
+      "focusText": [
+        "À l’accueil, le tapis est sous les yeux de chaque visiteur. Choisissez-y un design où votre logo est bien visible.",
+        "En salle de réunion, la discrétion est permise : un motif ou les couleurs de votre marque, sans grand logo."
+      ],
+      "faqTitle": "Questions sur le tapis de bureau",
+      "faq": [
+        {
+          "q": "Le tapis imprimé convient-il sous des chaises de bureau à roulettes ?",
+          "a": "[À COMPLÉTER : compatibilité avec les chaises de bureau à roulettes]."
+        },
+        {
+          "q": "Quelle est la différence avec un tapis logo à l’entrée ?",
+          "a": "Un tapis logo se place devant la porte et retient la saleté et l’humidité. Un tapis imprimé se place dans l’espace lui-même, par exemple à l’accueil, et fait surtout partie de votre aménagement."
+        }
+      ],
+      "quoteTitle": "Demandez un devis pour votre tapis de bureau",
+      "quoteText": "Envoyez-nous votre logo, les dimensions souhaitées et l’espace où le tapis sera placé."
+    },
+    "horeca": {
+      "eyebrow": "Tapis imprimé pour l’horeca",
+      "title": "Tapis imprimé pour hôtels, restaurants et bars",
+      "intro": "Un tapis à l’image de votre établissement : votre logo dans le hall, un motif au restaurant ou un design original au bar.",
+      "heroImageAlt": "Gros plan d’un tapis imprimé à motif de feuilles colorées",
+      "breadcrumb": "Horeca",
+      "introTitle": "L’ambiance dès le sol",
+      "introText": [
+        "Dans l’horeca, tout est question d’expérience. Un tapis imprimé fait revenir votre logo, vos couleurs ou un motif dans votre décoration, du hall jusqu’au bar.",
+        "L’horeca met un tapis à rude épreuve : beaucoup de passage, des boissons renversées et des règles strictes de sécurité incendie. Choisissez donc la qualité avec soin."
+      ],
+      "examplesTitle": "Exemples dans l’horeca",
+      "examples": [
+        "Un tapis à votre logo dans le hall de l’hôtel ou à la réception",
+        "Un tapis dans les couloirs vers les chambres",
+        "Un tapis à motif sous les tables du restaurant",
+        "Un tapis remarquable au bar ou dans le lounge",
+        "Un tapis dans une salle de réunion ou de réception"
+      ],
+      "benefitsTitle": "Pourquoi un tapis imprimé dans votre établissement ?",
+      "benefits": [
+        {
+          "title": "Votre ambiance",
+          "text": "Un design assorti à votre décoration et à votre marque."
+        },
+        {
+          "title": "Reconnaissable",
+          "text": "Votre logo ou votre nom là où vos clients entrent."
+        },
+        {
+          "title": "Sur mesure",
+          "text": "Dimensions et forme adaptées à votre salle ou à votre hall."
+        },
+        {
+          "title": "Qualité résistante",
+          "text": "Globosoft est durable et résistant, pour un usage intensif."
+        }
+      ],
+      "focusTitle": "Réaction au feu et usure",
+      "focusText": [
+        "Les hôtels et établissements horeca doivent souvent respecter des exigences de réaction au feu pour leurs revêtements de sol (EN 13501-1). Notre tapis imprimé a la classe [À COMPLÉTER : classe de réaction au feu par qualité].",
+        "Pour les zones de passage intensif, comme un hall ou un couloir, nous recommandons Globosoft. [À COMPLÉTER : conseils sur la résistance aux taches et le nettoyage]."
+      ],
+      "faqTitle": "Questions sur le tapis pour l’horeca",
+      "faq": [
+        {
+          "q": "Le tapis imprimé répond-il aux exigences de sécurité incendie de l’horeca ?",
+          "a": "Notre tapis imprimé a la classe de réaction au feu [À COMPLÉTER]. Renseignez-vous auprès de votre assureur ou des pompiers sur la classe exigée pour votre établissement."
+        },
+        {
+          "q": "Comment traiter les taches de boissons ou de nourriture ?",
+          "a": "[À COMPLÉTER : conseils de nettoyage]."
+        }
+      ],
+      "quoteTitle": "Demandez un devis pour votre tapis horeca",
+      "quoteText": "Envoyez-nous votre logo ou votre design, les dimensions et l’espace concerné. Précisez aussi la classe de réaction au feu requise."
+    }
+  },
+  "PriceTool": {
+    "eyebrow": "Calculer le prix",
+    "title": "Calculez le prix de votre tapis",
+    "intro": "Choisissez votre produit, indiquez les dimensions et obtenez immédiatement un prix indicatif. Pour un prix définitif, demandez un devis.",
+    "heroImageAlt": "Gros plan d’un tapis imprimé à motif de feuilles colorées",
+    "breadcrumb": "Calculer le prix",
+    "productLabel": "Choisissez votre produit",
+    "products": {
+      "geprint-tapijt": "Tapis imprimé",
+      "loper": "Tapis rouge",
+      "eventvloer": "Sol événementiel",
+      "beurstapijt": "Tapis de stand"
+    },
+    "quoteWithData": "Demandez votre devis avec ces données",
+    "runner": {
+      "length": "Longueur (m)",
+      "width": "Largeur (m)",
+      "hint": "Vous choisissez la longueur et la largeur. Pour une dimension ou une qualité particulière, nous établissons un devis sur mesure.",
+      "dimensions": "Dimensions",
+      "area": "Surface",
+      "perM2": "Prix indicatif par m²",
+      "total": "Prix indicatif",
+      "note": "Hors TVA, livraison [À COMPLÉTER]. Prix indicatif en qualité standard, sans valeur de devis."
+    },
+    "onRequest": {
+      "title": "Prix sur demande",
+      "floor": "Nous réalisons toujours un sol événementiel sur mesure : le prix dépend de la surface, de la forme de l’espace et de la pose. Demandez un devis, nous faisons le calcul pour vous.",
+      "stand": "Nous réalisons le tapis de stand aux dimensions de votre stand : le prix dépend de la surface, de la forme et du design. Demandez un devis, nous faisons le calcul pour vous.",
+      "hint": "Une première estimation au m² ? Utilisez le calculateur du tapis imprimé.",
+      "quote": "Demandez votre devis",
+      "toPrinted": "Calculateur tapis imprimé"
+    },
+    "factorsTitle": "Qu’est-ce qui détermine le prix ?",
+    "factors": {
+      "size": {
+        "title": "Dimensions",
+        "text": "Le prix est calculé au m² : plus le tapis est grand, plus le prix est élevé."
+      },
+      "quality": {
+        "title": "Qualité",
+        "text": "Velvet, Globosoft et Pxl ont chacun leur propre prix au m²."
+      },
+      "shape": {
+        "title": "Forme",
+        "text": "Pour un tapis rond, nous calculons sur la base de la surface du cercle."
+      }
+    },
+    "faqTitle": "Questions sur le prix",
+    "faq": {
+      "final": {
+        "q": "Le prix calculé est-il définitif ?",
+        "a": "Non, il s’agit d’un prix indicatif. Après votre demande, vous recevez un devis sur mesure avec le prix définitif."
+      },
+      "vat": {
+        "q": "La TVA est-elle comprise ?",
+        "a": "Non, le prix indicatif est hors TVA."
+      },
+      "shipping": {
+        "q": "Combien coûte la livraison ?",
+        "a": "[À COMPLÉTER : frais de livraison pour le tapis imprimé et le tapis événementiel]."
+      },
+      "logomat": {
+        "q": "Puis-je aussi calculer ici le prix d’un tapis logo ?",
+        "a": "Le prix d’un tapis logo s’affiche directement dans le configurateur de notre page tapis logo, pendant que vous créez votre tapis."
+      },
+      "quote": {
+        "q": "Comment demander un devis ?",
+        "a": "Cliquez sur « Demandez votre devis avec ces données ». Le formulaire de devis est alors prérempli avec votre produit, vos dimensions et le prix indicatif ; il ne vous reste qu’à ajouter vos coordonnées."
+      }
+    }
   }
 }

@@ -23,11 +23,11 @@
       "ogImageAlt": "Vakmanschap bij Carpetz"
     },
     "printedCarpet": {
-      "title": "Geprint tapijt & geprint vloertapijt op maat",
-      "description": "Geprint tapijt op maat met fotorealistische print. Tapijt bedrukken met je logo, patroon of campagne voor retail, beurzen en showrooms. Naadloos geprint vloertapijt.",
-      "ogTitle": "Geprint tapijt & geprint vloertapijt op maat | Carpetz",
-      "ogDescription": "Tapijt bedrukken met je logo, patroon of campagne. Naadloos geprint vloertapijt voor retail, beurzen en showrooms.",
-      "ogImageAlt": "Geprint tapijt op maat van Carpetz"
+      "title": "Geprint tapijt op maat met je eigen design",
+      "description": "Geprint tapijt op maat met je logo, foto of eigen ontwerp. Blijvend tapijt voor je winkel, kantoor of horecazaak, in de vorm, afmetingen en kwaliteit die jij kiest.",
+      "ogTitle": "Geprint tapijt op maat | Carpetz",
+      "ogDescription": "Je logo, foto of ontwerp als blijvend tapijt op maat, voor winkel, kantoor en horeca.",
+      "ogImageAlt": "Close-up van geprint tapijt met kleurrijk bladmotief"
     },
     "event": {
       "title": "Event tapijt & rode loper op maat",
@@ -80,6 +80,25 @@
       "title": "Beurstapijt & standtapijt op maat met print",
       "description": "Standtapijt in de exacte maat van je beursstand, bedrukt met je logo, huisstijl of campagnebeeld. Beurstapijt dat opvalt, voor beurzen in België en Nederland.",
       "ogImageAlt": "Opgerold geprint tapijt met rood-crème patroon"
+    },
+    "printedShop": {
+      "title": "Winkeltapijt met print: geprint tapijt voor je winkel",
+      "description": "Geprint tapijt voor winkels: je logo of huisstijl op de winkelvloer, tapijt dat looproutes markeert en zones afbakent. Op maat van je zaak.",
+      "ogImageAlt": "Close-up van geprint tapijt met kleurrijk bladmotief"
+    },
+    "printedOffice": {
+      "title": "Tapijt met logo voor kantoor en onthaal",
+      "description": "Geprint tapijt met je logo voor het onthaal, de vergaderzaal of de lounge. Je huisstijl ook binnen in je kantoor, op maat gemaakt.",
+      "ogImageAlt": "Close-up van geprint tapijt met kleurrijk bladmotief"
+    },
+    "printedHoreca": {
+      "title": "Geprint tapijt voor hotel, restaurant en bar",
+      "description": "Geprint tapijt voor horeca: je logo in de hotellobby, een patroon in het restaurant of een opvallend ontwerp in de bar. Met aandacht voor brandklasse en slijtage.",
+      "ogImageAlt": "Close-up van geprint tapijt met kleurrijk bladmotief"
+    },
+    "priceTool": {
+      "title": "Prijs berekenen: geprint tapijt en event loper",
+      "description": "Bereken meteen een indicatieve prijs voor je geprint tapijt of event loper. Vul je afmetingen in en vraag je offerte aan met dezelfde gegevens."
     }
   },
   "Common": {
@@ -109,7 +128,11 @@
     "eventRunner": "Event loper",
     "eventFloor": "Volledige eventvloer",
     "eventStand": "Beurs- & standtapijt",
-    "submenu": "Submenu {item} openen of sluiten"
+    "submenu": "Submenu {item} openen of sluiten",
+    "printedOverview": "Alle geprint tapijt",
+    "printedShop": "Voor winkels",
+    "printedOffice": "Voor kantoren",
+    "printedHoreca": "Voor horeca"
   },
   "Footer": {
     "tagline": "Specialist in logomatten op maat, geprint tapijt, event tapijt en rode lopers op maat voor bedrijven, retail, hotels, beurzen en events in België & Nederland.",
@@ -126,7 +149,8 @@
     "terms": "Algemene voorwaarden",
     "privacy": "Privacybeleid",
     "returns": "Retourbeleid",
-    "cookieSettings": "Cookie-instellingen"
+    "cookieSettings": "Cookie-instellingen",
+    "priceCalculator": "Prijs berekenen"
   },
   "Hero": {
     "title": "Logomatten, geprint tapijt & event tapijt op maat",
@@ -297,14 +321,19 @@
         "event-tapijt": "event tapijt",
         "loper": "een event loper",
         "eventvloer": "een eventvloer",
-        "beurstapijt": "beurstapijt voor mijn stand"
+        "beurstapijt": "beurstapijt voor mijn stand",
+        "logomat": "een logomat"
       },
       "interest": "Ik heb interesse in {product}",
       "quality": " (kwaliteit: {quality})",
       "diameter": " met een diameter van {diameter} m",
       "size": " van {length} m x {width} m",
-      "price": " (richtprijs €{price})",
-      "closing": ". Graag ontvang ik een persoonlijke offerte."
+      "price": " (indicatieve prijs: {price} excl. btw)",
+      "closing": ". Graag ontvang ik een persoonlijke offerte.",
+      "model": " ({model})",
+      "dimensions": " van {size}",
+      "quantity": ", aantal: {quantity}",
+      "colors": ", {colors, plural, one {# logokleur} other {# logokleuren}}"
     },
     "successTitle": "Bedankt voor je aanvraag!",
     "successText": "We hebben je aanvraag goed ontvangen en nemen binnen 24 uur contact met je op met een antwoord op maat.",
@@ -359,45 +388,121 @@
   },
   "PrintedCarpet": {
     "eyebrow": "Geprint tapijt",
-    "title": "Geprint tapijt & geprint vloertapijt",
-    "intro": "Geef een volledige ruimte in één keer je eigen gezicht. Met geprint tapijt op maat vertaal je je merk naar de vloer — scherp, kleurvast en naadloos.",
-    "heroImageAlt": "Geprint vloertapijt met kleurrijk patroon",
-    "calloutTitle": "Van neutrale vloer naar krachtig branding tapijt",
-    "calloutText": "Met moderne printtechnieken bedrukken we tapijt met elk visueel element — van logo tot volledige campagne — naadloos over grote oppervlakken, in verschillende kwaliteiten. Bereken hieronder direct een prijsindicatie.",
-    "whyTitle": "Waarom geprint tapijt?",
-    "features": [
+    "title": "Geprint tapijt op maat",
+    "intro": "Jouw design, logo of foto als tapijt dat blijft. Op maat gemaakt voor je winkel, kantoor of horecazaak, scherp geprint in de kwaliteit die bij de ruimte past.",
+    "heroImageAlt": "Close-up van geprint tapijt met kleurrijk bladmotief",
+    "breadcrumb": "Geprint tapijt",
+    "backToOverview": "Alle geprint tapijt",
+    "aboutTitle": "Je eigen ontwerp, blijvend op de vloer",
+    "aboutText": [
+      "Met geprint tapijt op maat breng je je huisstijl, een patroon of een foto naar de vloer. Het is geen kamerbrede vloerbekleding en geen tapijttegels, maar één tapijt in de vorm en de afmetingen die jij kiest.",
+      "Omdat het tapijt blijft liggen, kies je een kwaliteit die past bij hoe intensief de ruimte gebruikt wordt. We helpen je graag kiezen en maken je ontwerp drukklaar."
+    ],
+    "quoteButton": "Vraag je offerte aan",
+    "videoAlt": "Geprint tapijt op maat in beeld",
+    "choicesTitle": "Wat kies je zelf?",
+    "choicesText": "Je tapijt wordt volledig op maat gemaakt. Dit bepaal je zelf:",
+    "choices": [
       {
-        "title": "Tapijt bedrukken",
-        "text": "Fotorealistische print van logo, beelden, patronen of volledige campagnes."
+        "title": "Afmetingen",
+        "text": "Breedte en lengte kies je zelf. [INVULLEN: minimale en maximale afmetingen]."
       },
       {
-        "title": "Naadloos & groot",
-        "text": "Geprint vloertapijt voor grote oppervlakken, naadloos gelegd."
+        "title": "Vorm",
+        "text": "Rechthoekig of rond. [INVULLEN: andere vormen mogelijk, bv. ovaal of uitgesneden?]"
       },
       {
-        "title": "Meerdere kwaliteiten",
-        "text": "Van tijdelijke pop-up tot permanente showroomvloer."
+        "title": "Materiaal",
+        "text": "Velvet (zacht en luxueus), Globosoft (duurzaam en slijtvast) of Pxl (de scherpste, fotorealistische print)."
       },
       {
-        "title": "Drukklaar advies",
-        "text": "Wij begeleiden je van ontwerpbestand tot afgewerkt tapijt."
+        "title": "Afwerking",
+        "text": "[INVULLEN: afwerking van de randen en dossier/rugmateriaal]."
       }
     ],
-    "applicationsTitle": "Toepassingen voor geprint vloertapijt",
-    "applications": [
-      "Retailvloeren en flagshipstores",
-      "Beursstanden en tapijt voor beurzen",
-      "Productlanceringen en experience zones",
-      "Showrooms en pop-upstores",
-      "Seizoens- en campagne-inrichtingen"
+    "spacesTitle": "Voor elke ruimte",
+    "spacesText": "Elke ruimte vraagt iets anders van een tapijt. Lees wat geprint tapijt voor jouw zaak kan betekenen.",
+    "spaces": {
+      "shop": {
+        "title": "Winkel",
+        "text": "Je merk op de winkelvloer: tapijt met logo, tapijt dat looproutes markeert of zones afbakent.",
+        "link": "Geprint tapijt voor winkels"
+      },
+      "office": {
+        "title": "Kantoor & onthaal",
+        "text": "Ontvang bezoekers op een tapijt met je logo, of breng je huisstijl naar de vergaderzaal.",
+        "link": "Geprint tapijt voor kantoren"
+      },
+      "horeca": {
+        "title": "Hotel, restaurant & bar",
+        "text": "Sfeer vanaf de vloer, van de hotellobby tot de bar, met aandacht voor brandklasse en slijtage.",
+        "link": "Geprint tapijt voor horeca"
+      }
+    },
+    "otherSpacesTitle": "Andere ruimtes",
+    "gallery": {
+      "title": "Realisaties",
+      "text": "Een greep uit de tapijten die we printten.",
+      "photos": []
+    },
+    "stepsTitle": "Hoe werkt het?",
+    "steps": [
+      {
+        "title": "Design",
+        "text": "Stuur je logo, foto of ontwerp. We maken het drukklaar en denken mee over kleuren en formaat."
+      },
+      {
+        "title": "Digitale proefdruk",
+        "text": "Je ontvangt een digitale proefdruk. Pas na je akkoord gaan we verder."
+      },
+      {
+        "title": "Productie",
+        "text": "We printen je tapijt op maat in de gekozen kwaliteit."
+      },
+      {
+        "title": "Levering",
+        "text": "We leveren je tapijt in België of Nederland. [INVULLEN: levertijd]."
+      }
     ],
-    "applicationsImageAlt": "Beursstand met geprint tapijt op maat als branding tapijt",
-    "quoteTitle": "Laat jouw geprint tapijt maken",
-    "quoteText": "Bezorg ons je ontwerp en afmetingen. Wij maken een offerte voor geprint tapijt of geprint vloertapijt op maat."
+    "faqTitle": "Veelgestelde vragen over geprint tapijt",
+    "faq": {
+      "care": {
+        "q": "Hoe onderhoud ik geprint tapijt?",
+        "a": "[INVULLEN: onderhoudsadvies, bv. stofzuigen en vlekken behandelen]."
+      },
+      "durability": {
+        "q": "Hoe slijtvast is geprint tapijt?",
+        "a": "Dat hangt af van de kwaliteit. Voor plaatsen waar veel gelopen wordt, raden we Globosoft aan: duurzaam en slijtvast, voor intensief gebruik. [INVULLEN: verwachte levensduur of gebruiksklasse]."
+      },
+      "fire": {
+        "q": "Welke brandklasse heeft geprint tapijt?",
+        "a": "[INVULLEN: brandklasse per kwaliteit volgens EN 13501-1]."
+      },
+      "delivery": {
+        "q": "Wat is de levertijd?",
+        "a": "Reken op [INVULLEN: levertijd in werkdagen] na je akkoord op de digitale proefdruk."
+      },
+      "sizes": {
+        "q": "Welke afmetingen zijn mogelijk?",
+        "a": "Je kiest zelf de breedte en de lengte, rechthoekig of rond. [INVULLEN: minimale en maximale afmetingen]. Grotere of afwijkende maten bekijken we graag samen."
+      }
+    },
+    "elsewhere": {
+      "event": {
+        "title": "Voor één event?",
+        "text": "Tapijt voor één gelegenheid, zoals een rode loper, een eventvloer of een beursstand? Dat is ons event tapijt.",
+        "link": "Bekijk event tapijt"
+      },
+      "logomat": {
+        "title": "Mat aan de ingang?",
+        "text": "Een inloopmat met je logo die vuil en vocht opvangt aan de deur? Kies dan een logomat.",
+        "link": "Bekijk logomatten"
+      }
+    },
+    "quoteTitle": "Laat je geprint tapijt maken",
+    "quoteText": "Bezorg ons je ontwerp en de gewenste afmetingen. Je krijgt een offerte voor je geprint tapijt op maat."
   },
   "CarpetSimulator": {
-    "title": "Bereken een prijsindicatie",
-    "intro": "Kies een kwaliteit, vorm en afmetingen en upload eventueel een patroon om een idee te krijgen van het resultaat. Dit is een prijsindicatie — voor een definitieve offerte nemen we graag persoonlijk contact met je op.",
     "quality": "Kwaliteit",
     "qualities": {
       "velvet": "Zacht en luxueus, ideaal voor showrooms.",
@@ -416,12 +521,12 @@
     "diameter": "Diameter",
     "custom": "Eigen keuze",
     "dimensions": "Afmetingen",
-    "priceIndication": "Prijsindicatie",
-    "priceNote": "Excl. btw — richtprijs, geen definitieve offerte.",
-    "contactForQuote": "Neem contact op voor een offerte",
+    "priceIndication": "Indicatieve prijs",
+    "priceNote": "Excl. btw, levering [INVULLEN]. Indicatieve prijs, geen definitieve offerte.",
     "customTitle": "Eigen afmeting",
     "customText": "Voor afwijkende afmetingen werken we op maat. Neem contact met ons op zodat we dit voor je kunnen bekijken.",
-    "toContact": "Naar contactpagina"
+    "toContact": "Naar contactpagina",
+    "quoteWithData": "Vraag je offerte aan met deze gegevens"
   },
   "Event": {
     "eyebrow": "Event tapijt",
@@ -1655,7 +1760,7 @@
       }
     ],
     "calculatorTitle": "Eerst een prijsindicatie?",
-    "calculatorText": "Met de prijscalculator op onze pagina over geprint tapijt bereken je meteen een richtprijs voor je oppervlakte en kwaliteit.",
+    "calculatorText": "Met onze prijscalculator bereken je meteen een richtprijs voor geprint tapijt in je oppervlakte en kwaliteit.",
     "calculatorLink": "Naar de prijscalculator",
     "faqTitle": "Vragen over een eventvloer",
     "faq": {
@@ -1665,7 +1770,7 @@
       },
       "price": {
         "q": "Wat kost een eventvloer?",
-        "a": "Dat hangt af van de oppervlakte, de kwaliteit en het ontwerp. Met de prijscalculator op onze pagina over geprint tapijt krijg je meteen een indicatie. Voor een volledige eventvloer maken we een offerte op maat."
+        "a": "Dat hangt af van de oppervlakte, de kwaliteit en het ontwerp. Met onze prijscalculator voor geprint tapijt krijg je meteen een indicatie. Voor een volledige eventvloer maken we een offerte op maat."
       },
       "install": {
         "q": "Leggen jullie de vloer ook?",
@@ -1739,7 +1844,7 @@
       },
       "price": {
         "q": "Wat kost beurstapijt?",
-        "a": "Dat hangt af van de oppervlakte van je stand, de kwaliteit en het ontwerp. Met de prijscalculator op onze pagina over geprint tapijt krijg je meteen een indicatie. Voor je stand maken we een offerte op maat."
+        "a": "Dat hangt af van de oppervlakte van je stand, de kwaliteit en het ontwerp. Met onze prijscalculator voor geprint tapijt krijg je meteen een indicatie. Voor je stand maken we een offerte op maat."
       }
     },
     "quoteTitle": "Vraag een offerte voor je standtapijt",
@@ -1757,5 +1862,257 @@
     "methods": "Aanvaarde betaalmethoden",
     "secure": "Veilig betalen",
     "checkoutNote": "Je betaalt veilig via Stripe met"
+  },
+  "ProductBar": {
+    "scope": {
+      "logomat": "Een logomat is een inloopmat voor aan de deur. Zoek je een groter tapijt voor in de ruimte zelf? Bekijk dan <printed>geprint tapijt</printed>. Voor één gelegenheid is er <event>event tapijt</event>.",
+      "printed": "Geprint tapijt is blijvend tapijt voor in de ruimte zelf. Voor aan de deur kies je een <logomat>logomat</logomat>, voor één gelegenheid <event>event tapijt</event>.",
+      "event": "Event tapijt is gemaakt voor één gelegenheid. Iets blijvends voor in de ruimte? Dat is <printed>geprint tapijt</printed>. Een mat voor aan de deur is een <logomat>logomat</logomat>."
+    },
+    "from": "Vanaf € [INVULLEN]",
+    "calculate": "Bereken je prijs"
+  },
+  "PrintedSector": {
+    "shop": {
+      "eyebrow": "Geprint tapijt voor winkels",
+      "title": "Winkeltapijt met je eigen print",
+      "intro": "Een geprint tapijt maakt je winkelvloer een deel van je merk. Van een tapijt met logo bij de kassa tot een opvallend tapijt in je etalage.",
+      "heroImageAlt": "Close-up van geprint tapijt met kleurrijk bladmotief",
+      "breadcrumb": "Winkel",
+      "introTitle": "Je merk op de winkelvloer",
+      "introText": [
+        "In een winkel kijken klanten niet alleen naar de rekken. Een geprint tapijt in je huisstijl valt op, versterkt je merk en geeft je zaak een eigen gezicht.",
+        "Je kan een tapijt ook gebruiken om klanten te sturen: een tapijt dat de looproute naar een nieuwe collectie markeert, of een tapijt dat een zone afbakent."
+      ],
+      "examplesTitle": "Voorbeelden in een winkel",
+      "examples": [
+        "Een tapijt met je logo bij de kassa of de paskamers",
+        "Een tapijt dat de looproute naar je nieuwe collectie markeert",
+        "Een opvallend tapijt in de etalage",
+        "Een tapijt in je huisstijl in een flagshipstore of showroom",
+        "Een tapijt dat een merk- of shop-in-shopzone afbakent"
+      ],
+      "benefitsTitle": "Waarom geprint tapijt in je winkel?",
+      "benefits": [
+        {
+          "title": "Branding",
+          "text": "Je logo, huisstijlkleuren of campagnebeeld, scherp geprint."
+        },
+        {
+          "title": "Looproutes",
+          "text": "Leid klanten met een tapijt naar de plek waar je ze wil hebben."
+        },
+        {
+          "title": "Op maat van je zaak",
+          "text": "Afmetingen en vorm afgestemd op je winkelinrichting."
+        },
+        {
+          "title": "Voor veel bezoekers",
+          "text": "Kies Globosoft voor zones waar veel gelopen wordt."
+        }
+      ],
+      "focusTitle": "Looproutes en zones",
+      "focusText": [
+        "Een tapijt is een van de weinige elementen in je winkel waar elke klant over loopt. Gebruik dat: een tapijt aan het begin van een looproute trekt klanten verder de winkel in, en een tapijt voor een display maakt van die plek een eigen zone.",
+        "Vertel ons hoe je winkel ingedeeld is, dan denken we mee over het formaat en de plaats van je tapijt."
+      ],
+      "faqTitle": "Vragen over winkeltapijt",
+      "faq": [
+        {
+          "q": "Kan ik mijn tapijt afstemmen op een nieuwe collectie of actie?",
+          "a": "Geprint tapijt is blijvend. Wissel je vaak van campagne, kies dan een ontwerp in je vaste huisstijl, en laat voor een tijdelijke actie een apart tapijt maken."
+        },
+        {
+          "q": "Welke kwaliteit kies ik voor een drukke winkel?",
+          "a": "Voor zones met veel loopverkeer raden we Globosoft aan: duurzaam en slijtvast. [INVULLEN: bijkomend advies voor winkels]."
+        }
+      ],
+      "quoteTitle": "Vraag een offerte voor je winkeltapijt",
+      "quoteText": "Stuur ons je logo of ontwerp, de gewenste afmetingen en waar het tapijt komt te liggen."
+    },
+    "office": {
+      "eyebrow": "Geprint tapijt voor kantoren",
+      "title": "Tapijt met logo voor kantoor en onthaal",
+      "intro": "Ontvang bezoekers op een tapijt met je logo. Een geprint tapijt aan het onthaal of in de vergaderzaal maakt je huisstijl ook binnen zichtbaar.",
+      "heroImageAlt": "Close-up van geprint tapijt met kleurrijk bladmotief",
+      "breadcrumb": "Kantoor",
+      "introTitle": "Een eerste indruk die blijft",
+      "introText": [
+        "Het onthaal is de plek waar bezoekers je bedrijf leren kennen. Een tapijt met je logo of in je huisstijlkleuren maakt meteen duidelijk waar ze zijn.",
+        "Ook verder in het gebouw werkt een geprint tapijt: in een vergaderzaal, een lounge of de gang naar de directie."
+      ],
+      "examplesTitle": "Voorbeelden op kantoor",
+      "examples": [
+        "Een tapijt met logo aan het onthaal of de receptie",
+        "Een tapijt in huisstijlkleuren in de vergaderzaal",
+        "Een tapijt met een patroon of beeld in de lounge of cafetaria",
+        "Een tapijt in de gang naar de directie of de showroom"
+      ],
+      "benefitsTitle": "Waarom geprint tapijt op kantoor?",
+      "benefits": [
+        {
+          "title": "Je huisstijl binnen",
+          "text": "Logo en kleuren die aansluiten bij je signalisatie en inrichting."
+        },
+        {
+          "title": "Representatief",
+          "text": "Een verzorgde ontvangst voor klanten, sollicitanten en partners."
+        },
+        {
+          "title": "Op maat",
+          "text": "Afmetingen en vorm afgestemd op je onthaal of vergaderzaal."
+        },
+        {
+          "title": "Blijvend",
+          "text": "Een kwaliteitstapijt dat deel wordt van je vaste inrichting."
+        }
+      ],
+      "focusTitle": "Aan het onthaal of in de vergaderzaal",
+      "focusText": [
+        "Aan het onthaal ligt het tapijt in het zicht van elke bezoeker. Kies daar een ontwerp waarin je logo duidelijk te zien is.",
+        "In een vergaderzaal mag het subtieler: een patroon of je huisstijlkleuren, zonder groot logo."
+      ],
+      "faqTitle": "Vragen over tapijt voor kantoor",
+      "faq": [
+        {
+          "q": "Is geprint tapijt geschikt onder bureaustoelen op wieltjes?",
+          "a": "[INVULLEN: geschiktheid voor bureaustoelen op wieltjes]."
+        },
+        {
+          "q": "Wat is het verschil met een logomat aan de ingang?",
+          "a": "Een logomat ligt aan de deur en vangt vuil en vocht op. Een geprint tapijt ligt in de ruimte zelf, zoals aan het onthaal, en is vooral een deel van je inrichting."
+        }
+      ],
+      "quoteTitle": "Vraag een offerte voor je kantoortapijt",
+      "quoteText": "Stuur ons je logo, de gewenste afmetingen en de ruimte waar het tapijt komt te liggen."
+    },
+    "horeca": {
+      "eyebrow": "Geprint tapijt voor horeca",
+      "title": "Geprint tapijt voor hotel, restaurant en bar",
+      "intro": "Een tapijt in de sfeer van je zaak: met je logo in de lobby, een patroon in het restaurant of een opvallend ontwerp in de bar.",
+      "heroImageAlt": "Close-up van geprint tapijt met kleurrijk bladmotief",
+      "breadcrumb": "Horeca",
+      "introTitle": "Sfeer vanaf de vloer",
+      "introText": [
+        "In horeca draait alles om beleving. Een geprint tapijt laat je logo, je kleuren of een patroon terugkomen in je interieur, van de lobby tot de bar.",
+        "Horeca vraagt wel veel van een tapijt: veel gasten, gemorste drank en strenge regels voor brandveiligheid. Kies de kwaliteit daarom met zorg."
+      ],
+      "examplesTitle": "Voorbeelden in horeca",
+      "examples": [
+        "Een tapijt met je logo in de hotellobby of aan de receptie",
+        "Een tapijt in de gangen naar de kamers",
+        "Een tapijt met patroon onder de tafels in het restaurant",
+        "Een opvallend tapijt in de bar of lounge",
+        "Een tapijt in een vergader- of feestzaal"
+      ],
+      "benefitsTitle": "Waarom geprint tapijt in je zaak?",
+      "benefits": [
+        {
+          "title": "Je eigen sfeer",
+          "text": "Een ontwerp dat past bij je interieur en je merk."
+        },
+        {
+          "title": "Herkenbaar",
+          "text": "Je logo of naam op de plek waar gasten binnenkomen."
+        },
+        {
+          "title": "Op maat",
+          "text": "Afmetingen en vorm afgestemd op je zaal of lobby."
+        },
+        {
+          "title": "Slijtvaste kwaliteit",
+          "text": "Globosoft is duurzaam en slijtvast, voor intensief gebruik."
+        }
+      ],
+      "focusTitle": "Brandklasse en slijtage",
+      "focusText": [
+        "Voor hotels en horecazaken gelden vaak eisen voor de brandklasse van vloerbekleding (EN 13501-1). Ons geprint tapijt heeft brandklasse [INVULLEN: brandklasse per kwaliteit].",
+        "Op plaatsen met veel loopverkeer, zoals een lobby of een gang, raden we Globosoft aan. [INVULLEN: advies over vlekbestendigheid en reiniging]."
+      ],
+      "faqTitle": "Vragen over tapijt voor horeca",
+      "faq": [
+        {
+          "q": "Voldoet geprint tapijt aan de brandveiligheidseisen voor horeca?",
+          "a": "Ons geprint tapijt heeft brandklasse [INVULLEN]. Vraag bij je verzekeraar of de brandweer na welke klasse voor jouw zaak vereist is."
+        },
+        {
+          "q": "Hoe ga ik om met vlekken van drank of eten?",
+          "a": "[INVULLEN: reinigingsadvies]."
+        }
+      ],
+      "quoteTitle": "Vraag een offerte voor je horecatapijt",
+      "quoteText": "Stuur ons je logo of ontwerp, de afmetingen en de ruimte. Vermeld ook welke brandklasse je nodig hebt."
+    }
+  },
+  "PriceTool": {
+    "eyebrow": "Prijs berekenen",
+    "title": "Bereken de prijs van je tapijt",
+    "intro": "Kies je product, vul de afmetingen in en zie meteen een indicatieve prijs. Voor een definitieve prijs vraag je een offerte aan.",
+    "heroImageAlt": "Close-up van geprint tapijt met kleurrijk bladmotief",
+    "breadcrumb": "Prijs berekenen",
+    "productLabel": "Kies je product",
+    "products": {
+      "geprint-tapijt": "Geprint tapijt",
+      "loper": "Event loper",
+      "eventvloer": "Eventvloer",
+      "beurstapijt": "Beurstapijt"
+    },
+    "quoteWithData": "Vraag je offerte aan met deze gegevens",
+    "runner": {
+      "length": "Lengte (m)",
+      "width": "Breedte (m)",
+      "hint": "Lengte en breedte kies je zelf. Voor een afwijkende maat of kwaliteit maken we een offerte op maat.",
+      "dimensions": "Afmetingen",
+      "area": "Oppervlakte",
+      "perM2": "Richtprijs per m²",
+      "total": "Indicatieve prijs",
+      "note": "Excl. btw, levering [INVULLEN]. Richtprijs in standaardkwaliteit, geen definitieve offerte."
+    },
+    "onRequest": {
+      "title": "Prijs op aanvraag",
+      "floor": "Een eventvloer maken we altijd op maat: de prijs hangt af van de oppervlakte, de vorm van de ruimte en de plaatsing. Vraag een offerte aan, dan rekenen we het voor je uit.",
+      "stand": "Beurstapijt maken we op maat van je stand: de prijs hangt af van de oppervlakte, de vorm en het ontwerp. Vraag een offerte aan, dan rekenen we het voor je uit.",
+      "hint": "Een eerste indicatie per m²? Gebruik de calculator voor geprint tapijt.",
+      "quote": "Vraag je offerte aan",
+      "toPrinted": "Calculator geprint tapijt"
+    },
+    "factorsTitle": "Wat bepaalt de prijs?",
+    "factors": {
+      "size": {
+        "title": "Afmetingen",
+        "text": "De prijs wordt per m² berekend: hoe groter het tapijt, hoe hoger de prijs."
+      },
+      "quality": {
+        "title": "Kwaliteit",
+        "text": "Velvet, Globosoft en Pxl hebben elk een eigen prijs per m²."
+      },
+      "shape": {
+        "title": "Vorm",
+        "text": "Bij een rond tapijt rekenen we met de oppervlakte van de cirkel."
+      }
+    },
+    "faqTitle": "Vragen over de prijs",
+    "faq": {
+      "final": {
+        "q": "Is de berekende prijs definitief?",
+        "a": "Nee, het is een indicatieve prijs. Na je aanvraag krijg je een offerte op maat met de definitieve prijs."
+      },
+      "vat": {
+        "q": "Is de btw inbegrepen?",
+        "a": "Nee, de indicatieve prijs is exclusief btw."
+      },
+      "shipping": {
+        "q": "Wat kost de levering?",
+        "a": "[INVULLEN: leveringskosten voor geprint tapijt en event tapijt]."
+      },
+      "logomat": {
+        "q": "Kan ik hier ook de prijs van een logomat berekenen?",
+        "a": "De prijs van een logomat zie je meteen in de configurator op onze pagina logomatten, terwijl je je mat ontwerpt."
+      },
+      "quote": {
+        "q": "Hoe vraag ik een offerte aan?",
+        "a": "Klik op ‘Vraag je offerte aan met deze gegevens’. Het offerteformulier wordt dan ingevuld met je product, afmetingen en de indicatieve prijs; je vult enkel nog je gegevens aan."
+      }
+    }
   }
 }

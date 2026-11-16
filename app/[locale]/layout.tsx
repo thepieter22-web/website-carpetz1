@@ -76,6 +76,7 @@ const CLIENT_NAMESPACES = [
   'CookieConsent',
   'ContactForm',
   'CarpetSimulator',
+  'PriceTool',
   'Configurator',
   'MatCanvas',
   'TextEditor',

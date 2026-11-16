@@ -13,6 +13,7 @@ import { Cta } from '@/components/cta'
 import { EventCards } from '@/components/event-sections'
 import { Link } from '@/navigation'
 import { localizedAlternates } from '@/lib/seo'
+import { ProductBar } from '@/components/product-bar'
 import { getLocalizedPath } from '@/routing'
 import { usePriceFormatter } from '@/lib/format'
 import { RUNNER_PRICE_PER_M2 } from '@/lib/event-pricing'
@@ -72,6 +73,8 @@ export default function EventTapijtPage({ params: { locale } }: Props) {
           imageAlt={t('heroImageAlt')}
           breadcrumbs={<Breadcrumbs items={[{ label: t('breadcrumb') }]} currentPath={PATH} />}
         />
+
+        <ProductBar scope="event" />
 
         {/* Drie soorten event tapijt */}
         <section>

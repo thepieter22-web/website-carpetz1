@@ -12,6 +12,7 @@ export function SiteFooter() {
     { href: '/logomat#configurator', label: t('logomats') },
     { href: '/geprint-tapijt', label: t('printedCarpet') },
     { href: '/event-tapijt', label: t('eventCarpet') },
+    { href: '/prijs-berekenen', label: t('priceCalculator') },
   ]
 
   const companyLinks = [

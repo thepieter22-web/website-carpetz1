@@ -62,17 +62,11 @@ export function PrintedCarpetSimulator() {
       ? Math.max(MIN_HEIGHT, Math.min(MAX_HEIGHT, diameter * PX_PER_METER))
       : Math.min(MAX_HEIGHT, Math.max(MIN_HEIGHT, length * PX_PER_METER));
 
+  // Ingebouwd in de prijscalculator (/prijs-berekenen); de pagina zorgt voor titel en sectie.
   return (
-    <section className="border-t border-border bg-secondary/40">
-      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-        <h2 className="font-serif text-3xl font-semibold leading-tight text-balance">
-          {t("title")}
-        </h2>
-        <p className="mt-3 max-w-2xl text-sm text-muted-foreground">
-          {t("intro")}
-        </p>
-
-        <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_380px]">
+    <div>
+      <div>
+        <div className="grid gap-10 lg:grid-cols-[1fr_380px]">
           {/* Configuratie */}
           <div className="order-2 min-w-0 space-y-8 lg:order-1">
             {/* Kwaliteit */}
@@ -261,7 +255,7 @@ export function PrintedCarpetSimulator() {
                 href={`/contact?product=geprint-tapijt&kwaliteit=${selectedQuality.label}&vorm=${shape}&breedte=${width}&lengte=${length}&diameter=${diameter}&prijsindicatie=${price.toFixed(2)}`}
                 className="mt-6 block w-full rounded-sm bg-accent px-4 py-3 text-center text-sm font-medium text-accent-foreground hover:opacity-90 transition-opacity"
               >
-                {t("contactForQuote")}
+                {t("quoteWithData")}
               </Link>
             </div>
 
@@ -308,6 +302,6 @@ export function PrintedCarpetSimulator() {
           </div>
         </div>
       )}
-    </section>
+    </div>
   );
 }
