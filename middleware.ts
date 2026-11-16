@@ -11,7 +11,7 @@ const intlMiddleware = createMiddleware(routing);
  *
  * Aan/uit: zet MAINTENANCE = false (of in Vercel MAINTENANCE_MODE=off) en deploy opnieuw.
  */
-const MAINTENANCE = true;
+const MAINTENANCE = false;
 const LIVE_HOSTS = ['carpetz.be', 'www.carpetz.be'];
 
 export default function middleware(request: NextRequest) {
