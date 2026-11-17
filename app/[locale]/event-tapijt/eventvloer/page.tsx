@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
-import { Crown, Layers, Sparkles } from 'lucide-react'
+import { Cloud, Focus } from 'lucide-react'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { PageHero } from '@/components/page-hero'
@@ -88,7 +88,7 @@ export default function EventvloerPage({ params: { locale } }: Props) {
           title={t('qualitiesTitle')}
           text={t('qualitiesText')}
           items={t.raw('qualities') as TitleText[]}
-          icons={[Crown, Layers, Sparkles]}
+          icons={[Focus, Cloud]}
           className="bg-secondary/40"
         />
 

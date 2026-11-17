@@ -9,6 +9,7 @@ import { PageHero } from '@/components/page-hero'
 import { QuoteBand } from '@/components/quote-band'
 import { Breadcrumbs } from '@/components/breadcrumbs'
 import { Faq } from '@/components/faq'
+import { FireSafetyBadge } from '@/components/fire-safety-badge'
 import { Cta } from '@/components/cta'
 import { EventCards } from '@/components/event-sections'
 import { Link } from '@/navigation'
@@ -53,12 +54,13 @@ export default function EventTapijtPage({ params: { locale } }: Props) {
   // Foto's van echte events: toevoegen in messages/*.json onder Event.gallery.photos ({ src, alt }).
   const photos = t.raw('gallery.photos') as GalleryPhoto[]
 
-  const faq = (['delivery', 'material', 'reuse', 'price'] as const).map((key) => ({
+  const faq = (['delivery', 'material', 'fire', 'reuse', 'price'] as const).map((key) => ({
     q: t(`faq.${key}.q`),
     a: t(`faq.${key}.a`, {
       perM2: price(RUNNER_PRICE_PER_M2),
       example: price(RUNNER_PRICE_PER_M2 * 5),
     }),
+    media: key === 'fire' ? <FireSafetyBadge /> : undefined,
   }))
 
   return (

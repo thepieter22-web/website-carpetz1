@@ -6,14 +6,13 @@ import { Link } from "@/navigation";
 import { usePriceFormatter } from "@/lib/format";
 import { Upload, X } from "lucide-react";
 
-type Quality = "velvet" | "globosoft" | "pxl";
+type Quality = "pixel" | "cloud";
 type Shape = "rectangle" | "circle";
 
 // Productnamen zijn merknamen; de beschrijvingen staan in messages/*.json (CarpetSimulator.qualities).
 const QUALITIES: { id: Quality; label: string; pricePerM2: number }[] = [
-  { id: "velvet", label: "Velvet", pricePerM2: 20 },
-  { id: "globosoft", label: "Globosoft", pricePerM2: 40 },
-  { id: "pxl", label: "Pxl", pricePerM2: 60 },
+  { id: "pixel", label: "Carpetz Pixel", pricePerM2: 20 },
+  { id: "cloud", label: "Carpetz Cloud", pricePerM2: 40 },
 ];
 
 const PRESET_WIDTHS = [1, 2];
@@ -26,7 +25,7 @@ export function PrintedCarpetSimulator() {
   const t = useTranslations("CarpetSimulator");
   const common = useTranslations("Common");
   const formatPrice = usePriceFormatter();
-  const [quality, setQuality] = useState<Quality>("velvet");
+  const [quality, setQuality] = useState<Quality>("pixel");
   const [shape, setShape] = useState<Shape>("rectangle");
   const [width, setWidth] = useState<number>(1);
   const [length, setLength] = useState<number>(2);
@@ -72,7 +71,7 @@ export function PrintedCarpetSimulator() {
             {/* Kwaliteit */}
             <div>
               <h3 className="text-sm font-semibold uppercase tracking-widest text-accent">{t("quality")}</h3>
-              <div className="mt-4 grid gap-3 sm:grid-cols-3">
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 {QUALITIES.map((q) => (
                   <button
                     key={q.id}
@@ -252,7 +251,7 @@ export function PrintedCarpetSimulator() {
               <p className="mt-1 text-xs text-muted-foreground">{t("priceNote")}</p>
 
               <Link
-                href={`/contact?product=geprint-tapijt&kwaliteit=${selectedQuality.label}&vorm=${shape}&breedte=${width}&lengte=${length}&diameter=${diameter}&prijsindicatie=${price.toFixed(2)}`}
+                href={`/contact?product=geprint-tapijt&kwaliteit=${encodeURIComponent(selectedQuality.label)}&vorm=${shape}&breedte=${width}&lengte=${length}&diameter=${diameter}&prijsindicatie=${price.toFixed(2)}`}
                 className="mt-6 block w-full rounded-sm bg-accent px-4 py-3 text-center text-sm font-medium text-accent-foreground hover:opacity-90 transition-opacity"
               >
                 {t("quoteWithData")}

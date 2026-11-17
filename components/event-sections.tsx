@@ -121,7 +121,7 @@ export function FeatureGrid({
         <div
           className={cn(
             'mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2',
-            items.length === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-4',
+            items.length === 3 ? 'lg:grid-cols-3' : items.length > 3 && 'lg:grid-cols-4',
           )}
         >
           {items.map((item, i) => {

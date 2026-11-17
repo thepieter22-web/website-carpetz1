@@ -413,7 +413,7 @@
       },
       {
         "title": "Matière",
-        "text": "Velvet (doux et luxueux), Globosoft (durable et résistant) ou Pxl (l’impression photoréaliste la plus nette)."
+        "text": "Carpetz Pixel (fin et tufté serré, net jusque dans les moindres détails) ou Carpetz Cloud (épais et doux, retient la saleté et l’humidité)."
       },
       {
         "title": "Finition",
@@ -468,15 +468,15 @@
     "faq": {
       "care": {
         "q": "Comment entretenir un tapis imprimé ?",
-        "a": "[À COMPLÉTER : conseils d’entretien, p. ex. aspiration et traitement des taches]."
+        "a": "Carpetz Pixel est lavable en machine à 30 °C. Carpetz Cloud est également lavable. [À COMPLÉTER : autres conseils d’entretien, p. ex. aspiration et traitement des taches]."
       },
       "durability": {
         "q": "Le tapis imprimé résiste-t-il à l’usure ?",
-        "a": "Cela dépend de la qualité. Pour les zones de passage intensif, nous recommandons Globosoft : durable et résistant, pour un usage intensif. [À COMPLÉTER : durée de vie attendue ou classe d’usage]."
+        "a": "Cela dépend de la qualité. À l’entrée et dans les autres zones de passage intensif, nous recommandons Carpetz Cloud : épais (8 mm), avec un velours frisé qui absorbe jusqu’à 1,76 l d’humidité par m² et retient la saleté à la porte. [À COMPLÉTER : durée de vie attendue ou classe d’usage]."
       },
       "fire": {
         "q": "Quelle est la réaction au feu du tapis imprimé ?",
-        "a": "[À COMPLÉTER : classe de réaction au feu par qualité selon la norme EN 13501-1]."
+        "a": "Nos tapis imprimés, comme Carpetz Pixel et Carpetz Cloud, sont ignifugés et présentent une réaction au feu Cfl-s1 selon la norme européenne EN 13501-1. Cfl est la classe de réaction au feu des revêtements de sol : l’échelle va de A1fl (incombustible) à Ffl, et la classe Cfl ne contribue que de façon limitée à la propagation du feu. s1 signifie qu’en cas d’incendie, très peu de fumée se dégage : c’est la meilleure classe de fumée. Le tapis convient donc aussi aux commerces, bureaux, établissements horeca et autres espaces professionnels. Vous avez besoin d’une attestation de réaction au feu pour un projet précis ? Contactez-nous."
       },
       "delivery": {
         "q": "Quel est le délai de livraison ?",
@@ -484,7 +484,7 @@
       },
       "sizes": {
         "q": "Quelles dimensions sont possibles ?",
-        "a": "Vous choisissez la largeur et la longueur, en rectangle ou en rond. [À COMPLÉTER : dimensions minimales et maximales]. Nous étudions volontiers avec vous les grands formats ou les formats particuliers."
+        "a": "Vous choisissez la largeur et la longueur, en rectangle ou en rond. Carpetz Pixel est disponible en rouleau jusqu’à 1,98 m de large. Carpetz Cloud existe en tapis sur mesure ou en tapis rond jusqu’à environ 185 cm. [À COMPLÉTER : dimensions minimales]. Nous étudions volontiers avec vous les grands formats ou les formats particuliers."
       }
     },
     "elsewhere": {
@@ -505,9 +505,8 @@
   "CarpetSimulator": {
     "quality": "Qualité",
     "qualities": {
-      "velvet": "Doux et luxueux, idéal pour les showrooms.",
-      "globosoft": "Durable et résistant, pour un usage intensif.",
-      "pxl": "Impression photoréaliste la plus nette, qualité premium."
+      "pixel": "Fin et net, idéal pour les grandes surfaces.",
+      "cloud": "Épais et doux, retient la saleté et l’humidité."
     },
     "pattern": "Motif (facultatif)",
     "removePattern": "Supprimer le motif",
@@ -587,7 +586,11 @@
       },
       "material": {
         "q": "En quelle matière est le tapis événementiel ?",
-        "a": "Nous imprimons sur du tapis de différentes qualités : Velvet (doux et luxueux), Globosoft (durable et résistant) et Pxl (l’impression photoréaliste la plus nette). Pour les tapis rouges, nous utilisons par défaut [À COMPLÉTER : qualité standard]. Nous vous aidons volontiers à choisir la qualité adaptée à votre événement."
+        "a": "Nous imprimons sur du tapis en deux qualités : Carpetz Pixel (fin et net) et Carpetz Cloud (épais et doux). Pour les tapis rouges, nous utilisons par défaut [À COMPLÉTER : qualité standard]. Nous vous aidons volontiers à choisir la qualité adaptée à votre événement."
+      },
+      "fire": {
+        "q": "Le tapis imprimé est-il ignifugé ?",
+        "a": "Oui. Nos tapis imprimés, comme Carpetz Pixel et Carpetz Cloud, sont ignifugés et présentent une réaction au feu Cfl-s1 selon la norme européenne EN 13501-1. Cfl est la classe de réaction au feu des revêtements de sol : l’échelle va de A1fl (incombustible) à Ffl, et la classe Cfl ne contribue que de façon limitée à la propagation du feu. s1 signifie qu’en cas d’incendie, très peu de fumée se dégage : c’est la meilleure classe de fumée. Le tapis convient donc aussi aux commerces, bureaux, établissements horeca et autres espaces professionnels. Vous avez besoin d’une attestation de réaction au feu pour un projet précis ? Contactez-nous."
       },
       "reuse": {
         "q": "Le tapis ne peut-il servir qu’une seule fois ?",
@@ -1728,16 +1731,12 @@
     "qualitiesText": "Selon l’usage et le design, nous vous conseillons l’une de ces qualités.",
     "qualities": [
       {
-        "title": "Velvet",
-        "text": "Doux et luxueux, pour les galas, lounges et espaces VIP."
+        "title": "Carpetz Pixel",
+        "text": "Chaque détail, d’une netteté parfaite : tufté serré, fin (5 mm) et disponible en rouleau jusqu’à 1,98 m de large. Idéal pour les sols événementiels et les stands de salon."
       },
       {
-        "title": "Globosoft",
-        "text": "Durable et résistant, pour les événements très fréquentés."
-      },
-      {
-        "title": "Pxl",
-        "text": "L’impression photoréaliste la plus nette, quand votre design est la vedette."
+        "title": "Carpetz Cloud",
+        "text": "Doux comme un nuage, solide comme un tapis : épais (8 mm), antidérapant, il retient la saleté à l’entrée."
       }
     ],
     "stepsTitle": "Du design au sol",
@@ -1908,7 +1907,7 @@
         },
         {
           "title": "Pour un passage intensif",
-          "text": "Choisissez Globosoft pour les zones très fréquentées."
+          "text": "Choisissez Carpetz Cloud à l’entrée : il retient la saleté et l’humidité, et il est antidérapant."
         }
       ],
       "focusTitle": "Parcours et zones",
@@ -1924,7 +1923,7 @@
         },
         {
           "q": "Quelle qualité choisir pour un magasin très fréquenté ?",
-          "a": "Pour les zones de passage intensif, nous recommandons Globosoft : durable et résistant. [À COMPLÉTER : conseils supplémentaires pour les commerces]."
+          "a": "À l’entrée, choisissez Carpetz Cloud : épais et doux, il retient la saleté et l’humidité, et il est antidérapant. Pour les plus grandes surfaces du magasin, choisissez Carpetz Pixel : fin, d’une grande netteté et disponible en rouleau jusqu’à 1,98 m de large. [À COMPLÉTER : conseils supplémentaires pour les commerces]."
         }
       ],
       "quoteTitle": "Demandez un devis pour votre tapis de magasin",
@@ -2020,14 +2019,14 @@
           "text": "Dimensions et forme adaptées à votre salle ou à votre hall."
         },
         {
-          "title": "Qualité résistante",
-          "text": "Globosoft est durable et résistant, pour un usage intensif."
+          "title": "La saleté reste à la porte",
+          "text": "Carpetz Cloud absorbe jusqu’à 1,76 l d’humidité par m² et retient la saleté à l’entrée."
         }
       ],
       "focusTitle": "Réaction au feu et usure",
       "focusText": [
-        "Les hôtels et établissements horeca doivent souvent respecter des exigences de réaction au feu pour leurs revêtements de sol (EN 13501-1). Notre tapis imprimé a la classe [À COMPLÉTER : classe de réaction au feu par qualité].",
-        "Pour les zones de passage intensif, comme un hall ou un couloir, nous recommandons Globosoft. [À COMPLÉTER : conseils sur la résistance aux taches et le nettoyage]."
+        "Les hôtels et établissements horeca doivent souvent respecter des exigences de réaction au feu pour leurs revêtements de sol (EN 13501-1). Carpetz Pixel et Carpetz Cloud présentent tous deux une réaction au feu Cfl-s1.",
+        "Pour les zones de passage intensif, comme un hall ou un couloir, nous recommandons Carpetz Cloud : il absorbe l’humidité et retient la saleté. Carpetz Pixel est lavable en machine à 30 °C, Carpetz Cloud est également lavable. [À COMPLÉTER : conseils sur la résistance aux taches]."
       ],
       "faqTitle": "Questions sur le tapis pour l’horeca",
       "faq": [
@@ -2043,6 +2042,10 @@
       "quoteTitle": "Demandez un devis pour votre tapis horeca",
       "quoteText": "Envoyez-nous votre logo ou votre design, les dimensions et l’espace concerné. Précisez aussi la classe de réaction au feu requise."
     }
+  },
+  "FireBadge": {
+    "arc": "RETARDATEUR DE FLAMME",
+    "label": "Tapis ignifugé, réaction au feu Cfl-s1 selon EN 13501-1"
   },
   "PriceTool": {
     "eyebrow": "Calculer le prix",
@@ -2084,7 +2087,7 @@
       },
       "quality": {
         "title": "Qualité",
-        "text": "Velvet, Globosoft et Pxl ont chacun leur propre prix au m²."
+        "text": "Carpetz Pixel et Carpetz Cloud ont chacun leur propre prix au m²."
       },
       "shape": {
         "title": "Forme",

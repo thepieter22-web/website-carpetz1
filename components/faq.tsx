@@ -1,6 +1,8 @@
+import type { ReactNode } from 'react'
 import { ChevronDown } from 'lucide-react'
 
-export type FaqItem = { q: string; a: string }
+/** `media`: optioneel beeld naast het antwoord (bv. een badge); gaat niet mee in het schema. */
+export type FaqItem = { q: string; a: string; media?: ReactNode }
 
 /**
  * Veelgestelde vragen als uitklapbare lijst (werkt zonder JavaScript)
@@ -32,7 +34,14 @@ export function Faq({ title, items, id = 'faq' }: { title: string; items: FaqIte
                   aria-hidden="true"
                 />
               </summary>
-              <p className="pb-5 text-base leading-relaxed text-muted-foreground text-pretty">{item.a}</p>
+              {item.media ? (
+                <div className="flex flex-col gap-4 pb-5 sm:flex-row sm:items-start sm:gap-6">
+                  {item.media}
+                  <p className="text-base leading-relaxed text-muted-foreground text-pretty">{item.a}</p>
+                </div>
+              ) : (
+                <p className="pb-5 text-base leading-relaxed text-muted-foreground text-pretty">{item.a}</p>
+              )}
             </details>
           ))}
         </div>

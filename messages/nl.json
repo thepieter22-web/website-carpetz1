@@ -413,7 +413,7 @@
       },
       {
         "title": "Materiaal",
-        "text": "Velvet (zacht en luxueus), Globosoft (duurzaam en slijtvast) of Pxl (de scherpste, fotorealistische print)."
+        "text": "Carpetz Pixel (dun en fijn getuft, haarscherp tot in de kleinste details) of Carpetz Cloud (dik en zacht, houdt vuil en vocht tegen)."
       },
       {
         "title": "Afwerking",
@@ -468,15 +468,15 @@
     "faq": {
       "care": {
         "q": "Hoe onderhoud ik geprint tapijt?",
-        "a": "[INVULLEN: onderhoudsadvies, bv. stofzuigen en vlekken behandelen]."
+        "a": "Carpetz Pixel is wasbaar in de machine op 30 °C. Carpetz Cloud is ook wasbaar. [INVULLEN: verder onderhoudsadvies, bv. stofzuigen en vlekken behandelen]."
       },
       "durability": {
         "q": "Hoe slijtvast is geprint tapijt?",
-        "a": "Dat hangt af van de kwaliteit. Voor plaatsen waar veel gelopen wordt, raden we Globosoft aan: duurzaam en slijtvast, voor intensief gebruik. [INVULLEN: verwachte levensduur of gebruiksklasse]."
+        "a": "Dat hangt af van de kwaliteit. Aan de ingang en op andere plaatsen waar veel gelopen wordt, raden we Carpetz Cloud aan: dik (8 mm), met een frisé-pool die tot 1,76 l vocht per m² opneemt en vuil tegenhoudt aan de deur. [INVULLEN: verwachte levensduur of gebruiksklasse]."
       },
       "fire": {
         "q": "Welke brandklasse heeft geprint tapijt?",
-        "a": "[INVULLEN: brandklasse per kwaliteit volgens EN 13501-1]."
+        "a": "Onze geprinte tapijten, zoals Carpetz Pixel en Carpetz Cloud, zijn brandvertragend en hebben brandklasse Cfl-s1 volgens de Europese norm EN 13501-1. Cfl is de brandklasse voor vloerbekleding: de schaal gaat van A1fl (onbrandbaar) tot Ffl, en Cfl draagt maar beperkt bij aan de verspreiding van vuur. s1 betekent dat er bij brand heel weinig rook vrijkomt, de beste rookklasse. Daardoor is het tapijt ook geschikt voor winkels, kantoren, horeca en andere professionele ruimtes. Heb je een brandveiligheidsattest nodig voor een specifiek project? Neem dan contact met ons op."
       },
       "delivery": {
         "q": "Wat is de levertijd?",
@@ -484,7 +484,7 @@
       },
       "sizes": {
         "q": "Welke afmetingen zijn mogelijk?",
-        "a": "Je kiest zelf de breedte en de lengte, rechthoekig of rond. [INVULLEN: minimale en maximale afmetingen]. Grotere of afwijkende maten bekijken we graag samen."
+        "a": "Je kiest zelf de breedte en de lengte, rechthoekig of rond. Carpetz Pixel is verkrijgbaar op rol tot 1,98 m breed. Carpetz Cloud bestaat als mat op maat of als rond tapijt tot ongeveer 185 cm. [INVULLEN: minimale afmetingen]. Grotere of afwijkende maten bekijken we graag samen."
       }
     },
     "elsewhere": {
@@ -505,9 +505,8 @@
   "CarpetSimulator": {
     "quality": "Kwaliteit",
     "qualities": {
-      "velvet": "Zacht en luxueus, ideaal voor showrooms.",
-      "globosoft": "Duurzaam en slijtvast, voor intensief gebruik.",
-      "pxl": "Scherpste fotorealistische print, premium kwaliteit."
+      "pixel": "Dun en haarscherp, ideaal voor grote oppervlakken.",
+      "cloud": "Dik en zacht, houdt vuil en vocht tegen."
     },
     "pattern": "Patroon (optioneel)",
     "removePattern": "Patroon verwijderen",
@@ -587,7 +586,11 @@
       },
       "material": {
         "q": "Van welk materiaal is event tapijt?",
-        "a": "We printen op tapijt in verschillende kwaliteiten: Velvet (zacht en luxueus), Globosoft (duurzaam en slijtvast) en Pxl (de scherpste, fotorealistische print). Voor lopers werken we standaard met [INVULLEN: standaardkwaliteit]. We helpen je graag kiezen wat bij je event past."
+        "a": "We printen op tapijt in twee kwaliteiten: Carpetz Pixel (dun en haarscherp) en Carpetz Cloud (dik en zacht). Voor lopers werken we standaard met [INVULLEN: standaardkwaliteit]. We helpen je graag kiezen wat bij je event past."
+      },
+      "fire": {
+        "q": "Is geprint tapijt brandveilig?",
+        "a": "Ja. Onze geprinte tapijten, zoals Carpetz Pixel en Carpetz Cloud, zijn brandvertragend en hebben brandklasse Cfl-s1 volgens de Europese norm EN 13501-1. Cfl is de brandklasse voor vloerbekleding: de schaal gaat van A1fl (onbrandbaar) tot Ffl, en Cfl draagt maar beperkt bij aan de verspreiding van vuur. s1 betekent dat er bij brand heel weinig rook vrijkomt, de beste rookklasse. Daardoor is het tapijt ook geschikt voor winkels, kantoren, horeca en andere professionele ruimtes. Heb je een brandveiligheidsattest nodig voor een specifiek project? Neem dan contact met ons op."
       },
       "reuse": {
         "q": "Kan ik het tapijt maar één keer gebruiken?",
@@ -1728,16 +1731,12 @@
     "qualitiesText": "Afhankelijk van het gebruik en het ontwerp raden we een van deze kwaliteiten aan.",
     "qualities": [
       {
-        "title": "Velvet",
-        "text": "Zacht en luxueus, voor gala’s, lounges en vip-zones."
+        "title": "Carpetz Pixel",
+        "text": "Elk detail, haarscherp: fijn getuft, dun (5 mm) en op rol tot 1,98 m breed. Ideaal voor eventvloeren en beursstands."
       },
       {
-        "title": "Globosoft",
-        "text": "Duurzaam en slijtvast, voor events met veel bezoekers."
-      },
-      {
-        "title": "Pxl",
-        "text": "De scherpste, fotorealistische print, als je ontwerp de hoofdrol speelt."
+        "title": "Carpetz Cloud",
+        "text": "Zacht als een wolk, sterk als een mat: dik (8 mm), antislip en houdt vuil tegen aan de ingang."
       }
     ],
     "stepsTitle": "Van ontwerp tot vloer",
@@ -1908,7 +1907,7 @@
         },
         {
           "title": "Voor veel bezoekers",
-          "text": "Kies Globosoft voor zones waar veel gelopen wordt."
+          "text": "Kies Carpetz Cloud aan de ingang: het houdt vuil en vocht tegen en ligt antislip."
         }
       ],
       "focusTitle": "Looproutes en zones",
@@ -1924,7 +1923,7 @@
         },
         {
           "q": "Welke kwaliteit kies ik voor een drukke winkel?",
-          "a": "Voor zones met veel loopverkeer raden we Globosoft aan: duurzaam en slijtvast. [INVULLEN: bijkomend advies voor winkels]."
+          "a": "Aan de ingang kies je Carpetz Cloud: dik en zacht, het houdt vuil en vocht tegen en ligt antislip. Voor grotere oppervlakken in de winkel kies je Carpetz Pixel: dun, haarscherp en op rol tot 1,98 m breed. [INVULLEN: bijkomend advies voor winkels]."
         }
       ],
       "quoteTitle": "Vraag een offerte voor je winkeltapijt",
@@ -2020,14 +2019,14 @@
           "text": "Afmetingen en vorm afgestemd op je zaal of lobby."
         },
         {
-          "title": "Slijtvaste kwaliteit",
-          "text": "Globosoft is duurzaam en slijtvast, voor intensief gebruik."
+          "title": "Vuil blijft aan de deur",
+          "text": "Carpetz Cloud neemt tot 1,76 l vocht per m² op en houdt vuil tegen aan de ingang."
         }
       ],
       "focusTitle": "Brandklasse en slijtage",
       "focusText": [
-        "Voor hotels en horecazaken gelden vaak eisen voor de brandklasse van vloerbekleding (EN 13501-1). Ons geprint tapijt heeft brandklasse [INVULLEN: brandklasse per kwaliteit].",
-        "Op plaatsen met veel loopverkeer, zoals een lobby of een gang, raden we Globosoft aan. [INVULLEN: advies over vlekbestendigheid en reiniging]."
+        "Voor hotels en horecazaken gelden vaak eisen voor de brandklasse van vloerbekleding (EN 13501-1). Carpetz Pixel en Carpetz Cloud hebben allebei brandklasse Cfl-s1.",
+        "Op plaatsen met veel loopverkeer, zoals een lobby of een gang, raden we Carpetz Cloud aan: het neemt vocht op en houdt vuil tegen. Carpetz Pixel is wasbaar in de machine op 30 °C, Carpetz Cloud is ook wasbaar. [INVULLEN: advies over vlekbestendigheid]."
       ],
       "faqTitle": "Vragen over tapijt voor horeca",
       "faq": [
@@ -2043,6 +2042,10 @@
       "quoteTitle": "Vraag een offerte voor je horecatapijt",
       "quoteText": "Stuur ons je logo of ontwerp, de afmetingen en de ruimte. Vermeld ook welke brandklasse je nodig hebt."
     }
+  },
+  "FireBadge": {
+    "arc": "FIRE RETARDANT",
+    "label": "Brandvertragend tapijt, brandklasse Cfl-s1 volgens EN 13501-1"
   },
   "PriceTool": {
     "eyebrow": "Prijs berekenen",
@@ -2084,7 +2087,7 @@
       },
       "quality": {
         "title": "Kwaliteit",
-        "text": "Velvet, Globosoft en Pxl hebben elk een eigen prijs per m²."
+        "text": "Carpetz Pixel en Carpetz Cloud hebben elk een eigen prijs per m²."
       },
       "shape": {
         "title": "Vorm",

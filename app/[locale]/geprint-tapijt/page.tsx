@@ -9,6 +9,7 @@ import { PageHero } from '@/components/page-hero'
 import { QuoteBand } from '@/components/quote-band'
 import { Breadcrumbs } from '@/components/breadcrumbs'
 import { Faq } from '@/components/faq'
+import { FireSafetyBadge } from '@/components/fire-safety-badge'
 import { Cta } from '@/components/cta'
 import { AmbientVideo } from '@/components/ambient-video'
 import { ProductBar } from '@/components/product-bar'
@@ -44,6 +45,7 @@ export default function GeprintTapijtPage({ params: { locale } }: Props) {
   const faq = (['care', 'durability', 'fire', 'delivery', 'sizes'] as const).map((key) => ({
     q: t(`faq.${key}.q`),
     a: t(`faq.${key}.a`),
+    media: key === 'fire' ? <FireSafetyBadge /> : undefined,
   }))
 
   return (
