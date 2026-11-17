@@ -77,9 +77,9 @@
       "ogImageAlt": "Gros plan d’un tapis imprimé à motif de feuilles colorées"
     },
     "eventStand": {
-      "title": "Tapis de stand & de salon imprimé sur mesure",
-      "description": "Un tapis aux dimensions exactes de votre stand, imprimé avec votre logo, votre identité visuelle ou votre visuel de campagne. Pour les salons en Belgique et aux Pays-Bas.",
-      "ogImageAlt": "Tapis imprimé à motif rouge et crème, enroulé"
+      "title": "Tapis de salon sur mesure : tapis de stand et allées imprimés",
+      "description": "Tapis de salon imprimé pour exposants, constructeurs de stands et organisateurs : tapis de stand, allées et points d’attraction en Carpetz Pixel. Réaction au feu Cfl-s1, livré en Belgique et aux Pays-Bas.",
+      "ogImageAlt": "Stand de salon avec un tapis imprimé représentant un sentier forestier, des VTT et des visiteurs qui observent le tapis de près"
     },
     "printedShop": {
       "title": "Tapis imprimé pour commerces et magasins",
@@ -203,7 +203,7 @@
     "printed": {
       "eyebrow": "Tapis imprimé",
       "title": "Tapis imprimé & moquette imprimée",
-      "text": "Avec un tapis imprimé, vous donnez d’un seul coup votre propre identité à tout un espace. Grâce aux techniques d’impression modernes, nous imprimons sur tapis des images photographiques, des motifs, des aplats de couleur ou votre campagne complète. Un sol neutre devient ainsi un puissant support de marque. Notre moquette imprimée se pose sans raccord sur de grandes surfaces et convient aussi bien à un pop-up temporaire qu’à un showroom permanent.",
+      "text": "Avec un tapis imprimé, vous donnez d’un seul coup votre propre identité à tout un espace. Grâce aux techniques d’impression modernes, nous imprimons sur tapis des images photographiques, des motifs, des aplats de couleur ou votre campagne complète. Un sol neutre devient ainsi un puissant support de marque. Notre moquette imprimée se pose en lés, pour couvrir aussi de grandes surfaces, et convient aussi bien à un pop-up temporaire qu’à un showroom permanent.",
       "applicationsTitle": "Applications du tapis imprimé",
       "applicationsText": "Surfaces commerciales, stands de salon, lancements de produits, campagnes saisonnières et espaces expérientiels : partout où vous souhaitez immerger vos visiteurs dans votre marque, le tapis imprimé sur mesure est la solution. Nous vous accompagnons du fichier prêt à imprimer jusqu’au tapis fini.",
       "link": "Découvrir le tapis imprimé",
@@ -1716,7 +1716,7 @@
     "whatTitle": "Qu’est-ce qu’un sol événementiel ?",
     "whatText": [
       "Un sol événementiel est un tapis imprimé qui recouvre toute une salle, une tente, une scène ou un lounge. Au lieu d’un sol neutre, vous choisissez ce qui apparaît au sol : votre identité visuelle, un motif, un visuel de campagne ou un thème adapté à votre événement.",
-      "Nous imprimons sans raccord visible sur de grandes surfaces, pour que votre design se prolonge dans tout l’espace. Le résultat est cohérent et percutant, surtout sur les photos et vidéos de votre événement."
+      "Nous imprimons des lés jusqu’à 1,98 m de large et 25 m de long. Ils sont posés côte à côte, et nous tenons compte des lés dans le design. Votre design se prolonge ainsi dans tout l’espace : un résultat cohérent et percutant, surtout sur les photos et vidéos de votre événement."
     ],
     "usesTitle": "Pour quels événements ?",
     "uses": [
@@ -1765,7 +1765,7 @@
     "faq": {
       "size": {
         "q": "Quelle surface peut couvrir un sol événementiel ?",
-        "a": "Nous imprimons sans raccord visible sur de grandes surfaces. [À COMPLÉTER : largeur maximale par lé et mode d’assemblage des lés]."
+        "a": "Nous imprimons des lés jusqu’à 1,98 m de large et 25 m de long. Pour un grand espace, plusieurs lés sont posés côte à côte et fixés avec du ruban adhésif. Le tapis n’est donc pas sans raccord ; nous tenons compte des lés dans le design."
       },
       "price": {
         "q": "Combien coûte un sol événementiel ?",
@@ -1785,19 +1785,39 @@
   },
   "EventStand": {
     "eyebrow": "Tapis de stand",
-    "title": "Tapis de stand & de salon sur mesure",
-    "intro": "Un tapis aux dimensions exactes de votre stand, imprimé avec votre logo, votre identité visuelle ou votre visuel de campagne. Votre stand se remarque dès l’allée.",
-    "heroImageAlt": "Tapis imprimé à motif rouge et crème, enroulé",
+    "title": "Tapis de salon sur mesure pour votre stand et vos allées",
+    "intro": "Un tapis imprimé pour les exposants, les constructeurs de stands et les organisateurs de salons. Votre logo, votre visuel de campagne ou toute une ambiance au sol, aux dimensions exactes de votre stand ou de votre allée.",
+    "heroImageAlt": "Stand de salon avec un tapis imprimé représentant un sentier forestier, des VTT et des visiteurs qui observent le tapis de près",
     "breadcrumb": "Tapis de stand",
+    "audienceTitle": "Pour qui réalisons-nous des tapis de salon ?",
+    "audiences": {
+      "exhibitors": {
+        "title": "Exposants",
+        "text": "Habillez votre stand aux couleurs de votre marque, du mur jusqu’au sol.",
+        "link": "Pour votre stand"
+      },
+      "organizers": {
+        "title": "Organisateurs de salons",
+        "text": "Des allées, des entrées et des points d’attraction qui guident les visiteurs dans le hall.",
+        "link": "Pour les organisateurs"
+      },
+      "builders": {
+        "title": "Constructeurs de stands et agences événementielles",
+        "text": "Un sol imprimé sur mesure, selon le plan de stand de votre client.",
+        "link": "Pour les constructeurs de stands"
+      }
+    },
+    "exhibitorsTitle": "Pour votre stand",
+    "exhibitorsText": "Dans un salon, les visiteurs regardent aussi vers le bas. Avec un tapis de stand imprimé, le sol fait partie de votre histoire : votre logo, les couleurs de votre marque ou toute une ambiance, comme un sentier forestier pour une marque de vélos.",
     "whyTitle": "Pourquoi un tapis de stand imprimé ?",
     "why": [
       {
         "title": "Se démarquer dans l’allée",
-        "text": "Les visiteurs d’un salon regardent aussi vers le sol. Un sol imprimé attire leur attention vers votre stand."
+        "text": "Un sol imprimé attire le regard vers votre stand, et ce de loin."
       },
       {
         "title": "Votre marque du mur au sol",
-        "text": "Logo, couleurs de votre marque ou visuel de campagne complet : votre tapis s’accorde avec vos cloisons et vos bannières."
+        "text": "Logo, couleurs de votre identité visuelle ou visuel de campagne complet : votre tapis de stand s’accorde avec vos cloisons et vos bannières."
       },
       {
         "title": "Aux dimensions exactes",
@@ -1808,46 +1828,93 @@
         "text": "Vous participez à plusieurs salons par an ? Enroulez votre tapis de stand et emportez-le au suivant."
       }
     ],
-    "sizeTitle": "Dimensions et forme",
-    "sizeText": "Communiquez-nous les dimensions de votre stand ou le plan fourni par l’organisateur du salon. [À COMPLÉTER : découpes pour colonnes ou formes particulières possibles ?]",
+    "organizersTitle": "Pour les organisateurs de salons",
+    "organizersText": [
+      "Les stands ne sont pas les seuls à compter : le sol du salon peut lui aussi donner une identité propre à votre événement. Avec un tapis imprimé, vous guidez les visiteurs dans le hall et mettez en valeur vos sponsors et vos thèmes.",
+      "Nous imprimons des lés jusqu’à 25 m de long : idéal pour les longues allées et les parcours de visite."
+    ],
+    "organizersBoxTitle": "Quelles possibilités ?",
+    "organizersExamples": [
+      "Des allées et des parcours aux couleurs de votre salon",
+      "Un accueil remarquable à l’entrée",
+      "Des points d’attraction et des logos au sol",
+      "Des espaces sponsors et des zones thématiques",
+      "Une signalétique au sol : flèches, zones et numéros de stand"
+    ],
+    "buildersTitle": "Pour les constructeurs de stands et les agences événementielles",
+    "buildersText": [
+      "Vous construisez des stands ou des événements pour vos clients ? Nous nous occupons du sol imprimé, vous du reste du stand.",
+      "Envoyez-nous le plan de stand et le design. Nous imprimons sur mesure et livrons sur place ou directement au salon, à temps pour le montage."
+    ],
+    "buildersBoxTitle": "Ce que vous pouvez attendre de nous",
+    "buildersExamples": [
+      "Une impression sur mesure, selon le plan de stand",
+      "Une épreuve numérique (BAT) à soumettre à votre client",
+      "Une livraison sur place ou directement au salon",
+      "Une pose facile : dérouler et fixer avec du ruban adhésif",
+      "Des lés jusqu’à 1,98 m de large et 25 m de long"
+    ],
+    "productEyebrow": "Carpetz Pixel",
+    "productTitle": "Chaque détail, d’une netteté parfaite.",
+    "productText": "Pour les tapis de salon, nous utilisons Carpetz Pixel : un tapis imprimé finement tufté, avec 189 000 points par m². Les photos, les logos et les petits textes ressortent ainsi avec une grande netteté. Le tapis est fin (5 mm), lavable en machine à 30 °C et disponible en rouleau jusqu’à 1,98 m de large.",
+    "productSpecs": [
+      "Réaction au feu Cfl-s1",
+      "Antidérapant",
+      "Sans PVC ni phtalates",
+      "OEKO-TEX Standard 100"
+    ],
+    "sizeTitle": "Dimensions et pose",
+    "sizeText": "Nous imprimons des lés jusqu’à 1,98 m de large et 25 m de long. Pour un stand plus grand ou une allée large, plusieurs lés sont posés côte à côte ; nous tenons compte des lés dans le design. Nous livrons, la pose se fait par vous ou par votre constructeur de stand : dérouler et fixer avec du ruban adhésif.",
     "fireTitle": "Sécurité incendie",
-    "fireText": "De nombreux salons exigent la classe de réaction au feu de votre revêtement de sol selon la norme EN 13501-1. Notre tapis de stand a la classe [À COMPLÉTER : classe de réaction au feu et disponibilité d’une attestation].",
+    "fireText": "Les organisateurs de salons demandent souvent la réaction au feu de votre revêtement de sol. Carpetz Pixel présente une réaction au feu Cfl-s1 selon la norme européenne EN 13501-1. Vous avez besoin d’une attestation de réaction au feu pour le salon ? Contactez-nous.",
     "stepsTitle": "Comment ça marche",
     "steps": [
       {
-        "title": "Plan du stand",
-        "text": "Envoyez-nous les dimensions ou le plan du stand et la date du salon."
+        "title": "Plan de stand",
+        "text": "Envoyez-nous les dimensions ou le plan de stand (ou le plan du hall pour les allées) et la date du salon."
       },
       {
         "title": "Design",
-        "text": "Envoyez votre logo ou votre visuel, ou laissez-nous imaginer un design adapté à votre stand."
+        "text": "Envoyez-nous votre logo ou votre visuel, ou laissez-nous vous aider à créer un design adapté à votre stand."
       },
       {
         "title": "Épreuve numérique (BAT)",
-        "text": "Vous validez le design sur une épreuve numérique."
+        "text": "Vous validez le design sur une épreuve numérique (BAT)."
       },
       {
         "title": "Livraison",
-        "text": "Nous livrons votre tapis de stand en Belgique ou aux Pays-Bas, à temps pour le montage. [À COMPLÉTER : livraison sur le salon ou chez le standiste possible ?]"
+        "text": "Nous livrons en Belgique ou aux Pays-Bas, sur place ou directement au salon, à temps pour le montage. Dérouler, fixer avec du ruban adhésif, c’est prêt."
       }
     ],
-    "faqTitle": "Questions sur le tapis de stand",
+    "faqTitle": "Questions sur les tapis de salon",
     "faq": {
       "timing": {
-        "q": "Combien de temps à l’avance commander mon tapis de stand ?",
-        "a": "Comptez [À COMPLÉTER : délai en jours ouvrables] après votre validation de l’épreuve numérique (BAT), et tenez compte des jours de montage du salon."
+        "q": "Combien de temps à l’avance dois-je commander mon tapis de salon ?",
+        "a": "Comptez [À COMPLÉTER : délai en jours ouvrables] après votre validation de l’épreuve numérique (BAT), et prévoyez aussi les jours de montage du salon."
+      },
+      "size": {
+        "q": "Quelle taille peut avoir un tapis de salon ?",
+        "a": "Nous imprimons des lés jusqu’à 1,98 m de large et 25 m de long. Pour un stand plus grand ou une allée large, plusieurs lés sont posés côte à côte. Le tapis n’est donc pas sans raccord ; nous tenons compte des lés dans le design."
+      },
+      "install": {
+        "q": "Posez-vous aussi le tapis ?",
+        "a": "Non, nous livrons le tapis sur place ou directement au salon. La pose est simple : vous déroulez les lés et les fixez avec du ruban adhésif. Vous pouvez le faire vous-même, ou votre constructeur de stand s’en charge."
+      },
+      "fire": {
+        "q": "Quelle est la réaction au feu du tapis de salon ?",
+        "a": "Carpetz Pixel présente une réaction au feu Cfl-s1 selon la norme européenne EN 13501-1. Cfl est la classe de réaction au feu des revêtements de sol : l’échelle va de A1fl (incombustible) à Ffl, et la classe Cfl ne contribue que de façon limitée à la propagation du feu. s1 signifie qu’en cas d’incendie, très peu de fumée se dégage : c’est la meilleure classe de fumée. Vous avez besoin d’une attestation de réaction au feu pour le salon ? Contactez-nous."
       },
       "reuse": {
-        "q": "Puis-je utiliser le même tapis sur plusieurs salons ?",
-        "a": "Oui. Enroulez-le après le salon et conservez-le au sec. Choisissez alors un design sans date, pour pouvoir le réutiliser plusieurs fois."
+        "q": "Puis-je utiliser le même tapis de stand pour plusieurs salons ?",
+        "a": "Oui. Enroulez-le après le salon et stockez-le au sec. Choisissez alors un design sans date, pour pouvoir le réutiliser plusieurs fois."
       },
       "price": {
-        "q": "Combien coûte un tapis de stand ?",
-        "a": "Le prix dépend de la surface de votre stand, de la qualité et du design. Notre calculateur de prix pour le tapis imprimé vous donne immédiatement une estimation. Pour votre stand, nous établissons un devis sur mesure."
+        "q": "Combien coûte un tapis de salon ?",
+        "a": "Le prix dépend de la surface, du nombre de lés et du design. Pour votre stand ou le sol de votre salon, nous établissons un devis sur mesure."
       }
     },
-    "quoteTitle": "Demandez un devis pour votre tapis de stand",
-    "quoteText": "Envoyez-nous les dimensions de votre stand, le nom et la date du salon ainsi que votre logo ou votre design."
+    "quoteTitle": "Demandez un devis pour votre tapis de salon",
+    "quoteText": "Envoyez-nous les dimensions ou le plan de stand, le nom et la date du salon, ainsi que votre logo ou votre design."
   },
   "ContactEmail": {
     "subject": "Nous avons bien reçu votre demande – Carpetz",

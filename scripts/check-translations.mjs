@@ -10,7 +10,7 @@ const nl = load('nl')
 const fr = load('fr')
 
 // Teksten die in beide talen bewust gelijk zijn.
-const SAME_ALLOWED = new Set(['Horeca & retail', 'Carpetz Go', 'Carpetz Green', 'Carpetz Studio', 'Carpetz Pro', 'Carpetz Grip', 'Carpetz Scrape', 'Carpetz Pixel', 'Carpetz Cloud', 'NFSI High-Traction'])
+const SAME_ALLOWED = new Set(['Horeca & retail', 'Carpetz Go', 'Carpetz Green', 'Carpetz Studio', 'Carpetz Pro', 'Carpetz Grip', 'Carpetz Scrape', 'Carpetz Pixel', 'Carpetz Cloud', 'NFSI High-Traction', 'OEKO-TEX Standard 100'])
 
 // Een tekst telt als "zin" als hij minstens twee woorden van 4+ letters bevat
 // (maten, codes en normen zoals "2,4 mm" of "EN13501-1 / Cfl-s1" vallen dus weg).

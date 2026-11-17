@@ -77,9 +77,9 @@
       "ogImageAlt": "Close-up van geprint tapijt met kleurrijk bladmotief"
     },
     "eventStand": {
-      "title": "Beurstapijt & standtapijt op maat met print",
-      "description": "Standtapijt in de exacte maat van je beursstand, bedrukt met je logo, huisstijl of campagnebeeld. Beurstapijt dat opvalt, voor beurzen in België en Nederland.",
-      "ogImageAlt": "Opgerold geprint tapijt met rood-crème patroon"
+      "title": "Beurstapijt op maat: standtapijt en gangpaden met print",
+      "description": "Geprint beurstapijt voor standhouders, standbouwers en beursorganisatoren: standtapijt, gangpaden en eyecatchers in Carpetz Pixel. Brandklasse Cfl-s1, geleverd in België en Nederland.",
+      "ogImageAlt": "Beursstand met een geprint tapijt dat een bospad toont, met mountainbikes en bezoekers die het tapijt van dichtbij bekijken"
     },
     "printedShop": {
       "title": "Winkeltapijt met print: geprint tapijt voor je winkel",
@@ -203,7 +203,7 @@
     "printed": {
       "eyebrow": "Geprint tapijt",
       "title": "Geprint tapijt & geprint vloertapijt",
-      "text": "Met geprint tapijt geef je een volledige ruimte in één keer je eigen gezicht. Dankzij moderne printtechnieken kunnen we tapijt bedrukken met fotografische beelden, patronen, kleurvlakken of je volledige campagne. Zo transformeer je een neutrale vloer tot een krachtig branding tapijt. Ons geprint vloertapijt is naadloos te leggen over grote oppervlakken en is even geschikt voor een tijdelijke pop-up als voor een permanente showroom.",
+      "text": "Met geprint tapijt geef je een volledige ruimte in één keer je eigen gezicht. Dankzij moderne printtechnieken kunnen we tapijt bedrukken met fotografische beelden, patronen, kleurvlakken of je volledige campagne. Zo transformeer je een neutrale vloer tot een krachtig branding tapijt. Ons geprint vloertapijt wordt in banen gelegd, zodat je ook grote oppervlakken bedekt, en is even geschikt voor een tijdelijke pop-up als voor een permanente showroom.",
       "applicationsTitle": "Toepassingen voor geprint tapijt",
       "applicationsText": "Retailvloeren, beursstanden, productlanceringen, seizoenscampagnes en experience zones: overal waar je bezoekers wil onderdompelen in je merk is geprint tapijt op maat de oplossing. Wij begeleiden je van drukklaar bestand tot afgewerkt tapijt.",
       "link": "Ontdek geprint tapijt",
@@ -1716,7 +1716,7 @@
     "whatTitle": "Wat is een eventvloer?",
     "whatText": [
       "Een eventvloer is geprint tapijt dat een volledige zaal, tent, podium of lounge bedekt. In plaats van een neutrale vloer kies je zelf wat er op de grond komt: je huisstijl, een patroon, een campagnebeeld of een thema dat bij je event past.",
-      "We printen naadloos over grote oppervlakken, zodat je ontwerp doorloopt over de hele ruimte. Dat geeft een sterk geheel, zeker op de foto’s en video’s van je event."
+      "We printen in banen tot 1,98 m breed en tot 25 m lang. Die worden naast elkaar gelegd, en bij het ontwerp houden we rekening met de banen. Zo loopt je ontwerp door over de hele ruimte: een sterk geheel, zeker op de foto’s en video’s van je event."
     ],
     "usesTitle": "Waar zet je een eventvloer in?",
     "uses": [
@@ -1765,7 +1765,7 @@
     "faq": {
       "size": {
         "q": "Hoe groot kan een eventvloer zijn?",
-        "a": "We printen naadloos over grote oppervlakken. [INVULLEN: maximale breedte per baan en hoe banen verbonden worden]."
+        "a": "We printen in banen tot 1,98 m breed en tot 25 m lang. Voor een grote ruimte worden meerdere banen naast elkaar gelegd en vastgezet met tape. Het tapijt is dus niet naadloos; bij het ontwerp houden we rekening met de banen."
       },
       "price": {
         "q": "Wat kost een eventvloer?",
@@ -1785,15 +1785,35 @@
   },
   "EventStand": {
     "eyebrow": "Beurstapijt",
-    "title": "Beurstapijt & standtapijt op maat",
-    "intro": "Tapijt in de exacte maat van je beursstand, bedrukt met je logo, huisstijl of campagnebeeld. Zo valt je stand al op vanaf het gangpad.",
-    "heroImageAlt": "Opgerold geprint tapijt met rood-crème patroon",
+    "title": "Beurstapijt op maat voor je stand en de beursvloer",
+    "intro": "Geprint tapijt voor standhouders, standbouwers en beursorganisatoren. Je logo, je campagnebeeld of een volledige sfeer op de vloer, in de exacte maat van je stand of gangpad.",
+    "heroImageAlt": "Beursstand met een geprint tapijt dat een bospad toont, met mountainbikes en bezoekers die het tapijt van dichtbij bekijken",
     "breadcrumb": "Beurstapijt",
+    "audienceTitle": "Voor wie maken we beurstapijt?",
+    "audiences": {
+      "exhibitors": {
+        "title": "Standhouders",
+        "text": "Kleed je stand aan met je merk, van de muur tot de vloer.",
+        "link": "Voor je stand"
+      },
+      "organizers": {
+        "title": "Beursorganisatoren",
+        "text": "Gangpaden, ingangen en eyecatchers die bezoekers door de hal leiden.",
+        "link": "Voor organisatoren"
+      },
+      "builders": {
+        "title": "Standbouwers en eventbureaus",
+        "text": "Een geprinte vloer op maat van het standplan van je klant.",
+        "link": "Voor standbouwers"
+      }
+    },
+    "exhibitorsTitle": "Voor je beursstand",
+    "exhibitorsText": "Wie over een beurs wandelt, kijkt ook naar beneden. Met een geprint standtapijt wordt de vloer deel van je verhaal: je logo, je huisstijlkleuren of een volledige sfeer, zoals een bospad voor een fietsmerk.",
     "whyTitle": "Waarom geprint standtapijt?",
     "why": [
       {
         "title": "Opvallen in het gangpad",
-        "text": "Wie over een beurs wandelt, kijkt ook naar beneden. Een geprinte vloer trekt de aandacht naar je stand."
+        "text": "Een geprinte vloer trekt de aandacht naar je stand, al van ver."
       },
       {
         "title": "Je merk van muur tot vloer",
@@ -1808,15 +1828,50 @@
         "text": "Sta je meerdere keren per jaar op een beurs? Rol je standtapijt op en neem het mee naar de volgende."
       }
     ],
-    "sizeTitle": "Afmetingen en vorm",
-    "sizeText": "Geef ons de afmetingen van je stand of het standplan van de beursorganisatie. [INVULLEN: zijn uitsparingen voor kolommen of afwijkende vormen mogelijk?]",
+    "organizersTitle": "Voor beursorganisatoren",
+    "organizersText": [
+      "Niet alleen de stands, ook de beursvloer zelf kan je beurs een eigen gezicht geven. Met geprint tapijt leid je bezoekers door de hal en zet je sponsors en thema’s in de kijker.",
+      "We printen banen tot 25 m lang: ideaal voor lange gangpaden en looproutes."
+    ],
+    "organizersBoxTitle": "Wat kan je ermee?",
+    "organizersExamples": [
+      "Gangpaden en looproutes in de huisstijl van je beurs",
+      "Een opvallend onthaal aan de ingang",
+      "Eyecatchers en logo’s op de vloer",
+      "Sponsorvlakken en themazones",
+      "Bewegwijzering op de grond: pijlen, zones en standnummers"
+    ],
+    "buildersTitle": "Voor standbouwers en eventbureaus",
+    "buildersText": [
+      "Bouw je stands of events voor je klanten? Wij zorgen voor de geprinte vloer, jij voor de rest van de stand.",
+      "Bezorg ons het standplan en het ontwerp. Wij printen op maat en leveren op locatie of rechtstreeks aan de beurs, op tijd voor de opbouw."
+    ],
+    "buildersBoxTitle": "Wat je van ons mag verwachten",
+    "buildersExamples": [
+      "Print op maat van het standplan",
+      "Een digitale proefdruk die je aan je klant kan voorleggen",
+      "Levering op locatie of rechtstreeks aan de beurs",
+      "Eenvoudig te leggen: uitrollen en vastzetten met tape",
+      "Banen tot 1,98 m breed en tot 25 m lang"
+    ],
+    "productEyebrow": "Carpetz Pixel",
+    "productTitle": "Elk detail, haarscherp.",
+    "productText": "Voor beurstapijt werken we met Carpetz Pixel: fijn getuft geprint tapijt met 189.000 noppen per m². Daardoor komen foto’s, logo’s en kleine teksten heel scherp uit. Het tapijt is dun (5 mm), wasbaar in de machine op 30 °C en verkrijgbaar op rol tot 1,98 m breed.",
+    "productSpecs": [
+      "Brandklasse Cfl-s1",
+      "Antislip",
+      "PVC- en ftalatenvrij",
+      "OEKO-TEX Standard 100"
+    ],
+    "sizeTitle": "Afmetingen en plaatsing",
+    "sizeText": "We printen in banen tot 1,98 m breed en tot 25 m lang. Voor een grotere stand of een breed gangpad worden meerdere banen naast elkaar gelegd; bij het ontwerp houden we rekening met de banen. Wij leveren, het leggen doe je zelf of je standbouwer: uitrollen en vastzetten met tape.",
     "fireTitle": "Brandveiligheid",
-    "fireText": "Veel beurzen vragen de brandklasse van je vloerbekleding volgens EN 13501-1. Ons standtapijt heeft brandklasse [INVULLEN: brandklasse en of er een attest beschikbaar is].",
+    "fireText": "Beursorganisaties vragen vaak de brandklasse van je vloerbekleding. Carpetz Pixel heeft brandklasse Cfl-s1 volgens de Europese norm EN 13501-1. Heb je een brandveiligheidsattest nodig voor de beurs? Neem dan contact met ons op.",
     "stepsTitle": "Zo werkt het",
     "steps": [
       {
         "title": "Standplan",
-        "text": "Stuur ons de afmetingen of het standplan en de datum van de beurs."
+        "text": "Stuur ons de afmetingen of het standplan (of het hallenplan voor gangpaden) en de datum van de beurs."
       },
       {
         "title": "Ontwerp",
@@ -1828,7 +1883,7 @@
       },
       {
         "title": "Levering",
-        "text": "We leveren je standtapijt in België of Nederland, op tijd voor de opbouw. [INVULLEN: levering op de beursvloer of bij de standbouwer mogelijk?]"
+        "text": "We leveren in België of Nederland, op locatie of rechtstreeks aan de beurs, op tijd voor de opbouw. Uitrollen, tapen en klaar."
       }
     ],
     "faqTitle": "Vragen over beurstapijt",
@@ -1837,17 +1892,29 @@
         "q": "Hoe ver vooraf bestel ik mijn beurstapijt?",
         "a": "Reken op [INVULLEN: levertijd in werkdagen] na je akkoord op de digitale proefdruk, en plan ook de opbouwdagen van de beurs in."
       },
+      "size": {
+        "q": "Hoe groot kan beurstapijt zijn?",
+        "a": "We printen in banen tot 1,98 m breed en tot 25 m lang. Voor een grotere stand of een breed gangpad worden meerdere banen naast elkaar gelegd. Het tapijt is dus niet naadloos; bij het ontwerp houden we rekening met de banen."
+      },
+      "install": {
+        "q": "Leggen jullie het tapijt ook?",
+        "a": "Nee, we leveren het tapijt op locatie of rechtstreeks aan de beurs. Leggen is eenvoudig: je rolt de banen uit en zet ze vast met tape. Dat doe je zelf, of je standbouwer doet het."
+      },
+      "fire": {
+        "q": "Welke brandklasse heeft beurstapijt?",
+        "a": "Carpetz Pixel heeft brandklasse Cfl-s1 volgens de Europese norm EN 13501-1. Cfl is de brandklasse voor vloerbekleding: de schaal gaat van A1fl (onbrandbaar) tot Ffl, en Cfl draagt maar beperkt bij aan de verspreiding van vuur. s1 betekent dat er bij brand heel weinig rook vrijkomt, de beste rookklasse. Heb je een brandveiligheidsattest nodig voor de beurs? Neem dan contact met ons op."
+      },
       "reuse": {
         "q": "Kan ik hetzelfde standtapijt op meerdere beurzen gebruiken?",
         "a": "Ja. Rol het na de beurs op en bewaar het droog. Kies dan een ontwerp zonder datum, zodat je het meerdere keren kan inzetten."
       },
       "price": {
         "q": "Wat kost beurstapijt?",
-        "a": "Dat hangt af van de oppervlakte van je stand, de kwaliteit en het ontwerp. Met onze prijscalculator voor geprint tapijt krijg je meteen een indicatie. Voor je stand maken we een offerte op maat."
+        "a": "Dat hangt af van de oppervlakte, het aantal banen en het ontwerp. Voor je stand of je beursvloer maken we een offerte op maat."
       }
     },
-    "quoteTitle": "Vraag een offerte voor je standtapijt",
-    "quoteText": "Stuur ons de afmetingen van je stand, de naam en datum van de beurs en je logo of ontwerp."
+    "quoteTitle": "Vraag een offerte voor je beurstapijt",
+    "quoteText": "Stuur ons de afmetingen of het standplan, de naam en datum van de beurs en je logo of ontwerp."
   },
   "ContactEmail": {
     "subject": "We hebben je aanvraag ontvangen – Carpetz",

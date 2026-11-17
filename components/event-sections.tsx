@@ -7,11 +7,12 @@ import { cn } from '@/lib/utils'
 export type TitleText = { title: string; text: string }
 
 /** De drie soorten event tapijt (overzicht + "meer event tapijt" onderaan de subpagina's). */
-export const EVENT_PAGES = [
+// fit: 'contain' voor een vrijstaande productfoto, 'cover' voor een sfeerfoto.
+export const EVENT_PAGES: readonly { key: 'runner' | 'floor' | 'stand'; href: '/event-tapijt/loper' | '/event-tapijt/eventvloer' | '/event-tapijt/beurstapijt'; image: string; fit: 'cover' | 'contain' }[] = [
   { key: 'runner', href: '/event-tapijt/loper', image: '/images/feestloper-op-maat.webp', fit: 'cover' },
   { key: 'floor', href: '/event-tapijt/eventvloer', image: '/images/geprint-tapijt.webp', fit: 'cover' },
-  { key: 'stand', href: '/event-tapijt/beurstapijt', image: '/images/event-tapijt-zonder-achtergrond.webp', fit: 'contain' },
-] as const
+  { key: 'stand', href: '/event-tapijt/beurstapijt', image: '/images/beurstapijt-bosvloer-stand.webp', fit: 'cover' },
+]
 
 export type EventPageKey = (typeof EVENT_PAGES)[number]['key']
 
@@ -106,7 +107,9 @@ export function FeatureGrid({
   items,
   icons = [],
   className,
+  id,
 }: {
+  id?: string
   title: string
   text?: string
   items: TitleText[]
@@ -114,7 +117,7 @@ export function FeatureGrid({
   className?: string
 }) {
   return (
-    <section className={cn('border-t border-border', className)}>
+    <section id={id} className={cn('border-t border-border', className)}>
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <h2 className="font-serif text-3xl font-semibold leading-tight text-balance sm:text-4xl">{title}</h2>
         {text && <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground text-pretty">{text}</p>}
