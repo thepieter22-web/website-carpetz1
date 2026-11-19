@@ -127,7 +127,7 @@
     "eventOverview": "Alle event tapijt",
     "eventRunner": "Event loper",
     "eventFloor": "Volledige eventvloer",
-    "eventStand": "Beurs- & standtapijt",
+    "eventStand": "Beurstapijt",
     "submenu": "Submenu {item} openen of sluiten",
     "printedOverview": "Alle geprint tapijt",
     "printedShop": "Voor winkels",
@@ -550,7 +550,7 @@
         "imageAlt": "Close-up van geprint tapijt met kleurrijk bladmotief"
       },
       "stand": {
-        "title": "Beurs- & standtapijt",
+        "title": "Beurstapijt",
         "text": "Tapijt in de exacte maat van je stand, met je logo of campagnebeeld. Zo valt je stand al op vanaf het gangpad.",
         "link": "Ontdek beurstapijt",
         "imageAlt": "Opgerold geprint tapijt met rood-crème patroon"
@@ -1573,6 +1573,7 @@
       "Zo heet je je gasten welkom op een manier die ze onthouden, en die mooi op de foto’s staat."
     ],
     "personalTitle": "Wat kan er op je loper?",
+    "introImageAlt": "Geprinte rode loper met goudkleurig art-decopatroon tussen gouden paaltjes en fluwelen koorden",
     "personal": [
       "Namen of initialen",
       "Een datum of jaartal",
@@ -1704,6 +1705,36 @@
         "a": "Een loper van 10 × 1 m in standaardkwaliteit kost ongeveer {example} excl. btw (richtprijs, {perM2} per m²). De exacte prijs hangt af van de kwaliteit en het ontwerp."
       }
     },
+    "gallery": {
+      "title": "Realisaties",
+      "text": "Een greep uit de lopers en feesttapijten die we printten.",
+      "photos": [
+        {
+          "src": "/images/loper-premiere-filmtitel.webp",
+          "alt": "Petrolblauwe geprinte loper met de filmtitel aan de ingang van een filmpremière"
+        },
+        {
+          "src": "/images/trouwloper-initialen-detail.webp",
+          "alt": "Detail van een witte trouwloper met initialen en een geprinte bloemenrand"
+        },
+        {
+          "src": "/images/trouwloper-kerk-initialen.webp",
+          "alt": "Witte trouwloper met initialen naar de kerk, tussen de gasten"
+        },
+        {
+          "src": "/images/verjaardagsloper-40-goud.webp",
+          "alt": "Donkerblauwe verjaardagsloper met een gouden 40 en confetti aan de ingang van een feest"
+        },
+        {
+          "src": "/images/galaloper-logo-zwart.webp",
+          "alt": "Zwarte galaloper met logo en slogan in een feestzaal met kroonluchters"
+        },
+        {
+          "src": "/images/feesttapijt-50-tuinfeest.webp",
+          "alt": "Geprint feesttapijt met een 50 en een bladmotief op het gras tijdens een tuinfeest"
+        }
+      ]
+    },
     "quoteTitle": "Reserveer je loper op maat",
     "quoteText": "Vertel ons over je event of je grote dag, de datum en de gewenste afmetingen. Je krijgt snel een offerte voor je gepersonaliseerde loper."
   },
@@ -1794,40 +1825,24 @@
       "exhibitors": {
         "title": "Standhouders",
         "text": "Kleed je stand aan met je merk, van de muur tot de vloer.",
-        "link": "Voor je stand"
+        "link": "Voor je stand",
+        "imageAlt": "Beursstand van een wijnhuis met een geprint standtapijt vol wijnflessen en logo"
       },
       "organizers": {
         "title": "Beursorganisatoren",
         "text": "Gangpaden, ingangen en eyecatchers die bezoekers door de hal leiden.",
-        "link": "Voor organisatoren"
+        "link": "Voor organisatoren",
+        "imageAlt": "Beursgang met een geprint tapijt in organische vormen en zachte kleuren"
       },
       "builders": {
         "title": "Standbouwers en eventbureaus",
         "text": "Een geprinte vloer op maat van het standplan van je klant.",
-        "link": "Voor standbouwers"
+        "link": "Voor standbouwers",
+        "imageAlt": "Rond geprint logotapijt in groen en goud voor een beursstand"
       }
     },
     "exhibitorsTitle": "Voor je beursstand",
     "exhibitorsText": "Wie over een beurs wandelt, kijkt ook naar beneden. Met een geprint standtapijt wordt de vloer deel van je verhaal: je logo, je huisstijlkleuren of een volledige sfeer, zoals een bospad voor een fietsmerk.",
-    "whyTitle": "Waarom geprint standtapijt?",
-    "why": [
-      {
-        "title": "Opvallen in het gangpad",
-        "text": "Een geprinte vloer trekt de aandacht naar je stand, al van ver."
-      },
-      {
-        "title": "Je merk van muur tot vloer",
-        "text": "Logo, huisstijlkleuren of een volledig campagnebeeld: je standtapijt sluit aan bij je wanden en banners."
-      },
-      {
-        "title": "Exact op maat",
-        "text": "We printen in de afmetingen van je stand, ook voor een hoekstand of eilandstand."
-      },
-      {
-        "title": "Herbruikbaar",
-        "text": "Sta je meerdere keren per jaar op een beurs? Rol je standtapijt op en neem het mee naar de volgende."
-      }
-    ],
     "organizersTitle": "Voor beursorganisatoren",
     "organizersText": [
       "Niet alleen de stands, ook de beursvloer zelf kan je beurs een eigen gezicht geven. Met geprint tapijt leid je bezoekers door de hal en zet je sponsors en thema’s in de kijker.",
@@ -1846,7 +1861,7 @@
       "Bouw je stands of events voor je klanten? Wij zorgen voor de geprinte vloer, jij voor de rest van de stand.",
       "Bezorg ons het standplan en het ontwerp. Wij printen op maat en leveren op locatie of rechtstreeks aan de beurs, op tijd voor de opbouw."
     ],
-    "buildersBoxTitle": "Wat je van ons mag verwachten",
+    "buildersImageAlt": "Koffiebar op een beurs met een groot geprint tapijt met bladmotief en terrazzo",
     "buildersExamples": [
       "Print op maat van het standplan",
       "Een digitale proefdruk die je aan je klant kan voorleggen",
@@ -1863,27 +1878,27 @@
       "PVC- en ftalatenvrij",
       "OEKO-TEX Standard 100"
     ],
-    "sizeTitle": "Afmetingen en plaatsing",
-    "sizeText": "We printen in banen tot 1,98 m breed en tot 25 m lang. Voor een grotere stand of een breed gangpad worden meerdere banen naast elkaar gelegd; bij het ontwerp houden we rekening met de banen. Wij leveren, het leggen doe je zelf of je standbouwer: uitrollen en vastzetten met tape.",
-    "fireTitle": "Brandveiligheid",
-    "fireText": "Beursorganisaties vragen vaak de brandklasse van je vloerbekleding. Carpetz Pixel heeft brandklasse Cfl-s1 volgens de Europese norm EN 13501-1. Heb je een brandveiligheidsattest nodig voor de beurs? Neem dan contact met ons op.",
     "stepsTitle": "Zo werkt het",
     "steps": [
       {
         "title": "Standplan",
-        "text": "Stuur ons de afmetingen of het standplan (of het hallenplan voor gangpaden) en de datum van de beurs."
+        "text": "Stuur ons de afmetingen of het standplan (of het hallenplan voor gangpaden) en de datum van de beurs.",
+        "imageAlt": "Hallenplan van een beurs met de gemarkeerde stand, die per e-mail wordt doorgestuurd"
       },
       {
         "title": "Ontwerp",
-        "text": "Bezorg je logo of beeld, of laat ons meedenken over een ontwerp dat bij je stand past."
+        "text": "Bezorg je logo of beeld, of laat ons meedenken over een ontwerp dat bij je stand past.",
+        "imageAlt": "Ontwerp van een standtapijt in een ontwerpprogramma op een computerscherm"
       },
       {
         "title": "Digitale proefdruk",
-        "text": "Je keurt het ontwerp goed op een digitale proefdruk."
+        "text": "Je keurt het ontwerp goed op een digitale proefdruk.",
+        "imageAlt": "Digitale proefdruk van een beursstand met het geprinte tapijt, bekeken op een tablet"
       },
       {
         "title": "Levering",
-        "text": "We leveren in België of Nederland, op locatie of rechtstreeks aan de beurs, op tijd voor de opbouw. Uitrollen, tapen en klaar."
+        "text": "We leveren in België of Nederland, op locatie of rechtstreeks aan de beurs, op tijd voor de opbouw. Uitrollen, tapen en klaar.",
+        "imageAlt": "Geprint standtapijt dat met tape wordt vastgezet tijdens de opbouw van een beurs"
       }
     ],
     "faqTitle": "Vragen over beurstapijt",
@@ -1912,6 +1927,36 @@
         "q": "Wat kost beurstapijt?",
         "a": "Dat hangt af van de oppervlakte, het aantal banen en het ontwerp. Voor je stand of je beursvloer maken we een offerte op maat."
       }
+    },
+    "gallery": {
+      "title": "Realisaties",
+      "text": "Een greep uit de beursvloeren en standtapijten die we printten.",
+      "photos": [
+        {
+          "src": "/images/beurstapijt-stand-blauw-oranje.webp",
+          "alt": "Beursstand met een geprint tapijt in blauwe en oranje vormen, afgestemd op de standwanden"
+        },
+        {
+          "src": "/images/beurstapijt-inkom-registratie.webp",
+          "alt": "Geprint tapijt met beurslogo en lijnmotief aan de inkom en registratie van een beurs"
+        },
+        {
+          "src": "/images/beurstapijt-rond-logo-hal.webp",
+          "alt": "Rond geprint logotapijt met hal- en standnummer in een drukke beurshal"
+        },
+        {
+          "src": "/images/beurstapijt-stand-terracotta.webp",
+          "alt": "Beursstand met een geprint tapijt in terracotta, blauw en crème, in dezelfde vormen als de wanden"
+        },
+        {
+          "src": "/images/beurstapijt-koffiebar-bladmotief.webp",
+          "alt": "Koffiebar op een beurs met een groot geprint tapijt met bladmotief en terrazzo"
+        },
+        {
+          "src": "/images/beurstapijt-bosvloer-stand.webp",
+          "alt": "Beursstand met een geprinte bosvloer als tapijt"
+        }
+      ]
     },
     "quoteTitle": "Vraag een offerte voor je beurstapijt",
     "quoteText": "Stuur ons de afmetingen of het standplan, de naam en datum van de beurs en je logo of ontwerp."

@@ -18,7 +18,7 @@ De site is volledig tweetalig: Nederlands (`/nl`) en Frans (`/fr`). Elke wijzigi
 
 **Toon van het Frans**
 - Professioneel B2B/e-commerce, Belgisch Frans, altijd de **vous**-vorm.
-- Vaste termen: logomat → *tapis logo*; geprint tapijt → *tapis imprimé* (vloertapijt → *moquette imprimée*); event tapijt → *tapis événementiel*; rode loper → *tapis rouge*; offerte → *devis*; proefdruk → *épreuve numérique (BAT)*; configurator → *configurateur*; excl./incl. btw → *hors TVA* / *TVA comprise*; rugmateriaal → *dossier*; pool → *velours*; brandgedrag → *réaction au feu*; schoonloopmat → *tapis anti-salissures*.
+- Vaste termen: logomat → *tapis logo*; geprint tapijt → *tapis imprimé* (vloertapijt → *moquette imprimée*); event tapijt → *tapis événementiel*; beurstapijt/standtapijt → *tapis d’exposition imprimé* (kort: *tapis d’exposition*); rode loper → *tapis rouge*; offerte → *devis*; proefdruk → *épreuve numérique (BAT)*; configurator → *configurateur*; excl./incl. btw → *hors TVA* / *TVA comprise*; rugmateriaal → *dossier*; pool → *velours*; brandgedrag → *réaction au feu*; schoonloopmat → *tapis anti-salissures*.
 - Typografie: spatie vóór `:`, `?`, `!` en `%` (`Total : 25 %`), Franse aanhalingstekens « … », typografische apostrof `’`.
 - Merknamen (Carpetz Go/Green/Studio/Pro/Grip/Scrape, Carpetz Pixel, Carpetz Cloud) en normen (EN13501-1, NFSI) blijven onvertaald.
 

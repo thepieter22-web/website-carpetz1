@@ -14,7 +14,8 @@ const SAME_ALLOWED = new Set(['Horeca & retail', 'Carpetz Go', 'Carpetz Green', 
 
 // Een tekst telt als "zin" als hij minstens twee woorden van 4+ letters bevat
 // (maten, codes en normen zoals "2,4 mm" of "EN13501-1 / Cfl-s1" vallen dus weg).
-const isSentence = (text) => (text.match(/\p{L}{4,}/gu) ?? []).length >= 2
+// Bestandspaden (bv. /images/...webp) zijn geen tekst.
+const isSentence = (text) => !text.startsWith('/') && (text.match(/\p{L}{4,}/gu) ?? []).length >= 2
 
 const problems = []
 const join = (path, key) => (path ? `${path}.${key}` : key)

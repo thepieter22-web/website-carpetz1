@@ -2,19 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
-import {
-  ArrowDown,
-  CheckCircle2,
-  Eye,
-  Flame,
-  Hammer,
-  Landmark,
-  Palette,
-  Repeat,
-  Ruler,
-  Store,
-  type LucideIcon,
-} from 'lucide-react'
+import { ArrowDown, CheckCircle2 } from 'lucide-react'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { PageHero } from '@/components/page-hero'
@@ -23,7 +11,9 @@ import { Breadcrumbs } from '@/components/breadcrumbs'
 import { Faq } from '@/components/faq'
 import { Cta } from '@/components/cta'
 import { FireSafetyBadge } from '@/components/fire-safety-badge'
-import { CheckList, FeatureGrid, RelatedEventPages, StepsSection, type TitleText } from '@/components/event-sections'
+import { BlobPhoto } from '@/components/blob-photo'
+import { PhotoGallery, type GalleryPhoto } from '@/components/photo-gallery'
+import { CheckList, RelatedEventPages, StepsSection, type TitleText } from '@/components/event-sections'
 import { localizedAlternates } from '@/lib/seo'
 import { ProductBar } from '@/components/product-bar'
 import { cn } from '@/lib/utils'
@@ -33,11 +23,19 @@ type Props = { params: { locale: string } }
 const PATH = '/event-tapijt/beurstapijt'
 const HERO_IMAGE = '/images/beurstapijt-bosvloer-stand.webp'
 
-/** Drie doelgroepen, elk met een eigen sectie op deze pagina (ankers). */
-const AUDIENCES: { key: 'exhibitors' | 'organizers' | 'builders'; anchor: string; icon: LucideIcon }[] = [
-  { key: 'exhibitors', anchor: 'standhouders', icon: Store },
-  { key: 'organizers', anchor: 'organisatoren', icon: Landmark },
-  { key: 'builders', anchor: 'standbouwers', icon: Hammer },
+/** Foto per stap, in dezelfde volgorde als EventStand.steps (alt-teksten staan daar). */
+const STEP_IMAGES = [
+  '/images/beurstapijt-stap-standplan-doorsturen.webp',
+  '/images/beurstapijt-stap-ontwerp-scherm.webp',
+  '/images/beurstapijt-stap-proefdruk.webp',
+  '/images/beurstapijt-stap-levering.webp',
+]
+
+/** Drie doelgroepen, elk met een foto en een eigen sectie op deze pagina (ankers). */
+const AUDIENCES: { key: 'exhibitors' | 'organizers' | 'builders'; anchor: string; image: string }[] = [
+  { key: 'exhibitors', anchor: 'standhouders', image: '/images/beurstapijt-standhouder-wijnstand.webp' },
+  { key: 'organizers', anchor: 'organisatoren', image: '/images/beurstapijt-organisator-gang.webp' },
+  { key: 'builders', anchor: 'standbouwers', image: '/images/beurstapijt-standbouwer-rond-logo.webp' },
 ]
 
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
@@ -54,26 +52,37 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
   }
 }
 
-/** Sectie met tekst links en een kader met vinkjes rechts (organisatoren, standbouwers). */
+/**
+ * Sectie voor een doelgroep (organisatoren, standbouwers): tekst + lijst met vinkjes, en een foto in een golvende vorm.
+ * Desktop: foto aan `imageSide` over de volle hoogte. Gsm: tekst, foto, lijst.
+ * Met `boxTitle` staat de lijst in een kader met titel, anders gewoon onder de tekst.
+ */
 function AudienceSection({
   id,
   title,
   paragraphs,
   boxTitle,
   items,
+  image,
+  imageSide = 'left',
   className,
 }: {
   id: string
   title: string
   paragraphs: string[]
-  boxTitle: string
+  boxTitle?: string
   items: string[]
+  image: { src: string; alt: string }
+  imageSide?: 'left' | 'right'
   className?: string
 }) {
+  const textCol = imageSide === 'left' ? 'lg:col-start-2' : 'lg:col-start-1'
+  const photoCol = imageSide === 'left' ? 'lg:col-start-1' : 'lg:col-start-2'
+
   return (
     <section id={id} className={cn('border-t border-border', className)}>
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:px-8 lg:py-20">
-        <div>
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-8 lg:px-8 lg:py-20">
+        <div className={cn(textCol, 'lg:row-start-1 lg:self-end')}>
           <h2 className="font-serif text-3xl font-semibold leading-tight text-balance sm:text-4xl">{title}</h2>
           {paragraphs.map((p) => (
             <p key={p} className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty">
@@ -81,11 +90,23 @@ function AudienceSection({
             </p>
           ))}
         </div>
-        <div className="rounded-sm border border-border bg-card p-6 sm:p-8">
-          <h3 className="font-serif text-2xl font-semibold leading-tight">{boxTitle}</h3>
-          <div className="mt-6">
+        <BlobPhoto
+          src={image.src}
+          alt={image.alt}
+          mirrored={imageSide === 'left'}
+          className={cn(photoCol, 'lg:row-span-2 lg:row-start-1 lg:self-center')}
+        />
+        <div className={cn(textCol, 'lg:row-start-2 lg:self-start')}>
+          {boxTitle ? (
+            <div className="rounded-sm border border-border bg-card p-6 sm:p-8">
+              <h3 className="font-serif text-2xl font-semibold leading-tight">{boxTitle}</h3>
+              <div className="mt-6">
+                <CheckList items={items} />
+              </div>
+            </div>
+          ) : (
             <CheckList items={items} />
-          </div>
+          )}
         </div>
       </div>
     </section>
@@ -131,23 +152,31 @@ export default function BeurstapijtPage({ params: { locale } }: Props) {
               {t('audienceTitle')}
             </h2>
             <ul className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-              {AUDIENCES.map(({ key, anchor, icon: Icon }) => (
+              {AUDIENCES.map(({ key, anchor, image }) => (
                 <li key={key}>
                   <a
                     href={`#${anchor}`}
-                    className="group flex h-full flex-col rounded-sm border border-border bg-card p-6 transition-colors hover:border-accent"
+                    className="group flex h-full flex-col overflow-hidden rounded-sm border border-border bg-card transition-colors hover:border-accent"
                   >
-                    <span className="inline-flex size-11 items-center justify-center rounded-sm bg-primary text-primary-foreground">
-                      <Icon className="size-5" />
-                    </span>
-                    <h3 className="mt-5 font-serif text-2xl font-semibold leading-tight">{t(`audiences.${key}.title`)}</h3>
-                    <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
-                      {t(`audiences.${key}.text`)}
-                    </p>
-                    <span className="mt-5 inline-flex min-h-12 items-center gap-2 text-sm font-semibold uppercase tracking-widest text-foreground">
-                      {t(`audiences.${key}.link`)}
-                      <ArrowDown className="size-4 transition-transform group-hover:translate-y-0.5" />
-                    </span>
+                    <div className="relative aspect-[3/2] overflow-hidden bg-muted">
+                      <Image
+                        src={image}
+                        alt={t(`audiences.${key}.imageAlt`)}
+                        fill
+                        sizes="(min-width: 768px) 33vw, 100vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                      />
+                    </div>
+                    <div className="flex flex-1 flex-col p-6">
+                      <h3 className="font-serif text-2xl font-semibold leading-tight">{t(`audiences.${key}.title`)}</h3>
+                      <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                        {t(`audiences.${key}.text`)}
+                      </p>
+                      <span className="mt-5 inline-flex min-h-12 items-center gap-2 text-sm font-semibold uppercase tracking-widest text-foreground">
+                        {t(`audiences.${key}.link`)}
+                        <ArrowDown className="size-4 transition-transform group-hover:translate-y-0.5" />
+                      </span>
+                    </div>
                   </a>
                 </li>
               ))}
@@ -155,31 +184,16 @@ export default function BeurstapijtPage({ params: { locale } }: Props) {
           </div>
         </section>
 
-        {/* Standhouders: tekst + foto van een realisatie, daaronder de voordelen */}
+        {/* Standhouders: tekst + foto van een realisatie */}
         <section id="standhouders" className="border-t border-border bg-secondary/40">
-          <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 pt-16 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:px-8 lg:pt-20">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:px-8 lg:py-20">
             <div>
               <h2 className="font-serif text-3xl font-semibold leading-tight text-balance sm:text-4xl">{t('exhibitorsTitle')}</h2>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty">{t('exhibitorsText')}</p>
             </div>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-sm border border-border">
-              <Image
-                src={HERO_IMAGE}
-                alt={t('heroImageAlt')}
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
-              />
-            </div>
+            <BlobPhoto src={HERO_IMAGE} alt={t('heroImageAlt')} />
           </div>
         </section>
-
-        <FeatureGrid
-          title={t('whyTitle')}
-          items={t.raw('why') as TitleText[]}
-          icons={[Eye, Palette, Ruler, Repeat]}
-          className="border-t-0 bg-secondary/40"
-        />
 
         <AudienceSection
           id="organisatoren"
@@ -187,14 +201,16 @@ export default function BeurstapijtPage({ params: { locale } }: Props) {
           paragraphs={t.raw('organizersText') as string[]}
           boxTitle={t('organizersBoxTitle')}
           items={t.raw('organizersExamples') as string[]}
+          image={{ src: '/images/beurstapijt-organisator-gang.webp', alt: t('audiences.organizers.imageAlt') }}
         />
 
         <AudienceSection
           id="standbouwers"
           title={t('buildersTitle')}
           paragraphs={t.raw('buildersText') as string[]}
-          boxTitle={t('buildersBoxTitle')}
           items={t.raw('buildersExamples') as string[]}
+          image={{ src: '/images/beurstapijt-koffiebar-bladmotief.webp', alt: t('buildersImageAlt') }}
+          imageSide="right"
           className="bg-secondary/40"
         />
 
@@ -222,27 +238,12 @@ export default function BeurstapijtPage({ params: { locale } }: Props) {
           </div>
         </section>
 
-        {/* Afmetingen + brandveiligheid */}
-        <section className="border-t border-border">
-          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-20">
-            <div className="rounded-sm border border-border bg-card p-6 sm:p-8">
-              <span className="inline-flex size-11 items-center justify-center rounded-sm bg-accent/15 text-accent">
-                <Ruler className="size-5" />
-              </span>
-              <h2 className="mt-5 font-serif text-2xl font-semibold leading-tight sm:text-3xl">{t('sizeTitle')}</h2>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty">{t('sizeText')}</p>
-            </div>
-            <div className="rounded-sm border border-border bg-card p-6 sm:p-8">
-              <span className="inline-flex size-11 items-center justify-center rounded-sm bg-accent/15 text-accent">
-                <Flame className="size-5" />
-              </span>
-              <h2 className="mt-5 font-serif text-2xl font-semibold leading-tight sm:text-3xl">{t('fireTitle')}</h2>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty">{t('fireText')}</p>
-            </div>
-          </div>
-        </section>
-
-        <StepsSection title={t('stepsTitle')} steps={t.raw('steps') as TitleText[]} />
+        <StepsSection
+          title={t('stepsTitle')}
+          steps={t.raw('steps') as (TitleText & { imageAlt: string })[]}
+          images={STEP_IMAGES}
+          reveal
+        />
 
         <div className="mx-auto flex max-w-7xl justify-center px-4 pb-16 sm:px-6 lg:px-8">
           <Cta href="/contact?product=beurstapijt" variant="accent">
@@ -251,6 +252,13 @@ export default function BeurstapijtPage({ params: { locale } }: Props) {
         </div>
 
         <Faq title={t('faqTitle')} items={faq} />
+
+        {/* Realisaties: foto's in messages/*.json onder EventStand.gallery.photos ({ src, alt }) */}
+        <PhotoGallery
+          title={t('gallery.title')}
+          text={t('gallery.text')}
+          photos={t.raw('gallery.photos') as GalleryPhoto[]}
+        />
 
         <RelatedEventPages current="stand" />
 

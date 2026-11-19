@@ -3,6 +3,7 @@ import { useTranslations } from 'next-intl'
 import { ArrowRight, CheckCircle2, Sparkles, type LucideIcon } from 'lucide-react'
 import { Link } from '@/navigation'
 import { cn } from '@/lib/utils'
+import { RevealItem } from '@/components/reveal-item'
 
 export type TitleText = { title: string; text: string }
 
@@ -78,22 +79,63 @@ export function RelatedEventPages({ current }: { current: EventPageKey }) {
   )
 }
 
-/** Genummerde stappen ("Zo werkt het"). */
-export function StepsSection({ title, steps, className }: { title: string; steps: TitleText[]; className?: string }) {
+/**
+ * Genummerde stappen ("Zo werkt het").
+ * `images` (optioneel): een foto per stap, bovenaan de kaart; de alt-tekst staat in de stap zelf (`imageAlt`).
+ * `reveal`: stappen verschijnen een voor een bij het scrollen.
+ */
+export function StepsSection({
+  title,
+  steps,
+  images,
+  reveal = false,
+  className,
+}: {
+  title: string
+  steps: (TitleText & { imageAlt?: string })[]
+  images?: string[]
+  reveal?: boolean
+  className?: string
+}) {
+  const Item = reveal ? RevealItem : 'li'
   return (
     <section className={cn('border-t border-border', className)}>
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <h2 className="font-serif text-3xl font-semibold leading-tight text-balance sm:text-4xl">{title}</h2>
         <ol className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((step, i) => (
-            <li key={step.title} className="rounded-sm border border-border bg-card p-6">
+          {steps.map((step, i) => {
+            const image = images?.[i]
+            const number = (
               <span className="inline-flex size-10 items-center justify-center rounded-full bg-accent font-serif text-lg font-semibold text-accent-foreground">
                 {i + 1}
               </span>
-              <h3 className="mt-5 text-base font-semibold">{step.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.text}</p>
-            </li>
-          ))}
+            )
+            return (
+              <Item
+                key={step.title}
+                {...(reveal ? { delay: i * 150 } : {})}
+                className="flex flex-col overflow-hidden rounded-sm border border-border bg-card"
+              >
+                {image && (
+                  <div className="relative aspect-[3/2] overflow-hidden bg-muted">
+                    <Image
+                      src={image}
+                      alt={step.imageAlt ?? ''}
+                      fill
+                      sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover"
+                    />
+                    <span className="absolute left-4 top-4 shadow-sm">{number}</span>
+                  </div>
+                )}
+                <div className="p-6">
+                  {!image && <div className="mb-5">{number}</div>}
+                  <h3 className="text-base font-semibold">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.text}</p>
+                </div>
+              </Item>
+            )
+          })}
         </ol>
       </div>
     </section>

@@ -12,7 +12,7 @@ export const pathnames: Pathnames<typeof locales> = {
   '/event-tapijt': { nl: '/event-tapijt', fr: '/tapis-evenementiel' },
   '/event-tapijt/loper': { nl: '/event-tapijt/loper', fr: '/tapis-evenementiel/tapis-rouge' },
   '/event-tapijt/eventvloer': { nl: '/event-tapijt/eventvloer', fr: '/tapis-evenementiel/sol-evenementiel' },
-  '/event-tapijt/beurstapijt': { nl: '/event-tapijt/beurstapijt', fr: '/tapis-evenementiel/stand-salon' },
+  '/event-tapijt/beurstapijt': { nl: '/event-tapijt/beurstapijt', fr: '/tapis-evenementiel/tapis-exposition-imprime' },
   '/geprint-tapijt': { nl: '/geprint-tapijt', fr: '/tapis-imprime' },
   '/geprint-tapijt/winkel': { nl: '/geprint-tapijt/winkel', fr: '/tapis-imprime/commerce' },
   '/geprint-tapijt/kantoor': { nl: '/geprint-tapijt/kantoor', fr: '/tapis-imprime/bureau' },
