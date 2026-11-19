@@ -12,9 +12,10 @@ import { Faq } from '@/components/faq'
 import { Cta } from '@/components/cta'
 import { FireSafetyBadge } from '@/components/fire-safety-badge'
 import { BlobPhoto } from '@/components/blob-photo'
+import { ServiceJsonLd } from '@/components/service-jsonld'
 import { PhotoGallery, type GalleryPhoto } from '@/components/photo-gallery'
 import { CheckList, RelatedEventPages, StepsSection, type TitleText } from '@/components/event-sections'
-import { localizedAlternates } from '@/lib/seo'
+import { pageMetadata } from '@/lib/seo'
 import { ProductBar } from '@/components/product-bar'
 import { cn } from '@/lib/utils'
 
@@ -22,6 +23,8 @@ type Props = { params: { locale: string } }
 
 const PATH = '/event-tapijt/beurstapijt'
 const HERO_IMAGE = '/images/beurstapijt-bosvloer-stand.webp'
+/** Deelbeeld (1200 × 630) voor WhatsApp, LinkedIn, Facebook en X. */
+const OG_IMAGE = '/images/beurstapijt-og.jpg'
 
 /** Foto per stap, in dezelfde volgorde als EventStand.steps (alt-teksten staan daar). */
 const STEP_IMAGES = [
@@ -43,12 +46,11 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
   return {
     title: t('title'),
     description: t('description'),
-    alternates: localizedAlternates(locale, PATH),
-    openGraph: {
+    ...pageMetadata(locale, PATH, {
       title: t('title'),
       description: t('description'),
-      images: [{ url: HERO_IMAGE, alt: t('ogImageAlt') }],
-    },
+      images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: t('ogImageAlt') }],
+    }),
   }
 }
 
@@ -118,6 +120,7 @@ export default function BeurstapijtPage({ params: { locale } }: Props) {
   const t = useTranslations('EventStand')
   const event = useTranslations('Event')
   const common = useTranslations('Common')
+  const meta = useTranslations('Meta.eventStand')
 
   const faq = (['timing', 'size', 'install', 'fire', 'reuse', 'price'] as const).map((key) => ({
     q: t(`faq.${key}.q`),
@@ -127,6 +130,13 @@ export default function BeurstapijtPage({ params: { locale } }: Props) {
 
   return (
     <>
+      <ServiceJsonLd
+        path={PATH}
+        name={meta('title')}
+        serviceType={t('eyebrow')}
+        description={meta('description')}
+        image={HERO_IMAGE}
+      />
       <SiteHeader />
       <main>
         <PageHero

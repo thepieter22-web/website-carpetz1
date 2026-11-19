@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
 import { CalendarHeart, DoorOpen, Layers, Ruler, Scissors, Shapes } from 'lucide-react'
+import { Link } from '@/navigation'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { PageHero } from '@/components/page-hero'
@@ -15,7 +16,7 @@ import { AmbientVideo } from '@/components/ambient-video'
 import { ProductBar } from '@/components/product-bar'
 import { FeatureGrid, StepsSection, type TitleText } from '@/components/event-sections'
 import { PRINTED_HERO_IMAGE, SectorCards } from '@/components/printed-sector'
-import { localizedAlternates } from '@/lib/seo'
+import { pageMetadata } from '@/lib/seo'
 
 type Props = { params: { locale: string } }
 type GalleryPhoto = { src: string; alt: string }
@@ -27,12 +28,7 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
   return {
     title: t('title'),
     description: t('description'),
-    alternates: localizedAlternates(locale, PATH),
-    openGraph: {
-      title: t('ogTitle'),
-      description: t('ogDescription'),
-      images: [{ url: PRINTED_HERO_IMAGE, alt: t('ogImageAlt') }],
-    },
+    ...pageMetadata(locale, PATH, { title: t('ogTitle'), description: t('ogDescription'), images: [{ url: PRINTED_HERO_IMAGE, alt: t('ogImageAlt') }] }),
   }
 }
 
@@ -151,7 +147,16 @@ export default function GeprintTapijtPage({ params: { locale } }: Props) {
                 <Icon className="size-6 text-accent" />
                 <h2 className="mt-4 font-serif text-2xl font-semibold leading-tight sm:text-3xl">{t(`elsewhere.${key}.title`)}</h2>
                 <p className="mt-3 flex-1 text-base leading-relaxed text-primary-foreground/80 text-pretty">
-                  {t(`elsewhere.${key}.text`)}
+                  {t.rich(`elsewhere.${key}.text`, {
+                    stand: (chunks) => (
+                      <Link
+                        href="/event-tapijt/beurstapijt"
+                        className="font-semibold text-primary-foreground underline decoration-accent underline-offset-4 hover:decoration-2"
+                      >
+                        {chunks}
+                      </Link>
+                    ),
+                  })}
                 </p>
                 <div className="mt-6">
                   <Cta href={href} variant="outlineLight">

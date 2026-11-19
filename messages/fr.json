@@ -77,8 +77,8 @@
       "ogImageAlt": "Gros plan d’un tapis imprimé à motif de feuilles colorées"
     },
     "eventStand": {
-      "title": "Tapis d’exposition imprimé sur mesure pour stands et allées",
-      "description": "Tapis d’exposition imprimé pour exposants, constructeurs de stands et organisateurs : stands, allées et points d’attraction en Carpetz Pixel. Réaction au feu Cfl-s1, livré en Belgique et aux Pays-Bas.",
+      "title": "Tapis d’exposition imprimé sur mesure pour votre stand",
+      "description": "Tapis d’exposition imprimé sur mesure pour votre stand et les allées du salon. Carpetz Pixel, réaction au feu Cfl-s1, livré en Belgique et aux Pays-Bas.",
       "ogImageAlt": "Stand de salon avec un tapis imprimé représentant un sentier forestier, des VTT et des visiteurs qui observent le tapis de près"
     },
     "printedShop": {
@@ -205,7 +205,7 @@
       "title": "Tapis imprimé & moquette imprimée",
       "text": "Avec un tapis imprimé, vous donnez d’un seul coup votre propre identité à tout un espace. Grâce aux techniques d’impression modernes, nous imprimons sur tapis des images photographiques, des motifs, des aplats de couleur ou votre campagne complète. Un sol neutre devient ainsi un puissant support de marque. Notre moquette imprimée se pose en lés, pour couvrir aussi de grandes surfaces, et convient aussi bien à un pop-up temporaire qu’à un showroom permanent.",
       "applicationsTitle": "Applications du tapis imprimé",
-      "applicationsText": "Surfaces commerciales, stands de salon, lancements de produits, campagnes saisonnières et espaces expérientiels : partout où vous souhaitez immerger vos visiteurs dans votre marque, le tapis imprimé sur mesure est la solution. Nous vous accompagnons du fichier prêt à imprimer jusqu’au tapis fini.",
+      "applicationsText": "Surfaces commerciales, <stand>stands de salon</stand>, lancements de produits, campagnes saisonnières et espaces expérientiels : partout où vous souhaitez immerger vos visiteurs dans votre marque, le tapis imprimé sur mesure est la solution. Nous vous accompagnons du fichier prêt à imprimer jusqu’au tapis fini.",
       "link": "Découvrir le tapis imprimé",
       "imageAlt": "Moquette imprimée à motif coloré dans un showroom moderne"
     },
@@ -461,7 +461,7 @@
       },
       {
         "title": "Livraison",
-        "text": "Nous livrons votre tapis en Belgique ou aux Pays-Bas. [À COMPLÉTER : délai de livraison]."
+        "text": "Nous livrons votre tapis en Belgique ou aux Pays-Bas, dans les 10 jours ouvrables suivant la validation du design."
       }
     ],
     "faqTitle": "Questions fréquentes sur le tapis imprimé",
@@ -480,7 +480,7 @@
       },
       "delivery": {
         "q": "Quel est le délai de livraison ?",
-        "a": "Comptez [À COMPLÉTER : délai en jours ouvrables] après votre validation de l’épreuve numérique (BAT)."
+        "a": "Nous livrons dans les 10 jours ouvrables suivant la validation du design (l’épreuve numérique, BAT)."
       },
       "sizes": {
         "q": "Quelles dimensions sont possibles ?",
@@ -490,7 +490,7 @@
     "elsewhere": {
       "event": {
         "title": "Pour un seul événement ?",
-        "text": "Un tapis pour une occasion unique, comme un tapis rouge, un sol événementiel ou un stand de salon ? C’est notre tapis événementiel.",
+        "text": "Un tapis pour une occasion unique, comme un tapis rouge, un sol événementiel ou un <stand>tapis d’exposition pour votre stand</stand> ? C’est notre tapis événementiel.",
         "link": "Découvrir le tapis événementiel"
       },
       "logomat": {
@@ -582,7 +582,7 @@
     "faq": {
       "delivery": {
         "q": "Quel est le délai de livraison d’un tapis événementiel ?",
-        "a": "Comptez [À COMPLÉTER : délai en jours ouvrables] après votre validation de l’épreuve numérique (BAT). Votre événement a une date fixe ? Indiquez-la dans votre demande : nous vous dirons tout de suite si c’est faisable."
+        "a": "Nous livrons dans les 10 jours ouvrables suivant la validation du design (l’épreuve numérique, BAT). Votre événement a une date fixe ? Indiquez-la dans votre demande : nous vous dirons tout de suite si c’est faisable."
       },
       "material": {
         "q": "En quelle matière est le tapis événementiel ?",
@@ -1841,11 +1841,11 @@
         "imageAlt": "Tapis logo rond imprimé en vert et or pour un stand de salon"
       }
     },
-    "exhibitorsTitle": "Pour votre stand",
+    "exhibitorsTitle": "Une moquette de stand à votre image",
     "exhibitorsText": "Dans un salon, les visiteurs regardent aussi vers le bas. Avec un tapis d’exposition imprimé, le sol fait partie de votre histoire : votre logo, les couleurs de votre marque ou toute une ambiance, comme un sentier forestier pour une marque de vélos.",
-    "organizersTitle": "Pour les organisateurs de salons",
+    "organizersTitle": "Un sol de salon sur mesure pour les organisateurs",
     "organizersText": [
-      "Les stands ne sont pas les seuls à compter : le sol du salon peut lui aussi donner une identité propre à votre événement. Avec un tapis imprimé, vous guidez les visiteurs dans le hall et mettez en valeur vos sponsors et vos thèmes.",
+      "Les stands ne sont pas les seuls à compter : le sol du salon peut lui aussi donner une identité propre à votre événement. Avec une moquette imprimée pour salon, vous guidez les visiteurs dans le hall et mettez en valeur vos sponsors et vos thèmes.",
       "Nous imprimons des lés jusqu’à 25 m de long : idéal pour les longues allées et les parcours de visite."
     ],
     "organizersBoxTitle": "Quelles possibilités ?",
@@ -1869,8 +1869,8 @@
       "Une pose facile : dérouler et fixer avec du ruban adhésif",
       "Des lés jusqu’à 1,98 m de large et 25 m de long"
     ],
-    "productEyebrow": "Carpetz Pixel",
-    "productTitle": "Chaque détail, d’une netteté parfaite.",
+    "productEyebrow": "Notre qualité pour les tapis d’exposition",
+    "productTitle": "Carpetz Pixel : chaque détail d’une netteté parfaite",
     "productText": "Pour les tapis d’exposition imprimés, nous utilisons Carpetz Pixel : un tapis imprimé finement tufté, avec 189 000 points par m². Les photos, les logos et les petits textes ressortent ainsi avec une grande netteté. Le tapis est fin (5 mm), lavable en machine à 30 °C et disponible en rouleau jusqu’à 1,98 m de large.",
     "productSpecs": [
       "Réaction au feu Cfl-s1",
@@ -1878,7 +1878,7 @@
       "Sans PVC ni phtalates",
       "OEKO-TEX Standard 100"
     ],
-    "stepsTitle": "Comment ça marche",
+    "stepsTitle": "Commander votre tapis d’exposition imprimé",
     "steps": [
       {
         "title": "Plan de stand",
@@ -1905,7 +1905,7 @@
     "faq": {
       "timing": {
         "q": "Combien de temps à l’avance dois-je commander mon tapis d’exposition ?",
-        "a": "Comptez [À COMPLÉTER : délai en jours ouvrables] après votre validation de l’épreuve numérique (BAT), et prévoyez aussi les jours de montage du salon."
+        "a": "Votre tapis d’exposition est livré dans les 10 jours ouvrables suivant la validation du design (l’épreuve numérique, BAT). Prévoyez aussi les jours de montage du salon."
       },
       "size": {
         "q": "Quelle taille peut avoir un tapis d’exposition ?",
@@ -1924,12 +1924,12 @@
         "a": "Oui. Enroulez-le après le salon et stockez-le au sec. Choisissez alors un design sans date, pour pouvoir le réutiliser plusieurs fois."
       },
       "price": {
-        "q": "Combien coûte un tapis d’exposition ?",
+        "q": "Combien coûte un tapis d’exposition imprimé ?",
         "a": "Le prix dépend de la surface, du nombre de lés et du design. Pour votre stand ou le sol de votre salon, nous établissons un devis sur mesure."
       }
     },
     "gallery": {
-      "title": "Réalisations",
+      "title": "Réalisations : nos tapis d’exposition en situation",
       "text": "Une sélection de sols de salon et de tapis d’exposition que nous avons imprimés.",
       "photos": [
         {
@@ -1947,14 +1947,6 @@
         {
           "src": "/images/beurstapijt-stand-terracotta.webp",
           "alt": "Stand de salon avec un tapis imprimé terracotta, bleu et crème, aux mêmes formes que les cloisons"
-        },
-        {
-          "src": "/images/beurstapijt-koffiebar-bladmotief.webp",
-          "alt": "Bar à café sur un salon avec un grand tapis imprimé à motif de feuilles et de terrazzo"
-        },
-        {
-          "src": "/images/beurstapijt-bosvloer-stand.webp",
-          "alt": "Stand de salon avec un tapis imprimé représentant un sol forestier"
         }
       ]
     },

@@ -77,8 +77,8 @@
       "ogImageAlt": "Close-up van geprint tapijt met kleurrijk bladmotief"
     },
     "eventStand": {
-      "title": "Beurstapijt op maat: standtapijt en gangpaden met print",
-      "description": "Geprint beurstapijt voor standhouders, standbouwers en beursorganisatoren: standtapijt, gangpaden en eyecatchers in Carpetz Pixel. Brandklasse Cfl-s1, geleverd in België en Nederland.",
+      "title": "Geprint beurstapijt op maat voor je beursstand",
+      "description": "Geprint beurstapijt op maat voor je beursstand, gangpaden en de beursvloer. Carpetz Pixel met brandklasse Cfl-s1, geleverd in België en Nederland.",
       "ogImageAlt": "Beursstand met een geprint tapijt dat een bospad toont, met mountainbikes en bezoekers die het tapijt van dichtbij bekijken"
     },
     "printedShop": {
@@ -205,7 +205,7 @@
       "title": "Geprint tapijt & geprint vloertapijt",
       "text": "Met geprint tapijt geef je een volledige ruimte in één keer je eigen gezicht. Dankzij moderne printtechnieken kunnen we tapijt bedrukken met fotografische beelden, patronen, kleurvlakken of je volledige campagne. Zo transformeer je een neutrale vloer tot een krachtig branding tapijt. Ons geprint vloertapijt wordt in banen gelegd, zodat je ook grote oppervlakken bedekt, en is even geschikt voor een tijdelijke pop-up als voor een permanente showroom.",
       "applicationsTitle": "Toepassingen voor geprint tapijt",
-      "applicationsText": "Retailvloeren, beursstanden, productlanceringen, seizoenscampagnes en experience zones: overal waar je bezoekers wil onderdompelen in je merk is geprint tapijt op maat de oplossing. Wij begeleiden je van drukklaar bestand tot afgewerkt tapijt.",
+      "applicationsText": "Retailvloeren, <stand>beursstanden</stand>, productlanceringen, seizoenscampagnes en experience zones: overal waar je bezoekers wil onderdompelen in je merk is geprint tapijt op maat de oplossing. Wij begeleiden je van drukklaar bestand tot afgewerkt tapijt.",
       "link": "Ontdek geprint tapijt",
       "imageAlt": "Geprint vloertapijt met kleurrijk patroon in een moderne retail showroom"
     },
@@ -461,7 +461,7 @@
       },
       {
         "title": "Levering",
-        "text": "We leveren je tapijt in België of Nederland. [INVULLEN: levertijd]."
+        "text": "We leveren je tapijt in België of Nederland, binnen 10 werkdagen na je goedkeuring van het ontwerp."
       }
     ],
     "faqTitle": "Veelgestelde vragen over geprint tapijt",
@@ -480,7 +480,7 @@
       },
       "delivery": {
         "q": "Wat is de levertijd?",
-        "a": "Reken op [INVULLEN: levertijd in werkdagen] na je akkoord op de digitale proefdruk."
+        "a": "We leveren binnen 10 werkdagen na je goedkeuring van het ontwerp (de digitale proefdruk)."
       },
       "sizes": {
         "q": "Welke afmetingen zijn mogelijk?",
@@ -490,7 +490,7 @@
     "elsewhere": {
       "event": {
         "title": "Voor één event?",
-        "text": "Tapijt voor één gelegenheid, zoals een rode loper, een eventvloer of een beursstand? Dat is ons event tapijt.",
+        "text": "Tapijt voor één gelegenheid, zoals een rode loper, een eventvloer of <stand>beurstapijt voor je stand</stand>? Dat is ons event tapijt.",
         "link": "Bekijk event tapijt"
       },
       "logomat": {
@@ -582,7 +582,7 @@
     "faq": {
       "delivery": {
         "q": "Hoe snel wordt mijn event tapijt geleverd?",
-        "a": "Reken op [INVULLEN: levertijd in werkdagen] na je akkoord op de digitale proefdruk. Heb je een vaste datum voor je event? Vermeld die in je aanvraag, dan laten we meteen weten of dat haalbaar is."
+        "a": "We leveren binnen 10 werkdagen na je goedkeuring van het ontwerp (de digitale proefdruk). Heb je een vaste datum voor je event? Vermeld die in je aanvraag, dan laten we meteen weten of dat haalbaar is."
       },
       "material": {
         "q": "Van welk materiaal is event tapijt?",
@@ -1817,7 +1817,7 @@
   "EventStand": {
     "eyebrow": "Beurstapijt",
     "title": "Beurstapijt op maat voor je stand en de beursvloer",
-    "intro": "Geprint tapijt voor standhouders, standbouwers en beursorganisatoren. Je logo, je campagnebeeld of een volledige sfeer op de vloer, in de exacte maat van je stand of gangpad.",
+    "intro": "Geprint beurstapijt voor standhouders, standbouwers en beursorganisatoren. Je logo, je campagnebeeld of een volledige sfeer op de vloer, in de exacte maat van je beursstand of gangpad.",
     "heroImageAlt": "Beursstand met een geprint tapijt dat een bospad toont, met mountainbikes en bezoekers die het tapijt van dichtbij bekijken",
     "breadcrumb": "Beurstapijt",
     "audienceTitle": "Voor wie maken we beurstapijt?",
@@ -1841,9 +1841,9 @@
         "imageAlt": "Rond geprint logotapijt in groen en goud voor een beursstand"
       }
     },
-    "exhibitorsTitle": "Voor je beursstand",
+    "exhibitorsTitle": "Tapijt voor je beursstand",
     "exhibitorsText": "Wie over een beurs wandelt, kijkt ook naar beneden. Met een geprint standtapijt wordt de vloer deel van je verhaal: je logo, je huisstijlkleuren of een volledige sfeer, zoals een bospad voor een fietsmerk.",
-    "organizersTitle": "Voor beursorganisatoren",
+    "organizersTitle": "Een beursvloer op maat voor organisatoren",
     "organizersText": [
       "Niet alleen de stands, ook de beursvloer zelf kan je beurs een eigen gezicht geven. Met geprint tapijt leid je bezoekers door de hal en zet je sponsors en thema’s in de kijker.",
       "We printen banen tot 25 m lang: ideaal voor lange gangpaden en looproutes."
@@ -1869,8 +1869,8 @@
       "Eenvoudig te leggen: uitrollen en vastzetten met tape",
       "Banen tot 1,98 m breed en tot 25 m lang"
     ],
-    "productEyebrow": "Carpetz Pixel",
-    "productTitle": "Elk detail, haarscherp.",
+    "productEyebrow": "Onze kwaliteit voor beurstapijt",
+    "productTitle": "Carpetz Pixel: elk detail haarscherp",
     "productText": "Voor beurstapijt werken we met Carpetz Pixel: fijn getuft geprint tapijt met 189.000 noppen per m². Daardoor komen foto’s, logo’s en kleine teksten heel scherp uit. Het tapijt is dun (5 mm), wasbaar in de machine op 30 °C en verkrijgbaar op rol tot 1,98 m breed.",
     "productSpecs": [
       "Brandklasse Cfl-s1",
@@ -1878,7 +1878,7 @@
       "PVC- en ftalatenvrij",
       "OEKO-TEX Standard 100"
     ],
-    "stepsTitle": "Zo werkt het",
+    "stepsTitle": "Zo bestel je beurstapijt",
     "steps": [
       {
         "title": "Standplan",
@@ -1905,7 +1905,7 @@
     "faq": {
       "timing": {
         "q": "Hoe ver vooraf bestel ik mijn beurstapijt?",
-        "a": "Reken op [INVULLEN: levertijd in werkdagen] na je akkoord op de digitale proefdruk, en plan ook de opbouwdagen van de beurs in."
+        "a": "Je beurstapijt wordt geleverd binnen 10 werkdagen na je goedkeuring van het ontwerp (de digitale proefdruk). Plan ook de opbouwdagen van de beurs in."
       },
       "size": {
         "q": "Hoe groot kan beurstapijt zijn?",
@@ -1924,12 +1924,12 @@
         "a": "Ja. Rol het na de beurs op en bewaar het droog. Kies dan een ontwerp zonder datum, zodat je het meerdere keren kan inzetten."
       },
       "price": {
-        "q": "Wat kost beurstapijt?",
+        "q": "Wat kost geprint beurstapijt?",
         "a": "Dat hangt af van de oppervlakte, het aantal banen en het ontwerp. Voor je stand of je beursvloer maken we een offerte op maat."
       }
     },
     "gallery": {
-      "title": "Realisaties",
+      "title": "Realisaties: beurstapijt in de praktijk",
       "text": "Een greep uit de beursvloeren en standtapijten die we printten.",
       "photos": [
         {
@@ -1947,14 +1947,6 @@
         {
           "src": "/images/beurstapijt-stand-terracotta.webp",
           "alt": "Beursstand met een geprint tapijt in terracotta, blauw en crème, in dezelfde vormen als de wanden"
-        },
-        {
-          "src": "/images/beurstapijt-koffiebar-bladmotief.webp",
-          "alt": "Koffiebar op een beurs met een groot geprint tapijt met bladmotief en terrazzo"
-        },
-        {
-          "src": "/images/beurstapijt-bosvloer-stand.webp",
-          "alt": "Beursstand met een geprinte bosvloer als tapijt"
         }
       ]
     },

@@ -37,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: route === '' ? 1 : 0.8,
       alternates: {
-        languages: Object.fromEntries(locales.map((l) => [`${l}-BE`, absoluteUrl(l, route)])),
+        languages: Object.fromEntries(locales.map((l) => [l, absoluteUrl(l, route)])),
       },
     }))
   )

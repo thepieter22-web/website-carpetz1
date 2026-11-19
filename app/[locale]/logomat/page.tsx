@@ -9,7 +9,7 @@ import { PageHero } from '@/components/page-hero'
 import { QuoteBand } from '@/components/quote-band'
 import { MatConfigurator } from '@/components/mat-configurator'
 import { ProductBar } from '@/components/product-bar'
-import { localizedAlternates } from '@/lib/seo'
+import { pageMetadata } from '@/lib/seo'
 
 type Props = { params: { locale: string } }
 
@@ -18,12 +18,7 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
   return {
     title: t('title'),
     description: t('description'),
-    alternates: localizedAlternates(locale, '/logomat'),
-    openGraph: {
-      title: t('ogTitle'),
-      description: t('ogDescription'),
-      images: [{ url: '/images/logomat-winkel-entree.webp', width: 1200, height: 630, alt: t('ogImageAlt') }],
-    },
+    ...pageMetadata(locale, '/logomat', { title: t('ogTitle'), description: t('ogDescription'), images: [{ url: '/images/logomat-winkel-entree.webp', width: 1200, height: 630, alt: t('ogImageAlt') }] }),
   }
 }
 

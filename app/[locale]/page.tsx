@@ -91,7 +91,13 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
               <p className="mt-5 text-base leading-relaxed text-muted-foreground text-pretty">{t('printed.text')}</p>
               <h3 className="mt-6 text-lg font-semibold">{t('printed.applicationsTitle')}</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground text-pretty">
-                {t('printed.applicationsText')}
+                {t.rich('printed.applicationsText', {
+                  stand: (chunks) => (
+                    <Link href="/event-tapijt/beurstapijt" className="font-semibold text-foreground underline decoration-accent underline-offset-4 hover:decoration-2">
+                      {chunks}
+                    </Link>
+                  ),
+                })}
               </p>
               <div className="mt-8">
                 <Link

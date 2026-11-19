@@ -8,7 +8,7 @@ import { SiteFooter } from '@/components/site-footer'
 import { PageHero } from '@/components/page-hero'
 import { MatComparisonTable } from '@/components/mat-comparison-table'
 import { QuoteBand } from '@/components/quote-band'
-import { localizedAlternates } from '@/lib/seo'
+import { pageMetadata } from '@/lib/seo'
 
 type Props = { params: { locale: string } }
 
@@ -17,7 +17,7 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
   return {
     title: t('title'),
     description: t('description'),
-    alternates: localizedAlternates(locale, '/logomat/vergelijk'),
+    ...pageMetadata(locale, '/logomat/vergelijk', { title: t('title'), description: t('description') }),
   }
 }
 

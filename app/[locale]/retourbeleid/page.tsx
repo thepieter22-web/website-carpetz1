@@ -3,13 +3,13 @@ import { useTranslations } from 'next-intl'
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
-import { localizedAlternates } from '@/lib/seo'
+import { pageMetadata } from '@/lib/seo'
 
 type Props = { params: { locale: string } }
 
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'Meta.returns' })
-  return { title: t('title'), alternates: localizedAlternates(locale, '/retourbeleid') }
+  return { title: t('title'), ...pageMetadata(locale, '/retourbeleid', { title: t('title') }) }
 }
 
 export default function RetourbeleidPage({ params: { locale } }: Props) {

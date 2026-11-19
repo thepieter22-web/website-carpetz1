@@ -3,13 +3,13 @@ import { useTranslations } from 'next-intl'
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
-import { localizedAlternates } from '@/lib/seo'
+import { pageMetadata } from '@/lib/seo'
 
 type Props = { params: { locale: string } }
 
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'Meta.privacy' })
-  return { title: t('title'), alternates: localizedAlternates(locale, '/privacybeleid') }
+  return { title: t('title'), ...pageMetadata(locale, '/privacybeleid', { title: t('title') }) }
 }
 
 export default function PrivacybeleidPage({ params: { locale } }: Props) {

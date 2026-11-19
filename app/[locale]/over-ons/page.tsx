@@ -7,7 +7,7 @@ import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { PageHero } from '@/components/page-hero'
 import { QuoteBand } from '@/components/quote-band'
-import { localizedAlternates } from '@/lib/seo'
+import { pageMetadata } from '@/lib/seo'
 
 type Props = { params: { locale: string } }
 
@@ -16,12 +16,7 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
   return {
     title: t('title'),
     description: t('description'),
-    alternates: localizedAlternates(locale, '/over-ons'),
-    openGraph: {
-      title: t('ogTitle'),
-      description: t('ogDescription'),
-      images: [{ url: '/images/craftsmanship.png', width: 1200, height: 630, alt: t('ogImageAlt') }],
-    },
+    ...pageMetadata(locale, '/over-ons', { title: t('ogTitle'), description: t('ogDescription'), images: [{ url: '/images/craftsmanship.png', width: 1200, height: 630, alt: t('ogImageAlt') }] }),
   }
 }
 

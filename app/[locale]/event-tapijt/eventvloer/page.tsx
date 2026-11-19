@@ -10,7 +10,7 @@ import { Breadcrumbs } from '@/components/breadcrumbs'
 import { Faq } from '@/components/faq'
 import { Cta } from '@/components/cta'
 import { CheckList, FeatureGrid, RelatedEventPages, StepsSection, type TitleText } from '@/components/event-sections'
-import { localizedAlternates } from '@/lib/seo'
+import { pageMetadata } from '@/lib/seo'
 import { ProductBar } from '@/components/product-bar'
 
 type Props = { params: { locale: string } }
@@ -23,12 +23,7 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
   return {
     title: t('title'),
     description: t('description'),
-    alternates: localizedAlternates(locale, PATH),
-    openGraph: {
-      title: t('title'),
-      description: t('description'),
-      images: [{ url: HERO_IMAGE, alt: t('ogImageAlt') }],
-    },
+    ...pageMetadata(locale, PATH, { title: t('title'), description: t('description'), images: [{ url: HERO_IMAGE, alt: t('ogImageAlt') }] }),
   }
 }
 

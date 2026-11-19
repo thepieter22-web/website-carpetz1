@@ -19,7 +19,7 @@ import { Breadcrumbs } from '@/components/breadcrumbs'
 import { Faq, type FaqItem } from '@/components/faq'
 import { ProductBar } from '@/components/product-bar'
 import { CheckList, FeatureGrid, type TitleText } from '@/components/event-sections'
-import { localizedAlternates } from '@/lib/seo'
+import { pageMetadata } from '@/lib/seo'
 import { cn } from '@/lib/utils'
 
 /** Sectorpagina's onder /geprint-tapijt. TODO: "thuis" (vloerkleed met foto) zodra er eigen inhoud en foto's zijn. */
@@ -45,12 +45,7 @@ export async function printedSectorMetadata(locale: string, sector: PrintedSecto
   return {
     title: t('title'),
     description: t('description'),
-    alternates: localizedAlternates(locale, page.href),
-    openGraph: {
-      title: t('title'),
-      description: t('description'),
-      images: [{ url: PRINTED_HERO_IMAGE, alt: t('ogImageAlt') }],
-    },
+    ...pageMetadata(locale, page.href, { title: t('title'), description: t('description'), images: [{ url: PRINTED_HERO_IMAGE, alt: t('ogImageAlt') }] }),
   }
 }
 

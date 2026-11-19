@@ -5,7 +5,7 @@ import { MatTypePage } from '@/components/mat-type-page'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { buildMatType, getMatTypeMessages, type MatSubtype } from '@/lib/mat-type-data'
-import { localizedAlternates } from '@/lib/seo'
+import { pageMetadata } from '@/lib/seo'
 
 /**
  * Gedeelde opbouw van de productpagina's per logomat (/logomat/go, /logomat/grip, ...).
@@ -18,7 +18,7 @@ export async function matTypeMetadata(subtype: MatSubtype, locale: string, path:
   return {
     title: t('title', { name: mat.title }),
     description: mat.description,
-    alternates: localizedAlternates(locale, path),
+    ...pageMetadata(locale, path, { title: t('title', { name: mat.title }), description: mat.description }),
   }
 }
 

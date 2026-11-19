@@ -11,7 +11,7 @@ import { Breadcrumbs } from '@/components/breadcrumbs'
 import { Faq } from '@/components/faq'
 import { FeatureGrid } from '@/components/event-sections'
 import { PriceTool } from '@/components/price-tool'
-import { localizedAlternates } from '@/lib/seo'
+import { pageMetadata } from '@/lib/seo'
 
 type Props = { params: { locale: string } }
 
@@ -23,8 +23,7 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
     title: t('title'),
     description: t('description'),
     // Canonical zonder ?product=…: alle varianten tellen als één pagina.
-    alternates: localizedAlternates(locale, PATH),
-    openGraph: { title: t('title'), description: t('description') },
+    ...pageMetadata(locale, PATH, { title: t('title'), description: t('description') }),
   }
 }
 

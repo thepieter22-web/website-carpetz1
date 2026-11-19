@@ -25,7 +25,7 @@ import { CustomRunnerHighlight } from '@/components/custom-runner-highlight'
 import { OccasionTabs } from '@/components/occasion-tabs'
 import { PhotoGallery, type GalleryPhoto } from '@/components/photo-gallery'
 import { CheckList, FeatureGrid, RelatedEventPages, StepsSection, type TitleText } from '@/components/event-sections'
-import { localizedAlternates } from '@/lib/seo'
+import { pageMetadata } from '@/lib/seo'
 import { ProductBar } from '@/components/product-bar'
 import { usePriceFormatter } from '@/lib/format'
 import { RUNNER_PRICE_PER_M2 } from '@/lib/event-pricing'
@@ -40,12 +40,7 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
   return {
     title: t('title'),
     description: t('description'),
-    alternates: localizedAlternates(locale, PATH),
-    openGraph: {
-      title: t('title'),
-      description: t('description'),
-      images: [{ url: HERO_IMAGE, alt: t('ogImageAlt') }],
-    },
+    ...pageMetadata(locale, PATH, { title: t('title'), description: t('description'), images: [{ url: HERO_IMAGE, alt: t('ogImageAlt') }] }),
   }
 }
 

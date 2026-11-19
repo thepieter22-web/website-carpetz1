@@ -13,7 +13,7 @@ import { FireSafetyBadge } from '@/components/fire-safety-badge'
 import { Cta } from '@/components/cta'
 import { EventCards } from '@/components/event-sections'
 import { Link } from '@/navigation'
-import { localizedAlternates } from '@/lib/seo'
+import { pageMetadata } from '@/lib/seo'
 import { ProductBar } from '@/components/product-bar'
 import { getLocalizedPath } from '@/routing'
 import { usePriceFormatter } from '@/lib/format'
@@ -29,12 +29,7 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
   return {
     title: t('title'),
     description: t('description'),
-    alternates: localizedAlternates(locale, PATH),
-    openGraph: {
-      title: t('ogTitle'),
-      description: t('ogDescription'),
-      images: [{ url: '/images/hero-event-carpet.webp', alt: t('ogImageAlt') }],
-    },
+    ...pageMetadata(locale, PATH, { title: t('ogTitle'), description: t('ogDescription'), images: [{ url: '/images/hero-event-carpet.webp', alt: t('ogImageAlt') }] }),
   }
 }
 
